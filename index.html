@@ -1,81 +1,90 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stuur een Aap 🙈 — Davy Timmers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Davy Timmers – Tip me 🍌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #0d0d0d;
-      --card: #161616;
-      --yellow: #f5c842;
-      --text: #f0ece0;
-      --muted: #888;
-      --border: #2a2a2a;
+      --cream: #fdf6ec;
+      --gold: #e8a020;
+      --dark: #1a1208;
+      --brown: #6b3f10;
+      --light-brown: #c47d2e;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      background: var(--bg);
-      color: var(--text);
+      background-color: var(--cream);
+      color: var(--dark);
       font-family: 'DM Sans', sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 48px 20px 60px;
+      justify-content: center;
+      padding: 2rem 1.5rem;
     }
-    .emoji { font-size: 56px; margin-bottom: 12px; animation: sway 2.5s ease-in-out infinite; }
-    @keyframes sway { 0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(8deg)} }
-    h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: var(--yellow);
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle at 20% 20%, rgba(232,160,32,0.12) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(196,125,46,0.10) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .card {
+      position: relative;
+      z-index: 1;
+      background: white;
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 20px 60px rgba(107,63,16,0.12), 0 0 0 1px rgba(232,160,32,0.15);
       text-align: center;
+      animation: fadeUp 0.8s ease both;
     }
-    .sub { color: var(--muted); font-size: 0.95rem; margin-top: 6px; text-align: center; }
-    .divider { width: 40px; height: 2px; background: var(--yellow); margin: 28px auto; border-radius: 2px; }
-    .links { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 12px; }
-    .link-btn {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 20px; background: var(--card); border: 1px solid var(--border);
-      border-radius: 12px; text-decoration: none; color: var(--text); font-weight: 500;
-      transition: border-color 0.2s, transform 0.15s;
-    }
-    .link-btn:hover { border-color: var(--yellow); transform: translateY(-2px); }
-    .link-btn span { font-size: 1.2em; }
-    .ban-card { width: 100%; max-width: 400px; margin-top: 12px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px 20px; }
-    .ban-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--yellow); margin-bottom: 4px; }
-    .ban-sub { color: var(--muted); font-size: 0.85rem; margin-bottom: 18px; }
-    .ban-addr { background: #111; border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; font-size: 0.75rem; word-break: break-all; color: #aaa; margin-bottom: 12px; line-height: 1.5; }
-    .copy-btn { width: 100%; padding: 13px; background: var(--yellow); color: #000; border: none; border-radius: 10px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; cursor: pointer; transition: opacity 0.2s; }
-    .copy-btn:active { opacity: 0.8; }
-    .ban-note { font-size: 0.8rem; color: var(--muted); margin-top: 14px; line-height: 1.5; text-align: center; }
-    footer { margin-top: 48px; color: var(--muted); font-size: 0.8rem; text-align: center; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .emoji-top { font-size: 3rem; margin-bottom: 1rem; display: block; animation: bounce 2s ease infinite; }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--dark); line-height: 1.1; margin-bottom: 0.4rem; }
+    h1 span { color: var(--gold); }
+    .subtitle { font-size: 1rem; color: var(--brown); font-weight: 300; margin-bottom: 2rem; line-height: 1.5; }
+    .divider { width: 60px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--light-brown)); border-radius: 99px; margin: 0 auto 2rem; }
+    .address-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--brown); font-weight: 500; margin-bottom: 0.6rem; }
+    .address-box { background: var(--cream); border: 1.5px solid rgba(232,160,32,0.3); border-radius: 12px; padding: 0.9rem 1rem; font-family: monospace; font-size: 0.72rem; color: var(--dark); word-break: break-all; line-height: 1.5; margin-bottom: 1rem; cursor: pointer; user-select: all; }
+    .copy-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--gold), var(--light-brown)); color: white; border: none; border-radius: 12px; padding: 0.85rem 2rem; font-size: 1rem; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; margin-bottom: 1.5rem; box-shadow: 0 4px 15px rgba(232,160,32,0.35); width: 100%; justify-content: center; }
+    .copy-btn.copied { background: linear-gradient(135deg, #4caf50, #388e3c); }
+    .note { font-size: 0.82rem; color: #999; line-height: 1.6; }
+    .note a { color: var(--light-brown); text-decoration: none; }
+    .banana-row { margin-top: 2rem; font-size: 1.4rem; letter-spacing: 0.2em; opacity: 0.5; }
   </style>
 </head>
 <body>
-  <div class="emoji">🙈</div>
-  <h1>STUUR EEN AAP</h1>
-  <p class="sub">Davy Timmers · Tessenderlo-Ham</p>
-  <div class="divider"></div>
-  <div class="links">
-    <a href="https://www.tiktok.com/@timmersdavy" target="_blank" class="link-btn">
-      <span>🎵 TikTok</span> <span>@timmersdavy →</span>
-    </a>
-    <a href="https://www.instagram.com/timmersdavy" target="_blank" class="link-btn">
-      <span>📸 Instagram</span> <span>@timmersdavy →</span>
-    </a>
-    <div class="ban-card">
-      <div class="ban-title">Stuur een Banano 🍌</div>
-      <div class="ban-sub">Gratis crypto · Instant · Geen gedoe</div>
-      <div class="ban-addr" id="addr">ban_1hkyhkkrxngp7oatwxyw73jsn6u6wsf8i8qetaoqa4bo8aqijx6ozdtnsms7</div>
-      <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('addr').textContent);this.textContent='✓ Gekopieerd!';setTimeout(()=>this.textContent='Kopieer adres',2000);">Kopieer adres</button>
-      <p class="ban-note">Nog geen Banano? Download <strong>Kalium</strong> — gratis en makkelijk.</p>
-    </div>
+  <div class="card">
+    <span class="emoji-top">🍌</span>
+    <h1>Tip <span>Davy</span></h1>
+    <p class="subtitle">Genoten van mijn content? Stuur me een Banano als bedankje — elke BAN telt! 😄</p>
+    <div class="divider"></div>
+    <p class="address-label">Mijn Banano-adres (BAN)</p>
+    <div class="address-box" id="address">ban_1hkyhkkrxngp7oatwxyw73jsn6u6wsf8i8qetaoqa4bo8aqijx6ozdtnsms7</div>
+    <button class="copy-btn" id="copyBtn" onclick="copyAddress()">📋 Kopieer adres</button>
+    <p class="note">Geen Banano wallet? Download <a href="https://kalium.io" target="_blank">Kalium</a> — gratis en eenvoudig. 🍌<br/>Banano is een leuke crypto die je gratis kunt verdienen.</p>
+    <div class="banana-row">🍌🍌🍌</div>
   </div>
-  <footer>© 2026 Davy Timmers</footer>
+  <script>
+    function copyAddress() {
+      const address = 'ban_1hkyhkkrxngp7oatwxyw73jsn6u6wsf8i8qetaoqa4bo8aqijx6ozdtnsms7';
+      if (navigator.clipboard) { navigator.clipboard.writeText(address).then(showCopied); }
+      else { const el = document.createElement('textarea'); el.value = address; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el); showCopied(); }
+    }
+    function showCopied() {
+      const btn = document.getElementById('copyBtn');
+      btn.textContent = '✅ Gekopieerd!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.innerHTML = '📋 Kopieer adres'; btn.classList.remove('copied'); }, 2500);
+    }
+  </script>
 </body>
 </html>
