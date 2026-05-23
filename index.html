@@ -1,90 +1,422 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Davy Timmers – Tip me 🍌</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --cream: #fdf6ec;
-      --gold: #e8a020;
-      --dark: #1a1208;
-      --brown: #6b3f10;
-      --light-brown: #c47d2e;
-    }
-    body {
-      background-color: var(--cream);
-      color: var(--dark);
-      font-family: 'DM Sans', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1.5rem;
-    }
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: radial-gradient(circle at 20% 20%, rgba(232,160,32,0.12) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(196,125,46,0.10) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .card {
-      position: relative;
-      z-index: 1;
-      background: white;
-      border-radius: 24px;
-      padding: 3rem 2.5rem;
-      max-width: 480px;
-      width: 100%;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 20px 60px rgba(107,63,16,0.12), 0 0 0 1px rgba(232,160,32,0.15);
-      text-align: center;
-      animation: fadeUp 0.8s ease both;
-    }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    .emoji-top { font-size: 3rem; margin-bottom: 1rem; display: block; animation: bounce 2s ease infinite; }
-    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-    h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--dark); line-height: 1.1; margin-bottom: 0.4rem; }
-    h1 span { color: var(--gold); }
-    .subtitle { font-size: 1rem; color: var(--brown); font-weight: 300; margin-bottom: 2rem; line-height: 1.5; }
-    .divider { width: 60px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--light-brown)); border-radius: 99px; margin: 0 auto 2rem; }
-    .address-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--brown); font-weight: 500; margin-bottom: 0.6rem; }
-    .address-box { background: var(--cream); border: 1.5px solid rgba(232,160,32,0.3); border-radius: 12px; padding: 0.9rem 1rem; font-family: monospace; font-size: 0.72rem; color: var(--dark); word-break: break-all; line-height: 1.5; margin-bottom: 1rem; cursor: pointer; user-select: all; }
-    .copy-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--gold), var(--light-brown)); color: white; border: none; border-radius: 12px; padding: 0.85rem 2rem; font-size: 1rem; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; margin-bottom: 1.5rem; box-shadow: 0 4px 15px rgba(232,160,32,0.35); width: 100%; justify-content: center; }
-    .copy-btn.copied { background: linear-gradient(135deg, #4caf50, #388e3c); }
-    .note { font-size: 0.82rem; color: #999; line-height: 1.6; }
-    .note a { color: var(--light-brown); text-decoration: none; }
-    .banana-row { margin-top: 2rem; font-size: 1.4rem; letter-spacing: 0.2em; opacity: 0.5; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSC World Europe – Countdown</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a1628;
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .page {
+    background: linear-gradient(180deg, #050d1a 0%, #0d1f3c 40%, #0a1628 100%);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stars {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 60%;
+    background-image:
+      radial-gradient(1px 1px at 15% 20%, rgba(212,175,55,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 50% 15%, rgba(212,175,55,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 8%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 85% 25%, rgba(212,175,55,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 12%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 5% 35%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 30%, rgba(212,175,55,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 5%, rgba(255,255,255,0.5) 0%, transparent 100%);
+  }
+
+  .gold-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, #f5d77e, #d4af37, transparent);
+  }
+
+  .header {
+    text-align: center;
+    padding: 3rem 2rem 1.5rem;
+    position: relative;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 1rem;
+  }
+
+  .msc-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    color: #d4af37;
+    text-transform: uppercase;
+  }
+
+  .ship-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 64px);
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-shadow: 0 0 60px rgba(212,175,55,0.3);
+  }
+
+  .ship-name span {
+    color: #d4af37;
+    display: block;
+    font-size: clamp(20px, 3.5vw, 38px);
+    font-weight: 400;
+    letter-spacing: 8px;
+    margin-bottom: 8px;
+  }
+
+  .route {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: rgba(212,175,55,0.7);
+    margin-top: 12px;
+  }
+
+  .ship-container {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    height: 280px;
+  }
+
+  .ship-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 60%;
+    display: block;
+    filter: brightness(0.75) saturate(0.9);
+  }
+
+  .ship-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(5,13,26,0.3) 0%,
+      transparent 30%,
+      transparent 60%,
+      rgba(5,13,26,0.8) 100%);
+  }
+
+  .wave-svg {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+  }
+
+  .countdown-section {
+    padding: 2rem 1.5rem 1rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .departure-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 5px;
+    color: #d4af37;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .countdown-grid {
+    display: flex;
+    justify-content: center;
+    gap: clamp(12px, 3vw, 32px);
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    align-items: flex-start;
+  }
+
+  .countdown-unit {
+    text-align: center;
+    min-width: 70px;
+  }
+
+  .countdown-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(44px, 9vw, 88px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    text-shadow: 0 0 30px rgba(212,175,55,0.2);
+    display: block;
+    min-width: 2ch;
+  }
+
+  .countdown-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: rgba(212,175,55,0.6);
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-top: 8px;
+    display: block;
+  }
+
+  .countdown-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(212,175,55,0.15);
+    padding: 16px 20px 14px;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .countdown-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent);
+  }
+
+  .date-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 2px;
+    margin-bottom: 2.5rem;
+  }
+
+  .date-display strong {
+    color: #d4af37;
+    font-weight: 600;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 0 1.5rem 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .info-card {
+    background: rgba(212,175,55,0.05);
+    border: 1px solid rgba(212,175,55,0.2);
+    padding: 16px 24px;
+    text-align: center;
+    flex: 1;
+    min-width: 130px;
+    max-width: 200px;
+  }
+
+  .info-card-icon {
+    font-size: 22px;
+    color: #d4af37;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .info-card-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    display: block;
+    line-height: 1;
+  }
+
+  .info-card-label {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    color: rgba(212,175,55,0.5);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 6px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 1.5rem 2rem 2.5rem;
+    border-top: 1px solid rgba(212,175,55,0.1);
+  }
+
+  .footer-text {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: rgba(212,175,55,0.35);
+    text-transform: uppercase;
+  }
+
+  @keyframes waveFloat {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-20px); }
+  }
+
+  .wave-bar {
+    height: 2px;
+    width: 60px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    margin: 0 auto 1.5rem;
+    animation: waveFloat 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .blink {
+    animation: pulse 1s ease-in-out infinite;
+    color: #d4af37;
+    font-size: 40px;
+    line-height: 1;
+    align-self: flex-start;
+    padding-top: 14px;
+  }
+</style>
 </head>
 <body>
-  <div class="card">
-    <span class="emoji-top">🍌</span>
-    <h1>Tip <span>Davy</span></h1>
-    <p class="subtitle">Genoten van mijn content? Stuur me een Banano als bedankje — elke BAN telt! 😄</p>
-    <div class="divider"></div>
-    <p class="address-label">Mijn Banano-adres (BAN)</p>
-    <div class="address-box" id="address">ban_1hkyhkkrxngp7oatwxyw73jsn6u6wsf8i8qetaoqa4bo8aqijx6ozdtnsms7</div>
-    <button class="copy-btn" id="copyBtn" onclick="copyAddress()">📋 Kopieer adres</button>
-    <p class="note">Geen Banano wallet? Download <a href="https://kalium.io" target="_blank">Kalium</a> — gratis en eenvoudig. 🍌<br/>Banano is een leuke crypto die je gratis kunt verdienen.</p>
-    <div class="banana-row">🍌🍌🍌</div>
+<div class="page">
+  <div class="stars"></div>
+
+  <header class="header">
+    <div class="logo-area">
+      <span class="msc-label">✦ MSC Cruises ✦</span>
+    </div>
+    <h1 class="ship-name">
+      <span>World Europe</span>
+      MSC
+    </h1>
+    <p class="route">Marseille · 25 juli 2026</p>
+  </header>
+
+  <div class="gold-line"></div>
+
+  <div class="ship-container">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/MSC_World_Europa_at_Rotterdam_%28cropped%29.jpg/1280px-MSC_World_Europa_at_Rotterdam_%28cropped%29.jpg"
+      alt="MSC World Europe cruise ship"
+      onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(180deg, #0d1f3c, #050d1a)'; this.parentElement.innerHTML += '<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;\'><span style=\'font-size:80px;\'>🚢</span></div>'"
+    >
+    <div class="ship-overlay"></div>
+    <svg class="wave-svg" viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 60 C240 20 480 50 720 30 C960 10 1200 40 1440 20 L1440 60 Z" fill="#0a1628"/>
+    </svg>
   </div>
-  <script>
-    function copyAddress() {
-      const address = 'ban_1hkyhkkrxngp7oatwxyw73jsn6u6wsf8i8qetaoqa4bo8aqijx6ozdtnsms7';
-      if (navigator.clipboard) { navigator.clipboard.writeText(address).then(showCopied); }
-      else { const el = document.createElement('textarea'); el.value = address; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el); showCopied(); }
+
+  <section class="countdown-section">
+    <p class="departure-label">Aftellen tot vertrek</p>
+    <div class="wave-bar"></div>
+
+    <div class="countdown-grid" id="countdown">
+      <div class="countdown-unit">
+        <div class="countdown-box">
+          <span class="countdown-number" id="days">--</span>
+        </div>
+        <span class="countdown-label">Dagen</span>
+      </div>
+      <div class="blink">·</div>
+      <div class="countdown-unit">
+        <div class="countdown-box">
+          <span class="countdown-number" id="hours">--</span>
+        </div>
+        <span class="countdown-label">Uren</span>
+      </div>
+      <div class="blink">·</div>
+      <div class="countdown-unit">
+        <div class="countdown-box">
+          <span class="countdown-number" id="minutes">--</span>
+        </div>
+        <span class="countdown-label">Minuten</span>
+      </div>
+      <div class="blink">·</div>
+      <div class="countdown-unit">
+        <div class="countdown-box">
+          <span class="countdown-number" id="seconds">--</span>
+        </div>
+        <span class="countdown-label">Seconden</span>
+      </div>
+    </div>
+
+    <p class="date-display">Vertrek op <strong>zaterdag 25 juli 2026</strong> vanuit Marseille</p>
+  </section>
+
+  <div class="gold-line"></div>
+
+  <div class="info-row">
+    <div class="info-card">
+      <span class="info-card-icon">⚓</span>
+      <span class="info-card-value">Marseille</span>
+      <span class="info-card-label">Vertrekhaven</span>
+    </div>
+    <div class="info-card">
+      <span class="info-card-icon">🌊</span>
+      <span class="info-card-value">333 m</span>
+      <span class="info-card-label">Lengte schip</span>
+    </div>
+    <div class="info-card">
+      <span class="info-card-icon">★</span>
+      <span class="info-card-value">6 762</span>
+      <span class="info-card-label">Passagiers</span>
+    </div>
+    <div class="info-card">
+      <span class="info-card-icon">🏅</span>
+      <span class="info-card-value">2022</span>
+      <span class="info-card-label">Bouwjaar</span>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p class="footer-text">✦ Bon Voyage ✦</p>
+  </footer>
+</div>
+
+<script>
+  const target = new Date('2026-07-25T12:00:00');
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0) {
+      document.getElementById('days').textContent = '00';
+      document.getElementById('hours').textContent = '00';
+      document.getElementById('minutes').textContent = '00';
+      document.getElementById('seconds').textContent = '00';
+      return;
     }
-    function showCopied() {
-      const btn = document.getElementById('copyBtn');
-      btn.textContent = '✅ Gekopieerd!';
-      btn.classList.add('copied');
-      setTimeout(() => { btn.innerHTML = '📋 Kopieer adres'; btn.classList.remove('copied'); }, 2500);
-    }
-  </script>
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('days').textContent = pad(d);
+    document.getElementById('hours').textContent = pad(h);
+    document.getElementById('minutes').textContent = pad(m);
+    document.getElementById('seconds').textContent = pad(s);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+</script>
 </body>
 </html>
