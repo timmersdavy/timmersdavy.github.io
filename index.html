@@ -279,6 +279,96 @@
     animation: waveFloat 4s ease-in-out infinite;
   }
 
+  .route-section {
+    padding: 2rem 1.5rem 2rem;
+    text-align: center;
+  }
+
+  .route-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 5px;
+    color: #d4af37;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .route-stops {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .route-stop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .stop-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #d4af37;
+    border: 2px solid rgba(212,175,55,0.4);
+    box-shadow: 0 0 8px rgba(212,175,55,0.4);
+  }
+
+  .stop-dot.home {
+    width: 14px;
+    height: 14px;
+    background: #f5d77e;
+    box-shadow: 0 0 14px rgba(212,175,55,0.7);
+  }
+
+  .stop-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  .stop-flag {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .route-line {
+    flex: 1;
+    min-width: 20px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(212,175,55,0.5), rgba(212,175,55,0.2));
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .route-line::after {
+    content: '›';
+    position: absolute;
+    right: -6px;
+    top: -9px;
+    color: rgba(212,175,55,0.5);
+    font-size: 12px;
+  }
+
+  .route-line.return {
+    background: linear-gradient(90deg, rgba(212,175,55,0.2), rgba(212,175,55,0.5));
+  }
+
+  .route-line.return::after {
+    content: '‹';
+    right: auto;
+    left: -6px;
+  }
+
   @keyframes pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.3; }
@@ -306,14 +396,14 @@
       <span>World Europe</span>
       MSC
     </h1>
-    <p class="route">Marseille · 25 juli 2026</p>
+    <p class="route">Marseille · Genoa · Napels · Messina · Valletta · Barcelona · Marseille</p>
   </header>
 
   <div class="gold-line"></div>
 
   <div class="ship-container">
     <img
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/MSC_World_Europa_at_Rotterdam_%28cropped%29.jpg/1280px-MSC_World_Europa_at_Rotterdam_%28cropped%29.jpg"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/MSC_World_Europe_sea-trials.jpg/1280px-MSC_World_Europe_sea-trials.jpg"
       alt="MSC World Europe cruise ship"
       onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(180deg, #0d1f3c, #050d1a)'; this.parentElement.innerHTML += '<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;\'><span style=\'font-size:80px;\'>🚢</span></div>'"
     >
@@ -384,6 +474,63 @@
       <span class="info-card-label">Bouwjaar</span>
     </div>
   </div>
+
+  <div class="gold-line"></div>
+
+  <section class="route-section">
+    <p class="route-title">De route</p>
+    <div class="route-stops">
+
+      <div class="route-stop">
+        <div class="stop-dot home"></div>
+        <span class="stop-flag">🇫🇷</span>
+        <span class="stop-name">Marseille</span>
+      </div>
+      <div class="route-line"></div>
+
+      <div class="route-stop">
+        <div class="stop-dot"></div>
+        <span class="stop-flag">🇮🇹</span>
+        <span class="stop-name">Genoa</span>
+      </div>
+      <div class="route-line"></div>
+
+      <div class="route-stop">
+        <div class="stop-dot"></div>
+        <span class="stop-flag">🇮🇹</span>
+        <span class="stop-name">Napels</span>
+      </div>
+      <div class="route-line"></div>
+
+      <div class="route-stop">
+        <div class="stop-dot"></div>
+        <span class="stop-flag">🇮🇹</span>
+        <span class="stop-name">Messina</span>
+      </div>
+      <div class="route-line"></div>
+
+      <div class="route-stop">
+        <div class="stop-dot"></div>
+        <span class="stop-flag">🇲🇹</span>
+        <span class="stop-name">Valletta</span>
+      </div>
+      <div class="route-line"></div>
+
+      <div class="route-stop">
+        <div class="stop-dot"></div>
+        <span class="stop-flag">🇪🇸</span>
+        <span class="stop-name">Barcelona</span>
+      </div>
+      <div class="route-line return"></div>
+
+      <div class="route-stop">
+        <div class="stop-dot home"></div>
+        <span class="stop-flag">🇫🇷</span>
+        <span class="stop-name">Marseille</span>
+      </div>
+
+    </div>
+  </section>
 
   <footer class="footer">
     <p class="footer-text">✦ Bon Voyage ✦</p>
