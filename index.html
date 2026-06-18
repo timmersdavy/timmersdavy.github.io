@@ -687,5 +687,9 @@
   tick();
   setInterval(tick, 1000);
 </script>
+<script>
+  // Onzichtbare bezoekersteller
+  fetch('https://wk2026-belgie.netlify.app/.netlify/functions/bezoekers?site=cruise&tel=1').catch(function(){});
+</script>
 </body>
 </html>
