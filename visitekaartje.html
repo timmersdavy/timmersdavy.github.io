@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visitekaartje — Davy Timmers</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ===========================================================
+     PAS HIER JE GEGEVENS AAN — de rest volgt automatisch.
+     =========================================================== */
+  :root {
+    --naam: "Davy Timmers";
+    --rol: "Websites voor lokale zaken";
+    --domein: "davytimmers.be";          /* zonder https:// */
+    --telefoon: "0470 00 00 00";
+    --email: "info@timmersdesign.be";
+    --plaats: "Tessenderlo-Ham, Belgisch Limburg";
+
+    --ink: #0b0b12;
+    --ink-2: #14141f;
+    --paper: #f7f7fb;
+    --muted: #9a9aae;
+    --line: rgba(255,255,255,.10);
+    --accent-a: #2e7dff;   /* elektrisch blauw */
+    --accent-b: #00e6c3;   /* mint             */
+  }
+
+  /* Achtergrondkleuren mee laten printen */
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; }
+  body {
+    background: #2a2a33;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--paper);
+    display: flex; flex-direction: column; align-items: center; gap: 26px;
+    padding: 40px 16px;
+  }
+
+  .uitleg {
+    max-width: 540px; text-align: center; color: #d7d7e2;
+    font-size: 13px; line-height: 1.6;
+  }
+  .uitleg b { color: #fff; }
+  .uitleg code { background: rgba(255,255,255,.1); padding: 2px 6px; border-radius: 5px; font-size: 12px; }
+
+  /* ---- Het kaartje: 85 x 55 mm, met 3 mm bleed = 91 x 61 mm ---- */
+  .kaart {
+    width: 91mm; height: 61mm; position: relative; overflow: hidden;
+    border-radius: 3mm; box-shadow: 0 20px 50px rgba(0,0,0,.45);
+    background: var(--ink);
+  }
+  /* veilige marge binnen de bleed */
+  .vlak { position: absolute; inset: 3mm; }
+
+  /* ===================== VOORKANT ===================== */
+  .voor { background:
+      radial-gradient(120% 120% at 100% 0%, rgba(46,125,255,.28), transparent 55%),
+      radial-gradient(120% 120% at 0% 100%, rgba(0,230,195,.20), transparent 55%),
+      var(--ink); }
+  .voor .vlak { display: flex; flex-direction: column; }
+
+  /* browserbalk */
+  .bar { display: flex; align-items: center; gap: 6px; padding-bottom: 7px; border-bottom: 1px solid var(--line); }
+  .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .dot.r { background: #ff5f57; } .dot.y { background: #febc2e; } .dot.g { background: #28c840; }
+  .url {
+    margin-left: 6px; flex: 1; height: 16px; border-radius: 9px;
+    background: rgba(255,255,255,.06); border: 1px solid var(--line);
+    display: flex; align-items: center; padding: 0 9px; gap: 6px;
+    font-family: 'Space Grotesk', monospace; font-size: 8px; color: var(--muted);
+  }
+  .lock { width: 5px; height: 5px; border:1px solid var(--muted); border-radius:1px; position: relative; }
+
+  /* hero */
+  .hero { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .eyebrow { font-family:'Space Grotesk',sans-serif; font-size: 7.5px; letter-spacing: 2.5px; text-transform: uppercase;
+             color: var(--accent-b); margin-bottom: 6px; }
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+    font-size: 19px; line-height: 1.05; margin: 0 0 8px;
+    letter-spacing: -.5px;
+  }
+  .hero h1 .grad {
+    background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero p { font-size: 8.5px; color: var(--muted); margin: 0; max-width: 70%; line-height: 1.5; }
+
+  /* knop + naam onderaan */
+  .onder { display: flex; align-items: center; justify-content: space-between; }
+  .cta {
+    font-family:'Space Grotesk',sans-serif; font-weight: 600; font-size: 8.5px;
+    color: var(--ink); background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+    padding: 6px 12px; border-radius: 20px; white-space: nowrap;
+  }
+  .sign { text-align: right; }
+  .sign .nm { font-family:'Space Grotesk',sans-serif; font-weight:600; font-size: 9px; }
+  .sign .rl { font-size: 6.5px; color: var(--muted); letter-spacing: .3px; }
+
+  /* ===================== ACHTERKANT ===================== */
+  .achter { background:
+      radial-gradient(130% 100% at 0% 0%, rgba(46,125,255,.22), transparent 60%),
+      var(--ink-2); }
+  .achter .vlak { display: grid; grid-template-columns: 1fr auto; gap: 5mm; align-items: center; }
+
+  .pitch { display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 1mm 0; }
+  .merk { font-family:'Space Grotesk',sans-serif; font-weight: 700; font-size: 15px; letter-spacing: -.4px; }
+  .merk .punt { color: var(--accent-b); }
+  .pitch .claim { font-size: 9px; line-height: 1.45; color: #d7d7e2; font-weight: 500; }
+  .contact { display: flex; flex-direction: column; gap: 4px; font-size: 8px; color: var(--muted); }
+  .contact span { display: flex; align-items: center; gap: 6px; }
+  .ic { width: 11px; height: 11px; border-radius: 3px; flex: none;
+        background: rgba(255,255,255,.07); border: 1px solid var(--line);
+        display:flex; align-items:center; justify-content:center; font-size: 6px; color: var(--accent-b); }
+  .contact b { color: var(--paper); font-weight: 500; }
+
+  .qrwrap { text-align: center; }
+  .qr { width: 28mm; height: 28mm; border-radius: 2mm; background: #fff; padding: 1.6mm; display: block; }
+  .qr img { width: 100%; height: 100%; display: block; }
+  .scan { margin-top: 4px; font-family:'Space Grotesk',sans-serif; font-size: 6.5px; letter-spacing: 1px;
+          text-transform: uppercase; color: var(--accent-b); }
+
+  /* ===================== PRINT ===================== */
+  @media print {
+    @page { size: 91mm 61mm; margin: 0; }
+    body { background: #fff; padding: 0; gap: 0; display: block; }
+    .uitleg { display: none; }
+    .kaart { box-shadow: none; border-radius: 0; page-break-after: always; }
+    .kaart:last-of-type { page-break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="uitleg">
+    <b>Jouw visitekaartje — concept "het kaartje dat een website ís".</b><br>
+    Pas bovenaan in de code je gegevens aan (<code>--telefoon</code>, <code>--email</code>, <code>--domein</code>…).
+    Print dan via <b>Ctrl&nbsp;+&nbsp;P → Bestemming: Opslaan als PDF</b>. Het formaat is 91×61&nbsp;mm
+    (85×55&nbsp;mm + 3&nbsp;mm snijrand) — klaar voor de drukker. Voor- en achterkant komen op 2 pagina's.
+  </div>
+
+  <!-- VOORKANT -->
+  <div class="kaart voor">
+    <div class="vlak">
+      <div class="bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="url"><span class="lock"></span><span id="url1"></span></span>
+      </div>
+      <div class="hero">
+        <div class="eyebrow">webdesign · lokaal · op maat</div>
+        <h1>Een site die <span class="grad">werkt</span><br>voor jouw zaak.</h1>
+        <p>Strak, snel en gevonden op Google. Zonder gedoe.</p>
+      </div>
+      <div class="onder">
+        <span class="cta">Start je site →</span>
+        <div class="sign">
+          <div class="nm" id="naam1"></div>
+          <div class="rl" id="plaats1"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACHTERKANT -->
+  <div class="kaart achter">
+    <div class="vlak">
+      <div class="pitch">
+        <div class="merk" id="merk2"></div>
+        <div class="claim">Scan en zie<br>wat ik voor<br>jouw zaak maak.</div>
+        <div class="contact">
+          <span><span class="ic">✆</span><b id="tel2"></b></span>
+          <span><span class="ic">@</span><b id="mail2"></b></span>
+          <span><span class="ic">⬡</span><b id="web2"></b></span>
+        </div>
+      </div>
+      <div class="qrwrap">
+        <span class="qr"><img id="qr" alt="QR-code"></span>
+        <div class="scan">Scan mij</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // Vult alles automatisch in vanuit de :root-variabelen hierboven.
+  const cs = getComputedStyle(document.documentElement);
+  const v = (n) => cs.getPropertyValue(n).trim().replace(/^"|"$/g, "");
+  const naam = v('--naam'), domein = v('--domein');
+  document.getElementById('url1').textContent = domein;
+  document.getElementById('naam1').textContent = naam;
+  document.getElementById('plaats1').textContent = v('--plaats');
+  document.getElementById('merk2').innerHTML = naam.split(' ')[0] + '<span class="punt">.</span>';
+  document.getElementById('tel2').textContent = v('--telefoon');
+  document.getElementById('mail2').textContent = v('--email');
+  document.getElementById('web2').textContent = domein;
+  // QR verwijst naar je (toekomstige) website. Pas de URL aan als je wil.
+  const qrData = encodeURIComponent('https://' + domein);
+  document.getElementById('qr').src =
+    'https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=0&data=' + qrData;
+</script>
+</body>
+</html>
