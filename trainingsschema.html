@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trainingsschema — Cardio & Kracht</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fdf6f9; color: #1a1a1a; padding: 16px; }
+  .header-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+  h1 { font-size: 20px; font-weight: 600; }
+  @keyframes rafiki-bounce {
+    0%   { transform: translateY(0) rotate(-2deg) scaleX(1); }
+    20%  { transform: translateY(-10px) rotate(2deg) scaleX(1); }
+    40%  { transform: translateY(0) rotate(-1deg) scaleX(1); }
+    60%  { transform: translateY(-6px) rotate(1deg) scaleX(1); }
+    80%  { transform: translateY(0) rotate(-1deg) scaleX(1); }
+    100% { transform: translateY(0) rotate(-2deg) scaleX(1); }
+  }
+  /* Trucjes voor de wandelende Rafiki */
+  @keyframes rafiki-spin   { to   { transform: rotate(360deg); } }
+  @keyframes rafiki-flip   { to   { transform: rotate(-360deg); } }
+  @keyframes rafiki-jump   { 0%,100% { transform: translateY(0); } 30% { transform: translateY(-46px) scale(1.05); } 55% { transform: translateY(0); } 72% { transform: translateY(-18px); } }
+  @keyframes rafiki-wiggle { 0%,100% { transform: rotate(0); } 20% { transform: rotate(-14deg); } 40% { transform: rotate(12deg); } 60% { transform: rotate(-10deg); } 80% { transform: rotate(8deg); } }
+  @keyframes rafiki-dance  { 0%,100% { transform: rotate(-8deg) scale(1); } 25% { transform: rotate(8deg) scale(1.08); } 50% { transform: rotate(-8deg) scale(0.95); } 75% { transform: rotate(8deg) scale(1.08); } }
+  @keyframes rafiki-squash { 0%,100% { transform: scale(1,1); } 40% { transform: scale(1.18,0.82); } 70% { transform: scale(0.92,1.08); } }
+
+  .rafiki-walker {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    cursor: pointer;
+    will-change: transform;
+  }
+  /* Gewone rechthoekige foto: geen border-radius, geen uitsnede */
+  .rafiki-photo {
+    display: block;
+    height: 120px;
+    width: auto;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.22);
+    transform-origin: center bottom;
+  }
+  .rafiki-photo.trick-spin   { animation: rafiki-spin   0.7s ease-in-out; }
+  .rafiki-photo.trick-flip   { animation: rafiki-flip   0.7s ease-in-out; }
+  .rafiki-photo.trick-jump   { animation: rafiki-jump   0.8s ease-out;    }
+  .rafiki-photo.trick-wiggle { animation: rafiki-wiggle 0.7s ease-in-out; }
+  .rafiki-photo.trick-dance  { animation: rafiki-dance  0.9s ease-in-out; }
+  .rafiki-photo.trick-squash { animation: rafiki-squash 0.6s ease-in-out; }
+  .rafiki-header {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 2px solid #f0c8d8;
+    animation: rafiki-bounce 2.4s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  .subtitle { font-size: 14px; color: #666; margin-bottom: 16px; line-height: 1.5; }
+  .flamingo-divider { display: flex; align-items: center; gap: 10px; margin: 28px 0 6px; }
+  .flamingo-divider .line { flex: 1; height: 1px; background: #f0c8d8; }
+  .flamingo-small { opacity: 0.7; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .badge { font-size: 12px; padding: 4px 10px; border-radius: 20px; font-weight: 500; }
+  .badge-cardio { background: #FCEBEB; color: #A32D2D; }
+  .badge-armen { background: #E6F1FB; color: #185FA5; }
+  .badge-benen { background: #E1F5EE; color: #0F6E56; }
+  .badge-romp { background: #FAEEDA; color: #854F0B; }
+
+  .week-label { font-size: 16px; font-weight: 600; margin: 24px 0 4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .prog-badge { font-size: 12px; font-weight: 400; padding: 3px 10px; border-radius: 20px; background: #e8e8e4; color: #555; }
+  .hint { font-size: 12px; color: #888; margin-bottom: 12px; }
+
+  .week-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 8px; }
+  @media (min-width: 600px) { .week-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .day-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .day-header { padding: 13px 16px; font-size: 14px; font-weight: 600; }
+  .dag-a .day-header { background: #E6F1FB; color: #0C447C; }
+  .dag-b .day-header { background: #E1F5EE; color: #085041; }
+  .dag-c .day-header { background: #FAEEDA; color: #633806; }
+
+  .phase-label { padding: 7px 16px; font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.05em; background: #fafaf8; border-top: 1px solid #ebebeb; }
+
+  .ex-row { border-top: 1px solid #ebebeb; cursor: pointer; touch-action: manipulation; user-select: none; }
+  .ex-inner { padding: 12px 16px; min-height: 52px; display: flex; flex-direction: column; justify-content: center; }
+  .ex-row:active .ex-inner { background: #f5f5f0; }
+  @media (hover: hover) { .ex-row:hover .ex-inner { background: #f5f5f0; } }
+
+  .ex-name { font-size: 14px; font-weight: 500; display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+  .ex-meta { font-size: 12px; color: #888; margin-top: 3px; display: flex; align-items: center; gap: 4px; }
+  .chevron { display: inline-block; transition: transform 0.2s; font-size: 12px; }
+  .chevron.open { transform: rotate(180deg); }
+
+  .ex-detail { display: none; padding: 12px 16px 14px; background: #fafaf8; border-top: 1px solid #ebebeb; }
+  .ex-detail.open { display: block; }
+  .tip { display: flex; gap: 8px; margin-bottom: 7px; font-size: 13px; color: #555; line-height: 1.55; }
+  .tip-dot { color: #185FA5; flex-shrink: 0; margin-top: 1px; }
+
+  .yt-btn { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; padding: 11px 16px; min-height: 44px; border-radius: 8px; border: 1px solid #E24B4A; background: #FCEBEB; color: #A32D2D; font-size: 13px; font-weight: 500; text-decoration: none; width: 100%; }
+  .yt-btn:active { background: #F7C1C1; }
+  @media (hover: hover) { .yt-btn:hover { background: #F7C1C1; } }
+  .yt-icon { width: 20px; height: 20px; flex-shrink: 0; }
+
+  footer { text-align: center; font-size: 12px; color: #aaa; margin-top: 32px; padding-bottom: 16px; }
+</style>
+</head>
+<body>
+
+<img src="Rafiki.jpeg" class="rafiki-header" alt="Rafiki">
+<div class="rafiki-walker" id="rafikiWalker">
+  <img src="Rafiki.jpeg" class="rafiki-photo" alt="Rafiki loopt" title="Rafiki is aan het trainen!">
+</div>
+
+<div class="header-wrap">
+  <span style="font-size:48px;line-height:1" aria-hidden="true">🦴</span>
+  <h1>Trainingsschema — Cardio &amp; Kracht</h1>
+  <span style="font-size:48px;line-height:1" aria-hidden="true">🦴</span>
+</div>
+<p class="subtitle">3 trainingen per week · ~30 minuten · Tik op een oefening voor aandachtspunten en video.</p>
+
+<div class="legend">
+  <span class="badge badge-cardio">cardio</span>
+  <span class="badge badge-armen">armen</span>
+  <span class="badge badge-benen">benen</span>
+  <span class="badge badge-romp">romp</span>
+</div>
+
+<div class="flamingo-divider">
+  <div class="line"></div>
+  <span style="font-size:36px;line-height:1;">🦴</span>
+  <div style="text-align:center">
+    <div style="font-size:14px;font-weight:600;color:#c0607a;">Weken 1–4 — opbouw</div>
+    <div style="font-size:12px;color:#a04060;margin-top:2px;">rustig tempo</div>
+  </div>
+  <span style="font-size:36px;line-height:1;display:inline-block;transform:scaleX(-1);">🦴</span>
+  <div class="line"></div>
+</div>
+<p class="hint" style="margin-bottom:12px;">Lichtere gewichten, focus op techniek.</p>
+<div class="week-grid" id="week1"></div>
+
+<div class="flamingo-divider" style="margin-top:32px;">
+  <div class="line"></div>
+  <span style="font-size:36px;line-height:1;">🦴</span>
+  <div style="text-align:center">
+    <div style="font-size:14px;font-weight:600;color:#c0607a;">Weken 5–8 — progressie</div>
+    <div style="font-size:12px;color:#a04060;margin-top:2px;">iets zwaarder</div>
+  </div>
+  <span style="font-size:36px;line-height:1;display:inline-block;transform:scaleX(-1);">🦴</span>
+  <div class="line"></div>
+</div>
+<p class="hint" style="margin-bottom:12px;">Meer herhalingen of zwaarder gewicht — alleen als weken 1–4 comfortabel voelden.</p>
+<div class="week-grid" id="week2"></div>
+
+<footer style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:40px;padding-bottom:20px;font-size:12px;color:#c0a0b0;">
+  <span style="font-size:20px;">🦴</span>
+  Trainingsschema gegenereerd met Claude
+  <span style="font-size:20px;display:inline-block;transform:scaleX(-1);">🦴</span>
+</footer>
+
+<script>
+const days = [
+  { id:'a', label:'Training A — Dag 1', cls:'dag-a', phases:[
+    { name:'Warming-up (5 min)', exercises:[
+      { name:'Fiets op rollen', meta:'5 min rustig, 60–70 rpm', badge:'cardio',
+        tips:['Zit rechtop, schouders ontspannen — niet op het stuur hangen.','Gebruik lichte weerstand, draai soepele rondjes.','Adem rustig: in door de neus, uit door de mond.'],
+        yt:'https://www.youtube.com/results?search_query=fietsen+op+rollen+warming+up+techniek' }
+    ]},
+    { name:'Kracht (15 min)', exercises:[
+      { name:'Squats', meta:'3 × 12 herh — evt. met 5 kg kettlebell', badge:'benen',
+        tips:['Voeten schouderbreedte, tenen licht naar buiten.','Knieën volgen de richting van de tenen — niet naar binnen laten zakken.','Rug recht, borst omhoog. Zakken tot dijen parallel aan de grond.','Druk door de hielen omhoog, niet door de tenen.'],
+        yt:'https://www.youtube.com/results?search_query=squat+techniek+beginners+stap+voor+stap' },
+      { name:'Bicep curls met elastiek', meta:'3 × 10 herh per arm — ook met 3 kg', badge:'armen',
+        tips:['Sta op het midden van het elastiek, beide handen pakken de uiteinden.','Ellebogen blijven naast het lichaam — niet naar voren bewegen.','Beweeg traag omlaag (3 tellen), explosief omhoog.','Pols recht houden tijdens de beweging.'],
+        yt:'https://www.youtube.com/results?search_query=bicep+curl+elastiek+weerstandsband+techniek' },
+      { name:'Plank', meta:'3 × 20 sec — opbouw naar 40 sec', badge:'romp',
+        tips:['Rechte lijn van hoofd tot hielen — geen hangend of opgestoken achterwerk.','Navel naar ruggengraat trekken (core aanspannen).','Blik naar de grond, nek in neutrale positie.','Adem door — niet inhouden.'],
+        yt:'https://www.youtube.com/results?search_query=plank+goede+houding+beginners+core' }
+    ]},
+    { name:'Cardio (8 min)', exercises:[
+      { name:'Step-ups op steptoestel', meta:'8 min matig tempo', badge:'cardio',
+        tips:['Hele voet op de step plaatsen — niet alleen de voorvoet.','Romphouding recht, niet naar voren leunen.','Wissel het been dat als eerste omhoog gaat elke 2 minuten.','Tempo waarbij je nog net een zin kunt zeggen.'],
+        yt:'https://www.youtube.com/results?search_query=step+up+oefening+techniek+thuis+beginners' }
+    ]},
+    { name:'Cool-down (2 min)', exercises:[
+      { name:'Stretchen grote spiergroepen', meta:'Quadriceps, hamstrings, schouders', badge:'romp',
+        tips:['Elke rek minstens 20–30 seconden aanhouden.','Niet stuiterend strekken — rustig en gecontroleerd.','Adem uit terwijl je in de rek gaat.'],
+        yt:'https://www.youtube.com/results?search_query=cool+down+stretchen+na+krachttraining' }
+    ]}
+  ]},
+  { id:'b', label:'Training B — Dag 2', cls:'dag-b', phases:[
+    { name:'Warming-up (5 min)', exercises:[
+      { name:'Fiets op rollen', meta:'5 min rustig', badge:'cardio',
+        tips:['Zelfde aanpak als Training A — soepel draaien, lichte weerstand.'],
+        yt:'https://www.youtube.com/results?search_query=indoor+fietsen+warming+up+beginners' }
+    ]},
+    { name:'Kracht (15 min)', exercises:[
+      { name:'Lunges (uitvalspas)', meta:'3 × 10 herh per been', badge:'benen',
+        tips:['Grote stap naar voren, achterste knie daalt zonder de grond te raken.','Voorste knie nooit voorbij de teen komen.','Romp rechtop, niet naar voren leunen.','Druk jezelf met het voorste been terug omhoog.'],
+        yt:'https://www.youtube.com/results?search_query=lunge+uitvalspas+techniek+beginners' },
+      { name:'Schulderpress met kettlebell', meta:'3 × 10 herh — 5 kg kettlebell of 3 kg', badge:'armen',
+        tips:['Sta of zit stabiel. Kern aanspannen voor rugbescherming.','Beginpositie: gewicht op schouderhoogte, elleboog 90°.','Pers rechtop omhoog, arm volledig strekken maar niet vergrendelen.','Langzaam teruglaten — niet laten vallen.'],
+        yt:'https://www.youtube.com/results?search_query=schouderpers+kettlebell+techniek+beginners' },
+      { name:'Superman (rugversterking)', meta:'3 × 12 herh', badge:'romp',
+        tips:['Lig op buik, armen gestrekt voor je.','Til tegelijkertijd armen en benen een paar centimeter van de grond.','Houd 2 tellen vast, laat gecontroleerd zakken.','Geen pijn in de lage rug — stop als dat toch zo is.'],
+        yt:'https://www.youtube.com/results?search_query=superman+oefening+rug+techniek' }
+    ]},
+    { name:'Cardio (8 min)', exercises:[
+      { name:'Intervallen op de fiets', meta:'30 sec hard / 90 sec rustig, 4 rondes', badge:'cardio',
+        tips:['Hard = moeite met praten, maar niet maximaal.','Rustige periodes echt rustig houden — herstel is even belangrijk.','Verhoog weerstand bij intensieve periodes, niet het cadans.'],
+        yt:'https://www.youtube.com/results?search_query=fiets+intervaltraining+beginners+indoor+rollen' }
+    ]},
+    { name:'Cool-down (2 min)', exercises:[
+      { name:'Stretchen heupen en borst', meta:'Heupen, billen, borst en schouders', badge:'romp',
+        tips:['Duif-stretch voor heupen: 30 sec per kant.','Borst-stretch: handen achter rug, borst vooruit.'],
+        yt:'https://www.youtube.com/results?search_query=stretchen+heupen+schouders+borst+cool+down' }
+    ]}
+  ]},
+  { id:'c', label:'Training C — Dag 3', cls:'dag-c', phases:[
+    { name:'Warming-up (5 min)', exercises:[
+      { name:'Fiets op rollen', meta:'5 min', badge:'cardio',
+        tips:['Opwarmen = soepel draaien, geen zweetsessie.'],
+        yt:'https://www.youtube.com/results?search_query=indoor+cycling+warming+up' }
+    ]},
+    { name:'Kracht (15 min)', exercises:[
+      { name:'Deadlift met kettlebell', meta:'3 × 10 herh — 8 kg kettlebell', badge:'benen',
+        tips:['Voeten schouderbreedte, kettlebell tussen de voeten.','Buig door heupen en knieën, rug recht — niet gebogen.','Lift met de benen, niet met de rug. Heupen en schouders rijzen tegelijk.','Billen aanspannen bovenaan de beweging.','Beginners: start met 5 kg tot de techniek vanzelf gaat.'],
+        yt:'https://www.youtube.com/results?search_query=kettlebell+deadlift+techniek+beginners+stap' },
+      { name:'Tricep kickback met elastiek', meta:'3 × 12 herh per arm', badge:'armen',
+        tips:['Licht voorover buigen (45°), rug recht, core aan.','Elleboog naast het lichaam — alleen de onderarm beweegt.','Arm volledig strekken bij elke herhaling, even vasthouden.','Elastiek niet te strak — beweging moet vlot blijven.'],
+        yt:'https://www.youtube.com/results?search_query=tricep+kickback+elastiek+weerstandsband+techniek' },
+      { name:'Zijwaartse plank', meta:'3 × 15 sec per kant — opbouw naar 30 sec', badge:'romp',
+        tips:['Elleboog recht onder de schouder plaatsen.','Heupen omhoog — geen zak naar de grond.','Rechte lijn van hoofd tot voeten, blik recht vooruit.','Makkelijker: onderste knie op de grond zetten.'],
+        yt:'https://www.youtube.com/results?search_query=zijwaartse+plank+side+plank+techniek+beginners' }
+    ]},
+    { name:'Cardio (8 min)', exercises:[
+      { name:'Step-ups met knieoptrek', meta:'8 min, afwisselend been', badge:'cardio',
+        tips:['Stap op de step, trek dan het andere knie omhoog tot heupbreedte.','Controleer de landing — niet plompen.','Gebruik armen mee voor evenwicht en hogere hartslag.'],
+        yt:'https://www.youtube.com/results?search_query=step+up+knee+drive+cardio+oefening+techniek' }
+    ]},
+    { name:'Cool-down (2 min)', exercises:[
+      { name:'Full-body stretch', meta:'Nek, schouders, rug, heupen, benen', badge:'romp',
+        tips:['Sluit elke training af met diepe ademhaling: 5 tellen in, 5 tellen uit.','Spierpijn de dag nadien = normaal. Pijn tijdens de oefening = stop.'],
+        yt:'https://www.youtube.com/results?search_query=full+body+stretching+routine+na+training+beginners' }
+    ]}
+  ]}
+];
+
+const week2upgrades = {
+  'Squats':'3 × 15 herh — met 8 kg kettlebell',
+  'Bicep curls met elastiek':'3 × 12 herh per arm — met 3 kg gewichtje',
+  'Plank':'3 × 40 sec',
+  'Lunges (uitvalspas)':'3 × 12 herh per been — met 1 kg in iedere hand',
+  'Schulderpress met kettlebell':'3 × 12 herh — 8 kg kettlebell',
+  'Superman (rugversterking)':'3 × 15 herh, 3 sec vasthouden',
+  'Deadlift met kettlebell':'3 × 12 herh — 8 kg',
+  'Tricep kickback met elastiek':'3 × 15 herh per arm — zwaarder elastiek',
+  'Zijwaartse plank':'3 × 30 sec per kant',
+  'Intervallen op de fiets':'45 sec hard / 75 sec rustig, 5 rondes',
+  'Step-ups met knieoptrek':'10 min — iets hogere step of met 1 kg gewichtje'
+};
+
+const ytSvg = `<svg class="yt-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>`;
+
+function renderDays(containerId, phase) {
+  const container = document.getElementById(containerId);
+  days.forEach(day => {
+    const card = document.createElement('div');
+    card.className = `day-card ${day.cls}`;
+    let html = `<div class="day-header">${day.label}</div>`;
+    day.phases.forEach(ph => {
+      html += `<div class="phase-label">${ph.name}</div>`;
+      ph.exercises.forEach((ex, i) => {
+        const uid = `${containerId}_${day.id}_${i}`;
+        const meta = (phase === 2 && week2upgrades[ex.name]) ? week2upgrades[ex.name] : ex.meta;
+        html += `
+        <div class="ex-row" onclick="toggle('${uid}')">
+          <div class="ex-inner">
+            <div class="ex-name">
+              <span>${ex.name}</span>
+              <span class="badge badge-${ex.badge}">${ex.badge}</span>
+            </div>
+            <div class="ex-meta">
+              <span>${meta}</span>
+              <span class="chevron" id="chev_${uid}">&#9662;</span>
+            </div>
+          </div>
+        </div>
+        <div class="ex-detail" id="${uid}">
+          ${ex.tips.map(t=>`<div class="tip"><span class="tip-dot">&#9679;</span><span>${t}</span></div>`).join('')}
+          <button class="yt-btn" onclick="event.stopPropagation(); window.location.href='${ex.yt}'">
+            ${ytSvg} Bekijk instructievideo op YouTube
+          </button>
+        </div>`;
+      });
+    });
+    card.innerHTML = html;
+    container.appendChild(card);
+  });
+}
+
+function toggle(uid) {
+  document.getElementById(uid).classList.toggle('open');
+  const chev = document.getElementById('chev_' + uid);
+  if (chev) chev.classList.toggle('open');
+}
+
+renderDays('week1', 1);
+renderDays('week2', 2);
+
+/* ── Rafiki: loopt naar de muis en doet verschillende trucjes ── */
+(function () {
+  const walker = document.getElementById('rafikiWalker');
+  if (!walker) return;
+  const photo = walker.querySelector('.rafiki-photo');
+  const TRICKS = ['trick-spin','trick-flip','trick-jump','trick-wiggle','trick-dance','trick-squash'];
+
+  let x = 20, y = window.innerHeight - 160;   // startpositie linksonder
+  let tx = x, ty = y;                          // doel (de muis)
+  let facing = 1;                              // 1 = naar rechts, -1 = naar links
+  let tricking = false, lastTrick = '', arrivedAt = 0, hasTarget = false;
+
+  function size() { return { w: photo.offsetWidth || 90, h: photo.offsetHeight || 120 }; }
+
+  function setTarget(px, py) {
+    const s = size();
+    tx = Math.max(0, Math.min(window.innerWidth  - s.w, px - s.w / 2));
+    ty = Math.max(0, Math.min(window.innerHeight - s.h, py - s.h - 6));
+    hasTarget = true;
+  }
+
+  window.addEventListener('mousemove', e => setTarget(e.clientX, e.clientY));
+  window.addEventListener('touchmove', e => {
+    if (e.touches[0]) setTarget(e.touches[0].clientX, e.touches[0].clientY);
+  }, { passive: true });
+
+  function doTrick() {
+    if (tricking) return;
+    let t;
+    do { t = TRICKS[Math.floor(Math.random() * TRICKS.length)]; }
+    while (t === lastTrick && TRICKS.length > 1);
+    lastTrick = t;
+    tricking = true;
+    photo.style.transform = '';            // animatie neemt de transform over
+    photo.classList.add(t);
+    photo.addEventListener('animationend', function done() {
+      photo.classList.remove(t);
+      photo.removeEventListener('animationend', done);
+      tricking = false;
+      arrivedAt = 0;
+    });
+  }
+  walker.addEventListener('click', doTrick);
+
+  let last = performance.now();
+  function frame(now) {
+    const dt = Math.min(50, now - last); last = now;
+    if (!tricking && hasTarget) {
+      const dx = tx - x, dy = ty - y;
+      const dist = Math.hypot(dx, dy);
+      const ease = 1 - Math.pow(0.0025, dt / 1000);   // soepel naar de muis lopen
+      x += dx * ease;
+      y += dy * ease;
+
+      const moving = dist > 6;
+      if (moving) { facing = dx >= 0 ? 1 : -1; arrivedAt = 0; }
+      else if (dist < 14) {                            // aangekomen → trucje na korte pauze
+        if (!arrivedAt) arrivedAt = now;
+        else if (now - arrivedAt > 600) doTrick();
+      }
+
+      const bob = moving ? Math.sin(now / 90) * 7 : 0; // loopwiebel
+      walker.style.transform = `translate(${x.toFixed(1)}px, ${(y + bob).toFixed(1)}px)`;
+      photo.style.transform = `scaleX(${facing})`;
+    }
+    requestAnimationFrame(frame);
+  }
+  walker.style.transform = `translate(${x}px, ${y}px)`;
+  requestAnimationFrame(frame);
+
+  window.addEventListener('resize', () => {
+    x = Math.min(x, window.innerWidth  - size().w);
+    y = Math.min(y, window.innerHeight - size().h);
+  });
+})();
+</script>
+</body>
+</html>
