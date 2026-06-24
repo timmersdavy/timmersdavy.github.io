@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slagerij Van Damme — Ambachtelijk Vlees Sinds 1978</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rood: #8B1A1A;
+    --rood-donker: #5C0F0F;
+    --creme: #F7F2EB;
+    --creme-donker: #EDE5D8;
+    --hout: #6B4E2A;
+    --hout-licht: #A0784A;
+    --wit: #FDFAF6;
+    --zwart: #1A1208;
+    --grijs: #7A7060;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--wit);
+    color: var(--zwart);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(253,250,246,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--creme-donker);
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    color: var(--rood-donker);
+    text-transform: uppercase;
+  }
+
+  .logo span {
+    display: block;
+    font-size: 0.55rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: var(--grijs);
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  nav a {
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--zwart);
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--rood); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-tekst {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 4rem 4rem 4rem;
+    background: var(--wit);
+  }
+
+  .hero-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rood);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-titel {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--zwart);
+    margin-bottom: 1.8rem;
+  }
+
+  .hero-titel em {
+    font-style: italic;
+    color: var(--rood);
+  }
+
+  .hero-tekst p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--grijs);
+    max-width: 38ch;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-jaar {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 3rem;
+  }
+
+  .jaar-getal {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--creme-donker);
+    line-height: 1;
+  }
+
+  .jaar-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grijs);
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--rood);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    transition: background 0.2s;
+    width: fit-content;
+  }
+
+  .hero-cta:hover { background: var(--rood-donker); }
+
+  .hero-cta::after {
+    content: '→';
+    font-size: 1rem;
+  }
+
+  /* HERO AFBEELDING — gesimuleerd met CSS art */
+  .hero-beeld {
+    position: relative;
+    background: var(--rood-donker);
+    overflow: hidden;
+  }
+
+  .vlees-art {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Decoratieve snijplanck-achtige compositie */
+  .plank {
+    width: 340px;
+    height: 420px;
+    background: var(--hout);
+    border-radius: 8px 8px 120px 120px / 8px 8px 80px 80px;
+    position: relative;
+    box-shadow: inset -8px 0 20px rgba(0,0,0,0.2), 8px 12px 40px rgba(0,0,0,0.4);
+  }
+
+  .plank::before {
+    content: '';
+    position: absolute;
+    top: 14px; left: 14px; right: 14px; bottom: 14px;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px 4px 110px 110px / 4px 4px 70px 70px;
+  }
+
+  /* Hout-nerven */
+  .plank::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 18px,
+      rgba(0,0,0,0.06) 18px,
+      rgba(0,0,0,0.06) 19px
+    );
+    border-radius: inherit;
+  }
+
+  .mes {
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-15deg);
+    width: 6px;
+    height: 280px;
+    background: linear-gradient(180deg, #e0e0e0 0%, #b0b0b0 60%, var(--hout-licht) 60%, var(--hout) 100%);
+    border-radius: 3px 3px 0 0;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.3);
+  }
+
+  .mes::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -12px;
+    width: 18px;
+    height: 160px;
+    background: linear-gradient(135deg, #d0d0d0, #a0a0a0);
+    clip-path: polygon(0 0, 100% 0, 8px 100%, 0 100%);
+  }
+
+  .plank-tekst {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: rgba(255,255,255,0.15);
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .hero-quote {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+    right: 3rem;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.8rem;
+    font-style: italic;
+    line-height: 1.6;
+    border-left: 2px solid var(--rood);
+    padding-left: 1rem;
+  }
+
+  /* PRODUCTEN */
+  .producten {
+    padding: 6rem 4rem;
+    background: var(--creme);
+  }
+
+  .sectie-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid var(--creme-donker);
+    padding-bottom: 1.5rem;
+  }
+
+  .sectie-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rood);
+    margin-bottom: 0.5rem;
+  }
+
+  .sectie-titel {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--zwart);
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--creme-donker);
+  }
+
+  .product-kaart {
+    background: var(--wit);
+    padding: 2.5rem 2rem;
+    transition: background 0.2s;
+    cursor: default;
+  }
+
+  .product-kaart:hover {
+    background: var(--rood-donker);
+    color: #fff;
+  }
+
+  .product-kaart:hover .product-naam,
+  .product-kaart:hover .product-omschrijving,
+  .product-kaart:hover .product-prijs-label {
+    color: rgba(255,255,255,0.85);
+  }
+
+  .product-kaart:hover .product-prijs {
+    color: #fff;
+  }
+
+  .product-icoon {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .product-naam {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--zwart);
+    transition: color 0.2s;
+  }
+
+  .product-omschrijving {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--grijs);
+    margin-bottom: 1.5rem;
+    transition: color 0.2s;
+  }
+
+  .product-prijs-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grijs);
+    transition: color 0.2s;
+  }
+
+  .product-prijs {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--rood);
+    transition: color 0.2s;
+  }
+
+  /* OVER ONS */
+  .over {
+    padding: 6rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    background: var(--wit);
+  }
+
+  .over-beeld {
+    position: relative;
+    height: 480px;
+    background: var(--rood-donker);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Ambachtelijk tegel-patroon */
+  .tegel-art {
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(255,255,255,0.03) 20px,
+        rgba(255,255,255,0.03) 21px
+      );
+  }
+
+  .jaar-groot {
+    font-family: 'Playfair Display', serif;
+    font-size: 9rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.07);
+    position: absolute;
+    line-height: 1;
+  }
+
+  .over-badge {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+  }
+
+  .over-badge-getal {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1;
+    display: block;
+  }
+
+  .over-badge-tekst {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .over-inhoud .sectie-label { margin-bottom: 0.8rem; }
+
+  .over-inhoud h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .over-inhoud p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--grijs);
+    margin-bottom: 1.2rem;
+  }
+
+  .kenmerken {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .kenmerk {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .kenmerk-streep {
+    width: 24px;
+    height: 1px;
+    background: var(--rood);
+    flex-shrink: 0;
+  }
+
+  /* CONTACT */
+  .contact {
+    background: var(--rood-donker);
+    padding: 6rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-info p {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-gegevens {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-rij {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .contact-rij-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    width: 60px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .contact-rij-waarde {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* FORMULIER */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .form-rij {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-groep {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-groep label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .form-groep input,
+  .form-groep textarea,
+  .form-groep select {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    padding: 0.85rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .form-groep input::placeholder,
+  .form-groep textarea::placeholder {
+    color: rgba(255,255,255,0.25);
+  }
+
+  .form-groep input:focus,
+  .form-groep textarea:focus,
+  .form-groep select:focus {
+    border-color: rgba(255,255,255,0.5);
+  }
+
+  .form-groep textarea { resize: vertical; min-height: 120px; }
+
+  .form-groep select option { background: var(--rood-donker); }
+
+  .verstuur-btn {
+    background: #fff;
+    color: var(--rood-donker);
+    border: none;
+    padding: 1rem 2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    align-self: flex-start;
+  }
+
+  .verstuur-btn:hover { opacity: 0.85; }
+
+  /* FOOTER */
+  footer {
+    background: var(--zwart);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  footer span { color: rgba(255,255,255,0.15); }
+
+  /* DEMO BADGE */
+  .demo-badge {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: var(--zwart);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.6rem 1rem;
+    z-index: 200;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { gap: 1.2rem; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-beeld { height: 300px; }
+    .hero-tekst { padding: 3rem 1.5rem; }
+
+    .producten { padding: 4rem 1.5rem; }
+    .product-grid { grid-template-columns: 1fr; }
+
+    .over { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .over-beeld { height: 280px; }
+
+    .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .form-rij { grid-template-columns: 1fr; }
+
+    .sectie-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    Van Damme
+    <span>Slagerij · Tessenderlo</span>
+  </div>
+  <ul>
+    <li><a href="#producten">Producten</a></li>
+    <li><a href="#over">Over ons</a></li>
+    <li><a href="#contact">Bestellen</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tekst">
+    <p class="hero-label">Ambachtelijke slagerij · Sinds 1978</p>
+    <h1 class="hero-titel">
+      Vlees met<br>
+      <em>karakter</em><br>
+      en vakmanschap
+    </h1>
+    <p>Drie generaties lang selecteren wij zorgvuldig de beste stukken van lokale boeren. Geen supermarktrekken, geen haast — gewoon eerlijk vlees waar je het verschil in proeft.</p>
+
+    <div class="hero-jaar">
+      <span class="jaar-getal">45+</span>
+      <span class="jaar-label">jaar<br>vakmanschap</span>
+    </div>
+
+    <a href="#producten" class="hero-cta">Bekijk ons aanbod</a>
+  </div>
+
+  <div class="hero-beeld">
+    <div class="vlees-art">
+      <div class="plank">
+        <div class="mes"></div>
+        <div class="plank-tekst">Van Damme · 1978</div>
+      </div>
+    </div>
+    <p class="hero-quote">
+      "Wij kopen van boeren die wij kennen bij naam. Dat proeft u in elk stuk."<br>
+      <strong style="opacity:0.8; font-style:normal; font-size:0.75rem; letter-spacing:0.1em;">— Luc Van Damme</strong>
+    </p>
+  </div>
+</section>
+
+<!-- PRODUCTEN -->
+<section class="producten" id="producten">
+  <div class="sectie-header">
+    <div>
+      <p class="sectie-label">Ons aanbod</p>
+      <h2 class="sectie-titel">Verse specialiteiten</h2>
+    </div>
+    <p style="font-size:0.8rem; color:var(--grijs); max-width:30ch; text-align:right;">Dagelijks vers bereid. Bestelling voor 10u → dezelfde dag klaar.</p>
+  </div>
+
+  <div class="product-grid">
+    <div class="product-kaart">
+      <div class="product-icoon">🥩</div>
+      <div class="product-naam">Côte à l'os</div>
+      <p class="product-omschrijving">Rijp gedroogd Belgisch witblauw. Minimaal 28 dagen gerijpt voor maximale smaak en malsheid.</p>
+      <div class="product-prijs-label">Vanaf</div>
+      <div class="product-prijs">€ 32,50 /kg</div>
+    </div>
+
+    <div class="product-kaart">
+      <div class="product-icoon">🍖</div>
+      <div class="product-naam">Huisbereide gehaktballen</div>
+      <p class="product-omschrijving">Ons eigen recept, al 45 jaar ongewijzigd. Gemengd gehakt met verse kruiden, daags vóór uw bestelling bereid.</p>
+      <div class="product-prijs-label">Prijs</div>
+      <div class="product-prijs">€ 12,00 /kg</div>
+    </div>
+
+    <div class="product-kaart">
+      <div class="product-icoon">🫙</div>
+      <div class="product-naam">Huisgemaakte pâté</div>
+      <p class="product-omschrijving">Ambachtelijke varkenspâté met Ardeense ham en tijm. Enkel op bestelling, in glazen pot.</p>
+      <div class="product-prijs-label">Per pot (300g)</div>
+      <div class="product-prijs">€ 8,50</div>
+    </div>
+
+    <div class="product-kaart">
+      <div class="product-icoon">🍗</div>
+      <div class="product-naam">Hoevekip</div>
+      <p class="product-omschrijving">Vrije-uitloopkippen van Heuvelland-boerderijen. Heel, gevuld, of op maat gesneden — uw keuze.</p>
+      <div class="product-prijs-label">Vanaf</div>
+      <div class="product-prijs">€ 9,80 /kg</div>
+    </div>
+
+    <div class="product-kaart">
+      <div class="product-icoon">🥓</div>
+      <div class="product-naam">Gerookt spek</div>
+      <p class="product-omschrijving">Koud gerookt op beukenhout. Dik of fijn gesneden. Ideaal voor carbonara of als ontbijtspek.</p>
+      <div class="product-prijs-label">Prijs</div>
+      <div class="product-prijs">€ 18,00 /kg</div>
+    </div>
+
+    <div class="product-kaart">
+      <div class="product-icoon">🎉</div>
+      <div class="product-naam">Feestschotels</div>
+      <p class="product-omschrijving">Op maat voor elk gezelschap. Cold cuts, charcuterie en kaas. Minimum 24u op voorhand bestellen.</p>
+      <div class="product-prijs-label">Op aanvraag</div>
+      <div class="product-prijs">Prijs op maat</div>
+    </div>
+  </div>
+</section>
+
+<!-- OVER -->
+<section class="over" id="over">
+  <div class="over-beeld">
+    <div class="tegel-art"></div>
+    <div class="jaar-groot">1978</div>
+    <div class="over-badge">
+      <span class="over-badge-getal">3</span>
+      <span class="over-badge-tekst">Generaties<br>slagers</span>
+    </div>
+  </div>
+
+  <div class="over-inhoud">
+    <p class="sectie-label">Ons verhaal</p>
+    <h2>Groot geworden<br>op eerlijk vlees</h2>
+    <p>In 1978 opende Willy Van Damme zijn slagerij in de Dorpstraat. Zijn zoon Luc nam de zaak over in 2001, en vandaag staat ook kleinzoon Thomas elke dag achter de toonbank.</p>
+    <p>Wat niet veranderd is: we kennen elke leverancier bij naam, we versnijden alles zelf, en we geven u eerlijk advies over welk stuk past bij uw bereiding.</p>
+    <div class="kenmerken">
+      <div class="kenmerk">
+        <div class="kenmerk-streep"></div>
+        <span>Lokale boeren binnen 50 km</span>
+      </div>
+      <div class="kenmerk">
+        <div class="kenmerk-streep"></div>
+        <span>Geen industriële voorverwerking</span>
+      </div>
+      <div class="kenmerk">
+        <div class="kenmerk-streep"></div>
+        <span>Versneden op bestelling</span>
+      </div>
+      <div class="kenmerk">
+        <div class="kenmerk-streep"></div>
+        <span>Maandag t/m zaterdag vers</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <h2>Bestelling<br>plaatsen</h2>
+    <p>Vul het formulier in of bel ons op. Bestellingen voor 10u zijn dezelfde dag klaar. Grote feestschotels vragen 24u op voorhand.</p>
+    <div class="contact-gegevens">
+      <div class="contact-rij">
+        <span class="contact-rij-label">Adres</span>
+        <span class="contact-rij-waarde">Dorpstraat 14<br>3980 Tessenderlo</span>
+      </div>
+      <div class="contact-rij">
+        <span class="contact-rij-label">Open</span>
+        <span class="contact-rij-waarde">Ma–Vr: 8u–18u<br>Zaterdag: 7u–16u</span>
+      </div>
+      <div class="contact-rij">
+        <span class="contact-rij-label">Tel</span>
+        <span class="contact-rij-waarde">013 67 XX XX</span>
+      </div>
+    </div>
+  </div>
+
+  <form class="contact-form" action="https://formspree.io/f/xlgyekey" method="POST">
+    <div class="form-rij">
+      <div class="form-groep">
+        <label>Voornaam</label>
+        <input type="text" name="voornaam" placeholder="Jan" required>
+      </div>
+      <div class="form-groep">
+        <label>Familienaam</label>
+        <input type="text" name="familienaam" placeholder="Janssen" required>
+      </div>
+    </div>
+
+    <div class="form-groep">
+      <label>E-mailadres</label>
+      <input type="email" name="email" placeholder="jan.janssen@mail.be" required>
+    </div>
+
+    <div class="form-groep">
+      <label>Telefoon</label>
+      <input type="tel" name="telefoon" placeholder="04XX XX XX XX">
+    </div>
+
+    <div class="form-groep">
+      <label>Wat wilt u bestellen?</label>
+      <select name="categorie">
+        <option value="">Kies een categorie...</option>
+        <option value="vlees">Vers vlees</option>
+        <option value="charcuterie">Charcuterie & pâté</option>
+        <option value="feestschotel">Feestschotel</option>
+        <option value="anders">Andere vraag</option>
+      </select>
+    </div>
+
+    <div class="form-groep">
+      <label>Bericht of bestelling</label>
+      <textarea name="bericht" placeholder="Bv: 1,5 kg côte à l'os voor vrijdag 20 juni, graag dik gesneden..." required></textarea>
+    </div>
+
+    <button type="submit" class="verstuur-btn">Bestelling doorsturen →</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Slagerij Van Damme · Tessenderlo · BTW BE 0XXX.XXX.XXX</span>
+  <span>Demo door Timmers Design</span>
+</footer>
+
+<!-- DEMO BADGE -->
+<div class="demo-badge">Demo · Timmers Design</div>
+
+</body>
+</html>
