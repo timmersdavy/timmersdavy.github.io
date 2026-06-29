@@ -3,551 +3,470 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TimmersDesign — Freelance Webdesign</title>
+<title>TimmersDesign — AI-gedreven Marketing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
 :root{
-  --black:#07080f;
-  --navy:#0D1B3E;
-  --navy-soft:#111928;
-  --orange:#F4762A;
-  --gold:#c8a96e;
-  --gold-dim:rgba(200,169,110,0.15);
-  --white:#ffffff;
-  --off:#f5f3ef;
-  --muted:rgba(255,255,255,0.38);
-  --muted2:rgba(255,255,255,0.55);
+--black:#07080f;
+--navy:#0D1B3E;
+--navy-soft:#111928;
+--orange:#F4762A;
+--gold:#c8a96e;
+--gold-dim:rgba(200,169,110,0.15);
+--white:#ffffff;
+--off:#f5f3ef;
+--muted:rgba(255,255,255,0.38);
+--muted2:rgba(255,255,255,0.55);
 }
-
 html{scroll-behavior:smooth}
-
 body{
-  font-family:'Inter',sans-serif;
-  background:var(--black);
-  color:var(--white);
-  overflow-x:hidden;
-  cursor:none;
+font-family:'Inter',sans-serif;
+background:var(--black);
+color:var(--white);
+overflow-x:hidden;
+cursor:none;
 }
-
 /* CURSOR */
 .cursor{
-  position:fixed;width:8px;height:8px;
-  background:var(--orange);border-radius:50%;
-  pointer-events:none;z-index:9999;
-  transform:translate(-50%,-50%);
-  transition:transform 0.1s,width 0.3s,height 0.3s,background 0.3s;
+position:fixed;width:8px;height:8px;
+background:var(--orange);border-radius:50%;
+pointer-events:none;z-index:9999;
+transform:translate(-50%,-50%);
+transition:transform 0.1s,width 0.3s,height 0.3s,background 0.3s;
 }
 .cursor-ring{
-  position:fixed;width:36px;height:36px;
-  border:1px solid rgba(244,118,42,0.4);border-radius:50%;
-  pointer-events:none;z-index:9998;
-  transform:translate(-50%,-50%);
-  transition:transform 0.18s ease,width 0.35s,height 0.35s,border-color 0.3s;
+position:fixed;width:36px;height:36px;
+border:1px solid rgba(244,118,42,0.4);border-radius:50%;
+pointer-events:none;z-index:9998;
+transform:translate(-50%,-50%);
+transition:transform 0.18s ease,width 0.35s,height 0.35s,border-color 0.3s;
 }
 body:hover .cursor{opacity:1}
-
 /* NAV */
 nav{
-  position:fixed;top:0;left:0;right:0;z-index:500;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:2rem 5vw;
-  mix-blend-mode:normal;
+position:fixed;top:0;left:0;right:0;z-index:500;
+display:flex;align-items:center;justify-content:space-between;
+padding:2rem 5vw;
+mix-blend-mode:normal;
 }
 .nav-logo{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.15rem;font-weight:400;letter-spacing:0.22em;
-  text-transform:uppercase;color:var(--white);text-decoration:none;
-  opacity:0;animation:fadeUp 1s 0.3s forwards;
+font-family:'Cormorant Garamond',serif;
+font-size:1.15rem;font-weight:400;letter-spacing:0.22em;
+text-transform:uppercase;color:var(--white);text-decoration:none;
+opacity:0;animation:fadeUp 1s 0.3s forwards;
 }
 .nav-links{
-  display:flex;gap:3rem;list-style:none;
-  opacity:0;animation:fadeUp 1s 0.5s forwards;
+display:flex;gap:3rem;list-style:none;
+opacity:0;animation:fadeUp 1s 0.5s forwards;
 }
 .nav-links a{
-  font-size:0.7rem;font-weight:400;letter-spacing:0.18em;
-  text-transform:uppercase;color:var(--muted);text-decoration:none;
-  transition:color 0.3s;position:relative;
+font-size:0.7rem;font-weight:400;letter-spacing:0.18em;
+text-transform:uppercase;color:var(--muted);text-decoration:none;
+transition:color 0.3s;position:relative;
 }
 .nav-links a::after{
-  content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
-  background:var(--orange);transition:width 0.35s;
+content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
+background:var(--orange);transition:width 0.35s;
 }
 .nav-links a:hover{color:var(--white)}
 .nav-links a:hover::after{width:100%}
-
 /* HERO */
 .hero{
-  min-height:100vh;
-  display:flex;flex-direction:column;
-  justify-content:flex-end;
-  padding:0 5vw 7vh;
-  position:relative;overflow:hidden;
+min-height:100vh;
+display:flex;flex-direction:column;
+justify-content:flex-end;
+padding:0 5vw 7vh;
+position:relative;overflow:hidden;
 }
-
 .hero-bg{
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 70% at 80% 20%, rgba(244,118,42,0.04) 0%, transparent 60%),
-             radial-gradient(ellipse 50% 50% at 20% 80%, rgba(13,27,62,0.6) 0%, transparent 70%);
+position:absolute;inset:0;
+background:radial-gradient(ellipse 70% 70% at 80% 20%, rgba(244,118,42,0.04) 0%, transparent 60%),
+radial-gradient(ellipse 50% 50% at 20% 80%, rgba(13,27,62,0.6) 0%, transparent 70%);
 }
-
 .hero-number{
-  position:absolute;right:5vw;top:50%;transform:translateY(-50%);
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(14rem,22vw,26rem);
-  font-weight:300;font-style:italic;
-  color:rgba(244,118,42,0.04);
-  line-height:1;user-select:none;
-  letter-spacing:-0.05em;
+position:absolute;right:5vw;top:50%;transform:translateY(-50%);
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(14rem,22vw,26rem);
+font-weight:300;font-style:italic;
+color:rgba(244,118,42,0.04);
+line-height:1;user-select:none;
+letter-spacing:-0.05em;
 }
-
 .hero-eyebrow{
-  font-size:0.68rem;font-weight:400;letter-spacing:0.22em;
-  text-transform:uppercase;color:var(--orange);
-  margin-bottom:2.5rem;
-  opacity:0;animation:fadeUp 1s 0.7s forwards;
+font-size:0.68rem;font-weight:400;letter-spacing:0.22em;
+text-transform:uppercase;color:var(--orange);
+margin-bottom:2.5rem;
+opacity:0;animation:fadeUp 1s 0.7s forwards;
 }
-
 .hero-title{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(4.5rem,9vw,11rem);
-  font-weight:300;line-height:0.95;
-  letter-spacing:-0.03em;
-  margin-bottom:4rem;
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(4.5rem,9vw,11rem);
+font-weight:300;line-height:0.95;
+letter-spacing:-0.03em;
+margin-bottom:4rem;
 }
-
 .hero-title .line{
-  display:block;overflow:hidden;
+display:block;overflow:hidden;
 }
-
 .hero-title .line span{
-  display:block;
-  transform:translateY(110%);
-  animation:slideUp 1.1s cubic-bezier(0.16,1,0.3,1) forwards;
+display:block;
+transform:translateY(110%);
+animation:slideUp 1.1s cubic-bezier(0.16,1,0.3,1) forwards;
 }
-
 .hero-title .line:nth-child(1) span{animation-delay:0.5s}
 .hero-title .line:nth-child(2) span{animation-delay:0.68s}
 .hero-title .line:nth-child(3) span{animation-delay:0.84s}
-
 .hero-title em{
-  font-style:italic;font-weight:300;
-  color:transparent;
-  -webkit-text-stroke:1px rgba(244,118,42,0.7);
+font-style:italic;font-weight:300;
+color:transparent;
+-webkit-text-stroke:1px rgba(244,118,42,0.7);
 }
-
 .hero-bottom{
-  display:flex;align-items:flex-end;justify-content:space-between;
-  opacity:0;animation:fadeUp 1s 1.4s forwards;
+display:flex;align-items:flex-end;justify-content:space-between;
+opacity:0;animation:fadeUp 1s 1.4s forwards;
 }
-
 .hero-desc{
-  font-size:0.95rem;line-height:1.8;
-  color:var(--muted2);max-width:38ch;font-weight:300;
+font-size:0.95rem;line-height:1.8;
+color:var(--muted2);max-width:38ch;font-weight:300;
 }
-
 .hero-cta{display:flex;flex-direction:column;align-items:flex-end;gap:1.5rem}
-
 .btn-luxury{
-  font-size:0.7rem;font-weight:400;letter-spacing:0.2em;
-  text-transform:uppercase;color:var(--white);text-decoration:none;
-  padding:1rem 2.5rem;
-  border:1px solid rgba(255,255,255,0.2);
-  position:relative;overflow:hidden;
-  transition:color 0.4s,border-color 0.4s;
-  white-space:nowrap;
+font-size:0.7rem;font-weight:400;letter-spacing:0.2em;
+text-transform:uppercase;color:var(--white);text-decoration:none;
+padding:1rem 2.5rem;
+border:1px solid rgba(255,255,255,0.2);
+position:relative;overflow:hidden;
+transition:color 0.4s,border-color 0.4s;
+white-space:nowrap;
 }
 .btn-luxury::before{
-  content:'';position:absolute;inset:0;
-  background:var(--orange);
-  transform:translateX(-101%);
-  transition:transform 0.45s cubic-bezier(0.16,1,0.3,1);
-  z-index:-1;
+content:'';position:absolute;inset:0;
+background:var(--orange);
+transform:translateX(-101%);
+transition:transform 0.45s cubic-bezier(0.16,1,0.3,1);
+z-index:-1;
 }
 .btn-luxury:hover{border-color:var(--orange)}
 .btn-luxury:hover::before{transform:translateX(0)}
-
 .scroll-hint{
-  font-size:0.65rem;letter-spacing:0.18em;
-  text-transform:uppercase;color:var(--muted);
-  display:flex;align-items:center;gap:0.8rem;
+font-size:0.65rem;letter-spacing:0.18em;
+text-transform:uppercase;color:var(--muted);
+display:flex;align-items:center;gap:0.8rem;
 }
 .scroll-hint::before{
-  content:'';display:block;width:40px;height:1px;background:var(--muted);
+content:'';display:block;width:40px;height:1px;background:var(--muted);
 }
-
 /* GOLD RULE */
 .gold-rule{
-  width:100%;height:1px;
-  background:linear-gradient(to right, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%);
-  opacity:0.25;
+width:100%;height:1px;
+background:linear-gradient(to right, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%);
+opacity:0.25;
 }
-
 /* SECTIONS COMMON */
 .section-wrap{padding:10rem 5vw}
-
 .s-label{
-  font-size:0.65rem;font-weight:400;letter-spacing:0.25em;
-  text-transform:uppercase;color:var(--gold);
-  display:flex;align-items:center;gap:1.2rem;
-  margin-bottom:4rem;
+font-size:0.65rem;font-weight:400;letter-spacing:0.25em;
+text-transform:uppercase;color:var(--gold);
+display:flex;align-items:center;gap:1.2rem;
+margin-bottom:4rem;
 }
 .s-label::before{content:'';display:block;width:40px;height:1px;background:var(--gold);opacity:0.5}
-
 .s-title{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(3rem,6vw,6.5rem);
-  font-weight:300;letter-spacing:-0.025em;line-height:1.05;
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(3rem,6vw,6.5rem);
+font-weight:300;letter-spacing:-0.025em;line-height:1.05;
 }
-
 .s-title em{font-style:italic;color:var(--orange)}
-
 /* DIENSTEN */
 .diensten{background:var(--black)}
-
 .diensten-intro{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:4rem;align-items:end;margin-bottom:8rem;
+display:grid;grid-template-columns:1fr 1fr;
+gap:4rem;align-items:end;margin-bottom:8rem;
 }
-
 .diensten-sub{
-  font-size:1rem;line-height:1.8;color:var(--muted2);
-  font-weight:300;max-width:42ch;align-self:end;
+font-size:1rem;line-height:1.8;color:var(--muted2);
+font-weight:300;max-width:42ch;align-self:end;
 }
-
 .diensten-list{display:flex;flex-direction:column}
-
 .dienst{
-  display:grid;grid-template-columns:1fr auto;
-  align-items:center;gap:2rem;
-  padding:2.8rem 0;
-  border-bottom:1px solid rgba(255,255,255,0.06);
-  position:relative;overflow:hidden;
-  cursor:default;
+display:grid;grid-template-columns:1fr auto;
+align-items:center;gap:2rem;
+padding:2.8rem 0;
+border-bottom:1px solid rgba(255,255,255,0.06);
+position:relative;overflow:hidden;
+cursor:default;
 }
-
 .dienst::before{
-  content:'';position:absolute;inset:0;
-  background:rgba(244,118,42,0.03);
-  transform:scaleX(0);transform-origin:left;
-  transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);
+content:'';position:absolute;inset:0;
+background:rgba(244,118,42,0.03);
+transform:scaleX(0);transform-origin:left;
+transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);
 }
 .dienst:hover::before{transform:scaleX(1)}
-
 .dienst:first-child{border-top:1px solid rgba(255,255,255,0.06)}
-
 .dienst-left{display:flex;align-items:baseline;gap:2.5rem}
-
 .dienst-idx{
-  font-family:'Cormorant Garamond',serif;
-  font-size:0.8rem;font-weight:300;
-  color:var(--muted);letter-spacing:0.05em;
-  min-width:2ch;
+font-family:'Cormorant Garamond',serif;
+font-size:0.8rem;font-weight:300;
+color:var(--muted);letter-spacing:0.05em;
+min-width:2ch;
 }
-
 .dienst-info h3{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.6rem,3vw,2.6rem);
-  font-weight:300;letter-spacing:-0.01em;
-  margin-bottom:0.4rem;
-  transition:color 0.3s;
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(1.6rem,3vw,2.6rem);
+font-weight:300;letter-spacing:-0.01em;
+margin-bottom:0.4rem;
+transition:color 0.3s;
 }
 .dienst:hover .dienst-info h3{color:var(--orange)}
-
 .dienst-info p{
-  font-size:0.82rem;line-height:1.6;color:var(--muted);
-  max-width:40ch;font-weight:300;
+font-size:0.82rem;line-height:1.6;color:var(--muted);
+max-width:40ch;font-weight:300;
 }
-
 .dienst-price{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.6rem;font-weight:300;
-  color:var(--gold);letter-spacing:0.02em;
-  text-align:right;white-space:nowrap;
+font-family:'Cormorant Garamond',serif;
+font-size:1.6rem;font-weight:300;
+color:var(--gold);letter-spacing:0.02em;
+text-align:right;white-space:nowrap;
 }
-
 /* PORTFOLIO */
 .portfolio{background:var(--navy-soft)}
-
 .portfolio-intro{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:4rem;align-items:end;margin-bottom:6rem;
+display:grid;grid-template-columns:1fr 1fr;
+gap:4rem;align-items:end;margin-bottom:6rem;
 }
-
 .portfolio-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  grid-template-rows:auto auto;
-  gap:1.5px;
-  background:rgba(200,169,110,0.08);
+display:grid;
+grid-template-columns:1fr 1fr;
+grid-template-rows:auto auto;
+gap:1.5px;
+background:rgba(200,169,110,0.08);
 }
-
 .p-item{
-  position:relative;overflow:hidden;
-  background:var(--navy-soft);
-  aspect-ratio:auto;
+position:relative;overflow:hidden;
+background:var(--navy-soft);
+aspect-ratio:auto;
 }
-
 .p-item:nth-child(1){grid-column:1;grid-row:1}
 .p-item:nth-child(2){grid-column:2;grid-row:1}
 .p-item:nth-child(3){grid-column:1;grid-row:2}
 .p-item:nth-child(4){grid-column:2;grid-row:2}
-
 .p-thumb{
-  aspect-ratio:4/3;
-  display:flex;align-items:center;justify-content:center;
-  position:relative;overflow:hidden;
+aspect-ratio:4/3;
+display:flex;align-items:center;justify-content:center;
+position:relative;overflow:hidden;
 }
-
 .p-item:nth-child(1) .p-thumb{background:linear-gradient(160deg,#0a1428 0%,#1a2e5a 100%)}
 .p-item:nth-child(2) .p-thumb{background:linear-gradient(160deg,#1a1208 0%,#3a2010 100%)}
 .p-item:nth-child(3) .p-thumb{background:linear-gradient(160deg,#0a0f1e 0%,#0d1b3e 100%)}
-
+.p-item:nth-child(4) .p-thumb{background:linear-gradient(160deg,#1a0808 0%,#3d1010 100%)}
 .p-glyph{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(4rem,10vw,9rem);
-  font-style:italic;font-weight:300;
-  color:rgba(255,255,255,0.05);
-  user-select:none;
-  transition:transform 0.7s cubic-bezier(0.16,1,0.3,1),color 0.5s;
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(4rem,10vw,9rem);
+font-style:italic;font-weight:300;
+color:rgba(255,255,255,0.05);
+user-select:none;
+transition:transform 0.7s cubic-bezier(0.16,1,0.3,1),color 0.5s;
 }
 .p-item:hover .p-glyph{
-  transform:scale(1.07);
-  color:rgba(244,118,42,0.06);
+transform:scale(1.07);
+color:rgba(244,118,42,0.06);
 }
-
 .p-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to top, rgba(7,8,15,0.97) 0%, rgba(7,8,15,0.2) 60%, transparent 100%);
-  display:flex;flex-direction:column;justify-content:flex-end;
-  padding:2rem 2.5rem;
-  transform:translateY(2rem);opacity:0;
-  transition:opacity 0.4s,transform 0.5s cubic-bezier(0.16,1,0.3,1);
+position:absolute;inset:0;
+background:linear-gradient(to top, rgba(7,8,15,0.97) 0%, rgba(7,8,15,0.2) 60%, transparent 100%);
+display:flex;flex-direction:column;justify-content:flex-end;
+padding:2rem 2.5rem;
+transform:translateY(2rem);opacity:0;
+transition:opacity 0.4s,transform 0.5s cubic-bezier(0.16,1,0.3,1);
 }
 .p-item:hover .p-overlay{opacity:1;transform:none}
-
 .p-meta{
-  padding:1.5rem 2rem;
-  display:flex;align-items:baseline;justify-content:space-between;
-  border-top:1px solid rgba(200,169,110,0.12);
+padding:1.5rem 2rem;
+display:flex;align-items:baseline;justify-content:space-between;
+border-top:1px solid rgba(200,169,110,0.12);
 }
-
 .p-meta h4{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.2rem;font-weight:400;
+font-family:'Cormorant Garamond',serif;
+font-size:1.2rem;font-weight:400;
 }
-
 .p-meta span{
-  font-size:0.65rem;letter-spacing:0.15em;
-  text-transform:uppercase;color:var(--gold);
+font-size:0.65rem;letter-spacing:0.15em;
+text-transform:uppercase;color:var(--gold);
 }
-
 .overlay-cat{
-  font-size:0.62rem;letter-spacing:0.18em;
-  text-transform:uppercase;color:var(--orange);
-  margin-bottom:0.5rem;
+font-size:0.62rem;letter-spacing:0.18em;
+text-transform:uppercase;color:var(--orange);
+margin-bottom:0.5rem;
 }
 .overlay-name{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.4rem;font-weight:300;
+font-family:'Cormorant Garamond',serif;
+font-size:1.4rem;font-weight:300;
 }
-
 /* OVER */
 .over{
-  background:var(--black);
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:10rem;align-items:center;
-  padding:10rem 5vw;
+background:var(--black);
+display:grid;grid-template-columns:1fr 1fr;
+gap:10rem;align-items:center;
+padding:10rem 5vw;
 }
-
 .over-visual{position:relative}
-
 .over-portrait{
-  aspect-ratio:3/4;
-  background:linear-gradient(160deg,#111928 0%,#0d1b3e 100%);
-  border:1px solid rgba(200,169,110,0.12);
-  display:flex;align-items:center;justify-content:center;
-  position:relative;
-  overflow:hidden;
+aspect-ratio:3/4;
+background:linear-gradient(160deg,#111928 0%,#0d1b3e 100%);
+border:1px solid rgba(200,169,110,0.12);
+display:flex;align-items:center;justify-content:center;
+position:relative;
+overflow:hidden;
 }
-
 .over-portrait::after{
-  content:'';
-  position:absolute;bottom:0;left:0;right:0;height:50%;
-  background:linear-gradient(to top,rgba(244,118,42,0.04),transparent);
+content:'';
+position:absolute;bottom:0;left:0;right:0;height:50%;
+background:linear-gradient(to top,rgba(244,118,42,0.04),transparent);
 }
-
 .portrait-letter{
-  font-family:'Cormorant Garamond',serif;
-  font-size:14rem;font-style:italic;font-weight:300;
-  color:rgba(200,169,110,0.07);
-  user-select:none;line-height:1;
+font-family:'Cormorant Garamond',serif;
+font-size:14rem;font-style:italic;font-weight:300;
+color:rgba(200,169,110,0.07);
+user-select:none;line-height:1;
 }
-
 .over-accent{
-  position:absolute;bottom:-2rem;right:-2rem;
-  width:5rem;height:5rem;
-  background:var(--orange);
-  opacity:0.9;
+position:absolute;bottom:-2rem;right:-2rem;
+width:5rem;height:5rem;
+background:var(--orange);
+opacity:0.9;
 }
-
 .over-text .s-title{margin-bottom:3rem}
-
 .over-text p{
-  font-size:0.95rem;line-height:1.85;
-  color:var(--muted2);font-weight:300;
-  margin-bottom:1.5rem;max-width:44ch;
+font-size:0.95rem;line-height:1.85;
+color:var(--muted2);font-weight:300;
+margin-bottom:1.5rem;max-width:44ch;
 }
-
 .over-tagline{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.5rem;font-style:italic;font-weight:300;
-  color:var(--gold);margin-top:2.5rem;
+font-family:'Cormorant Garamond',serif;
+font-size:1.5rem;font-style:italic;font-weight:300;
+color:var(--gold);margin-top:2.5rem;
 }
-
 .skills{
-  display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:2.5rem;
+display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:2.5rem;
 }
-
 .skill{
-  font-size:0.65rem;font-weight:400;letter-spacing:0.15em;
-  text-transform:uppercase;color:var(--muted2);
-  border:1px solid rgba(255,255,255,0.1);
-  padding:0.4rem 1rem;
-  transition:color 0.3s,border-color 0.3s;
+font-size:0.65rem;font-weight:400;letter-spacing:0.15em;
+text-transform:uppercase;color:var(--muted2);
+border:1px solid rgba(255,255,255,0.1);
+padding:0.4rem 1rem;
+transition:color 0.3s,border-color 0.3s;
 }
 .skill:hover{color:var(--orange);border-color:rgba(244,118,42,0.4)}
-
 /* CONTACT */
 .contact{
-  background:var(--navy);
-  padding:12rem 5vw;
-  text-align:center;
-  position:relative;overflow:hidden;
+background:var(--navy);
+padding:12rem 5vw;
+text-align:center;
+position:relative;overflow:hidden;
 }
-
 .contact::before{
-  content:'Contact';
-  position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(8rem,18vw,20rem);font-weight:300;
-  font-style:italic;
-  color:rgba(244,118,42,0.025);
-  white-space:nowrap;pointer-events:none;
-  user-select:none;letter-spacing:-0.04em;
+content:'Contact';
+position:absolute;top:50%;left:50%;
+transform:translate(-50%,-50%);
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(8rem,18vw,20rem);font-weight:300;
+font-style:italic;
+color:rgba(244,118,42,0.025);
+white-space:nowrap;pointer-events:none;
+user-select:none;letter-spacing:-0.04em;
 }
-
 .contact-wrap{max-width:680px;margin:0 auto;position:relative}
-
 .contact .s-label{justify-content:center}
 .contact .s-label::before{display:none}
-
 .contact .s-title{
-  font-size:clamp(3.5rem,7vw,7rem);
-  margin-bottom:1.5rem;
+font-size:clamp(3.5rem,7vw,7rem);
+margin-bottom:1.5rem;
 }
-
 .contact-sub{
-  font-size:1rem;line-height:1.8;color:var(--muted2);
-  font-weight:300;margin-bottom:5rem;
+font-size:1rem;line-height:1.8;color:var(--muted2);
+font-weight:300;margin-bottom:5rem;
 }
-
 .form{display:flex;flex-direction:column;gap:0;text-align:left}
-
 .f-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;margin-bottom:1.5px}
-
 .f-group{display:flex;flex-direction:column;position:relative;background:rgba(255,255,255,0.03)}
-
 .f-group label{
-  font-size:0.6rem;font-weight:400;letter-spacing:0.2em;
-  text-transform:uppercase;color:var(--gold);
-  padding:1.2rem 1.5rem 0.3rem;
+font-size:0.6rem;font-weight:400;letter-spacing:0.2em;
+text-transform:uppercase;color:var(--gold);
+padding:1.2rem 1.5rem 0.3rem;
 }
-
 .f-group input,.f-group textarea,.f-group select{
-  background:transparent;
-  border:none;border-bottom:1px solid rgba(255,255,255,0.06);
-  color:var(--white);
-  font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:300;
-  padding:0.5rem 1.5rem 1.2rem;
-  outline:none;width:100%;
-  transition:border-color 0.3s;
+background:transparent;
+border:none;border-bottom:1px solid rgba(255,255,255,0.06);
+color:var(--white);
+font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:300;
+padding:0.5rem 1.5rem 1.2rem;
+outline:none;width:100%;
+transition:border-color 0.3s;
 }
 .f-group input:focus,.f-group textarea:focus,.f-group select:focus{
-  border-bottom-color:var(--orange);
+border-bottom-color:var(--orange);
 }
 .f-group select option{background:#111928}
 .f-group textarea{resize:vertical;min-height:140px}
 .f-group.full{margin-bottom:1.5px}
-
 .f-submit{margin-top:3rem;display:flex;justify-content:center}
-
 .contact-footer{
-  display:flex;justify-content:center;gap:6rem;
-  margin-top:6rem;padding-top:4rem;
-  border-top:1px solid rgba(200,169,110,0.12);
+display:flex;justify-content:center;gap:6rem;
+margin-top:6rem;padding-top:4rem;
+border-top:1px solid rgba(200,169,110,0.12);
 }
-
 .cf-item{display:flex;flex-direction:column;gap:0.4rem;align-items:center}
 .cf-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);opacity:0.7}
 .cf-val{font-size:0.9rem;font-weight:300;color:var(--white)}
 .cf-val a{color:var(--white);text-decoration:none;transition:color 0.3s}
 .cf-val a:hover{color:var(--orange)}
-
 /* FOOTER */
 footer{
-  padding:2.5rem 5vw;
-  display:flex;align-items:center;justify-content:space-between;
-  border-top:1px solid rgba(200,169,110,0.08);
-  background:var(--black);
+padding:2.5rem 5vw;
+display:flex;align-items:center;justify-content:space-between;
+border-top:1px solid rgba(200,169,110,0.08);
+background:var(--black);
 }
-
 .f-logo{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1rem;font-weight:400;letter-spacing:0.18em;
-  text-transform:uppercase;color:var(--white);
+font-family:'Cormorant Garamond',serif;
+font-size:1rem;font-weight:400;letter-spacing:0.18em;
+text-transform:uppercase;color:var(--white);
 }
-
 footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
-
 /* REVEAL ANIM */
 .reveal{opacity:0;transform:translateY(40px);transition:opacity 0.9s ease,transform 0.9s ease}
 .reveal.in{opacity:1;transform:none}
-
 /* KEYFRAMES */
 @keyframes slideUp{to{transform:translateY(0)}}
 @keyframes fadeUp{
-  from{opacity:0;transform:translateY(16px)}
-  to{opacity:1;transform:none}
+from{opacity:0;transform:translateY(16px)}
+to{opacity:1;transform:none}
 }
-
 /* MOBILE */
 @media(max-width:768px){
-  .diensten-intro,.portfolio-intro,.over{grid-template-columns:1fr}
-  .f-row{grid-template-columns:1fr}
-  .portfolio-grid{grid-template-columns:1fr}
-  .p-item:nth-child(3){grid-column:1}
-  .p-item:nth-child(3) .p-thumb{aspect-ratio:4/3}
-  .hero-number{display:none}
-  .hero-bottom{flex-direction:column;align-items:flex-start;gap:2rem}
-  .hero-cta{align-items:flex-start}
-  .contact-footer{flex-direction:column;align-items:center;gap:2rem}
-  .nav-links{display:none}
-  .over-visual{display:none}
-  .dienst-price{display:none}
-  footer{flex-direction:column;gap:0.5rem;text-align:center}
+.diensten-intro,.portfolio-intro,.over{grid-template-columns:1fr}
+.f-row{grid-template-columns:1fr}
+.portfolio-grid{grid-template-columns:1fr}
+.p-item:nth-child(3){grid-column:1}
+.p-item:nth-child(3) .p-thumb{aspect-ratio:4/3}
+.hero-number{display:none}
+.hero-bottom{flex-direction:column;align-items:flex-start;gap:2rem}
+.hero-cta{align-items:flex-start}
+.contact-footer{flex-direction:column;align-items:center;gap:2rem}
+.nav-links{display:none}
+.over-visual{display:none}
+.dienst-price{display:none}
+footer{flex-direction:column;gap:0.5rem;text-align:center}
 }
-
 @media(prefers-reduced-motion:reduce){
-  .reveal,.hero-title .line span{transition:none;animation:none;opacity:1;transform:none}
+.reveal,.hero-title .line span{transition:none;animation:none;opacity:1;transform:none}
 }
 </style>
 </head>
 <body>
-
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
@@ -566,18 +485,16 @@ footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-number">01</div>
-
-  <p class="hero-eyebrow">Freelance Webdesign · Ham, Limburg</p>
-
+  <p class="hero-eyebrow">AI-gedreven Marketing · Ham, Limburg</p>
   <h1 class="hero-title">
-    <span class="line"><span>Websites</span></span>
-    <span class="line"><span>die <em>werken.</em></span></span>
+    <span class="line"><span>AI-gedreven</span></span>
+    <span class="line"><span>marketing die</span></span>
+    <span class="line"><span><em>verkoopt.</em></span></span>
   </h1>
-
   <div class="hero-bottom">
-    <p class="hero-desc">Professionele websites voor kleine bedrijven en zelfstandigen. Persoonlijk, doordacht en zonder gedoe.</p>
+    <p class="hero-desc">Content, social media en campagnes met AI — sneller en goedkoper dan een traditioneel marketingbureau. Voor bedrijven die meer willen zonder meer te betalen.</p>
     <div class="hero-cta">
-      <a href="#contact" class="btn-luxury">Gesprek plannen</a>
+      <a href="#contact" class="btn-luxury">Gratis gesprek plannen</a>
       <span class="scroll-hint">Scroll om te ontdekken</span>
     </div>
   </div>
@@ -590,41 +507,40 @@ footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
   <div class="diensten-intro reveal">
     <div>
       <p class="s-label">Wat ik doe</p>
-      <h2 class="s-title">Diensten<br>op <em>maat</em></h2>
+      <h2 class="s-title">Pakketten<br>op <em>maat</em></h2>
     </div>
-    <p class="diensten-sub">Van een elegante starterspagina tot een volledige webshop — elk project krijgt dezelfde aandacht voor detail.</p>
+    <p class="diensten-sub">Van een instaptraject tot een volledige AI-marketingstrategie — elk pakket is ontworpen om resultaat te leveren zonder bureauoverhead.</p>
   </div>
-
   <div class="diensten-list reveal">
     <div class="dienst">
       <div class="dienst-left">
         <span class="dienst-idx">01</span>
         <div class="dienst-info">
-          <h3>Starterspakket</h3>
-          <p>Één pagina, direct online. Professioneel en snel — perfect om gevonden te worden.</p>
+          <h3>Starter</h3>
+          <p>Eenmalig traject: AI-content, social media posts of een campagne. Perfect om te starten en te zien wat AI voor jou kan doen.</p>
         </div>
       </div>
-      <span class="dienst-price">vanaf €90</span>
+      <span class="dienst-price">€297 eenmalig</span>
     </div>
     <div class="dienst">
       <div class="dienst-left">
         <span class="dienst-idx">02</span>
         <div class="dienst-info">
-          <h3>Professionele website</h3>
-          <p>Meerdere pagina's, eigen stijl, volledig op maat ontworpen voor jouw merk.</p>
+          <h3>Groei</h3>
+          <p>Maandelijks pakket: consistente content, social media beheer en campagnes. Jij focust op je zaak, ik zorg voor de marketing.</p>
         </div>
       </div>
-      <span class="dienst-price">vanaf €300</span>
+      <span class="dienst-price">€97 / maand</span>
     </div>
     <div class="dienst">
       <div class="dienst-left">
         <span class="dienst-idx">03</span>
         <div class="dienst-info">
-          <h3>Uitgebreid pakket</h3>
-          <p>Webshop, boekingssysteem of complexe oplossing. Alles om online te verkopen of reserveren.</p>
+          <h3>Pro</h3>
+          <p>Volledige AI-marketingstrategie: content, social, visueel design en campagnes. Alles wat een marketingbureau doet, voor een fractie van de prijs.</p>
         </div>
       </div>
-      <span class="dienst-price">vanaf €725</span>
+      <span class="dienst-price">€247 / maand</span>
     </div>
   </div>
 </section>
@@ -638,15 +554,14 @@ footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
       <p class="s-label">Mijn werk</p>
       <h2 class="s-title">Recente<br><em>projecten</em></h2>
     </div>
-    <p class="diensten-sub" style="color:rgba(255,255,255,0.45)">Een selectie van websites gebouwd voor lokale bedrijven en klanten in de regio.</p>
+    <p class="diensten-sub" style="color:rgba(255,255,255,0.45)">Een selectie van content, designs en campagnes gebouwd voor lokale bedrijven in de regio.</p>
   </div>
-
   <div class="portfolio-grid reveal">
     <div class="p-item">
       <div class="p-thumb">
         <span class="p-glyph">K&T</span>
         <div class="p-overlay">
-          <span class="overlay-cat">Bedrijfswebsite</span>
+          <span class="overlay-cat">Social Media & Content</span>
           <span class="overlay-name">Klus &amp; Tuin Wim</span>
         </div>
       </div>
@@ -657,32 +572,6 @@ footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
     </div>
     <div class="p-item">
       <div class="p-thumb">
-        <span class="p-glyph">WK</span>
-        <div class="p-overlay">
-          <span class="overlay-cat">Web App</span>
-          <span class="overlay-name">WK2026 Tracker</span>
-        </div>
-      </div>
-      <div class="p-meta">
-        <h4>WK2026 België Tracker</h4>
-        <span>Live Sport</span>
-      </div>
-    </div>
-    <div class="p-item">
-      <div class="p-thumb">
-        <span class="p-glyph">✦ Sterren</span>
-        <div class="p-overlay">
-          <span class="overlay-cat">Interactief · WebGL</span>
-          <span class="overlay-name">De Hemel boven Kwaadmechelen</span>
-        </div>
-      </div>
-      <div class="p-meta">
-        <h4>De Hemel boven Kwaadmechelen</h4>
-        <span>Sterrenkaart</span>
-      </div>
-    </div>
-    <a class="p-item" href="/slagerij-van-damme.html" style="text-decoration:none;color:inherit">
-      <div class="p-thumb" style="background:linear-gradient(160deg,#1a0808 0%,#3d1010 100%)">
         <span class="p-glyph">VD</span>
         <div class="p-overlay">
           <span class="overlay-cat">Bedrijfswebsite</span>
@@ -693,7 +582,33 @@ footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
         <h4>Slagerij Van Damme</h4>
         <span>Tessenderlo</span>
       </div>
-    </a>
+    </div>
+    <div class="p-item">
+      <div class="p-thumb">
+        <span class="p-glyph">AI</span>
+        <div class="p-overlay">
+          <span class="overlay-cat">AI Content & Design</span>
+          <span class="overlay-name">Visuele campagne</span>
+        </div>
+      </div>
+      <div class="p-meta">
+        <h4>AI Content Campagne</h4>
+        <span>Figma · Canva</span>
+      </div>
+    </div>
+    <div class="p-item">
+      <div class="p-thumb" style="background:linear-gradient(160deg,#0f1a10 0%,#1a3020 100%)">
+        <span class="p-glyph">SM</span>
+        <div class="p-overlay">
+          <span class="overlay-cat">Social Media</span>
+          <span class="overlay-name">Instagram & Facebook</span>
+        </div>
+      </div>
+      <div class="p-meta">
+        <h4>Social Media Beheer</h4>
+        <span>Instagram · Facebook</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -710,16 +625,18 @@ footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
   <div class="over-text reveal">
     <p class="s-label">Over mij</p>
     <h2 class="s-title">Davy<br><em>Timmers</em></h2>
-    <p>Ik ben een freelance webdesigner uit Ham, Limburg. Geen groot bureau, geen anonieme e-mails — gewoon iemand die graag mooie dingen bouwt.</p>
-    <p>Met een frisse blik en een doordachte aanpak zorg ik ervoor dat jouw website er niet uitziet als duizend andere. Persoonlijk contact, eerlijke prijzen, resultaat om trots op te zijn.</p>
-    <p class="over-tagline">Frisse blik, doordachte website.</p>
+    <p>Ik help bedrijven groeien met AI-marketing — content, social en campagnes sneller en goedkoper dan een traditioneel bureau.</p>
+    <p>Geen groot bureau, geen anonieme e-mails. Gewoon iemand die Claude AI, Figma en social media combineert om jouw marketing te laten werken — persoonlijk, doordacht en zonder gedoe.</p>
+    <p class="over-tagline">Sneller. Slimmer. Goedkoper.</p>
     <div class="skills">
-      <span class="skill">Webdesign</span>
-      <span class="skill">WordPress</span>
-      <span class="skill">HTML &amp; CSS</span>
-      <span class="skill">Divi</span>
-      <span class="skill">SEO</span>
-      <span class="skill">Elementor</span>
+      <span class="skill">Claude AI</span>
+      <span class="skill">AI Content</span>
+      <span class="skill">Figma</span>
+      <span class="skill">Canva</span>
+      <span class="skill">Instagram</span>
+      <span class="skill">Facebook</span>
+      <span class="skill">Social Media</span>
+      <span class="skill">Campagnes</span>
     </div>
   </div>
 </section>
@@ -729,8 +646,7 @@ footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
   <div class="contact-wrap">
     <p class="s-label reveal">Klaar om te starten?</p>
     <h2 class="s-title reveal">Laat iets<br><em>weten</em></h2>
-    <p class="contact-sub reveal">Vertel me over je project. Ik antwoord binnen één werkdag.</p>
-
+    <p class="contact-sub reveal">Vertel me over je bedrijf. Ik antwoord binnen één werkdag.</p>
     <form class="form reveal" onsubmit="handleSubmit(event)">
       <div class="f-row">
         <div class="f-group">
@@ -743,12 +659,12 @@ footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
         </div>
       </div>
       <div class="f-group full">
-        <label>Dienst</label>
+        <label>Pakket</label>
         <select>
           <option value="">Kies een pakket...</option>
-          <option>Starterspakket · €90</option>
-          <option>Professionele website · €300</option>
-          <option>Uitgebreid pakket · €725</option>
+          <option>Starter · €297 eenmalig</option>
+          <option>Groei · €97/maand</option>
+          <option>Pro · €247/maand</option>
           <option>Vrijblijvend gesprek</option>
         </select>
       </div>
@@ -762,7 +678,6 @@ footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
         </button>
       </div>
     </form>
-
     <div class="contact-footer reveal">
       <div class="cf-item">
         <span class="cf-label">E-mail</span>
@@ -783,7 +698,7 @@ footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
 <!-- FOOTER -->
 <footer>
   <span class="f-logo">TimmersDesign</span>
-  <small>© 2026 — Frisse blik, doordachte website.</small>
+  <small>© 2026 — AI-gedreven marketing voor Belgische bedrijven.</small>
 </footer>
 
 <script>
@@ -791,18 +706,15 @@ footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
 let mx=0,my=0,rx=0,ry=0;
-
 document.addEventListener('mousemove',e=>{
   mx=e.clientX;my=e.clientY;
   cursor.style.left=mx+'px';cursor.style.top=my+'px';
 });
-
 (function animRing(){
   rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;
   ring.style.left=rx+'px';ring.style.top=ry+'px';
   requestAnimationFrame(animRing);
 })();
-
 document.querySelectorAll('a,button,.dienst,.p-item,.skill').forEach(el=>{
   el.addEventListener('mouseenter',()=>{
     cursor.style.width='14px';cursor.style.height='14px';
@@ -815,13 +727,11 @@ document.querySelectorAll('a,button,.dienst,.p-item,.skill').forEach(el=>{
     ring.style.borderColor='rgba(244,118,42,0.4)';
   });
 });
-
 // Scroll reveal
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}});
 },{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
 // Form
 function handleSubmit(e){
   e.preventDefault();
