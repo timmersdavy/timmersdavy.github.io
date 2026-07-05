@@ -262,6 +262,8 @@ position:relative;overflow:hidden;
 .p-item:nth-child(2) .p-thumb{background:linear-gradient(160deg,#1a1208 0%,#3a2010 100%)}
 .p-item:nth-child(3) .p-thumb{background:linear-gradient(160deg,#0a0f1e 0%,#0d1b3e 100%)}
 .p-item:nth-child(4) .p-thumb{background:linear-gradient(160deg,#1a0808 0%,#3d1010 100%)}
+.p-item:nth-child(5){grid-column:1/-1;grid-row:3;display:block;color:inherit;text-decoration:none}
+.p-item:nth-child(5) .p-thumb{background:linear-gradient(160deg,#120b06 0%,#33200f 100%);aspect-ratio:8/3}
 .p-glyph{
 font-family:'Cormorant Garamond',serif;
 font-size:clamp(4rem,10vw,9rem);
@@ -452,6 +454,8 @@ to{opacity:1;transform:none}
 .portfolio-grid{grid-template-columns:1fr}
 .p-item:nth-child(3){grid-column:1}
 .p-item:nth-child(3) .p-thumb{aspect-ratio:4/3}
+.p-item:nth-child(5){grid-column:1;grid-row:auto}
+.p-item:nth-child(5) .p-thumb{aspect-ratio:4/3}
 .hero-number{display:none}
 .hero-bottom{flex-direction:column;align-items:flex-start;gap:2rem}
 .hero-cta{align-items:flex-start}
@@ -609,6 +613,19 @@ footer{flex-direction:column;gap:0.5rem;text-align:center}
         <span>Instagram · Facebook</span>
       </div>
     </div>
+    <a class="p-item" href="https://timmersdesign.be/wat-claude-doet/" target="_blank" rel="noopener">
+      <div class="p-thumb">
+        <span class="p-glyph">&gt;_</span>
+        <div class="p-overlay">
+          <span class="overlay-cat">Webdemo &amp; AI</span>
+          <span class="overlay-name">Wat Claude allemaal doet</span>
+        </div>
+      </div>
+      <div class="p-meta">
+        <h4>Wat Claude allemaal doet</h4>
+        <span>Live demo</span>
+      </div>
+    </a>
   </div>
 </section>
 
