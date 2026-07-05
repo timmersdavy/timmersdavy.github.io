@@ -452,10 +452,8 @@ to{opacity:1;transform:none}
 .diensten-intro,.portfolio-intro,.over{grid-template-columns:1fr}
 .f-row{grid-template-columns:1fr}
 .portfolio-grid{grid-template-columns:1fr}
-.p-item:nth-child(3){grid-column:1}
-.p-item:nth-child(3) .p-thumb{aspect-ratio:4/3}
-.p-item:nth-child(5){grid-column:1;grid-row:auto}
-.p-item:nth-child(5) .p-thumb{aspect-ratio:4/3}
+.portfolio-grid .p-item{grid-column:1;grid-row:auto}
+.p-item:nth-child(3) .p-thumb,.p-item:nth-child(5) .p-thumb{aspect-ratio:4/3}
 .hero-number{display:none}
 .hero-bottom{flex-direction:column;align-items:flex-start;gap:2rem}
 .hero-cta{align-items:flex-start}
