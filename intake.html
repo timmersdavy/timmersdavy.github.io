@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TimmersDesign — Intake nieuw project</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0D1B3E; font-family: Arial, sans-serif; color: #fff; padding: 40px 20px; max-width: 700px; margin: 0 auto; }
+  h1 { font-family: 'Arial Black', Arial; font-size: 32px; color: #fff; margin-bottom: 4px; }
+  h1 span { color: #F4762A; }
+  .sub { font-size: 11px; letter-spacing: 3px; color: #4a6a9a; margin-bottom: 40px; }
+  p.intro { font-size: 14px; color: #ccc; line-height: 1.7; margin-bottom: 30px; }
+
+  .sectie { background: rgba(255,255,255,0.05); border-left: 3px solid #F4762A; border-radius: 8px; padding: 24px; margin-bottom: 20px; }
+  .sectie h2 { font-size: 14px; letter-spacing: 2px; color: #F4762A; text-transform: uppercase; margin-bottom: 16px; }
+
+  .vraag { margin-bottom: 20px; }
+  .vraag label { font-size: 13px; color: #4a6a9a; letter-spacing: 1px; display: block; margin-bottom: 6px; }
+  .vraag input, .vraag textarea, .vraag select {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 12px;
+    color: #fff;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+  }
+  .vraag textarea { min-height: 80px; resize: vertical; }
+  .vraag input:focus, .vraag textarea:focus, .vraag select:focus {
+    outline: none;
+    border-color: #F4762A;
+  }
+  .vraag select option { background: #0D1B3E; }
+
+  .checkrow { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+  .checkrow label { color: #fff; font-size: 13px; letter-spacing: 0; display: flex; align-items: center; gap: 10px; }
+  .checkrow input[type="checkbox"] { width: 18px; height: 18px; accent-color: #F4762A; cursor: pointer; flex-shrink: 0; }
+
+  .knop { display: inline-block; background: #F4762A; color: #fff; font-family: 'Arial Black', Arial; font-size: 13px; letter-spacing: 1px; padding: 16px 28px; border-radius: 6px; border: none; cursor: pointer; margin-top: 10px; width: 100%; text-align: center; }
+  .knop:hover { background: #e06520; }
+
+  footer { text-align: center; margin-top: 40px; font-size: 10px; letter-spacing: 2px; color: #4a6a9a; }
+</style>
+</head>
+<body>
+
+<h1>TIMMERS<span>DESIGN</span></h1>
+<div class="sub">INTAKE · NIEUW WEBSITEPROJECT</div>
+
+<p class="intro">Vul dit formulier in om je project te starten. Hoe vollediger je antwoordt, hoe sneller ik een goed voorstel kan maken.</p>
+
+<form action="https://formspree.io/f/mgojdyza" method="POST">
+
+  <div class="sectie">
+    <h2>1. Jouw gegevens</h2>
+    <div class="vraag">
+      <label>Naam / bedrijfsnaam *</label>
+      <input type="text" name="naam" placeholder="bv. Kapper Kevin" required>
+    </div>
+    <div class="vraag">
+      <label>Sector / type bedrijf *</label>
+      <input type="text" name="sector" placeholder="bv. Kapper, Restaurant, Fotograaf..." required>
+    </div>
+    <div class="vraag">
+      <label>E-mailadres *</label>
+      <input type="email" name="email" placeholder="jij@bedrijf.be" required>
+    </div>
+    <div class="vraag">
+      <label>Telefoonnummer</label>
+      <input type="tel" name="telefoon" placeholder="bv. 04XX XX XX XX">
+    </div>
+  </div>
+
+  <div class="sectie">
+    <h2>2. Over je project</h2>
+    <div class="vraag">
+      <label>Wat doe je? (product of dienst) *</label>
+      <textarea name="wat_doe_je" placeholder="bv. Ik ben kapper in Gent, gespecialiseerd in heren- en kinderhaarsnijden." required></textarea>
+    </div>
+    <div class="vraag">
+      <label>Wie zijn je klanten?</label>
+      <textarea name="doelgroep" placeholder="bv. Mannen 20-50 jaar, gezinnen in de buurt van Gent-centrum."></textarea>
+    </div>
+    <div class="vraag">
+      <label>Wat moet de website kunnen?</label>
+      <div class="checkrow">
+        <label><input type="checkbox" name="functies[]" value="Informatie tonen"> Informatie tonen (openingsuren, adres...)</label>
+        <label><input type="checkbox" name="functies[]" value="Online reserveren"> Online reserveren</label>
+        <label><input type="checkbox" name="functies[]" value="Webshop"> Webshop</label>
+        <label><input type="checkbox" name="functies[]" value="Portfolio"> Portfolio / galerij</label>
+        <label><input type="checkbox" name="functies[]" value="Contactformulier"> Contactformulier</label>
+        <label><input type="checkbox" name="functies[]" value="Blog"> Blog</label>
+      </div>
+    </div>
+    <div class="vraag">
+      <label>Heb je al een logo en huisstijlkleuren?</label>
+      <select name="logo_status">
+        <option>Ja — ik lever alles aan</option>
+        <option>Nee — moet nog gemaakt worden</option>
+        <option>Gedeeltelijk — logo wel, kleuren niet</option>
+      </select>
+    </div>
+    <div class="vraag">
+      <label>Voorbeeldwebsites die je mooi vindt (URL's)</label>
+      <textarea name="voorbeelden" placeholder="bv. www.voorbeeld.be, www.inspiratie.com"></textarea>
+    </div>
+  </div>
+
+  <div class="sectie">
+    <h2>3. Budget & timing</h2>
+    <div class="vraag">
+      <label>Budget (bij benadering)</label>
+      <select name="budget">
+        <option>Minder dan €500</option>
+        <option>€500 - €1000</option>
+        <option>€1000 - €2500</option>
+        <option>€2500 - €5000</option>
+        <option>Meer dan €5000</option>
+      </select>
+    </div>
+    <div class="vraag">
+      <label>Gewenste deadline</label>
+      <input type="date" name="deadline">
+    </div>
+  </div>
+
+  <input type="hidden" name="_subject" value="Nieuwe intake — TimmersDesign">
+  <input type="text" name="_gotcha" style="display:none">
+
+  <button class="knop" type="submit">Verstuur intake</button>
+</form>
+
+<footer>TIMMERSDESIGN · WEBDESIGN · BRANDING · GRAFISCH ONTWERP</footer>
+
+</body>
+</html>
