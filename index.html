@@ -662,20 +662,22 @@ footer{flex-direction:column;gap:0.5rem;text-align:center}
     <p class="s-label reveal">Klaar om te starten?</p>
     <h2 class="s-title reveal">Laat iets<br><em>weten</em></h2>
     <p class="contact-sub reveal">Vertel me over je bedrijf. Ik antwoord binnen één werkdag.</p>
-    <form class="form reveal" onsubmit="handleSubmit(event)">
+    <form class="form reveal" id="contactForm" onsubmit="handleSubmit(event)">
+      <input type="hidden" name="_subject" value="Nieuw bericht via portfolio-contactformulier">
+      <input type="hidden" name="bron" value="Portfolio-homepage (timmersdesign.be)">
       <div class="f-row">
         <div class="f-group">
           <label>Naam</label>
-          <input type="text" placeholder="Jan Janssen" required>
+          <input type="text" name="naam" placeholder="Jan Janssen" required>
         </div>
         <div class="f-group">
           <label>E-mail</label>
-          <input type="email" placeholder="jan@voorbeeld.be" required>
+          <input type="email" name="email" placeholder="jan@voorbeeld.be" required>
         </div>
       </div>
       <div class="f-group full">
         <label>Pakket</label>
-        <select>
+        <select name="pakket">
           <option value="">Kies een pakket...</option>
           <option>Starter · €297 eenmalig</option>
           <option>Groei · €97/maand</option>
@@ -685,7 +687,7 @@ footer{flex-direction:column;gap:0.5rem;text-align:center}
       </div>
       <div class="f-group full" style="margin-bottom:0">
         <label>Bericht</label>
-        <textarea placeholder="Vertel me over je zaak, wat je nodig hebt en wanneer..."></textarea>
+        <textarea name="bericht" placeholder="Vertel me over je zaak, wat je nodig hebt en wanneer..."></textarea>
       </div>
       <div class="f-submit">
         <button type="submit" class="btn-luxury" id="submitBtn" style="cursor:pointer;border:1px solid rgba(255,255,255,0.2);font-family:'Inter',sans-serif;background:none">
@@ -750,11 +752,32 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 // Form
 function handleSubmit(e){
   e.preventDefault();
+  const form=e.target;
   const btn=document.getElementById('submitBtn');
-  btn.textContent='✓ Verstuurd';
-  btn.style.borderColor='#c8a96e';
-  btn.style.color='#c8a96e';
-  setTimeout(()=>{btn.textContent='Versturen →';btn.style.borderColor='';btn.style.color='';e.target.reset()},3000);
+  const originalText=btn.textContent;
+  btn.disabled=true;
+  btn.textContent='Bezig...';
+  fetch('https://formspree.io/f/mgojdyza',{
+    method:'POST',
+    body:new FormData(form),
+    headers:{'Accept':'application/json'}
+  }).then(res=>{
+    if(res.ok){
+      btn.textContent='✓ Verstuurd';
+      btn.style.borderColor='#c8a96e';
+      btn.style.color='#c8a96e';
+      form.reset();
+    } else {
+      btn.textContent='Mislukt, probeer opnieuw';
+      btn.style.borderColor='#F4762A';
+    }
+  }).catch(()=>{
+    btn.textContent='Mislukt, probeer opnieuw';
+    btn.style.borderColor='#F4762A';
+  }).finally(()=>{
+    btn.disabled=false;
+    setTimeout(()=>{btn.textContent=originalText;btn.style.borderColor='';btn.style.color=''},4000);
+  });
 }
 </script>
 </body>
