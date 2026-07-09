@@ -3,9 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AI-gedreven marketing voor Belgische bedrijven: content, social media en campagnes, sneller en goedkoper dan een traditioneel bureau. Uit Ham, Limburg — persoonlijk en zonder gedoe.">
 <title>TimmersDesign — AI-gedreven Marketing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- FAQPage structured data (JSON-LD) — tekst identiek aan de zichtbare antwoorden -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wat kost AI-marketing bij TimmersDesign?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ik werk met drie pakketten. Starter is een eenmalig traject van €297: je krijgt AI-content, social posts of een campagne om te zien wat het voor jou oplevert. Groei kost €97 per maand voor doorlopende content en social beheer. Pro is €247 per maand en omvat de volledige strategie: content, social, visueel design en campagnes. Geen verborgen kosten, je weet vooraf wat je betaalt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe snel heb ik iets in handen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bij een Starter-traject lever ik de eerste content meestal binnen een week. Bij een maandpakket loopt de content gewoon door: elke maand nieuwe posts, campagnes en opvolging. Je zit dus nooit lang te wachten op resultaat."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Voor wie werkt TimmersDesign?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Vooral voor zelfstandigen en kleine tot middelgrote bedrijven in de regio die willen groeien maar geen duur marketingbureau willen betalen. Je hebt rechtstreeks contact met mij, geen tussenpersonen of anonieme mailboxen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Zit ik vast aan een lang contract?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nee. De maandpakketten zijn maandelijks opzegbaar. Werkt het niet zoals je wil, dan stop je gewoon. Ik wil dat je blijft omdat het rendeert, niet omdat een contract je vasthoudt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Je werkt met AI — gaat dat niet ten koste van kwaliteit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI zorgt dat het sneller en goedkoper gaat, maar ik kijk alles zelf na voor het de deur uitgaat. Zo blijft de toon van jouw zaak herkenbaar en klinkt het niet als een robot. De snelheid komt van AI, het nakijken doe ik zelf."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is het kennismakingsgesprek echt gratis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, het eerste gesprek is gratis en vrijblijvend. We bekijken samen wat je zaak nodig heeft en of ik de juiste persoon ben. Pas daarna beslis jij of je verdergaat."
+      }
+    }
+  ]
+}
+</script>
+
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -438,6 +498,36 @@ font-size:1rem;font-weight:400;letter-spacing:0.18em;
 text-transform:uppercase;color:var(--white);
 }
 footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
+/* FAQ */
+.faq{background:var(--navy-soft)}
+.faq-intro{margin-bottom:5rem}
+.faq-intro .diensten-sub{max-width:52ch}
+.faq-list{display:flex;flex-direction:column;max-width:920px}
+.faq-item{border-bottom:1px solid rgba(255,255,255,0.07)}
+.faq-item:first-child{border-top:1px solid rgba(255,255,255,0.07)}
+.faq-item summary{
+list-style:none;
+display:flex;align-items:center;justify-content:space-between;gap:2rem;
+padding:2.1rem 0;
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(1.35rem,2.4vw,2rem);font-weight:300;
+letter-spacing:-0.01em;color:var(--white);
+transition:color 0.3s;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{
+content:'+';flex-shrink:0;
+font-family:'Inter',sans-serif;font-weight:300;
+font-size:1.5rem;line-height:1;color:var(--orange);
+transition:transform 0.3s;
+}
+.faq-item[open] summary::after{content:'\2212'}
+.faq-item summary:hover{color:var(--orange)}
+.faq-answer{
+padding:0 0 2.2rem;max-width:62ch;
+font-size:0.95rem;line-height:1.85;font-weight:300;color:var(--muted2);
+}
+.faq-answer p{margin:0}
 /* REVEAL ANIM */
 .reveal{opacity:0;transform:translateY(40px);transition:opacity 0.9s ease,transform 0.9s ease}
 .reveal.in{opacity:1;transform:none}
@@ -479,6 +569,7 @@ footer{flex-direction:column;gap:0.5rem;text-align:center}
     <li><a href="#diensten">Diensten</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#over">Over</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -656,6 +747,55 @@ footer{flex-direction:column;gap:0.5rem;text-align:center}
   </div>
 </section>
 
+<div class="gold-rule"></div>
+
+<!-- FAQ -->
+<section class="faq section-wrap" id="faq">
+  <div class="faq-intro reveal">
+    <p class="s-label">Veelgestelde vragen</p>
+    <h2 class="s-title">Vragen &amp;<br><em>antwoorden</em></h2>
+    <p class="diensten-sub" style="margin-top:2.5rem">Staat je vraag er niet tussen? Stuur me gewoon een bericht, dan antwoord ik binnen één werkdag.</p>
+  </div>
+  <div class="faq-list reveal">
+    <details class="faq-item">
+      <summary>Wat kost AI-marketing bij TimmersDesign?</summary>
+      <div class="faq-answer">
+        <p>Ik werk met drie pakketten. Starter is een eenmalig traject van €297: je krijgt AI-content, social posts of een campagne om te zien wat het voor jou oplevert. Groei kost €97 per maand voor doorlopende content en social beheer. Pro is €247 per maand en omvat de volledige strategie: content, social, visueel design en campagnes. Geen verborgen kosten, je weet vooraf wat je betaalt.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Hoe snel heb ik iets in handen?</summary>
+      <div class="faq-answer">
+        <p>Bij een Starter-traject lever ik de eerste content meestal binnen een week. Bij een maandpakket loopt de content gewoon door: elke maand nieuwe posts, campagnes en opvolging. Je zit dus nooit lang te wachten op resultaat.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Voor wie werkt TimmersDesign?</summary>
+      <div class="faq-answer">
+        <p>Vooral voor zelfstandigen en kleine tot middelgrote bedrijven in de regio die willen groeien maar geen duur marketingbureau willen betalen. Je hebt rechtstreeks contact met mij, geen tussenpersonen of anonieme mailboxen.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Zit ik vast aan een lang contract?</summary>
+      <div class="faq-answer">
+        <p>Nee. De maandpakketten zijn maandelijks opzegbaar. Werkt het niet zoals je wil, dan stop je gewoon. Ik wil dat je blijft omdat het rendeert, niet omdat een contract je vasthoudt.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Je werkt met AI — gaat dat niet ten koste van kwaliteit?</summary>
+      <div class="faq-answer">
+        <p>AI zorgt dat het sneller en goedkoper gaat, maar ik kijk alles zelf na voor het de deur uitgaat. Zo blijft de toon van jouw zaak herkenbaar en klinkt het niet als een robot. De snelheid komt van AI, het nakijken doe ik zelf.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Is het kennismakingsgesprek echt gratis?</summary>
+      <div class="faq-answer">
+        <p>Ja, het eerste gesprek is gratis en vrijblijvend. We bekijken samen wat je zaak nodig heeft en of ik de juiste persoon ben. Pas daarna beslis jij of je verdergaat.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-wrap">
@@ -732,7 +872,7 @@ document.addEventListener('mousemove',e=>{
   ring.style.left=rx+'px';ring.style.top=ry+'px';
   requestAnimationFrame(animRing);
 })();
-document.querySelectorAll('a,button,.dienst,.p-item,.skill').forEach(el=>{
+document.querySelectorAll('a,button,.dienst,.p-item,.skill,.faq-item summary').forEach(el=>{
   el.addEventListener('mouseenter',()=>{
     cursor.style.width='14px';cursor.style.height='14px';
     ring.style.width='56px';ring.style.height='56px';
