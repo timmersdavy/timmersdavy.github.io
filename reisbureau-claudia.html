@@ -153,38 +153,46 @@
 
   .hero-beeld {
     position: relative;
-    background:
-      radial-gradient(ellipse at 30% 90%, rgba(194,59,59,0.45), transparent 55%),
-      radial-gradient(ellipse at 75% 25%, rgba(108,166,214,0.4), transparent 50%),
-      linear-gradient(165deg, #14304a 0%, #0b1026 60%, #06081a 100%);
+    display: flex;
+    flex-direction: column;
+    background: #0b1026;
     overflow: hidden;
   }
-  .hero-beeld::after {
-    content: '';
-    position: absolute;
-    left: 0; right: 0; bottom: 28%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(108,166,214,0.7), transparent);
+  .seizoen-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1px;
+    background: rgba(108,166,214,0.15);
   }
-  .hero-beeld .zon-schijf {
-    position: absolute;
-    left: 50%; bottom: 22%;
-    width: 130px; height: 130px;
-    transform: translateX(-50%);
-    border-radius: 50%;
-    background: radial-gradient(circle, #d97a7a 0%, #c23b3b 55%, rgba(194,59,59,0) 75%);
-    filter: blur(2px);
-    opacity: 0.9;
+  .seizoen {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.4rem;
   }
-  .hero-quote {
-    position: absolute;
-    left: 2.5rem; right: 2.5rem; bottom: 2.5rem;
+  .seizoen-lente { background: linear-gradient(160deg, #2a4a5c 0%, #14304a 70%); }
+  .seizoen-zomer { background: linear-gradient(160deg, #3d7ea8 0%, #14304a 70%); }
+  .seizoen-herfst { background: linear-gradient(160deg, #7a3838 0%, #14304a 70%); }
+  .seizoen-winter { background: linear-gradient(160deg, #1c2a42 0%, #06081a 70%); }
+  .seizoen .icoon { font-size: 1.4rem; margin-right: 0.6rem; }
+  .seizoen .naam {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 1.05rem;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--wit);
+    display: flex;
+    align-items: center;
+  }
+  .hero-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
     color: rgba(246,241,233,0.85);
     border-left: 2px solid var(--goud);
-    padding-left: 1.2rem;
+    padding: 1.2rem 2.5rem;
   }
 
   /* SECTIES ALGEMEEN */
@@ -376,7 +384,12 @@
     <a href="#contact" class="knop">Plan je reis met ons</a>
   </div>
   <div class="hero-beeld">
-    <div class="zon-schijf"></div>
+    <div class="seizoen-grid">
+      <div class="seizoen seizoen-lente"><span class="icoon">🌸</span><span class="naam">Lente</span></div>
+      <div class="seizoen seizoen-zomer"><span class="icoon">☀️</span><span class="naam">Zomer</span></div>
+      <div class="seizoen seizoen-herfst"><span class="icoon">🍂</span><span class="naam">Herfst</span></div>
+      <div class="seizoen seizoen-winter"><span class="icoon">❄️</span><span class="naam">Winter</span></div>
+    </div>
     <div class="hero-quote">
       "De mooiste reizen beginnen niet online, maar aan onze tafel — met koffie en een wereldkaart."
     </div>
