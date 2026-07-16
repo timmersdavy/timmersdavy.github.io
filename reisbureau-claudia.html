@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claud(ia) — Reizen die bij je passen</title>
+<meta name="description" content="Reisbureau Claud(ia) in Leopoldsburg — persoonlijk reisadvies, zorgeloos geboekt. Van citytrip tot rondreis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --nacht: #0b1026;          /* diepe nachtblauwe basis          */
+    --nacht-zacht: #131a36;    /* kaarten / secties                */
+    --zon: #c23b3b;            /* rood — call-to-action            */
+    --goud: #6ca6d6;           /* lichtblauw accent                */
+    --goud-dim: rgba(108,166,214,0.14);
+    --wit: #ffffff;
+    --zand: #f6f1e9;           /* zachte lichte tekst / vlakken    */
+    --gedempt: rgba(255,255,255,0.42);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--nacht);
+    color: var(--zand);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(11,16,38,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(108,166,214,0.15);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--wit);
+    letter-spacing: 0.02em;
+  }
+  .logo em { color: var(--goud); font-style: italic; }
+  .logo span {
+    display: block;
+    font-size: 0.55rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: var(--gedempt);
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+
+  nav ul { list-style: none; display: flex; gap: 2.5rem; }
+  nav a {
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--zand);
+    transition: color 0.3s;
+  }
+  nav a:hover { color: var(--goud); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    align-items: stretch;
+  }
+
+  .hero-tekst {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 4rem 5rem;
+  }
+
+  .hero-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--goud);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
+    line-height: 1.08;
+    color: var(--wit);
+    margin-bottom: 1.8rem;
+  }
+  h1 em { font-style: italic; color: var(--goud); }
+
+  .hero-intro {
+    max-width: 30rem;
+    color: rgba(246,241,233,0.75);
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cijfers {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 2.5rem;
+  }
+  .cijfer strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--goud);
+    line-height: 1;
+  }
+  .cijfer span {
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gedempt);
+  }
+
+  .knop {
+    display: inline-block;
+    align-self: flex-start;
+    background: var(--zon);
+    color: var(--wit);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 1.1rem 2.4rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.35s, transform 0.35s;
+  }
+  .knop:hover { background: var(--goud); transform: translateY(-2px); }
+
+  .hero-beeld {
+    position: relative;
+    background:
+      radial-gradient(ellipse at 30% 90%, rgba(194,59,59,0.45), transparent 55%),
+      radial-gradient(ellipse at 75% 25%, rgba(108,166,214,0.4), transparent 50%),
+      linear-gradient(165deg, #14304a 0%, #0b1026 60%, #06081a 100%);
+    overflow: hidden;
+  }
+  .hero-beeld::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 28%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(108,166,214,0.7), transparent);
+  }
+  .hero-beeld .zon-schijf {
+    position: absolute;
+    left: 50%; bottom: 22%;
+    width: 130px; height: 130px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, #d97a7a 0%, #c23b3b 55%, rgba(194,59,59,0) 75%);
+    filter: blur(2px);
+    opacity: 0.9;
+  }
+  .hero-quote {
+    position: absolute;
+    left: 2.5rem; right: 2.5rem; bottom: 2.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: rgba(246,241,233,0.85);
+    border-left: 2px solid var(--goud);
+    padding-left: 1.2rem;
+  }
+
+  /* SECTIES ALGEMEEN */
+  section { padding: 6rem 4rem; }
+
+  .sectie-header { max-width: 40rem; margin-bottom: 3.5rem; }
+  .sectie-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--goud);
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    line-height: 1.15;
+    color: var(--wit);
+    margin-bottom: 1rem;
+  }
+  h2 em { font-style: italic; color: var(--goud); }
+  .sectie-header p { color: rgba(246,241,233,0.65); }
+
+  /* BESTEMMINGEN */
+  .bestemmingen { background: var(--nacht-zacht); }
+  .bestemming-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .bestemming {
+    border: 1px solid rgba(108,166,214,0.18);
+    padding: 2.2rem 1.8rem;
+    background: rgba(11,16,38,0.5);
+    transition: border-color 0.4s, transform 0.4s;
+  }
+  .bestemming:hover { border-color: var(--goud); transform: translateY(-4px); }
+  .bestemming .icoon { font-size: 1.6rem; margin-bottom: 1.2rem; display: block; }
+  .bestemming h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.35rem;
+    color: var(--wit);
+    margin-bottom: 0.6rem;
+  }
+  .bestemming p { font-size: 0.88rem; color: rgba(246,241,233,0.6); }
+
+  /* WAAROM */
+  .waarom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .waarom-beeld {
+    height: 380px;
+    background:
+      radial-gradient(ellipse at 70% 30%, rgba(108,166,214,0.3), transparent 55%),
+      linear-gradient(200deg, #14304a, #0b1026);
+    border: 1px solid rgba(108,166,214,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .waarom-beeld .kompas {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 4.5rem;
+    color: var(--goud);
+    opacity: 0.85;
+  }
+  .waarom-lijst { list-style: none; margin-top: 1.5rem; }
+  .waarom-lijst li {
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgba(108,166,214,0.12);
+    color: rgba(246,241,233,0.8);
+    font-size: 0.95rem;
+  }
+  .waarom-lijst li::before { content: '— '; color: var(--goud); }
+
+  /* CONTACT */
+  .contact { background: var(--nacht-zacht); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+  }
+  .contact-info .rij { margin-bottom: 1.6rem; }
+  .contact-info .rij-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--goud);
+    margin-bottom: 0.3rem;
+  }
+  .contact-info .rij-waarde { color: rgba(246,241,233,0.85); font-size: 0.95rem; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-rij { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-groep { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-groep label {
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gedempt);
+  }
+  .form-groep input, .form-groep textarea, .form-groep select {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(108,166,214,0.25);
+    color: var(--wit);
+    padding: 0.85rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+  }
+  .form-groep input::placeholder, .form-groep textarea::placeholder { color: rgba(246,241,233,0.3); }
+  .form-groep input:focus, .form-groep textarea:focus, .form-groep select:focus { border-color: var(--goud); }
+  .form-groep textarea { resize: vertical; min-height: 120px; }
+  .form-groep select option { background: var(--nacht); }
+
+  /* FOOTER */
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4rem;
+    border-top: 1px solid rgba(108,166,214,0.15);
+    font-size: 0.72rem;
+    color: var(--gedempt);
+  }
+  footer a { color: var(--goud); text-decoration: none; }
+
+  .demo-badge {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    background: var(--zon); color: var(--wit);
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.6rem 1rem; z-index: 200; font-family: 'Inter', sans-serif;
+    border-radius: 100px;
+  }
+
+  /* MOBIEL */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { gap: 1.2rem; flex-wrap: wrap; justify-content: flex-end; row-gap: 0.3rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-beeld { height: 300px; order: -1; margin-top: 76px; }
+    .hero-tekst { padding: 3rem 1.5rem; }
+    .hero-cijfers { gap: 2rem; }
+    section { padding: 4rem 1.5rem; }
+    .bestemming-grid { grid-template-columns: 1fr; }
+    .waarom-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .waarom-beeld { height: 240px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .form-rij { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    Claud<em>(ia)</em>
+    <span>Reisbureau · Leopoldsburg</span>
+  </div>
+  <ul>
+    <li><a href="#bestemmingen">Bestemmingen</a></li>
+    <li><a href="#waarom">Waarom wij</a></li>
+    <li><a href="#contact">Plan je reis</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="hero-tekst">
+    <div class="hero-label">Persoonlijk reisadvies · Sinds 2012</div>
+    <h1>Reizen die <em>bij je passen</em>, tot in het kleinste detail</h1>
+    <p class="hero-intro">
+      Geen eindeloos vergelijken op tien websites. Je vertelt ons waar je van droomt,
+      wij stellen de reis samen — vlucht, verblijf en dat ene adresje dat je nergens online vindt.
+    </p>
+    <div class="hero-cijfers">
+      <div class="cijfer"><strong>12+</strong><span>Jaar ervaring</span></div>
+      <div class="cijfer"><strong>1.400+</strong><span>Reizen geboekt</span></div>
+      <div class="cijfer"><strong>68</strong><span>Landen gekend</span></div>
+    </div>
+    <a href="#contact" class="knop">Plan je reis met ons</a>
+  </div>
+  <div class="hero-beeld">
+    <div class="zon-schijf"></div>
+    <div class="hero-quote">
+      "De mooiste reizen beginnen niet online, maar aan onze tafel — met koffie en een wereldkaart."
+    </div>
+  </div>
+</header>
+
+<section class="bestemmingen" id="bestemmingen">
+  <div class="sectie-header">
+    <div class="sectie-label">Ons aanbod</div>
+    <h2>Voor elke reiziger <em>een richting</em></h2>
+    <p>Van een lang weekend dichtbij tot een rondreis aan de andere kant van de wereld — alles op maat, alles geregeld.</p>
+  </div>
+  <div class="bestemming-grid">
+    <div class="bestemming">
+      <span class="icoon">🏛️</span>
+      <h3>Citytrips</h3>
+      <p>Rome, Lissabon, Kopenhagen — korte reizen met de juiste buurt, het juiste hotel en tips die kloppen.</p>
+    </div>
+    <div class="bestemming">
+      <span class="icoon">🏝️</span>
+      <h3>Zonvakanties</h3>
+      <p>Van de Griekse eilanden tot de Canarische kust. Wij kennen de hotels waar je écht tot rust komt.</p>
+    </div>
+    <div class="bestemming">
+      <span class="icoon">🗺️</span>
+      <h3>Rondreizen</h3>
+      <p>Meerdere stops, één vlekkeloos plan. Huurwagen, treinen en overnachtingen naadloos op elkaar afgestemd.</p>
+    </div>
+    <div class="bestemming">
+      <span class="icoon">💍</span>
+      <h3>Huwelijksreizen</h3>
+      <p>De reis van je leven verdient meer dan een zoekmachine. Volledig op maat, met dat beetje extra.</p>
+    </div>
+    <div class="bestemming">
+      <span class="icoon">👨‍👩‍👧‍👦</span>
+      <h3>Familievakanties</h3>
+      <p>Kindvriendelijk zonder compromissen op comfort. Wij weten waar iedereen — groot en klein — zich amuseert.</p>
+    </div>
+    <div class="bestemming">
+      <span class="icoon">✨</span>
+      <h3>Verrassingsreizen</h3>
+      <p>Jij kiest het budget en de sfeer, wij de bestemming. Je ontdekt pas op de luchthaven waar je heen gaat.</p>
+    </div>
+  </div>
+</section>
+
+<section id="waarom">
+  <div class="waarom-grid">
+    <div class="waarom-beeld"><div class="kompas">Claud(ia)</div></div>
+    <div>
+      <div class="sectie-label">Waarom een reisbureau</div>
+      <h2>Boeken kan iedereen. <em>Raken</em> is een vak.</h2>
+      <p style="color: rgba(246,241,233,0.65);">
+        Online vind je duizend opties — wij geven je de juiste. Achter Claud(ia) zit een klein team
+        dat elke bestemming zelf kent, elke klant persoonlijk opvolgt en bereikbaar blijft als er
+        onderweg iets misloopt.
+      </p>
+      <ul class="waarom-lijst">
+        <li>Persoonlijk gesprek vóór elke boeking</li>
+        <li>Eén aanspreekpunt, ook tijdens je reis</li>
+        <li>Prijsgarantie op pakketreizen</li>
+        <li>Hulp bij annulaties en omboekingen</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="sectie-header">
+    <div class="sectie-label">Plan je reis</div>
+    <h2>Vertel ons waar je <em>van droomt</em></h2>
+    <p>We nemen binnen één werkdag contact op voor een vrijblijvend reisvoorstel.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="rij">
+        <div class="rij-label">Kantoor</div>
+        <div class="rij-waarde">Koningin Astridplein 6<br>3970 Leopoldsburg</div>
+      </div>
+      <div class="rij">
+        <div class="rij-label">Openingsuren</div>
+        <div class="rij-waarde">Ma–Vr: 9u30–17u30<br>Za: 10u–13u</div>
+      </div>
+      <div class="rij">
+        <div class="rij-label">Tel</div>
+        <div class="rij-waarde">013 XX XX XX</div>
+      </div>
+    </div>
+    <form class="contact-form" action="https://formspree.io/f/xlgyekey" method="POST">
+      <div class="form-rij">
+        <div class="form-groep">
+          <label for="voornaam">Voornaam</label>
+          <input type="text" id="voornaam" name="voornaam" required>
+        </div>
+        <div class="form-groep">
+          <label for="familienaam">Familienaam</label>
+          <input type="text" id="familienaam" name="familienaam" required>
+        </div>
+      </div>
+      <div class="form-rij">
+        <div class="form-groep">
+          <label for="email">E-mailadres</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-groep">
+          <label for="telefoon">Telefoon</label>
+          <input type="tel" id="telefoon" name="telefoon">
+        </div>
+      </div>
+      <div class="form-groep">
+        <label for="type">Type reis</label>
+        <select id="type" name="type_reis">
+          <option value="">Kies een type...</option>
+          <option>Citytrip</option>
+          <option>Zonvakantie</option>
+          <option>Rondreis</option>
+          <option>Huwelijksreis</option>
+          <option>Familievakantie</option>
+          <option>Verrassingsreis</option>
+        </select>
+      </div>
+      <div class="form-groep">
+        <label for="droom">Jouw droomreis</label>
+        <textarea id="droom" name="bericht" placeholder="Waarheen, met wie, wanneer — en wat mag zeker niet ontbreken?"></textarea>
+      </div>
+      <button type="submit" class="knop">Vraag je reisvoorstel →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Reisbureau Claud(ia) · Leopoldsburg · Lic. A-XXXX</span>
+  <span>Demo door <a href="https://timmersdesign.be">Timmers Design</a></span>
+</footer>
+
+<div class="demo-badge">Demo · Timmers Design</div>
+</body>
+</html>
