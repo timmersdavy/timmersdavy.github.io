@@ -1,469 +1,610 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>San George — Eetcafé in het hart van Tessenderlo</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,900;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --terra: #B5502E;
-    --terra-donker: #8A3A20;
-    --olijf: #5B6B3E;
-    --room: #F6EFE4;
-    --room-donker: #E8DCC6;
-    --wit: #FCFAF5;
-    --zwart: #241C14;
-    --grijs: #83786A;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>San George — Egyptisch Restaurant Tessenderlo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+    :root {
+      --gold:    #C8972A;
+      --gold-lt: #E8B84B;
+      --sand:    #D4A96A;
+      --bg:      #0D0A06;
+      --bg2:     #130E07;
+      --bg3:     #1A1208;
+      --cream:   #F5E6C8;
+      --text:    #EDD9A3;
+      --muted:   #8A7355;
+    }
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--wit);
-    color: var(--zwart);
-    overflow-x: hidden;
-  }
+    html { scroll-behavior: smooth; }
 
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 4rem;
-    background: rgba(252,250,245,0.94);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--room-donker);
-  }
+    body {
+      font-family: 'Karla', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-  .logo {
-    font-family: 'Fraunces', serif;
-    font-size: 1.2rem;
-    font-weight: 900;
-    letter-spacing: 0.02em;
-    color: var(--terra-donker);
-    text-transform: uppercase;
-  }
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      background: rgba(13,10,6,0.82);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(200,151,42,0.2);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; color: var(--gold);
+      letter-spacing: 0.06em; text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); font-size: 0.88rem; letter-spacing: 0.06em;
+      text-decoration: none; text-transform: uppercase;
+      transition: color 0.2s; cursor: pointer;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: #0D0A06;
+      padding: 0.55rem 1.4rem; border-radius: 3px;
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s, transform 0.15s; cursor: pointer;
+    }
+    .nav-cta:hover { background: var(--gold-lt); transform: translateY(-1px); }
 
-  .logo span {
-    display: block;
-    font-size: 0.55rem;
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.2em;
-    color: var(--grijs);
-    text-transform: uppercase;
-    margin-top: 1px;
-  }
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 8rem 1.5rem 5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 90% 70% at 50% 35%, rgba(200,151,42,0.14) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 60% at 80% 70%, rgba(212,169,106,0.07) 0%, transparent 60%),
+        linear-gradient(180deg, #0D0A06 0%, #1A1208 100%);
+    }
+    /* Egyptian geometric pattern overlay */
+    .hero-pattern {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image:
+        repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%),
+        repeating-linear-gradient(-45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 720px; }
+    .hero-eyebrow {
+      font-size: 0.76rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.4rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.8rem;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; display: inline-block; width: 30px; height: 1px;
+      background: var(--gold); opacity: 0.6;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      line-height: 1.05; color: var(--cream); margin-bottom: 0.5rem;
+    }
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--gold); letter-spacing: 0.08em; margin-bottom: 1.8rem;
+    }
+    .hero-desc {
+      color: var(--muted); font-size: 1.02rem; line-height: 1.85;
+      max-width: 500px; margin: 0 auto 2.6rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: #0D0A06;
+      padding: 0.9rem 2.2rem; border-radius: 3px;
+      font-size: 0.88rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s, transform 0.15s; cursor: pointer; border: none;
+      font-family: 'Karla', sans-serif;
+    }
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid rgba(200,151,42,0.55); color: var(--gold);
+      padding: 0.9rem 2.2rem; border-radius: 3px;
+      font-size: 0.88rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; text-decoration: none;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s; cursor: pointer;
+    }
+    .btn-outline:hover {
+      border-color: var(--gold); background: rgba(200,151,42,0.09);
+      transform: translateY(-2px);
+    }
 
-  nav ul { list-style: none; display: flex; gap: 2.5rem; }
-  nav a {
-    text-decoration: none;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--zwart);
-    transition: color 0.2s;
-  }
-  nav a:hover { color: var(--terra); }
+    /* SECTIONS */
+    section { padding: 6rem 1.5rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.74rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--gold); text-align: center; margin-bottom: 0.8rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.8rem;
+    }
+    .section-label::before, .section-label::after {
+      content: ''; display: inline-block; width: 24px; height: 1px;
+      background: var(--gold); opacity: 0.5;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      text-align: center; color: var(--cream); margin-bottom: 1rem;
+    }
+    .section-desc {
+      text-align: center; color: var(--muted);
+      max-width: 520px; margin: 0 auto 3.5rem; line-height: 1.85;
+    }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 80px;
-  }
+    /* FEATURES */
+    .features { background: var(--bg2); }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .feature-card {
+      background: rgba(200,151,42,0.04);
+      border: 1px solid rgba(200,151,42,0.14);
+      border-radius: 6px; padding: 2rem;
+      transition: border-color 0.3s, transform 0.2s; cursor: default;
+      position: relative; overflow: hidden;
+    }
+    .feature-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .feature-card:hover { border-color: rgba(200,151,42,0.4); transform: translateY(-4px); }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-icon { width: 44px; height: 44px; margin-bottom: 1.2rem; color: var(--gold); }
+    .feature-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: var(--cream); margin-bottom: 0.6rem;
+    }
+    .feature-text { color: var(--muted); font-size: 0.91rem; line-height: 1.75; }
 
-  .hero-tekst {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 4rem;
-    background: var(--wit);
-  }
+    /* MENU */
+    .menu { background: var(--bg3); }
+    .menu-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .menu-category {
+      background: rgba(200,151,42,0.03);
+      border: 1px solid rgba(200,151,42,0.12);
+      border-radius: 6px; padding: 2rem;
+    }
+    .menu-category-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; color: var(--gold);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 1.4rem; padding-bottom: 0.8rem;
+      border-bottom: 1px solid rgba(200,151,42,0.22);
+    }
+    .menu-item {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 1.1rem; gap: 1rem;
+    }
+    .menu-item:last-child { margin-bottom: 0; }
+    .menu-item-name { color: var(--text); font-size: 0.95rem; font-weight: 500; }
+    .menu-item-desc { color: var(--muted); font-size: 0.8rem; margin-top: 0.15rem; }
+    .menu-item-price { color: var(--gold); font-size: 0.9rem; font-weight: 600; white-space: nowrap; }
 
-  .hero-label {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--terra);
-    margin-bottom: 1.5rem;
-  }
+    /* GALLERY */
+    .gallery { background: var(--bg2); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 220px 220px;
+      gap: 1rem;
+    }
+    .gallery-item { border-radius: 4px; overflow: hidden; }
+    .gallery-item:first-child { grid-row: span 2; }
+    .gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 0.9rem; letter-spacing: 0.08em;
+      color: rgba(200,151,42,0.35);
+    }
+    .gallery-placeholder.p1 { background: linear-gradient(135deg, #1e1508 0%, #2e1f0a 100%); }
+    .gallery-placeholder.p2 { background: linear-gradient(135deg, #140f05 0%, #1e1608 100%); }
+    .gallery-placeholder.p3 { background: linear-gradient(135deg, #180f06 0%, #221508 100%); }
+    .gallery-placeholder.p4 { background: linear-gradient(135deg, #110d05 0%, #1a1307 100%); }
+    .gallery-placeholder.p5 { background: linear-gradient(135deg, #0e0b04 0%, #181106 100%); }
 
-  .hero-titel {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2.6rem, 4.8vw, 4.4rem);
-    font-weight: 900;
-    line-height: 1.05;
-    color: var(--zwart);
-    margin-bottom: 1.8rem;
-  }
+    /* RESERVATION */
+    .reservation {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #0D0A06 0%, #1e1508 100%);
+    }
+    .reservation::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(200,151,42,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .reservation-form {
+      max-width: 680px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;
+      position: relative; z-index: 1;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group.full { grid-column: span 2; }
+    .form-group label {
+      font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      background: rgba(200,151,42,0.05);
+      border: 1px solid rgba(200,151,42,0.22);
+      border-radius: 3px; padding: 0.75rem 1rem;
+      color: var(--text); font-family: 'Karla', sans-serif; font-size: 0.95rem;
+      transition: border-color 0.2s; outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-group select option { background: #1a1208; }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-submit { grid-column: span 2; margin-top: 0.5rem; }
 
-  .hero-titel em { font-style: italic; color: var(--terra); }
+    /* INFO */
+    .info-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem; text-align: center;
+    }
+    .info-icon { color: var(--gold); margin-bottom: 0.8rem; }
+    .info-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem; color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+    .info-text { color: var(--muted); font-size: 0.88rem; line-height: 1.75; }
 
-  .hero-tekst p { font-size: 1rem; line-height: 1.75; color: var(--grijs); max-width: 38ch; margin-bottom: 2.5rem; }
+    /* FOOTER */
+    footer {
+      background: #060403;
+      border-top: 1px solid rgba(200,151,42,0.14);
+      padding: 3rem 1.5rem; text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; color: var(--gold);
+      letter-spacing: 0.06em; margin-bottom: 0.4rem;
+    }
+    .footer-tagline { color: var(--muted); font-size: 0.84rem; margin-bottom: 1.6rem; font-style: italic; }
+    .footer-links { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+    .footer-links a {
+      color: var(--muted); font-size: 0.8rem; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      transition: color 0.2s; cursor: pointer;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { color: rgba(138,115,85,0.35); font-size: 0.76rem; }
 
-  .hero-jaar { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 3rem; }
-  .jaar-getal { font-family: 'Fraunces', serif; font-size: 3.2rem; font-weight: 900; color: var(--room-donker); line-height: 1; }
-  .jaar-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grijs); }
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gallery-item:first-child { grid-row: span 1; }
+      .reservation-form { grid-template-columns: 1fr; }
+      .form-group.full, .form-submit { grid-column: span 1; }
+    }
 
-  .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    background: var(--terra);
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 1rem 2rem;
-    transition: background 0.2s;
-    width: fit-content;
-  }
-  .hero-cta:hover { background: var(--terra-donker); }
-  .hero-cta::after { content: '→'; font-size: 1rem; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
 
-  /* HERO BEELD */
-  .hero-beeld { position: relative; background: var(--terra-donker); overflow: hidden; display: flex; align-items: center; justify-content: center; }
-
-  .bord-art {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, var(--room) 0%, var(--room-donker) 70%);
-    box-shadow: inset 0 0 0 10px rgba(255,255,255,0.5), 8px 16px 40px rgba(0,0,0,0.4);
-  }
-  .bord-art::after {
-    content: '';
-    position: absolute;
-    inset: 40px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 40% 35%, var(--olijf) 0 30px, transparent 31px),
-                radial-gradient(circle at 65% 55%, var(--terra) 0 22px, transparent 23px),
-                radial-gradient(circle at 45% 65%, #D9A441 0 18px, transparent 19px);
-    opacity: 0.85;
-  }
-
-  .hero-quote {
-    position: absolute;
-    bottom: 3rem;
-    left: 3rem;
-    right: 3rem;
-    color: rgba(255,255,255,0.65);
-    font-size: 0.8rem;
-    font-style: italic;
-    line-height: 1.6;
-    border-left: 2px solid var(--room);
-    padding-left: 1rem;
-  }
-
-  /* MENU */
-  .menu { padding: 6rem 4rem; background: var(--room); }
-
-  .sectie-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 3.5rem;
-    border-bottom: 1px solid var(--room-donker);
-    padding-bottom: 1.5rem;
-  }
-
-  .sectie-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--terra); margin-bottom: 0.5rem; }
-  .sectie-titel { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 700; color: var(--zwart); }
-
-  .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--room-donker); }
-
-  .menu-kaart { background: var(--wit); padding: 2.5rem 2rem; transition: background 0.2s; }
-  .menu-kaart:hover { background: var(--terra-donker); color: #fff; }
-  .menu-kaart:hover .menu-naam, .menu-kaart:hover .menu-omschrijving, .menu-kaart:hover .menu-prijs-label { color: rgba(255,255,255,0.85); }
-  .menu-kaart:hover .menu-prijs { color: #fff; }
-
-  .menu-icoon { font-size: 2rem; margin-bottom: 1.2rem; }
-  .menu-naam { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--zwart); transition: color 0.2s; }
-  .menu-omschrijving { font-size: 0.85rem; line-height: 1.65; color: var(--grijs); margin-bottom: 1.5rem; transition: color 0.2s; }
-  .menu-prijs-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grijs); transition: color 0.2s; }
-  .menu-prijs { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 700; color: var(--terra); transition: color 0.2s; }
-
-  /* OVER */
-  .over { padding: 6rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; background: var(--wit); }
-
-  .over-beeld { position: relative; height: 480px; background: var(--terra-donker); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .tegel-art { position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.03) 20px, rgba(255,255,255,0.03) 21px); }
-  .jaar-groot { font-family: 'Fraunces', serif; font-size: 9rem; font-weight: 900; color: rgba(255,255,255,0.07); position: absolute; line-height: 1; }
-  .over-badge { position: relative; z-index: 1; text-align: center; color: #fff; }
-  .over-badge-getal { font-family: 'Fraunces', serif; font-size: 5rem; font-weight: 900; line-height: 1; display: block; }
-  .over-badge-tekst { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7; }
-
-  .over-inhoud .sectie-label { margin-bottom: 0.8rem; }
-  .over-inhoud h2 { font-family: 'Fraunces', serif; font-size: 2.4rem; font-weight: 900; line-height: 1.15; margin-bottom: 1.5rem; }
-  .over-inhoud p { font-size: 0.95rem; line-height: 1.8; color: var(--grijs); margin-bottom: 1.2rem; }
-
-  .kenmerken { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem; }
-  .kenmerk { display: flex; align-items: center; gap: 1rem; font-size: 0.85rem; }
-  .kenmerk-streep { width: 24px; height: 1px; background: var(--terra); flex-shrink: 0; }
-
-  /* CONTACT */
-  .contact { background: var(--terra-donker); padding: 6rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
-  .contact-info h2 { font-family: 'Fraunces', serif; font-size: 2.5rem; font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 1.5rem; }
-  .contact-info p { color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.75; margin-bottom: 2.5rem; }
-
-  .contact-gegevens { display: flex; flex-direction: column; gap: 1rem; }
-  .contact-rij { display: flex; gap: 1rem; align-items: flex-start; }
-  .contact-rij-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); width: 60px; flex-shrink: 0; padding-top: 2px; }
-  .contact-rij-waarde { color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.5; }
-
-  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
-  .form-rij { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .form-groep { display: flex; flex-direction: column; gap: 0.4rem; }
-  .form-groep label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
-  .form-groep input, .form-groep textarea, .form-groep select {
-    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); color: #fff;
-    padding: 0.85rem 1rem; font-family: 'Inter', sans-serif; font-size: 16px; outline: none; transition: border-color 0.2s; width: 100%;
-  }
-  .form-groep input::placeholder, .form-groep textarea::placeholder { color: rgba(255,255,255,0.25); }
-  .form-groep input:focus, .form-groep textarea:focus, .form-groep select:focus { border-color: rgba(255,255,255,0.5); }
-  .form-groep textarea { resize: vertical; min-height: 120px; }
-  .form-groep select option { background: var(--terra-donker); }
-
-  .verstuur-btn {
-    background: #fff; color: var(--terra-donker); border: none; padding: 1rem 2rem;
-    font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em;
-    text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; align-self: flex-start;
-  }
-  .verstuur-btn:hover { opacity: 0.85; }
-
-  /* FOOTER */
-  footer { background: var(--zwart); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.3); font-size: 0.75rem; letter-spacing: 0.05em; }
-  footer span { color: rgba(255,255,255,0.15); }
-
-  .demo-badge {
-    position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--zwart); color: rgba(255,255,255,0.7);
-    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.6rem 1rem; z-index: 200; font-family: 'Inter', sans-serif;
-  }
-
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    nav ul { gap: 1.2rem; }
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-beeld { height: 300px; }
-    .hero-tekst { padding: 3rem 1.5rem; }
-    .menu { padding: 4rem 1.5rem; }
-    .menu-grid { grid-template-columns: 1fr; }
-    .over { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
-    .over-beeld { height: 280px; }
-    .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
-    .form-rij { grid-template-columns: 1fr; }
-    .sectie-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
-  }
-</style>
+    .demo-badge {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; background: #0D0A06; color: rgba(245,230,200,0.7);
+      font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.6rem 1rem; z-index: 200;
+      font-family: 'Karla', sans-serif; border-radius: 100px; border: 1px solid rgba(200,151,42,0.3);
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="logo">
-    San George
-    <span>Eetcafé · Tessenderlo</span>
-  </div>
-  <ul>
-    <li><a href="#menu">Menu</a></li>
-    <li><a href="#over">Over ons</a></li>
-    <li><a href="#contact">Reserveren</a></li>
-  </ul>
-</nav>
+  <nav>
+    <a href="#" class="nav-logo">San George</a>
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#galerij">Galerij</a></li>
+      <li><a href="#reservatie">Reservatie</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#reservatie" class="nav-cta">Reserveer</a>
+  </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-tekst">
-    <p class="hero-label">Eetcafé · In het centrum van Tessenderlo</p>
-    <h1 class="hero-titel">
-      Lokaal en<br>
-      <em>vertrouwd</em><br>
-      aan uw tafel
-    </h1>
-    <p>Lokaal en herkenbaar — een plek die de buurt aanspreekt zonder in te boeten aan professionaliteit. Verse gerechten, een warm onthaal en een terras dat 's zomers vol zit.</p>
-
-    <div class="hero-jaar">
-      <span class="jaar-getal">12+</span>
-      <span class="jaar-label">jaar<br>vaste klanten</span>
-    </div>
-
-    <a href="#menu" class="hero-cta">Bekijk de kaart</a>
-  </div>
-
-  <div class="hero-beeld">
-    <div class="bord-art"></div>
-    <p class="hero-quote">
-      "Bij San George kent iedereen elkaar bij naam — van de stamgasten tot de bediening."<br>
-      <strong style="opacity:0.8; font-style:normal; font-size:0.75rem; letter-spacing:0.1em;">— Team San George</strong>
-    </p>
-  </div>
-</section>
-
-<!-- MENU -->
-<section class="menu" id="menu">
-  <div class="sectie-header">
-    <div>
-      <p class="sectie-label">Onze kaart</p>
-      <h2 class="sectie-titel">Verse gerechten, eerlijke prijzen</h2>
-    </div>
-    <p style="font-size:0.8rem; color:var(--grijs); max-width:30ch; text-align:right;">Dagelijks aangepast op basis van seizoen en aanvoer.</p>
-  </div>
-
-  <div class="menu-grid">
-    <div class="menu-kaart">
-      <div class="menu-icoon">🍝</div>
-      <div class="menu-naam">Pasta van de dag</div>
-      <p class="menu-omschrijving">Verse pasta bereid met seizoensgroenten en huisgemaakte saus.</p>
-      <div class="menu-prijs-label">Vanaf</div>
-      <div class="menu-prijs">€ 15,50</div>
-    </div>
-    <div class="menu-kaart">
-      <div class="menu-icoon">🥗</div>
-      <div class="menu-naam">Mediterrane salade</div>
-      <p class="menu-omschrijving">Verse groenten, feta, olijven en een dressing op basis van olijfolie.</p>
-      <div class="menu-prijs-label">Prijs</div>
-      <div class="menu-prijs">€ 13,00</div>
-    </div>
-    <div class="menu-kaart">
-      <div class="menu-icoon">🍕</div>
-      <div class="menu-naam">Steenoven pizza</div>
-      <p class="menu-omschrijving">Dun en krokant deeg, klassiek belegd of naar eigen smaak samengesteld.</p>
-      <div class="menu-prijs-label">Vanaf</div>
-      <div class="menu-prijs">€ 12,50</div>
-    </div>
-    <div class="menu-kaart">
-      <div class="menu-icoon">🍷</div>
-      <div class="menu-naam">Huiswijnen</div>
-      <p class="menu-omschrijving">Zorgvuldig geselecteerd assortiment rode, witte en rosé wijnen per glas of fles.</p>
-      <div class="menu-prijs-label">Per glas</div>
-      <div class="menu-prijs">€ 5,50</div>
-    </div>
-    <div class="menu-kaart">
-      <div class="menu-icoon">☕</div>
-      <div class="menu-naam">Koffie & gebak</div>
-      <p class="menu-omschrijving">Verse koffie met huisgemaakt gebak, ideaal voor een rustige namiddag.</p>
-      <div class="menu-prijs-label">Vanaf</div>
-      <div class="menu-prijs">€ 3,80</div>
-    </div>
-    <div class="menu-kaart">
-      <div class="menu-icoon">🎉</div>
-      <div class="menu-naam">Feesten & groepen</div>
-      <p class="menu-omschrijving">Aangepast menu voor verjaardagen, feesten en bedrijfsevents. Op aanvraag.</p>
-      <div class="menu-prijs-label">Op aanvraag</div>
-      <div class="menu-prijs">Prijs op maat</div>
-    </div>
-  </div>
-</section>
-
-<!-- OVER -->
-<section class="over" id="over">
-  <div class="over-beeld">
-    <div class="tegel-art"></div>
-    <div class="jaar-groot">2014</div>
-    <div class="over-badge">
-      <span class="over-badge-getal">12</span>
-      <span class="over-badge-tekst">Jaar in<br>het centrum</span>
-    </div>
-  </div>
-
-  <div class="over-inhoud">
-    <p class="sectie-label">Ons verhaal</p>
-    <h2>Een vertrouwd<br>gezicht in Tessenderlo</h2>
-    <p>Sinds 2014 is San George de vaste stek voor buurtbewoners die op zoek zijn naar een goeie maaltijd zonder poespas, in een gezellige, ongedwongen sfeer.</p>
-    <p>We werken met lokale leveranciers waar mogelijk en passen onze kaart aan met de seizoenen — vers, eerlijk en betaalbaar.</p>
-    <div class="kenmerken">
-      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Centraal gelegen, vlot bereikbaar</span></div>
-      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Terras met zonneschijn tot in de late namiddag</span></div>
-      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Kindvriendelijk en huisdiervriendelijk</span></div>
-      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Groepsmenu's op aanvraag</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contact-info">
-    <h2>Reserveer<br>uw tafel</h2>
-    <p>Vul het formulier in of bel ons om een tafel te reserveren. Voor groepen vanaf 8 personen graag 24u op voorhand.</p>
-    <div class="contact-gegevens">
-      <div class="contact-rij">
-        <span class="contact-rij-label">Adres</span>
-        <span class="contact-rij-waarde">Marktplein 6<br>3980 Tessenderlo</span>
-      </div>
-      <div class="contact-rij">
-        <span class="contact-rij-label">Open</span>
-        <span class="contact-rij-waarde">Di–Zo: 11u–22u<br>Maandag gesloten</span>
-      </div>
-      <div class="contact-rij">
-        <span class="contact-rij-label">Tel</span>
-        <span class="contact-rij-waarde">013 XX XX XX</span>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-pattern"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Tessenderlo · Egyptische Keuken</p>
+      <h1 class="hero-title">San George</h1>
+      <p class="hero-subtitle">Authentieke smaken van de Nijl</p>
+      <p class="hero-desc">
+        Ontdek de rijke keuken van Egypte — van geurige kruidenmixen en verse mezze tot langzaam gegaarde tagines en traditionele houtoven specialiteiten.
+      </p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn-primary">Bekijk Menu</a>
+        <a href="tel:013532355" class="btn-outline">013/53.23.55</a>
       </div>
     </div>
-  </div>
+  </section>
 
-  <form class="contact-form" action="https://formspree.io/f/xlgyekey" method="POST">
-    <div class="form-rij">
-      <div class="form-groep">
-        <label>Voornaam</label>
-        <input type="text" name="voornaam" placeholder="Jan" required>
+  <section class="features" id="over">
+    <div class="section-inner">
+      <p class="section-label">Waarom San George</p>
+      <h2 class="section-title">De Smaken van Egypte</h2>
+      <p class="section-desc">Authentieke recepten, eerlijke ingrediënten en een sfeer die u rechtstreeks naar Cairo transporteert.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+          <h3 class="feature-title">Verse Mezze & Dips</h3>
+          <p class="feature-text">Zelfgemaakte hummus, baba ganoush, ful medames — elke dag vers bereid met Egyptische kruiden en olijfolie.</p>
+        </div>
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+          <h3 class="feature-title">Houtskool Grill</h3>
+          <p class="feature-text">Kofta, shish tawook en lamsschouder — gegaard op houtskool voor die onmiskenbare Egyptische smaak.</p>
+        </div>
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 17H5a2 2 0 0 0-2 2v2h18v-2a2 2 0 0 0-2-2h-4M12 3a4 4 0 0 1 4 4c0 3-4 8-4 8S8 10 8 7a4 4 0 0 1 4-4z"/>
+          </svg>
+          <h3 class="feature-title">Egyptische Kruiden</h3>
+          <p class="feature-text">Komijn, koriander, sumak, za'atar — rechtstreeks ingevoerd voor de meest authentieke smaakbeleving.</p>
+        </div>
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <h3 class="feature-title">Groeps- & Familietafels</h3>
+          <p class="feature-text">Egyptisch eten is voor delen — grote schalen, kleurrijke tafels, warme sfeer voor families en groepen.</p>
+        </div>
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <h3 class="feature-title">Oriëntaalse Sfeer</h3>
+          <p class="feature-text">Warme lampen, handgemaakte decoraties en Arabische muziek — een complete beleving van de Oriënt.</p>
+        </div>
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <h3 class="feature-title">Vegetarisch Aanbod</h3>
+          <p class="feature-text">Koshary, falafel, gevulde paprika's — de Egyptische keuken blinkt uit in rijke plantaardige gerechten.</p>
+        </div>
       </div>
-      <div class="form-groep">
-        <label>Familienaam</label>
-        <input type="text" name="familienaam" placeholder="Janssen" required>
+    </div>
+  </section>
+
+  <section class="menu" id="menu">
+    <div class="section-inner">
+      <p class="section-label">Onze Kaart</p>
+      <h2 class="section-title">Het Menu</h2>
+      <p class="section-desc">Klassieke Egyptische gerechten en huisspecialiteiten — vraag naar het dagmenu voor verse seizoensaanbiedingen.</p>
+      <div class="menu-grid">
+        <div class="menu-category">
+          <h3 class="menu-category-title">Mezze & Starters</h3>
+          <div class="menu-item">
+            <div><div class="menu-item-name">Hummus Tahini</div><div class="menu-item-desc">Kikkererwten, tahini, citroen, knoflook, olijfolie</div></div>
+            <div class="menu-item-price">€8</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">Baba Ganoush</div><div class="menu-item-desc">Geroosterde aubergine, tahini, koriander, citroen</div></div>
+            <div class="menu-item-price">€9</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">Ful Medames</div><div class="menu-item-desc">Gestoomde tuinbonen, komijn, peterselie, ei</div></div>
+            <div class="menu-item-price">€10</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">Gemengde Mezze (4p)</div><div class="menu-item-desc">Selectie van 6 dips en salades, pita, olijven</div></div>
+            <div class="menu-item-price">€24</div>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h3 class="menu-category-title">Hoofdgerechten</h3>
+          <div class="menu-item">
+            <div><div class="menu-item-name">Kofta Mashwiya</div><div class="menu-item-desc">Gegrilde lamsgehaktspiesjes, kruiden, tomatensaus</div></div>
+            <div class="menu-item-price">€21</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">Shish Tawook</div><div class="menu-item-desc">Gemarineerde kippenspiessen, knoflooksaus, rijst</div></div>
+            <div class="menu-item-price">€19</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">Tagine van Lam</div><div class="menu-item-desc">Lamsschouder, pruimen, amandelen, Ras el Hanout</div></div>
+            <div class="menu-item-price">€26</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">Samak Mashwi</div><div class="menu-item-desc">Gegrilde zeebaars, chermoula, geroosterde groenten</div></div>
+            <div class="menu-item-price">€24</div>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h3 class="menu-category-title">Vegetarisch</h3>
+          <div class="menu-item">
+            <div><div class="menu-item-name">Koshary</div><div class="menu-item-desc">Rijst, linzen, pasta, tomatensaus, gebakken ui</div></div>
+            <div class="menu-item-price">€14</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">Falafel Bord</div><div class="menu-item-desc">Huisgemaakte falafel, tahini, tabouleh, pita</div></div>
+            <div class="menu-item-price">€16</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">Gevulde Paprika</div><div class="menu-item-desc">Rijst, groenten, kruiden, tomatensaus, rozijnen</div></div>
+            <div class="menu-item-price">€17</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">Mujaddara</div><div class="menu-item-desc">Linzen, bulgur, gekarameliseerde ui, yoghurt</div></div>
+            <div class="menu-item-price">€15</div>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h3 class="menu-category-title">Desserts & Thee</h3>
+          <div class="menu-item">
+            <div><div class="menu-item-name">Baklava</div><div class="menu-item-desc">Filodeeg, pistache, honing, rozenwater</div></div>
+            <div class="menu-item-price">€8</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">Umm Ali</div><div class="menu-item-desc">Egyptische broodpudding, noten, room, vanille</div></div>
+            <div class="menu-item-price">€9</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">Egyptische Muntthee</div><div class="menu-item-desc">Verse munt, suiker, traditioneel geserveerd</div></div>
+            <div class="menu-item-price">€4</div>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="form-groep">
-      <label>E-mailadres</label>
-      <input type="email" name="email" placeholder="jan.janssen@mail.be" required>
+  <section class="gallery" id="galerij">
+    <div class="section-inner">
+      <p class="section-label">Sfeer & Beleving</p>
+      <h2 class="section-title">Een Reis naar Cairo</h2>
+      <p class="section-desc">Oriëntaalse decoraties, warme lampen en de geuren van de souk — midden in Tessenderlo.</p>
+      <div class="gallery-grid">
+        <div class="gallery-item"><div class="gallery-placeholder p1">Interieur</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder p2">Mezze</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder p3">Grill</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder p4">Baklava</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder p5">Thee</div></div>
+      </div>
     </div>
+  </section>
 
-    <div class="form-groep">
-      <label>Telefoon</label>
-      <input type="tel" name="telefoon" placeholder="04XX XX XX XX">
+  <section class="reservation" id="reservatie">
+    <div class="section-inner">
+      <p class="section-label">Boek Uw Tafel</p>
+      <h2 class="section-title">Reservatie</h2>
+      <p class="section-desc">Reserveer online of bel ons op <strong style="color:var(--gold)">+32 13 xx xx xx</strong>. Wij bevestigen binnen 24 uur.</p>
+      <form class="reservation-form" onsubmit="return false;">
+        <div class="form-group">
+          <label for="naam">Naam</label>
+          <input type="text" id="naam" name="naam" placeholder="Uw naam" />
+        </div>
+        <div class="form-group">
+          <label for="tel">Telefoon</label>
+          <input type="tel" id="tel" name="tel" placeholder="+32 ..." />
+        </div>
+        <div class="form-group">
+          <label for="datum">Datum</label>
+          <input type="date" id="datum" name="datum" />
+        </div>
+        <div class="form-group">
+          <label for="uur">Uur</label>
+          <select id="uur" name="uur">
+            <option value="">Kies uur</option>
+            <option>12:00</option><option>12:30</option><option>13:00</option>
+            <option>18:30</option><option>19:00</option><option>19:30</option>
+            <option>20:00</option><option>20:30</option><option>21:00</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="personen">Aantal personen</label>
+          <select id="personen" name="personen">
+            <option>1 persoon</option><option>2 personen</option>
+            <option>3 personen</option><option>4 personen</option>
+            <option>5 personen</option><option>6 personen</option>
+            <option>7-10 personen</option><option>Meer dan 10</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="uwmail@voorbeeld.be" />
+        </div>
+        <div class="form-group full">
+          <label for="opmerking">Bijzonderheden</label>
+          <textarea id="opmerking" name="opmerking" placeholder="Allergieën, halal voorkeur, speciale wensen..."></textarea>
+        </div>
+        <div class="form-submit full">
+          <button type="submit" class="btn-primary" style="width:100%;padding:1rem;">
+            Reservatie Aanvragen
+          </button>
+        </div>
+      </form>
     </div>
+  </section>
 
-    <div class="form-groep">
-      <label>Aantal personen</label>
-      <select name="categorie">
-        <option value="">Kies aantal...</option>
-        <option value="1-2">1–2 personen</option>
-        <option value="3-5">3–5 personen</option>
-        <option value="6-8">6–8 personen</option>
-        <option value="8+">Meer dan 8 personen</option>
-      </select>
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Kom Ons Bezoeken</p>
+      <h2 class="section-title">Adres & Openingsuren</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <svg class="info-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          <h3 class="info-title">Adres</h3>
+          <p class="info-text">Marktplein 12<br/>3980 Tessenderlo<br/>België</p>
+        </div>
+        <div class="info-item">
+          <svg class="info-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.86a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/>
+          </svg>
+          <h3 class="info-title">Telefoon & Mail</h3>
+          <p class="info-text">+32 13 xx xx xx<br/>info@sangeorge.be</p>
+        </div>
+        <div class="info-item">
+          <svg class="info-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <h3 class="info-title">Openingsuren</h3>
+          <p class="info-text">Di – Vr: 12:00–14:30 / 18:00–22:00<br/>Za – Zo: 18:00–22:30<br/>Maandag: gesloten</p>
+        </div>
+        <div class="info-item">
+          <svg class="info-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+          <h3 class="info-title">Parkeren</h3>
+          <p class="info-text">Gratis parking op de markt<br/>Bereikbaar via E313 afrit Tessenderlo</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="form-groep">
-      <label>Bericht</label>
-      <textarea name="bericht" placeholder="Bv: tafel voor 4 personen op vrijdagavond 20u, graag op het terras..." required></textarea>
+  <footer>
+    <div class="footer-logo">San George</div>
+    <p class="footer-tagline">Egyptisch Restaurant · Tessenderlo</p>
+    <div class="footer-links">
+      <a href="#over">Over Ons</a>
+      <a href="#menu">Menu</a>
+      <a href="#galerij">Galerij</a>
+      <a href="#reservatie">Reservatie</a>
+      <a href="#contact">Contact</a>
     </div>
+    <p class="footer-copy">© 2025 San George · Alle rechten voorbehouden</p>
+  </footer>
 
-    <button type="submit" class="verstuur-btn">Reservering versturen →</button>
-  </form>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <span>© 2026 San George · Tessenderlo · BTW BE 0XXX.XXX.XXX</span>
-  <span>Demo door Timmers Design</span>
-</footer>
-
-<div class="demo-badge">Demo · Timmers Design</div>
+  <div class="demo-badge">Demo · Timmers Design</div>
 
 </body>
 </html>
