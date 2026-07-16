@@ -171,12 +171,20 @@
     display: flex;
     align-items: flex-end;
     padding: 1.4rem;
+    background-size: cover;
+    background-position: center;
   }
-  .seizoen-lente { background: linear-gradient(160deg, #2a4a5c 0%, #14304a 70%); }
-  .seizoen-zomer { background: linear-gradient(160deg, #3d7ea8 0%, #14304a 70%); }
-  .seizoen-herfst { background: linear-gradient(160deg, #7a3838 0%, #14304a 70%); }
-  .seizoen-winter { background: linear-gradient(160deg, #1c2a42 0%, #06081a 70%); }
-  .seizoen .icoon { font-size: 1.4rem; margin-right: 0.6rem; }
+  .seizoen::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(6,8,26,0.75) 0%, rgba(6,8,26,0.15) 55%, rgba(6,8,26,0.05) 100%);
+  }
+  .seizoen-lente { background-image: url('images/reisbureau-claudia/lente.jpg'); }
+  .seizoen-zomer { background-image: url('images/reisbureau-claudia/zomer.jpg'); }
+  .seizoen-herfst { background-image: url('images/reisbureau-claudia/herfst.jpg'); }
+  .seizoen-winter { background-image: url('images/reisbureau-claudia/winter.jpg'); }
+  .seizoen .icoon { font-size: 1.4rem; margin-right: 0.6rem; position: relative; z-index: 1; }
   .seizoen .naam {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -185,6 +193,8 @@
     color: var(--wit);
     display: flex;
     align-items: center;
+    position: relative;
+    z-index: 1;
   }
   .hero-quote {
     font-family: 'Cormorant Garamond', serif;
