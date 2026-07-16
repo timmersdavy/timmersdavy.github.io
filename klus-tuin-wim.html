@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klus-Tuin-Wim — Snel een klusjesman in de buurt</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --groen: #4A6B3D;
+    --groen-donker: #33492A;
+    --hout: #8A5A34;
+    --zand: #F1EBDD;
+    --zand-donker: #E1D8C0;
+    --wit: #FBFAF6;
+    --zwart: #1E2016;
+    --grijs: #71786A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--wit);
+    color: var(--zwart);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(251,250,246,0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--zand-donker);
+  }
+
+  .logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    color: var(--groen-donker);
+  }
+
+  .logo span {
+    display: block;
+    font-size: 0.55rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: var(--grijs);
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+
+  nav ul { list-style: none; display: flex; gap: 2.5rem; }
+  nav a {
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--zwart);
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--groen); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-tekst {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
+    background: var(--wit);
+  }
+
+  .hero-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--groen);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-titel {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2.4rem, 4.4vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--zwart);
+    margin-bottom: 1.8rem;
+  }
+
+  .hero-titel em { font-style: normal; color: var(--groen); }
+
+  .hero-tekst p { font-size: 1rem; line-height: 1.75; color: var(--grijs); max-width: 40ch; margin-bottom: 2.5rem; }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--groen);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 1.1rem 2.2rem;
+    transition: background 0.2s;
+    width: fit-content;
+    border-radius: 4px;
+  }
+  .hero-cta:hover { background: var(--groen-donker); }
+  .hero-cta::after { content: '→'; font-size: 1rem; }
+
+  .hero-mini { display: flex; gap: 2rem; margin-top: 2rem; }
+  .mini-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--grijs); }
+  .mini-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--groen); flex-shrink: 0; }
+
+  /* HERO BEELD */
+  .hero-beeld { position: relative; background: var(--groen-donker); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+
+  .gereedschap-art { position: relative; width: 300px; height: 300px; }
+  .gereedschap-cirkel {
+    width: 100%; height: 100%; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--hout) 0%, #5c3a1e 70%);
+    box-shadow: 8px 16px 40px rgba(0,0,0,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem;
+  }
+
+  .hero-quote {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+    right: 3rem;
+    color: rgba(255,255,255,0.65);
+    font-size: 0.8rem;
+    font-style: italic;
+    line-height: 1.6;
+    border-left: 2px solid var(--zand);
+    padding-left: 1rem;
+  }
+
+  /* DIENSTEN */
+  .diensten { padding: 6rem 4rem; background: var(--zand); }
+
+  .sectie-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid var(--zand-donker);
+    padding-bottom: 1.5rem;
+  }
+
+  .sectie-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--groen); margin-bottom: 0.5rem; }
+  .sectie-titel { font-family: 'Poppins', sans-serif; font-size: 1.9rem; font-weight: 700; color: var(--zwart); }
+
+  .dienst-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--zand-donker); }
+
+  .dienst-kaart { background: var(--wit); padding: 2.5rem 2rem; transition: background 0.2s; }
+  .dienst-kaart:hover { background: var(--groen-donker); color: #fff; }
+  .dienst-kaart:hover .dienst-naam, .dienst-kaart:hover .dienst-omschrijving, .dienst-kaart:hover .dienst-prijs-label { color: rgba(255,255,255,0.85); }
+  .dienst-kaart:hover .dienst-prijs { color: #fff; }
+
+  .dienst-icoon { font-size: 1.9rem; margin-bottom: 1.2rem; }
+  .dienst-naam { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--zwart); transition: color 0.2s; }
+  .dienst-omschrijving { font-size: 0.85rem; line-height: 1.65; color: var(--grijs); margin-bottom: 1.2rem; transition: color 0.2s; }
+  .dienst-prijs-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grijs); transition: color 0.2s; }
+  .dienst-prijs { font-family: 'Poppins', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--groen); transition: color 0.2s; }
+
+  /* OVER */
+  .over { padding: 6rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; background: var(--wit); }
+
+  .over-beeld { position: relative; height: 440px; background: var(--groen-donker); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .grid-art { position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.03) 20px, rgba(255,255,255,0.03) 21px); }
+  .over-badge { position: relative; z-index: 1; text-align: center; color: #fff; }
+  .over-badge-getal { font-family: 'Poppins', sans-serif; font-size: 4.6rem; font-weight: 900; line-height: 1; display: block; }
+  .over-badge-tekst { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.75; }
+
+  .over-inhoud .sectie-label { margin-bottom: 0.8rem; }
+  .over-inhoud h2 { font-family: 'Poppins', sans-serif; font-size: 2.1rem; font-weight: 900; line-height: 1.2; margin-bottom: 1.5rem; }
+  .over-inhoud p { font-size: 0.95rem; line-height: 1.8; color: var(--grijs); margin-bottom: 1.2rem; }
+
+  .kenmerken { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem; }
+  .kenmerk { display: flex; align-items: center; gap: 1rem; font-size: 0.85rem; }
+  .kenmerk-streep { width: 24px; height: 1px; background: var(--groen); flex-shrink: 0; }
+
+  /* CONTACT — snel & simpel */
+  .contact { background: var(--groen-donker); padding: 6rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+  .contact-info h2 { font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 1.5rem; }
+  .contact-info p { color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.75; margin-bottom: 2.5rem; }
+
+  .contact-gegevens { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-rij { display: flex; gap: 1rem; align-items: flex-start; }
+  .contact-rij-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); width: 60px; flex-shrink: 0; padding-top: 2px; }
+  .contact-rij-waarde { color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.5; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-groep { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-groep label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .form-groep input, .form-groep textarea {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff;
+    padding: 0.85rem 1rem; font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; width: 100%;
+  }
+  .form-groep input::placeholder, .form-groep textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .form-groep input:focus, .form-groep textarea:focus { border-color: rgba(255,255,255,0.5); }
+  .form-groep textarea { resize: vertical; min-height: 100px; }
+
+  .verstuur-btn {
+    background: #fff; color: var(--groen-donker); border: none; padding: 1rem 2rem;
+    font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; align-self: flex-start; border-radius: 4px;
+  }
+  .verstuur-btn:hover { opacity: 0.85; }
+
+  .snel-note { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: -0.4rem; }
+
+  /* FOOTER */
+  footer { background: var(--zwart); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.3); font-size: 0.75rem; letter-spacing: 0.05em; }
+  footer span { color: rgba(255,255,255,0.15); }
+
+  .demo-badge {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--zwart); color: rgba(255,255,255,0.7);
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.6rem 1rem; z-index: 200; font-family: 'Inter', sans-serif;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { gap: 1.2rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-beeld { height: 280px; }
+    .hero-tekst { padding: 3rem 1.5rem; }
+    .diensten { padding: 4rem 1.5rem; }
+    .dienst-grid { grid-template-columns: 1fr; }
+    .over { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .over-beeld { height: 260px; }
+    .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .sectie-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    Klus-Tuin-Wim
+    <span>Klussen & tuinonderhoud</span>
+  </div>
+  <ul>
+    <li><a href="#diensten">Diensten</a></li>
+    <li><a href="#over">Over Wim</a></li>
+    <li><a href="#contact">Klus aanvragen</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tekst">
+    <p class="hero-label">Klusdienst & tuinonderhoud · Regio Tessenderlo</p>
+    <h1 class="hero-titel">
+      Snel een klus<br>
+      aangevraagd,<br>
+      <em>zonder poespas</em>
+    </h1>
+    <p>Praktisch en toegankelijk, net als de dienstverlening zelf. Beschrijf uw klus, en Wim belt u dezelfde dag nog terug.</p>
+
+    <a href="#contact" class="hero-cta">Vraag snel een klus aan</a>
+
+    <div class="hero-mini">
+      <div class="mini-item"><span class="mini-dot"></span> Reactie binnen 24u</div>
+      <div class="mini-item"><span class="mini-dot"></span> Geen verplaatsingskost in de regio</div>
+    </div>
+  </div>
+
+  <div class="hero-beeld">
+    <div class="gereedschap-art">
+      <div class="gereedschap-cirkel">🛠️</div>
+    </div>
+    <p class="hero-quote">
+      "Ik kom liever snel eens kijken dan dat u drie offertes moet afwachten."<br>
+      <strong style="opacity:0.8; font-style:normal; font-size:0.75rem; letter-spacing:0.1em;">— Wim</strong>
+    </p>
+  </div>
+</section>
+
+<!-- DIENSTEN -->
+<section class="diensten" id="diensten">
+  <div class="sectie-header">
+    <div>
+      <p class="sectie-label">Wat ik doe</p>
+      <h2 class="sectie-titel">Klussen en tuin, in één telefoontje</h2>
+    </div>
+    <p style="font-size:0.8rem; color:var(--grijs); max-width:28ch; text-align:right;">Geen klus te klein, geen tuin te wild.</p>
+  </div>
+
+  <div class="dienst-grid">
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">🔧</div>
+      <div class="dienst-naam">Kleine klussen</div>
+      <p class="dienst-omschrijving">Ophangen, monteren, herstellen — de klussen die blijven liggen krijgen eindelijk een oplossing.</p>
+      <div class="dienst-prijs-label">Vanaf</div>
+      <div class="dienst-prijs">€ 35 /u</div>
+    </div>
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">🌳</div>
+      <div class="dienst-naam">Tuinonderhoud</div>
+      <p class="dienst-omschrijving">Gras maaien, snoeien en onkruid wieden — regelmatig of eenmalig.</p>
+      <div class="dienst-prijs-label">Vanaf</div>
+      <div class="dienst-prijs">€ 30 /u</div>
+    </div>
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">🎨</div>
+      <div class="dienst-naam">Schilderwerk</div>
+      <p class="dienst-omschrijving">Muren, deuren en tuinhekken netjes geschilderd, binnen of buiten.</p>
+      <div class="dienst-prijs-label">Op aanvraag</div>
+      <div class="dienst-prijs">Prijs op maat</div>
+    </div>
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">🪚</div>
+      <div class="dienst-naam">Snoeiwerk</div>
+      <p class="dienst-omschrijving">Hagen, struiken en bomen in vorm, met afvoer van het snoeiafval.</p>
+      <div class="dienst-prijs-label">Vanaf</div>
+      <div class="dienst-prijs">€ 35 /u</div>
+    </div>
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">🧱</div>
+      <div class="dienst-naam">Terras & bestrating</div>
+      <p class="dienst-omschrijving">Kleine herstellingen aan terras of oprit, of een nieuw stukje bestrating.</p>
+      <div class="dienst-prijs-label">Op aanvraag</div>
+      <div class="dienst-prijs">Prijs op maat</div>
+    </div>
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">🍂</div>
+      <div class="dienst-naam">Seizoensonderhoud</div>
+      <p class="dienst-omschrijving">Bladeren ruimen, winterklaar maken van de tuin, voorjaarsopkuis.</p>
+      <div class="dienst-prijs-label">Vanaf</div>
+      <div class="dienst-prijs">€ 30 /u</div>
+    </div>
+  </div>
+</section>
+
+<!-- OVER -->
+<section class="over" id="over">
+  <div class="over-beeld">
+    <div class="grid-art"></div>
+    <div class="over-badge">
+      <span class="over-badge-getal">10+</span>
+      <span class="over-badge-tekst">Jaar in<br>de regio</span>
+    </div>
+  </div>
+
+  <div class="over-inhoud">
+    <p class="sectie-label">Over Wim</p>
+    <h2>Eén man, één<br>gereedschapskist, geen omwegen</h2>
+    <p>Wim doet klussen en tuinwerk al meer dan tien jaar, altijd zelf ter plaatse — geen tussenpersonen, geen wachttijden van weken.</p>
+    <p>De meeste klanten bellen of mailen 's ochtends en hebben nog dezelfde week een afspraak.</p>
+    <div class="kenmerken">
+      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Zelfstandig, geen onderaannemers</span></div>
+      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Snelle reactie, duidelijke prijs</span></div>
+      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Regio Tessenderlo en omstreken</span></div>
+      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Ook voor kleine, losse klusjes</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <h2>Vraag snel<br>een klus aan</h2>
+    <p>Eén kort formulier, geen lang traject. Beschrijf wat er moet gebeuren en Wim neemt binnen 24u contact op.</p>
+    <div class="contact-gegevens">
+      <div class="contact-rij">
+        <span class="contact-rij-label">Regio</span>
+        <span class="contact-rij-waarde">Tessenderlo en omstreken</span>
+      </div>
+      <div class="contact-rij">
+        <span class="contact-rij-label">Bereikbaar</span>
+        <span class="contact-rij-waarde">Ma–Za: 8u–18u</span>
+      </div>
+      <div class="contact-rij">
+        <span class="contact-rij-label">Tel</span>
+        <span class="contact-rij-waarde">04XX XX XX XX</span>
+      </div>
+    </div>
+  </div>
+
+  <form class="contact-form" action="https://formspree.io/f/xlgyekey" method="POST">
+    <div class="form-groep">
+      <label>Naam</label>
+      <input type="text" name="naam" placeholder="Jan Janssen" required>
+    </div>
+
+    <div class="form-groep">
+      <label>Telefoon</label>
+      <input type="tel" name="telefoon" placeholder="04XX XX XX XX" required>
+    </div>
+
+    <div class="form-groep">
+      <label>Wat moet er gebeuren?</label>
+      <textarea name="bericht" placeholder="Bv: haag snoeien, ongeveer 15 meter lang, liefst deze week nog..." required></textarea>
+    </div>
+
+    <button type="submit" class="verstuur-btn">Klus aanvragen →</button>
+    <p class="snel-note">Wim belt meestal binnen de 24u terug.</p>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Klus-Tuin-Wim · Tessenderlo · BTW BE 0XXX.XXX.XXX</span>
+  <span>Demo door Timmers Design</span>
+</footer>
+
+<div class="demo-badge">Demo · Timmers Design</div>
+
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Praktijk Netevallei — Eerstelijnszorg met een rustig hoofd</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blauw: #4E7A8C;
+    --blauw-donker: #33566A;
+    --groen: #7C9A82;
+    --wolk: #F0F4F2;
+    --wolk-donker: #DDE6E1;
+    --wit: #FBFDFC;
+    --zwart: #22302C;
+    --grijs: #6F7C77;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--wit);
+    color: var(--zwart);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(251,253,252,0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--wolk-donker);
+  }
+
+  .logo {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--blauw-donker);
+  }
+
+  .logo span {
+    display: block;
+    font-size: 0.55rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: var(--grijs);
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+
+  nav ul { list-style: none; display: flex; gap: 2.5rem; }
+  nav a {
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--zwart);
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--blauw); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-tekst {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
+    background: var(--wit);
+  }
+
+  .hero-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blauw);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-titel {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(2.4rem, 4.4vw, 3.9rem);
+    font-weight: 700;
+    line-height: 1.18;
+    color: var(--zwart);
+    margin-bottom: 1.8rem;
+  }
+
+  .hero-titel em { font-style: italic; color: var(--blauw); }
+
+  .hero-tekst p { font-size: 1rem; line-height: 1.8; color: var(--grijs); max-width: 40ch; margin-bottom: 2.5rem; }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--blauw);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1rem 2.1rem;
+    transition: background 0.2s;
+    width: fit-content;
+    border-radius: 100px;
+  }
+  .hero-cta:hover { background: var(--blauw-donker); }
+  .hero-cta::after { content: '→'; font-size: 1rem; }
+
+  .hero-mini { display: flex; gap: 2rem; margin-top: 2rem; }
+  .mini-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--grijs); }
+  .mini-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--groen); flex-shrink: 0; }
+
+  /* HERO BEELD */
+  .hero-beeld { position: relative; background: var(--blauw-donker); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+
+  .golf-art {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 30% 25%, rgba(255,255,255,0.06) 0 120px, transparent 121px),
+      radial-gradient(circle at 70% 65%, rgba(255,255,255,0.05) 0 160px, transparent 161px);
+  }
+
+  .kruis-art {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .kruis-art::before, .kruis-art::after {
+    content: '';
+    position: absolute;
+    background: rgba(255,255,255,0.85);
+    border-radius: 6px;
+  }
+  .kruis-art::before { width: 140px; height: 34px; }
+  .kruis-art::after { width: 34px; height: 140px; }
+
+  .hero-quote {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+    right: 3rem;
+    color: rgba(255,255,255,0.65);
+    font-size: 0.8rem;
+    font-style: italic;
+    line-height: 1.6;
+    border-left: 2px solid rgba(255,255,255,0.5);
+    padding-left: 1rem;
+  }
+
+  /* DIENSTEN */
+  .diensten { padding: 6rem 4rem; background: var(--wolk); }
+
+  .sectie-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid var(--wolk-donker);
+    padding-bottom: 1.5rem;
+  }
+
+  .sectie-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blauw); margin-bottom: 0.5rem; }
+  .sectie-titel { font-family: 'Source Serif 4', serif; font-size: 2rem; font-weight: 700; color: var(--zwart); }
+
+  .dienst-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--wolk-donker); }
+
+  .dienst-kaart { background: var(--wit); padding: 2.5rem 2rem; transition: background 0.2s; }
+  .dienst-kaart:hover { background: var(--blauw-donker); color: #fff; }
+  .dienst-kaart:hover .dienst-naam, .dienst-kaart:hover .dienst-omschrijving { color: rgba(255,255,255,0.85); }
+
+  .dienst-icoon { font-size: 1.8rem; margin-bottom: 1.2rem; }
+  .dienst-naam { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--zwart); transition: color 0.2s; }
+  .dienst-omschrijving { font-size: 0.85rem; line-height: 1.7; color: var(--grijs); transition: color 0.2s; }
+
+  /* OVER */
+  .over { padding: 6rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; background: var(--wit); }
+
+  .over-beeld { position: relative; height: 440px; background: var(--blauw-donker); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .zacht-art { position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 24px, rgba(255,255,255,0.03) 24px, rgba(255,255,255,0.03) 25px); }
+  .over-badge { position: relative; z-index: 1; text-align: center; color: #fff; }
+  .over-badge-getal { font-family: 'Source Serif 4', serif; font-size: 4.4rem; font-weight: 700; line-height: 1; display: block; }
+  .over-badge-tekst { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.75; }
+
+  .over-inhoud .sectie-label { margin-bottom: 0.8rem; }
+  .over-inhoud h2 { font-family: 'Source Serif 4', serif; font-size: 2.15rem; font-weight: 700; line-height: 1.25; margin-bottom: 1.5rem; }
+  .over-inhoud p { font-size: 0.95rem; line-height: 1.85; color: var(--grijs); margin-bottom: 1.2rem; }
+
+  .kenmerken { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem; }
+  .kenmerk { display: flex; align-items: center; gap: 1rem; font-size: 0.85rem; }
+  .kenmerk-streep { width: 24px; height: 1px; background: var(--blauw); flex-shrink: 0; }
+
+  /* CONTACT */
+  .contact { background: var(--blauw-donker); padding: 6rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+  .contact-info h2 { font-family: 'Source Serif 4', serif; font-size: 2.3rem; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 1.5rem; }
+  .contact-info p { color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.8; margin-bottom: 2.5rem; }
+
+  .contact-gegevens { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-rij { display: flex; gap: 1rem; align-items: flex-start; }
+  .contact-rij-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); width: 70px; flex-shrink: 0; padding-top: 2px; }
+  .contact-rij-waarde { color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.5; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-rij { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-groep { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-groep label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+  .form-groep input, .form-groep textarea, .form-groep select {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #fff;
+    padding: 0.85rem 1rem; font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; width: 100%;
+    border-radius: 6px;
+  }
+  .form-groep input::placeholder, .form-groep textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .form-groep input:focus, .form-groep textarea:focus, .form-groep select:focus { border-color: rgba(255,255,255,0.55); }
+  .form-groep textarea { resize: vertical; min-height: 110px; }
+  .form-groep select option { background: var(--blauw-donker); }
+
+  .verstuur-btn {
+    background: #fff; color: var(--blauw-donker); border: none; padding: 1rem 2.1rem;
+    font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; align-self: flex-start; border-radius: 100px;
+  }
+  .verstuur-btn:hover { opacity: 0.85; }
+
+  /* FOOTER */
+  footer { background: var(--zwart); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.3); font-size: 0.75rem; letter-spacing: 0.05em; }
+  footer span { color: rgba(255,255,255,0.15); }
+
+  .demo-badge {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--zwart); color: rgba(255,255,255,0.7);
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.6rem 1rem; z-index: 200; font-family: 'Inter', sans-serif;
+    border-radius: 100px;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { gap: 1.2rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-beeld { height: 280px; }
+    .hero-tekst { padding: 3rem 1.5rem; }
+    .diensten { padding: 4rem 1.5rem; }
+    .dienst-grid { grid-template-columns: 1fr; }
+    .over { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .over-beeld { height: 260px; }
+    .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .form-rij { grid-template-columns: 1fr; }
+    .sectie-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    Netevallei
+    <span>Eerstelijnspraktijk</span>
+  </div>
+  <ul>
+    <li><a href="#diensten">Zorgaanbod</a></li>
+    <li><a href="#over">Ons team</a></li>
+    <li><a href="#contact">Afspraak</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tekst">
+    <p class="hero-label">Huisartsen · Kinesitherapie · Regio Netevallei</p>
+    <h1 class="hero-titel">
+      Rustige zorg,<br>
+      <em>vertrouwd</em><br>
+      onthaal
+    </h1>
+    <p>Rustige, geruststellende uitstraling — precies wat een zorgpraktijk nodig heeft om nieuwe patiënten op hun gemak te stellen. Persoonlijke aandacht, geen wachtzalen vol haast.</p>
+
+    <a href="#contact" class="hero-cta">Maak een afspraak</a>
+
+    <div class="hero-mini">
+      <div class="mini-item"><span class="mini-dot"></span> Nieuwe patiënten welkom</div>
+      <div class="mini-item"><span class="mini-dot"></span> Online en telefonisch afspreken</div>
+    </div>
+  </div>
+
+  <div class="hero-beeld">
+    <div class="golf-art"></div>
+    <div class="kruis-art"></div>
+    <p class="hero-quote">
+      "We nemen de tijd om te luisteren, ook als het maar om een korte vraag gaat."<br>
+      <strong style="opacity:0.8; font-style:normal; font-size:0.75rem; letter-spacing:0.1em;">— Team Praktijk Netevallei</strong>
+    </p>
+  </div>
+</section>
+
+<!-- DIENSTEN -->
+<section class="diensten" id="diensten">
+  <div class="sectie-header">
+    <div>
+      <p class="sectie-label">Ons zorgaanbod</p>
+      <h2 class="sectie-titel">Eerstelijnszorg onder één dak</h2>
+    </div>
+    <p style="font-size:0.8rem; color:var(--grijs); max-width:28ch; text-align:right;">Multidisciplinair team, korte lijnen tussen zorgverleners.</p>
+  </div>
+
+  <div class="dienst-grid">
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">🩺</div>
+      <div class="dienst-naam">Huisartsgeneeskunde</div>
+      <p class="dienst-omschrijving">Voor al uw medische vragen, van griep tot chronische opvolging, met voldoende tijd per consult.</p>
+    </div>
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">🤸</div>
+      <div class="dienst-naam">Kinesitherapie</div>
+      <p class="dienst-omschrijving">Revalidatie en behandeling van rug-, nek- en gewrichtsklachten door ervaren kinesitherapeuten.</p>
+    </div>
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">💬</div>
+      <div class="dienst-naam">Psychologische begeleiding</div>
+      <p class="dienst-omschrijving">Een luisterend oor bij stress, angst of moeilijke periodes, in een veilige, discrete setting.</p>
+    </div>
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">🍎</div>
+      <div class="dienst-naam">Diëtiek</div>
+      <p class="dienst-omschrijving">Persoonlijk voedingsadvies bij gewichtsbeheer, diabetes of andere voedingsgerelateerde vragen.</p>
+    </div>
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">👶</div>
+      <div class="dienst-naam">Zorg voor het hele gezin</div>
+      <p class="dienst-omschrijving">Van jong tot oud — een vaste huisarts die het volledige gezinsdossier kent.</p>
+    </div>
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">📋</div>
+      <div class="dienst-naam">Preventie & opvolging</div>
+      <p class="dienst-omschrijving">Bloeddrukcontroles, vaccinaties en preventieve onderzoeken, zonder lange wachttijden.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OVER -->
+<section class="over" id="over">
+  <div class="over-beeld">
+    <div class="zacht-art"></div>
+    <div class="over-badge">
+      <span class="over-badge-getal">4</span>
+      <span class="over-badge-tekst">Zorgverleners<br>onder één dak</span>
+    </div>
+  </div>
+
+  <div class="over-inhoud">
+    <p class="sectie-label">Ons team</p>
+    <h2>Persoonlijke zorg<br>in een klein team</h2>
+    <p>Praktijk Netevallei bundelt huisartsen, een kinesitherapeut, een psycholoog en een diëtist in één laagdrempelige praktijk, zodat zorgverleners makkelijk kunnen overleggen.</p>
+    <p>We houden bewust een beperkt patiëntenaantal aan, zodat er tijd blijft voor een goed gesprek — ook bij een eerste afspraak.</p>
+    <div class="kenmerken">
+      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Nieuwe patiënten zijn welkom</span></div>
+      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Rolstoeltoegankelijke praktijk</span></div>
+      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Korte lijnen tussen zorgverleners</span></div>
+      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Online en telefonisch afspreken</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <h2>Maak een<br>afspraak</h2>
+    <p>Vul het formulier in of bel de praktijk. We nemen binnen één werkdag contact op om een moment af te spreken.</p>
+    <div class="contact-gegevens">
+      <div class="contact-rij">
+        <span class="contact-rij-label">Adres</span>
+        <span class="contact-rij-waarde">Netestraat 8<br>2260 Westerlo</span>
+      </div>
+      <div class="contact-rij">
+        <span class="contact-rij-label">Open</span>
+        <span class="contact-rij-waarde">Ma–Vr: 8u–18u<br>Zaterdag: 9u–12u</span>
+      </div>
+      <div class="contact-rij">
+        <span class="contact-rij-label">Tel</span>
+        <span class="contact-rij-waarde">014 XX XX XX</span>
+      </div>
+    </div>
+  </div>
+
+  <form class="contact-form" action="https://formspree.io/f/xlgyekey" method="POST">
+    <div class="form-rij">
+      <div class="form-groep">
+        <label>Voornaam</label>
+        <input type="text" name="voornaam" placeholder="Jan" required>
+      </div>
+      <div class="form-groep">
+        <label>Familienaam</label>
+        <input type="text" name="familienaam" placeholder="Janssen" required>
+      </div>
+    </div>
+
+    <div class="form-groep">
+      <label>E-mailadres</label>
+      <input type="email" name="email" placeholder="jan.janssen@mail.be" required>
+    </div>
+
+    <div class="form-groep">
+      <label>Telefoon</label>
+      <input type="tel" name="telefoon" placeholder="04XX XX XX XX">
+    </div>
+
+    <div class="form-groep">
+      <label>Voor wie is de afspraak?</label>
+      <select name="categorie">
+        <option value="">Kies een zorgverlener...</option>
+        <option value="huisarts">Huisarts</option>
+        <option value="kine">Kinesitherapeut</option>
+        <option value="psycholoog">Psycholoog</option>
+        <option value="dietist">Diëtist</option>
+        <option value="anders">Andere vraag</option>
+      </select>
+    </div>
+
+    <div class="form-groep">
+      <label>Toelichting</label>
+      <textarea name="bericht" placeholder="Bv: graag een eerste afspraak bij de huisarts, liefst volgende week..." required></textarea>
+    </div>
+
+    <button type="submit" class="verstuur-btn">Afspraak aanvragen →</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Praktijk Netevallei · Westerlo · BTW BE 0XXX.XXX.XXX</span>
+  <span>Demo door Timmers Design</span>
+</footer>
+
+<div class="demo-badge">Demo · Timmers Design</div>
+
+</body>
+</html>

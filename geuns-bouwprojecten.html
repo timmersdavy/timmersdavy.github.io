@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geuns Bouwprojecten — Bouwen op Vertrouwen</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --staal: #2B3A42;
+    --staal-donker: #1A252B;
+    --oranje: #D4622A;
+    --oranje-donker: #A8481C;
+    --beton: #EDE9E1;
+    --beton-donker: #DCD5C8;
+    --wit: #FAF8F5;
+    --zwart: #17191A;
+    --grijs: #6E7A80;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--wit);
+    color: var(--zwart);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(250,248,245,0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--beton-donker);
+  }
+
+  .logo {
+    font-family: 'Archivo', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    color: var(--staal-donker);
+    text-transform: uppercase;
+  }
+
+  .logo span {
+    display: block;
+    font-size: 0.55rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: var(--grijs);
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+
+  nav ul { list-style: none; display: flex; gap: 2.5rem; }
+  nav a {
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--zwart);
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--oranje); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-tekst {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
+    background: var(--wit);
+  }
+
+  .hero-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--oranje);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-titel {
+    font-family: 'Archivo', sans-serif;
+    font-size: clamp(2.6rem, 4.6vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--staal-donker);
+    margin-bottom: 1.8rem;
+  }
+
+  .hero-titel em { font-style: normal; color: var(--oranje); }
+
+  .hero-tekst p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--grijs);
+    max-width: 40ch;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 3rem; }
+
+  .stat-getal {
+    font-family: 'Archivo', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--staal-donker);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grijs);
+    margin-top: 0.4rem;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--oranje);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    transition: background 0.2s;
+    width: fit-content;
+  }
+  .hero-cta:hover { background: var(--oranje-donker); }
+  .hero-cta::after { content: '→'; font-size: 1rem; }
+
+  /* HERO BEELD */
+  .hero-beeld {
+    position: relative;
+    background: var(--staal-donker);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .blueprint-art {
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.045) 0 1px, transparent 1px 40px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.045) 0 1px, transparent 1px 40px);
+  }
+
+  .balk-composite { position: relative; width: 320px; height: 380px; }
+
+  .balk {
+    position: absolute;
+    background: linear-gradient(160deg, var(--oranje) 0%, var(--oranje-donker) 100%);
+    box-shadow: 8px 12px 30px rgba(0,0,0,0.4);
+  }
+
+  .balk.b1 { width: 240px; height: 34px; top: 40px; left: 20px; transform: rotate(-8deg); }
+  .balk.b2 { width: 240px; height: 34px; top: 160px; left: 40px; transform: rotate(-8deg); }
+  .balk.b3 { width: 240px; height: 34px; top: 280px; left: 20px; transform: rotate(-8deg); }
+
+  .hero-quote {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+    right: 3rem;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.8rem;
+    font-style: italic;
+    line-height: 1.6;
+    border-left: 2px solid var(--oranje);
+    padding-left: 1rem;
+  }
+
+  /* DIENSTEN */
+  .diensten { padding: 6rem 4rem; background: var(--beton); }
+
+  .sectie-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid var(--beton-donker);
+    padding-bottom: 1.5rem;
+  }
+
+  .sectie-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--oranje);
+    margin-bottom: 0.5rem;
+  }
+
+  .sectie-titel {
+    font-family: 'Archivo', sans-serif;
+    font-size: 2.1rem;
+    font-weight: 900;
+    color: var(--staal-donker);
+  }
+
+  .dienst-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--beton-donker);
+  }
+
+  .dienst-kaart { background: var(--wit); padding: 2.5rem 2rem; transition: background 0.2s; }
+  .dienst-kaart:hover { background: var(--staal-donker); color: #fff; }
+  .dienst-kaart:hover .dienst-naam,
+  .dienst-kaart:hover .dienst-omschrijving { color: rgba(255,255,255,0.85); }
+
+  .dienst-icoon { font-size: 1.8rem; margin-bottom: 1.2rem; }
+
+  .dienst-naam {
+    font-family: 'Archivo', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--staal-donker);
+    transition: color 0.2s;
+  }
+
+  .dienst-omschrijving { font-size: 0.85rem; line-height: 1.65; color: var(--grijs); transition: color 0.2s; }
+
+  /* OVER */
+  .over {
+    padding: 6rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    background: var(--wit);
+  }
+
+  .over-beeld {
+    position: relative;
+    height: 460px;
+    background: var(--staal-donker);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .grid-art {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.03) 20px, rgba(255,255,255,0.03) 21px);
+  }
+
+  .jaar-groot {
+    font-family: 'Archivo', sans-serif;
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.06);
+    position: absolute;
+    line-height: 1;
+  }
+
+  .over-badge { position: relative; z-index: 1; text-align: center; color: #fff; }
+  .over-badge-getal {
+    font-family: 'Archivo', sans-serif;
+    font-size: 4.6rem;
+    font-weight: 900;
+    line-height: 1;
+    display: block;
+    color: var(--oranje);
+  }
+  .over-badge-tekst { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.75; }
+
+  .over-inhoud .sectie-label { margin-bottom: 0.8rem; }
+  .over-inhoud h2 {
+    font-family: 'Archivo', sans-serif;
+    font-size: 2.3rem;
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    color: var(--staal-donker);
+  }
+  .over-inhoud p { font-size: 0.95rem; line-height: 1.8; color: var(--grijs); margin-bottom: 1.2rem; }
+
+  .kenmerken { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem; }
+  .kenmerk { display: flex; align-items: center; gap: 1rem; font-size: 0.85rem; }
+  .kenmerk-streep { width: 24px; height: 1px; background: var(--oranje); flex-shrink: 0; }
+
+  /* CONTACT */
+  .contact {
+    background: var(--staal-donker);
+    padding: 6rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-info h2 {
+    font-family: 'Archivo', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-info p { color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.75; margin-bottom: 2.5rem; }
+
+  .contact-gegevens { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-rij { display: flex; gap: 1rem; align-items: flex-start; }
+  .contact-rij-label {
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4); width: 60px; flex-shrink: 0; padding-top: 2px;
+  }
+  .contact-rij-waarde { color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.5; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-rij { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-groep { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-groep label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .form-groep input, .form-groep textarea, .form-groep select {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    padding: 0.85rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .form-groep input::placeholder, .form-groep textarea::placeholder { color: rgba(255,255,255,0.25); }
+  .form-groep input:focus, .form-groep textarea:focus, .form-groep select:focus { border-color: rgba(255,255,255,0.5); }
+  .form-groep textarea { resize: vertical; min-height: 120px; }
+  .form-groep select option { background: var(--staal-donker); }
+
+  .verstuur-btn {
+    background: var(--oranje);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+  .verstuur-btn:hover { background: var(--oranje-donker); }
+
+  /* FOOTER */
+  footer {
+    background: var(--zwart);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+  footer span { color: rgba(255,255,255,0.15); }
+
+  .demo-badge {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: var(--zwart);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.6rem 1rem;
+    z-index: 200;
+    font-family: 'Inter', sans-serif;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { gap: 1.2rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-beeld { height: 300px; }
+    .hero-tekst { padding: 3rem 1.5rem; }
+    .diensten { padding: 4rem 1.5rem; }
+    .dienst-grid { grid-template-columns: 1fr; }
+    .over { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .over-beeld { height: 280px; }
+    .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .form-rij { grid-template-columns: 1fr; }
+    .sectie-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    Geuns
+    <span>Bouwprojecten · Ham</span>
+  </div>
+  <ul>
+    <li><a href="#diensten">Diensten</a></li>
+    <li><a href="#over">Over ons</a></li>
+    <li><a href="#contact">Offerte</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tekst">
+    <p class="hero-label">Bouwbedrijf · Nieuwbouw & renovatie</p>
+    <h1 class="hero-titel">
+      Bouwen op<br>
+      <em>vertrouwen</em><br>
+      vóór de eerste steen
+    </h1>
+    <p>Een bouwbedrijf dat vertrouwen uitstraalt nog voor de eerste offerte. Heldere projectpresentatie, transparante planning en een team dat doet wat het belooft.</p>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-getal">18+</div>
+        <div class="stat-label">jaar<br>ervaring</div>
+      </div>
+      <div>
+        <div class="stat-getal">120+</div>
+        <div class="stat-label">projecten<br>opgeleverd</div>
+      </div>
+    </div>
+
+    <a href="#contact" class="hero-cta">Vraag een offerte aan</a>
+  </div>
+
+  <div class="hero-beeld">
+    <div class="blueprint-art"></div>
+    <div class="balk-composite">
+      <div class="balk b1"></div>
+      <div class="balk b2"></div>
+      <div class="balk b3"></div>
+    </div>
+    <p class="hero-quote">
+      "Elke klant krijgt een duidelijke planning en één vast aanspreekpunt — van eerste schets tot sleuteloverdracht."<br>
+      <strong style="opacity:0.8; font-style:normal; font-size:0.75rem; letter-spacing:0.1em;">— Team Geuns Bouwprojecten</strong>
+    </p>
+  </div>
+</section>
+
+<!-- DIENSTEN -->
+<section class="diensten" id="diensten">
+  <div class="sectie-header">
+    <div>
+      <p class="sectie-label">Ons aanbod</p>
+      <h2 class="sectie-titel">Van fundering tot afwerking</h2>
+    </div>
+    <p style="font-size:0.8rem; color:var(--grijs); max-width:30ch; text-align:right;">Elk project start met een vrijblijvend gesprek en een heldere offerte.</p>
+  </div>
+
+  <div class="dienst-grid">
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">🏗️</div>
+      <div class="dienst-naam">Nieuwbouw</div>
+      <p class="dienst-omschrijving">Volledige begeleiding van ontwerp tot oplevering, in nauw overleg met uw architect.</p>
+    </div>
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">🧱</div>
+      <div class="dienst-naam">Renovatie</div>
+      <p class="dienst-omschrijving">Grondige verbouwingen met minimale hinder — wij plannen fasegewijs rond uw leven.</p>
+    </div>
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">📐</div>
+      <div class="dienst-naam">Uitbreidingen</div>
+      <p class="dienst-omschrijving">Extra leefruimte, veranda's en aanbouwen die naadloos aansluiten op de bestaande structuur.</p>
+    </div>
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">🏠</div>
+      <div class="dienst-naam">Dakwerken</div>
+      <p class="dienst-omschrijving">Isolatie, herstelling en volledige dakvernieuwing door ons eigen vakteam.</p>
+    </div>
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">🚧</div>
+      <div class="dienst-naam">Ruwbouw</div>
+      <p class="dienst-omschrijving">Stabiele fundering en structuur als basis voor elk bouwproject, groot of klein.</p>
+    </div>
+    <div class="dienst-kaart">
+      <div class="dienst-icoon">✅</div>
+      <div class="dienst-naam">Sleutel-op-de-deur</div>
+      <p class="dienst-omschrijving">Eén aanspreekpunt, één planning, één verantwoordelijke van start tot oplevering.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OVER -->
+<section class="over" id="over">
+  <div class="over-beeld">
+    <div class="grid-art"></div>
+    <div class="jaar-groot">2007</div>
+    <div class="over-badge">
+      <span class="over-badge-getal">18</span>
+      <span class="over-badge-tekst">Jaar<br>vakmanschap</span>
+    </div>
+  </div>
+
+  <div class="over-inhoud">
+    <p class="sectie-label">Ons verhaal</p>
+    <h2>Gebouwd op<br>duidelijke afspraken</h2>
+    <p>Geuns Bouwprojecten startte in 2007 als familiebedrijf en groeide uit tot een vast team van vakmensen dat regionaal bekendstaat om zijn stiptheid en transparantie.</p>
+    <p>Voor elk project maken we een duidelijke planning en offerte, zodat u vooraf precies weet waar u aan toe bent — geen verrassingen achteraf.</p>
+    <div class="kenmerken">
+      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Vast aanspreekpunt per project</span></div>
+      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Transparante offerte vooraf</span></div>
+      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Eigen vakteam, geen onderaannemers</span></div>
+      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Regionaal actief in Limburg</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <h2>Vraag een<br>offerte aan</h2>
+    <p>Vertel ons kort over uw project. We nemen binnen twee werkdagen contact op voor een vrijblijvend gesprek.</p>
+    <div class="contact-gegevens">
+      <div class="contact-rij">
+        <span class="contact-rij-label">Adres</span>
+        <span class="contact-rij-waarde">Industrieweg 22<br>3945 Ham</span>
+      </div>
+      <div class="contact-rij">
+        <span class="contact-rij-label">Werkuren</span>
+        <span class="contact-rij-waarde">Ma–Vr: 7u30–17u30</span>
+      </div>
+      <div class="contact-rij">
+        <span class="contact-rij-label">Tel</span>
+        <span class="contact-rij-waarde">013 XX XX XX</span>
+      </div>
+    </div>
+  </div>
+
+  <form class="contact-form" action="https://formspree.io/f/xlgyekey" method="POST">
+    <div class="form-rij">
+      <div class="form-groep">
+        <label>Voornaam</label>
+        <input type="text" name="voornaam" placeholder="Jan" required>
+      </div>
+      <div class="form-groep">
+        <label>Familienaam</label>
+        <input type="text" name="familienaam" placeholder="Janssen" required>
+      </div>
+    </div>
+
+    <div class="form-groep">
+      <label>E-mailadres</label>
+      <input type="email" name="email" placeholder="jan.janssen@mail.be" required>
+    </div>
+
+    <div class="form-groep">
+      <label>Telefoon</label>
+      <input type="tel" name="telefoon" placeholder="04XX XX XX XX">
+    </div>
+
+    <div class="form-groep">
+      <label>Type project</label>
+      <select name="categorie">
+        <option value="">Kies een categorie...</option>
+        <option value="nieuwbouw">Nieuwbouw</option>
+        <option value="renovatie">Renovatie</option>
+        <option value="uitbreiding">Uitbreiding</option>
+        <option value="dakwerken">Dakwerken</option>
+        <option value="anders">Andere vraag</option>
+      </select>
+    </div>
+
+    <div class="form-groep">
+      <label>Omschrijving van uw project</label>
+      <textarea name="bericht" placeholder="Bv: verbouwing van keuken en badkamer, gewenste startdatum voorjaar 2027..." required></textarea>
+    </div>
+
+    <button type="submit" class="verstuur-btn">Offerte aanvragen →</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Geuns Bouwprojecten · Ham · BTW BE 0XXX.XXX.XXX</span>
+  <span>Demo door Timmers Design</span>
+</footer>
+
+<div class="demo-badge">Demo · Timmers Design</div>
+
+</body>
+</html>
