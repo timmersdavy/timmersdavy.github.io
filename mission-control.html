@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission Control — Timmers Design</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #0D1B3E;
+    color: #fff;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  h1 { color: #F4762A; font-size: 22px; margin-bottom: 20px; }
+  .setup {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  .setup label { display: block; font-size: 13px; color: #c8a96e; margin-bottom: 6px; }
+  .setup input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .setup button {
+    background: #F4762A;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .status-msg { font-size: 13px; margin-top: 8px; color: #9ae19d; }
+  .status-msg.error { color: #f28b82; }
+  .cards { display: grid; gap: 12px; }
+  .card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .card h3 { font-size: 15px; margin-bottom: 8px; color: #fff; }
+  .card .meta { font-size: 12px; color: rgba(255,255,255,0.6); }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+  .badge.active { background: rgba(154,225,157,0.2); color: #9ae19d; }
+  .badge.inactive { background: rgba(242,139,130,0.2); color: #f28b82; }
+  #lastUpdate { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 16px; text-align: center; }
+</style>
+</head>
+<body>
+
+<h1>🚀 Mission Control — Timmers Design</h1>
+
+<div class="setup">
+  <label for="webhookInput">Webhook URL</label>
+  <input type="text" id="webhookInput" placeholder="https://timmersdavy.app.n8n.cloud/webhook/mission-control-status">
+  <button onclick="saveWebhookUrl()">Opslaan</button>
+  <div id="statusMsg" class="status-msg"></div>
+</div>
+
+<div class="cards" id="cards"></div>
+<div id="lastUpdate"></div>
+
+<script>
+var pollTimer = null;
+
+function saveWebhookUrl() {
+  var url = document.getElementById('webhookInput').value.trim();
+  var msg = document.getElementById('statusMsg');
+  if (!url) {
+    msg.textContent = 'Vul eerst een geldige URL in.';
+    msg.className = 'status-msg error';
+    return;
+  }
+  startPolling(url);
+  msg.textContent = 'Dashboard gestart!';
+  msg.className = 'status-msg';
+}
+
+function startPolling(url) {
+  if (pollTimer) clearInterval(pollTimer);
+  fetchStatus(url);
+  pollTimer = setInterval(function () { fetchStatus(url); }, 30000);
+}
+
+function fetchStatus(url) {
+  fetch(url)
+    .then(function (res) { return res.json(); })
+    .then(function (data) { renderCards(data); })
+    .catch(function (err) {
+      var msg = document.getElementById('statusMsg');
+      msg.textContent = 'Kon geen verbinding maken: ' + err.message;
+      msg.className = 'status-msg error';
+    });
+}
+
+function renderCards(data) {
+  var container = document.getElementById('cards');
+  container.innerHTML = '';
+  var workflows = data.workflows || [];
+  for (var i = 0; i < workflows.length; i++) {
+    var wf = workflows[i];
+    var card = document.createElement('div');
+    card.className = 'card';
+    var title = document.createElement('h3');
+    title.textContent = wf.name || 'Naamloze workflow';
+    card.appendChild(title);
+    var meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.textContent = 'ID: ' + (wf.id || '—');
+    card.appendChild(meta);
+    var badge = document.createElement('span');
+    badge.className = 'badge ' + (wf.active ? 'active' : 'inactive');
+    badge.textContent = wf.active ? 'Actief' : 'Inactief';
+    card.appendChild(badge);
+    container.appendChild(card);
+  }
+  if (workflows.length === 0) {
+    container.innerHTML = '<div class="card"><p>Geen workflows gevonden.</p></div>';
+  }
+  document.getElementById('lastUpdate').textContent =
+    'Laatst bijgewerkt: ' + new Date().toLocaleTimeString('nl-BE');
+}
+
+var HARDCODED_WEBHOOK_URL = 'https://timmersdavy.app.n8n.cloud/webhook/mission-control-status';
+
+window.onload = function () {
+  document.getElementById('webhookInput').value = HARDCODED_WEBHOOK_URL;
+  var msg = document.getElementById('statusMsg');
+  msg.textContent = 'Dashboard start automatisch...';
+  msg.className = 'status-msg';
+  startPolling(HARDCODED_WEBHOOK_URL);
+};
+</script>
+
+</body>
+</html>
