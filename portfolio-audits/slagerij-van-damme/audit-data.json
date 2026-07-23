@@ -1,0 +1,84 @@
+{
+  "summary": {
+    "health_score": 73,
+    "business_type": "Portfolio-demo: Store (ambachtelijke slagerij)",
+    "top_findings": [
+      "OPGELOST (2026-07-23): meta description, canonical, OG/Twitter en Store-schema toegevoegd, live geverifieerd",
+      "Content aan de dunne kant: 357 woorden"
+    ],
+    "quick_wins": [
+      "Overweeg 100-150 extra woorden (verhaal van het vakmanschap, aanbod) als deze pagina ook zelfstandig verkeer moet trekken"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 85,
+      "what_works": [
+        "Onderdeel van timmersdesign.be: robots.txt correct, staat in sitemap.xml (site-breed gefixt 2026-07-23)",
+        "Status 200, canonical self-referencing aanwezig"
+      ],
+      "findings": []
+    },
+    {
+      "name": "Content Quality",
+      "score": 60,
+      "what_works": ["Duidelijk verhaal: 'Vlees met karakter en vakmanschap', sinds 1978"],
+      "findings": [
+        {
+          "title": "357 woorden -- aan de dunne kant",
+          "severity": "Medium",
+          "description": "Voor een pagina die zelfstandig zou moeten ranken is dit mager.",
+          "recommendation": "Voeg een sectie toe over het aanbod/de werkwijze/de winkel."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 85,
+      "what_works": [
+        "Unieke title en H1",
+        "OPGELOST: meta description (131 tekens), canonical, OG/Twitter tags -- live geverifieerd"
+      ],
+      "findings": []
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 90,
+      "what_works": ["OPGELOST: Store-schema met naam, beschrijving en adres (Dorpstraat 14, 3980 Tessenderlo), live geverifieerd"],
+      "findings": []
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": null,
+      "what_works": [],
+      "findings": [
+        {
+          "title": "Niet gemeten -- data gap",
+          "severity": "Info",
+          "description": "Zelfde omgevingsbeperking als hoofdaudit (geen Lighthouse/CrUX beschikbaar).",
+          "recommendation": "Zie hoofdaudit timmersdesign.be voor details."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness (GEO)",
+      "score": 65,
+      "what_works": ["Schema + OG geven duidelijke entity-signalen"],
+      "findings": []
+    },
+    {
+      "name": "Images",
+      "score": null,
+      "what_works": ["Geen foto's gebruikt (tekst/CSS-stijl, consistent met de rest van de site)"],
+      "findings": []
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {"name": "Phase 1: Critical Fixes (VOLTOOID 2026-07-23)", "timeframe": "Week 1", "items": ["DONE -- Store-schema, meta description, canonical, OG/Twitter"]},
+      {"name": "Phase 2: Content", "timeframe": "Maand 2", "items": ["Nog open -- content uitbreiden indien zelfstandig verkeer gewenst"]}
+    ]
+  },
+  "artifacts": {"findings_dir": "findings/", "screenshots_dir": "screenshots/"}
+}

@@ -1,0 +1,79 @@
+{
+  "summary": {
+    "health_score": 72,
+    "business_type": "Portfolio-demo: TravelAgency (reisbureau)",
+    "top_findings": [
+      "Meta description bestond al vóór de fixes van 2026-07-23",
+      "OPGELOST (2026-07-23): canonical, OG/Twitter en TravelAgency-schema toegevoegd, live geverifieerd",
+      "Content het dunst van de 6 demopagina's: 266 woorden"
+    ],
+    "quick_wins": [
+      "Overweeg reisaanbod-voorbeelden (citytrip/rondreis) uit te breiden"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 85,
+      "what_works": ["Onderdeel van timmersdesign.be, in sitemap.xml, status 200, canonical aanwezig"],
+      "findings": []
+    },
+    {
+      "name": "Content Quality",
+      "score": 52,
+      "what_works": ["Duidelijke belofte: 'Reizen die bij je passen, tot in het kleinste detail'"],
+      "findings": [
+        {
+          "title": "266 woorden -- dunst van de 6 demopagina's",
+          "severity": "Medium",
+          "description": "Weinig context over concrete reisaanbod.",
+          "recommendation": "Voeg voorbeeldreizen of pakketten toe."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 85,
+      "what_works": ["Unieke title/H1", "Meta description al aanwezig (108 tekens)", "OPGELOST: canonical, OG/Twitter -- live geverifieerd"],
+      "findings": []
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 90,
+      "what_works": ["OPGELOST: TravelAgency-schema met adres (Koningin Astridplein 6, 3970 Leopoldsburg), live geverifieerd"],
+      "findings": []
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": null,
+      "what_works": [],
+      "findings": [
+        {
+          "title": "Niet gemeten -- data gap",
+          "severity": "Info",
+          "description": "Zelfde omgevingsbeperking als hoofdaudit.",
+          "recommendation": "Zie hoofdaudit timmersdesign.be."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness (GEO)",
+      "score": 65,
+      "what_works": ["Schema + OG geven duidelijke entity-signalen"],
+      "findings": []
+    },
+    {
+      "name": "Images",
+      "score": null,
+      "what_works": ["Geen foto's gebruikt (tekst/CSS-stijl)"],
+      "findings": []
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {"name": "Phase 1: Critical Fixes (VOLTOOID 2026-07-23)", "timeframe": "Week 1", "items": ["DONE -- schema, canonical, OG/Twitter"]},
+      {"name": "Phase 2: Content", "timeframe": "Maand 2", "items": ["Nog open -- reisaanbod-voorbeelden toevoegen"]}
+    ]
+  },
+  "artifacts": {"findings_dir": "findings/", "screenshots_dir": "screenshots/"}
+}

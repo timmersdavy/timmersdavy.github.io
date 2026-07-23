@@ -1,0 +1,71 @@
+{
+  "summary": {
+    "health_score": 75,
+    "business_type": "Portfolio-demo: Restaurant (Egyptisch restaurant)",
+    "top_findings": [
+      "OPGELOST (2026-07-23): meta description, canonical, OG/Twitter en Restaurant-schema (incl. telefoon/e-mail) toegevoegd, live geverifieerd",
+      "Beste content van de 6 demopagina's: 446 woorden"
+    ],
+    "quick_wins": [
+      "Overweeg menukaart-highlights of openingsuren als extra content-uitbreiding"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 85,
+      "what_works": ["Onderdeel van timmersdesign.be, in sitemap.xml, status 200, canonical aanwezig"],
+      "findings": []
+    },
+    {
+      "name": "Content Quality",
+      "score": 65,
+      "what_works": ["446 woorden -- beste van de 6 demopagina's", "Adres & openingsuren-sectie aanwezig"],
+      "findings": []
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 85,
+      "what_works": ["Unieke title/H1", "OPGELOST: meta description (132 tekens), canonical, OG/Twitter -- live geverifieerd"],
+      "findings": []
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 92,
+      "what_works": ["OPGELOST: Restaurant-schema met adres (Marktplein 12, 3980 Tessenderlo), telefoon en e-mail, live geverifieerd"],
+      "findings": []
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": null,
+      "what_works": [],
+      "findings": [
+        {
+          "title": "Niet gemeten -- data gap",
+          "severity": "Info",
+          "description": "Zelfde omgevingsbeperking als hoofdaudit.",
+          "recommendation": "Zie hoofdaudit timmersdesign.be."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness (GEO)",
+      "score": 68,
+      "what_works": ["Schema + OG + telefoon/e-mail geven sterke entity-signalen"],
+      "findings": []
+    },
+    {
+      "name": "Images",
+      "score": null,
+      "what_works": ["Geen foto's gebruikt (tekst/CSS-stijl)"],
+      "findings": []
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {"name": "Phase 1: Critical Fixes (VOLTOOID 2026-07-23)", "timeframe": "Week 1", "items": ["DONE -- schema, meta description, canonical, OG/Twitter"]},
+      {"name": "Phase 2: Content", "timeframe": "Maand 2", "items": ["Nog open -- menukaart/openingsuren-detail uitbreiden"]}
+    ]
+  },
+  "artifacts": {"findings_dir": "findings/", "screenshots_dir": "screenshots/"}
+}
