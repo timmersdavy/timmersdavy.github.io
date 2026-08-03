@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Website nodig voor uw zaak? Timmers Design bouwt professionele bedrijfswebsites in Ham en omgeving, Belgisch Limburg — snel, betaalbaar, persoonlijk contact.">
+<title>Website nodig voor uw zaak? — Timmers Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--black:#07080f;
+--navy:#0D1B3E;
+--navy-soft:#111928;
+--orange:#F4762A;
+--gold:#c8a96e;
+--gold-dim:rgba(200,169,110,0.15);
+--white:#ffffff;
+--off:#f5f3ef;
+--muted:rgba(255,255,255,0.38);
+--muted2:rgba(255,255,255,0.55);
+}
+html{scroll-behavior:smooth}
+body{
+font-family:'Inter',sans-serif;
+background:var(--black);
+color:var(--white);
+overflow-x:hidden;
+}
+/* NAV */
+nav{
+position:fixed;top:0;left:0;right:0;z-index:500;
+display:flex;align-items:center;justify-content:space-between;
+padding:2rem 5vw;
+}
+.nav-logo{
+font-family:'Cormorant Garamond',serif;
+font-size:1.15rem;font-weight:400;letter-spacing:0.22em;
+text-transform:uppercase;color:var(--white);text-decoration:none;
+}
+.nav-cta{
+font-size:0.68rem;font-weight:400;letter-spacing:0.18em;
+text-transform:uppercase;color:var(--white);text-decoration:none;
+border:1px solid rgba(255,255,255,0.2);
+padding:0.7rem 1.6rem;
+transition:border-color 0.3s,color 0.3s;
+}
+.nav-cta:hover{border-color:var(--orange);color:var(--orange)}
+/* HERO */
+.hero{
+min-height:100vh;
+display:flex;flex-direction:column;
+justify-content:center;
+padding:8rem 5vw 6vh;
+position:relative;overflow:hidden;
+text-align:center;
+}
+.hero-bg{
+position:absolute;inset:0;
+background:radial-gradient(ellipse 70% 70% at 80% 20%, rgba(244,118,42,0.05) 0%, transparent 60%),
+radial-gradient(ellipse 50% 50% at 20% 80%, rgba(13,27,62,0.7) 0%, transparent 70%);
+}
+.hero-eyebrow{
+font-size:0.7rem;font-weight:400;letter-spacing:0.22em;
+text-transform:uppercase;color:var(--orange);
+margin-bottom:2rem;
+opacity:0;animation:fadeUp 1s 0.2s forwards;
+}
+.hero-title{
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(2.8rem,7vw,6rem);
+font-weight:300;line-height:1.05;
+letter-spacing:-0.02em;
+margin:0 auto 2rem;
+max-width:20ch;
+opacity:0;animation:fadeUp 1s 0.4s forwards;
+}
+.hero-title em{
+font-style:italic;color:var(--orange);
+}
+.hero-desc{
+font-size:1.05rem;line-height:1.8;
+color:var(--muted2);max-width:52ch;font-weight:300;
+margin:0 auto 3rem;
+opacity:0;animation:fadeUp 1s 0.6s forwards;
+}
+.hero-ctas{
+display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;
+opacity:0;animation:fadeUp 1s 0.8s forwards;
+}
+.btn-luxury{
+font-size:0.72rem;font-weight:400;letter-spacing:0.2em;
+text-transform:uppercase;color:var(--white);text-decoration:none;
+padding:1.1rem 2.6rem;
+border:1px solid rgba(255,255,255,0.2);
+position:relative;overflow:hidden;
+transition:color 0.4s,border-color 0.4s;
+white-space:nowrap;
+}
+.btn-luxury::before{
+content:'';position:absolute;inset:0;
+background:var(--orange);
+transform:translateX(-101%);
+transition:transform 0.45s cubic-bezier(0.16,1,0.3,1);
+z-index:-1;
+}
+.btn-luxury:hover{border-color:var(--orange)}
+.btn-luxury:hover::before{transform:translateX(0)}
+.btn-ghost{
+font-size:0.72rem;font-weight:400;letter-spacing:0.2em;
+text-transform:uppercase;color:var(--muted2);text-decoration:none;
+padding:1.1rem 1rem;
+border-bottom:1px solid transparent;
+transition:color 0.3s,border-color 0.3s;
+}
+.btn-ghost:hover{color:var(--gold);border-color:var(--gold)}
+/* GOLD RULE */
+.gold-rule{
+width:100%;height:1px;
+background:linear-gradient(to right, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%);
+opacity:0.25;
+}
+/* SECTIONS COMMON */
+.section-wrap{padding:8rem 5vw}
+.s-label{
+font-size:0.65rem;font-weight:400;letter-spacing:0.25em;
+text-transform:uppercase;color:var(--gold);
+display:flex;align-items:center;gap:1.2rem;
+margin-bottom:3rem;
+justify-content:center;
+}
+.s-label::before{content:'';display:block;width:40px;height:1px;background:var(--gold);opacity:0.5}
+.s-title{
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(2.2rem,5vw,4rem);
+font-weight:300;letter-spacing:-0.02em;line-height:1.1;
+text-align:center;margin-bottom:4rem;
+}
+.s-title em{font-style:italic;color:var(--orange)}
+/* WAAROM */
+.waarom{background:var(--navy-soft)}
+.waarom-grid{
+display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;
+max-width:1100px;margin:0 auto;
+}
+.waarom-item{text-align:center}
+.waarom-num{
+font-family:'Cormorant Garamond',serif;
+font-size:3rem;font-weight:300;font-style:italic;
+color:rgba(244,118,42,0.5);margin-bottom:1rem;
+}
+.waarom-item h3{
+font-family:'Cormorant Garamond',serif;
+font-size:1.6rem;font-weight:400;margin-bottom:0.8rem;
+}
+.waarom-item p{
+font-size:0.9rem;line-height:1.7;color:var(--muted2);font-weight:300;
+}
+/* PAKKETTEN */
+.diensten{background:var(--black)}
+.diensten-list{display:flex;flex-direction:column;max-width:900px;margin:0 auto}
+.dienst{
+display:grid;grid-template-columns:1fr auto;
+align-items:center;gap:2rem;
+padding:2.4rem 0;
+border-bottom:1px solid rgba(255,255,255,0.06);
+position:relative;overflow:hidden;
+}
+.dienst:first-child{border-top:1px solid rgba(255,255,255,0.06)}
+.dienst-left{display:flex;align-items:baseline;gap:2.5rem}
+.dienst-idx{
+font-family:'Cormorant Garamond',serif;
+font-size:0.8rem;font-weight:300;
+color:var(--muted);letter-spacing:0.05em;
+min-width:2ch;
+}
+.dienst-info h3{
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(1.4rem,2.6vw,2rem);
+font-weight:300;letter-spacing:-0.01em;
+margin-bottom:0.4rem;
+}
+.dienst-info p{
+font-size:0.82rem;line-height:1.6;color:var(--muted);
+max-width:40ch;font-weight:300;
+}
+.dienst-price{
+font-family:'Cormorant Garamond',serif;
+font-size:1.5rem;font-weight:300;
+color:var(--gold);letter-spacing:0.02em;
+text-align:right;white-space:nowrap;
+}
+/* PORTFOLIO STRIP */
+.portfolio{background:var(--navy-soft)}
+.portfolio-grid{
+display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;
+background:rgba(200,169,110,0.08);
+max-width:1100px;margin:0 auto;
+}
+.p-item{
+position:relative;overflow:hidden;
+background:var(--navy-soft);
+text-decoration:none;color:inherit;
+display:block;
+}
+.p-thumb{
+aspect-ratio:4/3;
+display:flex;align-items:center;justify-content:center;
+position:relative;overflow:hidden;
+}
+.p-glyph{
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(3rem,7vw,5rem);
+font-style:italic;font-weight:300;
+color:rgba(255,255,255,0.08);
+user-select:none;
+}
+.p-meta{
+padding:1.2rem 1.5rem;
+display:flex;align-items:baseline;justify-content:space-between;
+border-top:1px solid rgba(200,169,110,0.12);
+}
+.p-meta h4{
+font-family:'Cormorant Garamond',serif;
+font-size:1.05rem;font-weight:400;
+}
+.p-meta span{
+font-size:0.62rem;letter-spacing:0.15em;
+text-transform:uppercase;color:var(--gold);
+}
+/* CONTACT */
+.contact{
+background:var(--navy);
+padding:8rem 5vw;
+text-align:center;
+position:relative;overflow:hidden;
+}
+.contact-wrap{max-width:640px;margin:0 auto;position:relative}
+.contact-sub{
+font-size:1rem;line-height:1.8;color:var(--muted2);
+font-weight:300;margin-bottom:4rem;
+}
+.form{display:flex;flex-direction:column;gap:0;text-align:left}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;margin-bottom:1.5px}
+.f-group{display:flex;flex-direction:column;position:relative;background:rgba(255,255,255,0.03)}
+.f-group label{
+font-size:0.6rem;font-weight:400;letter-spacing:0.2em;
+text-transform:uppercase;color:var(--gold);
+padding:1.2rem 1.5rem 0.3rem;
+}
+.f-group input,.f-group textarea{
+background:transparent;
+border:none;border-bottom:1px solid rgba(255,255,255,0.06);
+color:var(--white);
+font-family:'Inter',sans-serif;font-size:1rem;font-weight:300;
+padding:0.5rem 1.5rem 1.2rem;
+outline:none;width:100%;
+transition:border-color 0.3s;
+}
+.f-group input:focus,.f-group textarea:focus{
+border-bottom-color:var(--orange);
+}
+.f-group textarea{resize:vertical;min-height:110px}
+.f-group.full{margin-bottom:1.5px}
+.f-submit{margin-top:2.5rem;display:flex;justify-content:center}
+.contact-footer{
+display:flex;justify-content:center;gap:4rem;flex-wrap:wrap;
+margin-top:4rem;padding-top:3rem;
+border-top:1px solid rgba(200,169,110,0.12);
+}
+.cf-item{display:flex;flex-direction:column;gap:0.4rem;align-items:center}
+.cf-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);opacity:0.7}
+.cf-val{font-size:0.9rem;font-weight:300;color:var(--white)}
+.cf-val a{color:var(--white);text-decoration:none;transition:color 0.3s}
+.cf-val a:hover{color:var(--orange)}
+/* FOOTER */
+footer{
+padding:2.5rem 5vw;
+display:flex;align-items:center;justify-content:center;gap:1rem;
+border-top:1px solid rgba(200,169,110,0.08);
+background:var(--black);
+text-align:center;
+}
+footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal.in{opacity:1;transform:none}
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(16px)}
+to{opacity:1;transform:none}
+}
+/* MOBILE */
+@media(max-width:768px){
+.waarom-grid{grid-template-columns:1fr;gap:2.5rem}
+.f-row{grid-template-columns:1fr}
+.portfolio-grid{grid-template-columns:1fr}
+.hero-ctas{flex-direction:column;align-items:center}
+.nav-cta{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+.reveal{transition:none;opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">TimmersDesign</a>
+  <a href="#contact" class="nav-cta">Vraag een website aan</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <p class="hero-eyebrow">Websites op maat · Ham, Belgisch Limburg</p>
+  <h1 class="hero-title">Heeft uw zaak al een website die <em>verkoopt?</em></h1>
+  <p class="hero-desc">Ik bouw professionele bedrijfswebsites voor zelfstandigen en kleine bedrijven in de regio — snel, betaalbaar, en zonder tussenpersonen. Rechtstreeks contact, geen bureauoverhead.</p>
+  <div class="hero-ctas">
+    <a href="#contact" class="btn-luxury">Vrijblijvend gesprek aanvragen</a>
+    <a href="https://calendly.com/timmersdavy/gratis-gesprek" target="_blank" class="btn-ghost">Of plan direct een afspraak →</a>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- WAAROM -->
+<section class="waarom section-wrap">
+  <p class="s-label reveal">Waarom Timmers Design</p>
+  <h2 class="s-title reveal">Geen bureau.<br>Gewoon <em>resultaat.</em></h2>
+  <div class="waarom-grid reveal">
+    <div class="waarom-item">
+      <div class="waarom-num">01</div>
+      <h3>Persoonlijk contact</h3>
+      <p>U spreekt rechtstreeks met mij — geen accountmanager, geen wachtrij. Vragen worden binnen één werkdag beantwoord.</p>
+    </div>
+    <div class="waarom-item">
+      <div class="waarom-num">02</div>
+      <h3>Vaste, duidelijke prijs</h3>
+      <p>Geen verrassingen achteraf. U weet vooraf exact wat uw website kost en wat erin zit.</p>
+    </div>
+    <div class="waarom-item">
+      <div class="waarom-num">03</div>
+      <h3>Snel live</h3>
+      <p>Een visitekaartje-site staat binnen een week online, mobiel-geoptimaliseerd en met contactformulier.</p>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- PAKKETTEN -->
+<section class="diensten section-wrap">
+  <p class="s-label reveal">Pakketten</p>
+  <h2 class="s-title reveal">Een site<br>op <em>maat</em></h2>
+  <div class="diensten-list reveal">
+    <div class="dienst">
+      <div class="dienst-left">
+        <span class="dienst-idx">01</span>
+        <div class="dienst-info">
+          <h3>Visitekaartje</h3>
+          <p>1 pagina met de essentie: hero, diensten, over ons, contact. Contactformulier inbegrepen, mobiel-geoptimaliseerd.</p>
+        </div>
+      </div>
+      <span class="dienst-price">€1.100 eenmalig</span>
+    </div>
+    <div class="dienst">
+      <div class="dienst-left">
+        <span class="dienst-idx">02</span>
+        <div class="dienst-info">
+          <h3>Bedrijfssite</h3>
+          <p>Uitgebreide 1-pagina site met galerij, testimonials en contact. Extra's op maat, 2 revisierondes.</p>
+        </div>
+      </div>
+      <span class="dienst-price">€1.900 eenmalig</span>
+    </div>
+    <div class="dienst">
+      <div class="dienst-left">
+        <span class="dienst-idx">03</span>
+        <div class="dienst-info">
+          <h3>Bedrijfssite Plus</h3>
+          <p>Meerdere pagina's, foto-optimalisatie, 3 revisierondes en 1 maand gratis kleine aanpassingen na livegang.</p>
+        </div>
+      </div>
+      <span class="dienst-price">€2.700 eenmalig</span>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- PORTFOLIO STRIP -->
+<section class="portfolio section-wrap">
+  <p class="s-label reveal">Bewijs</p>
+  <h2 class="s-title reveal">Recent <em>gebouwd</em><br>voor de regio</h2>
+  <div class="portfolio-grid reveal">
+    <a class="p-item" href="/slagerij-van-damme.html">
+      <div class="p-thumb" style="background:linear-gradient(160deg,#1a0808 0%,#5c0f0f 100%)">
+        <span class="p-glyph">VD</span>
+      </div>
+      <div class="p-meta"><h4>Slagerij Van Damme</h4><span>Klantsite</span></div>
+    </a>
+    <a class="p-item" href="/geuns-bouwprojecten.html">
+      <div class="p-thumb" style="background:linear-gradient(160deg,#0f1a10 0%,#1e3320 100%)">
+        <span class="p-glyph">GB</span>
+      </div>
+      <div class="p-meta"><h4>Geuns Bouwprojecten</h4><span>Klantsite</span></div>
+    </a>
+    <a class="p-item" href="/praktijk-netevallei.html">
+      <div class="p-thumb" style="background:linear-gradient(160deg,#0a1420 0%,#122a45 100%)">
+        <span class="p-glyph">PN</span>
+      </div>
+      <div class="p-meta"><h4>Praktijk Netevallei</h4><span>Klantsite</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-wrap">
+    <p class="s-label reveal">Klaar voor een website?</p>
+    <h2 class="s-title reveal">Vraag een <em>gesprek</em> aan</h2>
+    <p class="contact-sub reveal">Vertel me kort over uw zaak. Ik antwoord binnen één werkdag met een concreet voorstel.</p>
+    <form class="form reveal" id="contactForm" onsubmit="handleSubmit(event)">
+      <input type="hidden" name="_subject" value="Nieuwe website-aanvraag via landingspagina">
+      <input type="hidden" name="bron" value="Landingspagina website-aanvragen (timmersdesign.be)">
+      <div class="f-row">
+        <div class="f-group">
+          <label>Naam</label>
+          <input type="text" name="naam" placeholder="Jan Janssen" required>
+        </div>
+        <div class="f-group">
+          <label>E-mail</label>
+          <input type="email" name="email" placeholder="jan@voorbeeld.be" required>
+        </div>
+      </div>
+      <div class="f-group full">
+        <label>Bedrijfsnaam</label>
+        <input type="text" name="bedrijf" placeholder="Naam van uw zaak">
+      </div>
+      <div class="f-group full" style="margin-bottom:0">
+        <label>Bericht</label>
+        <textarea name="bericht" placeholder="Vertel kort over uw zaak en wat u nodig heeft..."></textarea>
+      </div>
+      <div class="f-submit">
+        <button type="submit" class="btn-luxury" id="submitBtn" style="cursor:pointer;font-family:'Inter',sans-serif;background:none">
+          Versturen →
+        </button>
+      </div>
+    </form>
+    <div class="contact-footer reveal">
+      <div class="cf-item">
+        <span class="cf-label">E-mail</span>
+        <span class="cf-val"><a href="mailto:info@timmersdesign.be">info@timmersdesign.be</a></span>
+      </div>
+      <div class="cf-item">
+        <span class="cf-label">Regio</span>
+        <span class="cf-val">Ham, Belgisch Limburg</span>
+      </div>
+      <div class="cf-item">
+        <span class="cf-label">Reactie</span>
+        <span class="cf-val">Binnen 1 werkdag</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <small>© 2026 TimmersDesign — websites voor lokale bedrijven in Ham en omgeving.</small>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+function handleSubmit(e){
+  e.preventDefault();
+  const form=e.target;
+  const btn=document.getElementById('submitBtn');
+  const originalText=btn.textContent;
+  btn.disabled=true;
+  btn.textContent='Bezig...';
+  fetch('https://formspree.io/f/mgojdyza',{
+    method:'POST',
+    body:new FormData(form),
+    headers:{'Accept':'application/json'}
+  }).then(res=>{
+    if(res.ok){
+      btn.textContent='✓ Verstuurd';
+      btn.style.borderColor='#c8a96e';
+      btn.style.color='#c8a96e';
+      form.reset();
+    } else {
+      btn.textContent='Mislukt, probeer opnieuw';
+      btn.style.borderColor='#F4762A';
+    }
+  }).catch(()=>{
+    btn.textContent='Mislukt, probeer opnieuw';
+    btn.style.borderColor='#F4762A';
+  }).finally(()=>{
+    btn.disabled=false;
+    setTimeout(()=>{btn.textContent=originalText;btn.style.borderColor='';btn.style.color=''},4000);
+  });
+}
+</script>
+</body>
+</html>
