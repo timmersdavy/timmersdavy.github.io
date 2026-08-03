@@ -498,6 +498,48 @@
     flex-shrink: 0;
   }
 
+  /* PROJECT CASE */
+  .project-case {
+    padding: 6rem 4rem;
+    background: var(--creme);
+    border-top: 1px solid var(--creme-donker);
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+
+  .project-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rood);
+    margin-bottom: 0.8rem;
+  }
+
+  .project-titel {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--zwart);
+    margin-bottom: 0.8rem;
+  }
+
+  .project-tekst {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--grijs);
+  }
+
+  @media (max-width: 900px) {
+    .project-case { padding: 4rem 1.5rem; }
+    .project-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
   /* CONTACT */
   .contact {
     background: var(--rood-donker);
@@ -819,6 +861,29 @@
         <div class="kenmerk-streep"></div>
         <span>Maandag t/m zaterdag vers</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT CASE -->
+<section class="project-case">
+  <p class="sectie-label">Achter deze site</p>
+  <h2 class="sectie-titel">Hoe dit project tot stand kwam</h2>
+  <div class="project-grid">
+    <div>
+      <p class="project-label">Opdracht</p>
+      <p class="project-titel">Vertrouwen tonen zonder afstand te creëren</p>
+      <p class="project-tekst">Slagerij Van Damme wilde een site die de warmte van 45 jaar vakmanschap uitstraalt, zonder in te boeten aan duidelijkheid: bezoekers moeten in enkele seconden weten wat er vers is, wat het kost, en hoe ze kunnen bestellen.</p>
+    </div>
+    <div>
+      <p class="project-label">Aanpak</p>
+      <p class="project-titel">Hout, crème en een eerlijke productlijst</p>
+      <p class="project-tekst">Een warme kleurpalet met hout- en roodtinten verwijst naar de slagerswinkel zelf. Elk product kreeg een eigen kaart met prijs en korte omschrijving, zodat klanten meteen kunnen kiezen zonder te moeten bellen voor basisinfo.</p>
+    </div>
+    <div>
+      <p class="project-label">Resultaat</p>
+      <p class="project-titel">Eén pagina, alle bestelinfo</p>
+      <p class="project-tekst">Een bedrijfssite met bestelformulier, openingsuren en verhaal van drie generaties slagers — direct bruikbaar voor telefonische en online bestellingen, zonder extra stappen voor de klant.</p>
     </div>
   </div>
 </section>

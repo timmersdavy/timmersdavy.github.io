@@ -309,6 +309,17 @@
   }
   .waarom-lijst li::before { content: '— '; color: var(--goud); }
 
+  /* PROJECT CASE */
+  .project-case { padding: 6rem 4rem; background: var(--nacht-zacht); border-top: 1px solid var(--goud-dim); }
+  .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 2rem; }
+  .project-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--goud); margin-bottom: 0.8rem; }
+  .project-titel { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--wit); margin-bottom: 0.8rem; }
+  .project-tekst { font-size: 0.9rem; line-height: 1.75; color: var(--gedempt); }
+  @media (max-width: 900px) {
+    .project-case { padding: 4rem 1.5rem; }
+    .project-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
   /* CONTACT */
   .contact { background: var(--nacht-zacht); }
   .contact-grid {
@@ -488,6 +499,28 @@
         <li>Prijsgarantie op pakketreizen</li>
         <li>Hulp bij annulaties en omboekingen</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<section class="project-case">
+  <div class="sectie-label">Achter deze site</div>
+  <h2 style="font-family:'Cormorant Garamond',serif; color:var(--wit); font-size:1.9rem; margin-bottom:0.5rem;">Hoe dit project tot stand kwam</h2>
+  <div class="project-grid">
+    <div>
+      <p class="project-label">Opdracht</p>
+      <p class="project-titel">Dromen wekken vóór het eerste gesprek</p>
+      <p class="project-tekst">Reisbureau Claud(ia) wilde een site die de sfeer van een reis al laat voelen nog voor er iets geboekt is — persoonlijk en warm, niet de kille zoekbalk van een grote boekingssite.</p>
+    </div>
+    <div>
+      <p class="project-label">Aanpak</p>
+      <p class="project-titel">Nachtblauw, goudaccenten en een knipoog</p>
+      <p class="project-tekst">Een donker, sterrenhemel-achtig kleurenpalet met goudaccenten geeft de site een reislustige, dromerige toon. De naam "Claud(ia)" met een knipoog draagt bij aan het persoonlijke, kleinschalige karakter van het bureau.</p>
+    </div>
+    <div>
+      <p class="project-label">Resultaat</p>
+      <p class="project-titel">Eén pagina, direct persoonlijk contact</p>
+      <p class="project-tekst">Een site waar bestemmingen, sfeer en contactmogelijkheid samenkomen — bezoekers voelen meteen dat ze met een mens plannen maken, niet met een algoritme.</p>
     </div>
   </div>
 </section>

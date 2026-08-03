@@ -226,6 +226,17 @@
   .kenmerk { display: flex; align-items: center; gap: 1rem; font-size: 0.85rem; }
   .kenmerk-streep { width: 24px; height: 1px; background: var(--groen); flex-shrink: 0; }
 
+  /* PROJECT CASE */
+  .project-case { padding: 6rem 4rem; background: var(--zand); border-top: 1px solid var(--zand-donker); }
+  .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 2rem; }
+  .project-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--groen); margin-bottom: 0.8rem; }
+  .project-titel { font-family: 'Poppins', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--zwart); margin-bottom: 0.8rem; }
+  .project-tekst { font-size: 0.9rem; line-height: 1.75; color: var(--grijs); }
+  @media (max-width: 900px) {
+    .project-case { padding: 4rem 1.5rem; }
+    .project-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
   /* CONTACT — snel & simpel */
   .contact { background: var(--groen-donker); padding: 6rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
   .contact-info h2 { font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 1.5rem; }
@@ -402,6 +413,29 @@
       <div class="kenmerk"><div class="kenmerk-streep"></div><span>Snelle reactie, duidelijke prijs</span></div>
       <div class="kenmerk"><div class="kenmerk-streep"></div><span>Regio Tessenderlo en omstreken</span></div>
       <div class="kenmerk"><div class="kenmerk-streep"></div><span>Ook voor kleine, losse klusjes</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT CASE -->
+<section class="project-case">
+  <p class="sectie-label">Achter deze site</p>
+  <h2 class="sectie-titel">Hoe dit project tot stand kwam</h2>
+  <div class="project-grid">
+    <div>
+      <p class="project-label">Opdracht</p>
+      <p class="project-titel">Snel een klus kunnen aanvragen, zonder poespas</p>
+      <p class="project-tekst">Klus-Tuin-Wim werkt alleen, zonder onderaannemers of callcenter. De site moest dat vertalen: potentiële klanten moeten in een oogopslag zien wat Wim doet en meteen kunnen bellen of mailen, zonder omwegen.</p>
+    </div>
+    <div>
+      <p class="project-label">Aanpak</p>
+      <p class="project-titel">Groen, zand en korte, praktische taal</p>
+      <p class="project-tekst">Een rustige groen-zandtint verwijst naar tuinwerk zonder overdreven te worden. De teksten zijn kort en concreet gehouden — geen marketingjargon, gewoon wat Wim doet en waarom klanten snel geholpen zijn.</p>
+    </div>
+    <div>
+      <p class="project-label">Resultaat</p>
+      <p class="project-titel">Eén pagina, direct bereikbaar</p>
+      <p class="project-tekst">Een compacte site waar bezoekers meteen zien welke diensten Wim aanbiedt en waar ze met één klik contact opnemen — passend bij een zelfstandige die zelf, zonder omweg, ter plaatse komt.</p>
     </div>
   </div>
 </section>

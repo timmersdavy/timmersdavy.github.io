@@ -337,6 +337,48 @@
   .kenmerk { display: flex; align-items: center; gap: 1rem; font-size: 0.85rem; }
   .kenmerk-streep { width: 24px; height: 1px; background: var(--oranje); flex-shrink: 0; }
 
+  /* PROJECT CASE */
+  .project-case {
+    padding: 6rem 4rem;
+    background: var(--beton);
+    border-top: 1px solid var(--beton-donker);
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+
+  .project-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--oranje);
+    margin-bottom: 0.8rem;
+  }
+
+  .project-titel {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--zwart);
+    margin-bottom: 0.8rem;
+  }
+
+  .project-tekst {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--grijs);
+  }
+
+  @media (max-width: 900px) {
+    .project-case { padding: 4rem 1.5rem; }
+    .project-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
   /* CONTACT */
   .contact {
     background: var(--staal-donker);
@@ -565,6 +607,29 @@
       <div class="kenmerk"><div class="kenmerk-streep"></div><span>Transparante offerte vooraf</span></div>
       <div class="kenmerk"><div class="kenmerk-streep"></div><span>Eigen vakteam, geen onderaannemers</span></div>
       <div class="kenmerk"><div class="kenmerk-streep"></div><span>Regionaal actief in Limburg</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT CASE -->
+<section class="project-case">
+  <p class="sectie-label">Achter deze site</p>
+  <h2 class="sectie-titel">Hoe dit project tot stand kwam</h2>
+  <div class="project-grid">
+    <div>
+      <p class="project-label">Opdracht</p>
+      <p class="project-titel">Vertrouwen wekken vóór het eerste contact</p>
+      <p class="project-tekst">Geuns Bouwprojecten wilde een site die potentiële klanten overtuigt nog voor er een offerte is aangevraagd — met een heldere presentatie van afgeronde projecten en een laagdrempelige manier om contact op te nemen.</p>
+    </div>
+    <div>
+      <p class="project-label">Aanpak</p>
+      <p class="project-titel">Staal, beton en directe taal</p>
+      <p class="project-tekst">Een strak kleurenpalet van staalblauw en betontinten sluit aan bij de sector. Projecten kregen elk een eigen kader met korte, concrete beschrijving in plaats van vage marketingtaal, zodat bezoekers snel begrijpen wat er precies gebouwd werd.</p>
+    </div>
+    <div>
+      <p class="project-label">Resultaat</p>
+      <p class="project-titel">Eén pagina, direct te contacteren</p>
+      <p class="project-tekst">Een bedrijfssite waar bezoekers in enkele seconden het aanbod, de referenties en een contactmogelijkheid vinden — zonder tussenstappen of onnodige navigatie.</p>
     </div>
   </div>
 </section>
