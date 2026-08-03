@@ -108,6 +108,16 @@ background:var(--orange);transition:width 0.35s;
 }
 .nav-links a:hover{color:var(--white)}
 .nav-links a:hover::after{width:100%}
+.nav-burger{
+display:none;flex-direction:column;gap:5px;
+background:none;border:none;padding:0.5rem;cursor:pointer;z-index:600;
+}
+.nav-burger span{
+display:block;width:22px;height:1px;background:var(--white);transition:transform 0.3s,opacity 0.3s;
+}
+.nav-burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 /* HERO */
 .hero{
 min-height:100vh;
@@ -530,7 +540,15 @@ to{opacity:1;transform:none}
 .hero-bottom{flex-direction:column;align-items:flex-start;gap:2rem}
 .hero-cta{align-items:flex-start}
 .contact-footer{flex-direction:column;align-items:center;gap:2rem}
-.nav-links{display:none}
+.nav-burger{display:flex}
+.nav-links{
+display:flex;flex-direction:column;gap:1.5rem;
+position:fixed;top:0;right:0;height:100vh;width:70vw;max-width:280px;
+background:var(--black);padding:6rem 2rem 2rem;
+transform:translateX(100%);transition:transform 0.35s ease;
+opacity:1;animation:none;
+}
+.nav-links.open{transform:translateX(0)}
 .over-visual{display:none}
 .dienst-price{display:none}
 footer{flex-direction:column;gap:0.5rem;text-align:center}
@@ -547,13 +565,16 @@ footer{flex-direction:column;gap:0.5rem;text-align:center}
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">TimmersDesign</a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="#diensten">Diensten</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#over">Over</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Menu openen" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -997,6 +1018,21 @@ document.querySelectorAll('a,button,.dienst,.p-item,.skill,.faq-item summary').f
     cursor.style.width='8px';cursor.style.height='8px';
     ring.style.width='36px';ring.style.height='36px';
     ring.style.borderColor='rgba(244,118,42,0.4)';
+  });
+});
+// Mobile nav toggle
+const navBurger=document.getElementById('navBurger');
+const navLinks=document.getElementById('navLinks');
+navBurger.addEventListener('click',()=>{
+  const isOpen=navLinks.classList.toggle('open');
+  navBurger.classList.toggle('open',isOpen);
+  navBurger.setAttribute('aria-expanded',isOpen);
+});
+navLinks.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    navLinks.classList.remove('open');
+    navBurger.classList.remove('open');
+    navBurger.setAttribute('aria-expanded','false');
   });
 });
 // Scroll reveal
