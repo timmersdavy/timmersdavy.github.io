@@ -1051,7 +1051,7 @@ document.addEventListener('mousemove',e=>{
   ring.style.left=rx+'px';ring.style.top=ry+'px';
   requestAnimationFrame(animRing);
 })();
-document.querySelectorAll('a,button,.dienst,.p-item,.skill,.faq-item summary').forEach(el=>{
+document.querySelectorAll('a,button,.dienst,a.p-item,.skill,.faq-item summary').forEach(el=>{
   el.addEventListener('mouseenter',()=>{
     cursor.style.width='14px';cursor.style.height='14px';
     ring.style.width='56px';ring.style.height='56px';
