@@ -183,7 +183,7 @@
   /* HERO BEELD */
   .hero-beeld {
     position: relative;
-    background: var(--staal-donker);
+    background: var(--staal-donker) url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -193,22 +193,8 @@
   .blueprint-art {
     position: absolute;
     inset: 0;
-    background:
-      repeating-linear-gradient(0deg, rgba(255,255,255,0.045) 0 1px, transparent 1px 40px),
-      repeating-linear-gradient(90deg, rgba(255,255,255,0.045) 0 1px, transparent 1px 40px);
+    background: linear-gradient(180deg, rgba(26,37,43,0.45) 0%, rgba(26,37,43,0.88) 100%);
   }
-
-  .balk-composite { position: relative; width: 320px; height: 380px; }
-
-  .balk {
-    position: absolute;
-    background: linear-gradient(160deg, var(--oranje) 0%, var(--oranje-donker) 100%);
-    box-shadow: 8px 12px 30px rgba(0,0,0,0.4);
-  }
-
-  .balk.b1 { width: 240px; height: 34px; top: 40px; left: 20px; transform: rotate(-8deg); }
-  .balk.b2 { width: 240px; height: 34px; top: 160px; left: 40px; transform: rotate(-8deg); }
-  .balk.b3 { width: 240px; height: 34px; top: 280px; left: 20px; transform: rotate(-8deg); }
 
   .hero-quote {
     position: absolute;
@@ -289,7 +275,7 @@
   .over-beeld {
     position: relative;
     height: 460px;
-    background: var(--staal-donker);
+    background: var(--staal-donker) url('https://images.unsplash.com/photo-1541888894402-f3b1af908be4?q=80&w=1400&auto=format&fit=crop') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -299,7 +285,7 @@
   .grid-art {
     position: absolute;
     inset: 0;
-    background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.03) 20px, rgba(255,255,255,0.03) 21px);
+    background: linear-gradient(180deg, rgba(26,37,43,0.35) 0%, rgba(26,37,43,0.8) 100%);
   }
 
   .jaar-groot {
@@ -349,6 +335,14 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
     margin-top: 2rem;
+  }
+
+  .project-beeld {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 1.2rem;
+    filter: grayscale(15%);
   }
 
   .project-label {
@@ -530,11 +524,6 @@
 
   <div class="hero-beeld">
     <div class="blueprint-art"></div>
-    <div class="balk-composite">
-      <div class="balk b1"></div>
-      <div class="balk b2"></div>
-      <div class="balk b3"></div>
-    </div>
     <p class="hero-quote">
       "Elke klant krijgt een duidelijke planning en één vast aanspreekpunt — van eerste schets tot sleuteloverdracht."<br>
       <strong style="opacity:0.8; font-style:normal; font-size:0.75rem; letter-spacing:0.1em;">— Team Geuns Bouwprojecten</strong>
@@ -617,16 +606,19 @@
   <h2 class="sectie-titel">Hoe dit project tot stand kwam</h2>
   <div class="project-grid">
     <div>
+      <img class="project-beeld" src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=900&auto=format&fit=crop" alt="Moderne nieuwbouwwoning van Geuns Bouwprojecten" loading="lazy">
       <p class="project-label">Opdracht</p>
       <p class="project-titel">Vertrouwen wekken vóór het eerste contact</p>
       <p class="project-tekst">Geuns Bouwprojecten wilde een site die potentiële klanten overtuigt nog voor er een offerte is aangevraagd — met een heldere presentatie van afgeronde projecten en een laagdrempelige manier om contact op te nemen.</p>
     </div>
     <div>
+      <img class="project-beeld" src="https://images.unsplash.com/photo-1587582423116-ec07293f0395?q=80&w=900&auto=format&fit=crop" alt="Actieve bouwwerf van Geuns Bouwprojecten" loading="lazy">
       <p class="project-label">Aanpak</p>
       <p class="project-titel">Staal, beton en directe taal</p>
       <p class="project-tekst">Een strak kleurenpalet van staalblauw en betontinten sluit aan bij de sector. Projecten kregen elk een eigen kader met korte, concrete beschrijving in plaats van vage marketingtaal, zodat bezoekers snel begrijpen wat er precies gebouwd werd.</p>
     </div>
     <div>
+      <img class="project-beeld" src="https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=900&auto=format&fit=crop" alt="Afgewerkte woning opgeleverd door Geuns Bouwprojecten" loading="lazy">
       <p class="project-label">Resultaat</p>
       <p class="project-titel">Eén pagina, direct te contacteren</p>
       <p class="project-tekst">Een bedrijfssite waar bezoekers in enkele seconden het aanbod, de referenties en een contactmogelijkheid vinden — zonder tussenstappen of onnodige navigatie.</p>
