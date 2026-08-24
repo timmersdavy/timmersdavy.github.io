@@ -107,21 +107,42 @@
   }
   nav a:hover { color: var(--blauw); }
 
-  /* HERO */
+  /* HERO — zwevend, gecentreerd paneel op zachte achtergrond (geen 2-koloms-split) */
   .hero {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 80px;
+    padding: calc(80px + 4rem) 2rem 5rem;
+    background: var(--wolk);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
 
+  .hero-wolk {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(78,122,140,0.10) 0%, transparent 70%);
+  }
+  .hero-wolk.w1 { width: 520px; height: 520px; top: -120px; left: -100px; }
+  .hero-wolk.w2 { width: 420px; height: 420px; bottom: -140px; right: -80px; background: radial-gradient(circle, rgba(124,154,130,0.12) 0%, transparent 70%); }
+
   .hero-tekst {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 4rem;
+    align-items: center;
+    text-align: center;
+    max-width: 620px;
+    padding: 4rem 3.5rem;
     background: var(--wit);
+    border-radius: 20px;
+    box-shadow: 0 40px 80px -30px rgba(34,48,44,0.16);
   }
+
+  .hero-tekst p, .hero-mini { align-self: center; }
+  .hero-cta { align-self: center; }
 
   .hero-label {
     font-size: 0.7rem;
@@ -168,44 +189,35 @@
   .mini-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--grijs); }
   .mini-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--groen); flex-shrink: 0; }
 
-  /* HERO BEELD */
-  .hero-beeld { position: relative; background: var(--blauw-donker); overflow: hidden; display: flex; align-items: center; justify-content: center; }
-
-  .golf-art {
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(circle at 30% 25%, rgba(255,255,255,0.06) 0 120px, transparent 121px),
-      radial-gradient(circle at 70% 65%, rgba(255,255,255,0.05) 0 160px, transparent 161px);
-  }
-
+  /* Kruis-badge boven de titel i.p.v. apart beeldpaneel */
   .kruis-art {
     position: relative;
-    width: 140px;
-    height: 140px;
+    width: 52px;
+    height: 52px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1.6rem;
   }
   .kruis-art::before, .kruis-art::after {
     content: '';
     position: absolute;
-    background: rgba(255,255,255,0.85);
-    border-radius: 6px;
+    background: var(--blauw);
+    border-radius: 4px;
   }
-  .kruis-art::before { width: 140px; height: 34px; }
-  .kruis-art::after { width: 34px; height: 140px; }
+  .kruis-art::before { width: 52px; height: 13px; }
+  .kruis-art::after { width: 13px; height: 52px; }
 
   .hero-quote {
-    position: absolute;
-    bottom: 3rem;
-    left: 3rem;
-    right: 3rem;
-    color: rgba(255,255,255,0.65);
-    font-size: 0.8rem;
+    margin-top: 2.2rem;
+    color: var(--grijs);
+    font-size: 0.82rem;
     font-style: italic;
     line-height: 1.6;
-    border-left: 2px solid rgba(255,255,255,0.5);
+    border-left: 2px solid var(--groen);
     padding-left: 1rem;
+    text-align: left;
+    align-self: stretch;
   }
 
   /* DIENSTEN */
@@ -223,15 +235,14 @@
   .sectie-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blauw); margin-bottom: 0.5rem; }
   .sectie-titel { font-family: 'Source Serif 4', serif; font-size: 2rem; font-weight: 700; color: var(--zwart); }
 
-  .dienst-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--wolk-donker); }
+  /* 2-koloms icoonlijst i.p.v. 3-koloms kaarten-grid */
+  .dienst-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem 3rem; }
 
-  .dienst-kaart { background: var(--wit); padding: 2.5rem 2rem; transition: background 0.2s; }
-  .dienst-kaart:hover { background: var(--blauw-donker); color: #fff; }
-  .dienst-kaart:hover .dienst-naam, .dienst-kaart:hover .dienst-omschrijving { color: rgba(255,255,255,0.85); }
+  .dienst-kaart { display: flex; gap: 1.4rem; align-items: flex-start; background: transparent; padding: 0; border-bottom: 1px solid var(--wolk-donker); padding-bottom: 2rem; }
 
-  .dienst-icoon { font-size: 1.8rem; margin-bottom: 1.2rem; }
-  .dienst-naam { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--zwart); transition: color 0.2s; }
-  .dienst-omschrijving { font-size: 0.85rem; line-height: 1.7; color: var(--grijs); transition: color 0.2s; }
+  .dienst-icoon { font-size: 1.8rem; margin-bottom: 0; flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--wit); display: flex; align-items: center; justify-content: center; }
+  .dienst-naam { font-family: 'Source Serif 4', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--zwart); }
+  .dienst-omschrijving { font-size: 0.85rem; line-height: 1.7; color: var(--grijs); }
 
   /* OVER */
   .over { padding: 6rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; background: var(--wit); }
@@ -297,7 +308,7 @@
   footer span { color: rgba(255,255,255,0.15); }
 
   .demo-badge {
-    position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--zwart); color: rgba(255,255,255,0.7);
+    position: fixed; top: 5.5rem; left: 1.5rem; background: var(--zwart); color: rgba(255,255,255,0.7);
     font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.6rem 1rem; z-index: 200; font-family: 'Inter', sans-serif;
     border-radius: 100px;
   }
@@ -305,9 +316,9 @@
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     nav ul { gap: 1.2rem; flex-wrap: wrap; justify-content: flex-end; row-gap: 0.3rem; }
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-beeld { height: 280px; }
-    .hero-tekst { padding: 3rem 1.5rem; }
+    .hero { padding: calc(80px + 2rem) 1.2rem 3rem; }
+    .hero-tekst { padding: 2.5rem 1.5rem; border-radius: 14px; }
+    .demo-badge { top: auto; bottom: 1.5rem; left: 1.5rem; }
     .diensten { padding: 4rem 1.5rem; }
     .dienst-grid { grid-template-columns: 1fr; }
     .over { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
@@ -336,7 +347,10 @@
 
 
 <section class="hero">
+  <div class="hero-wolk w1"></div>
+  <div class="hero-wolk w2"></div>
   <div class="hero-tekst">
+    <div class="kruis-art"></div>
     <p class="hero-label">Huisartsen · Kinesitherapie · Regio Netevallei</p>
     <h1 class="hero-titel">
       Rustige zorg,<br>
@@ -351,14 +365,9 @@
       <div class="mini-item"><span class="mini-dot"></span> Nieuwe patiënten welkom</div>
       <div class="mini-item"><span class="mini-dot"></span> Online en telefonisch afspreken</div>
     </div>
-  </div>
 
-  <div class="hero-beeld">
-    <div class="golf-art"></div>
-    <div class="kruis-art"></div>
     <p class="hero-quote">
-      "We nemen de tijd om te luisteren, ook als het maar om een korte vraag gaat."<br>
-      <strong style="opacity:0.8; font-style:normal; font-size:0.75rem; letter-spacing:0.1em;">— Team Praktijk Netevallei</strong>
+      "We nemen de tijd om te luisteren, ook als het maar om een korte vraag gaat." <strong style="font-style:normal; color:var(--zwart);">— Team Praktijk Netevallei</strong>
     </p>
   </div>
 </section>
