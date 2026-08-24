@@ -109,19 +109,18 @@
   }
   nav a:hover { color: var(--oranje); }
 
-  /* HERO */
+  /* HERO — full-width beeld bovenaan, tekst eronder (geen 2-koloms-split) */
   .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     padding-top: 80px;
+    display: flex;
+    flex-direction: column;
   }
 
   .hero-tekst {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 4rem;
+    padding: 4.5rem 4rem;
+    max-width: 780px;
     background: var(--wit);
   }
 
@@ -153,13 +152,20 @@
     margin-bottom: 2.5rem;
   }
 
-  .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 3rem; }
+  /* Statistieken verplaatst naar volle-breedte balk ná de hero (i.p.v. inline zoals bij Van Damme) */
+  .stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    padding: 2.5rem 4rem;
+    background: var(--staal-donker);
+  }
 
   .stat-getal {
     font-family: 'Archivo', sans-serif;
     font-size: 2.2rem;
     font-weight: 900;
-    color: var(--staal-donker);
+    color: #fff;
     line-height: 1;
   }
 
@@ -167,7 +173,7 @@
     font-size: 0.68rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--grijs);
+    color: rgba(255,255,255,0.6);
     margin-top: 0.4rem;
   }
 
@@ -189,9 +195,12 @@
   .hero-cta:hover { background: var(--oranje-donker); }
   .hero-cta::after { content: '→'; font-size: 1rem; }
 
-  /* HERO BEELD */
+  /* HERO BEELD — volle breedte, bovenaan */
   .hero-beeld {
     position: relative;
+    width: 100%;
+    height: 62vh;
+    min-height: 420px;
     background: var(--staal-donker) url('images/geuns-villa-hero.png') center/cover no-repeat;
     overflow: hidden;
     display: flex;
@@ -246,14 +255,36 @@
     color: var(--staal-donker);
   }
 
+  /* Bento-grid i.p.v. gelijke 3-koloms-grid zoals bij Van Damme */
   .dienst-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
     gap: 1.5px;
     background: var(--beton-donker);
   }
 
   .dienst-kaart { background: var(--wit); padding: 2.5rem 2rem; transition: background 0.2s; }
+
+  .dienst-kaart:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .dienst-kaart:first-child .dienst-icoon { font-size: 3rem; }
+  .dienst-kaart:first-child .dienst-naam { font-size: 1.6rem; }
+  .dienst-kaart:first-child .dienst-omschrijving { font-size: 0.95rem; max-width: 34ch; }
+
+  .dienst-kaart:last-child {
+    grid-column: span 3;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .dienst-kaart:last-child .dienst-icoon { margin-bottom: 0; }
   .dienst-kaart:hover { background: var(--staal-donker); color: #fff; }
   .dienst-kaart:hover .dienst-naam,
   .dienst-kaart:hover .dienst-omschrijving { color: rgba(255,255,255,0.85); }
@@ -339,12 +370,16 @@
     border-top: 1px solid var(--beton-donker);
   }
 
+  /* Asymmetrische bento i.p.v. gelijke 3-koloms-grid zoals bij Van Damme */
   .project-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-rows: repeat(2, auto);
+    gap: 2rem;
     margin-top: 2rem;
   }
+
+  .project-grid > div:first-child { grid-row: span 2; }
 
   .project-beeld {
     width: 100%;
@@ -352,6 +387,11 @@
     object-fit: cover;
     margin-bottom: 1.2rem;
     filter: grayscale(15%);
+  }
+
+  .project-grid > div:first-child .project-beeld {
+    height: 100%;
+    min-height: 340px;
   }
 
   .project-label {
@@ -463,7 +503,7 @@
   .demo-badge {
     position: fixed;
     bottom: 1.5rem;
-    right: 1.5rem;
+    left: 1.5rem;
     background: var(--zwart);
     color: rgba(255,255,255,0.7);
     font-size: 0.65rem;
@@ -477,13 +517,18 @@
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     nav ul { gap: 1.2rem; }
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-beeld { height: 300px; }
-    .hero-tekst { padding: 3rem 1.5rem; }
+    .hero-beeld { height: 260px; min-height: auto; }
+    .hero-tekst { padding: 3rem 1.5rem; max-width: 100%; }
+    .stats-bar { gap: 2.5rem; padding: 2rem 1.5rem; flex-wrap: wrap; }
     .diensten { padding: 4rem 1.5rem; }
     .dienst-grid { grid-template-columns: 1fr; }
+    .dienst-kaart:first-child { grid-column: auto; grid-row: auto; }
+    .dienst-kaart:last-child { grid-column: auto; flex-direction: column; align-items: flex-start; }
     .over { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
     .over-beeld { height: 280px; }
+    .project-grid { grid-template-columns: 1fr; }
+    .project-grid > div:first-child { grid-row: auto; }
+    .project-grid > div:first-child .project-beeld { min-height: 200px; }
     .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
     .form-rij { grid-template-columns: 1fr; }
     .sectie-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
@@ -508,6 +553,14 @@
 
 
 <section class="hero">
+  <div class="hero-beeld">
+    <div class="blueprint-art"></div>
+    <p class="hero-quote">
+      "Elke klant krijgt een duidelijke planning en één vast aanspreekpunt — van eerste schets tot sleuteloverdracht."<br>
+      <strong style="opacity:0.8; font-style:normal; font-size:0.75rem; letter-spacing:0.1em;">— Team Geuns Bouwprojecten</strong>
+    </p>
+  </div>
+
   <div class="hero-tekst">
     <p class="hero-label">Bouwbedrijf · Nieuwbouw & renovatie</p>
     <h1 class="hero-titel">
@@ -517,26 +570,18 @@
     </h1>
     <p>Een bouwbedrijf dat vertrouwen uitstraalt nog voor de eerste offerte. Heldere projectpresentatie, transparante planning en een team dat doet wat het belooft.</p>
 
-    <div class="hero-stats">
-      <div>
-        <div class="stat-getal">18+</div>
-        <div class="stat-label">jaar<br>ervaring</div>
-      </div>
-      <div>
-        <div class="stat-getal">120+</div>
-        <div class="stat-label">projecten<br>opgeleverd</div>
-      </div>
-    </div>
-
     <a href="#contact" class="hero-cta">Vraag een offerte aan</a>
   </div>
+</section>
 
-  <div class="hero-beeld">
-    <div class="blueprint-art"></div>
-    <p class="hero-quote">
-      "Elke klant krijgt een duidelijke planning en één vast aanspreekpunt — van eerste schets tot sleuteloverdracht."<br>
-      <strong style="opacity:0.8; font-style:normal; font-size:0.75rem; letter-spacing:0.1em;">— Team Geuns Bouwprojecten</strong>
-    </p>
+<section class="stats-bar">
+  <div>
+    <div class="stat-getal">18+</div>
+    <div class="stat-label">jaar<br>ervaring</div>
+  </div>
+  <div>
+    <div class="stat-getal">120+</div>
+    <div class="stat-label">projecten<br>opgeleverd</div>
   </div>
 </section>
 
@@ -586,15 +631,6 @@
 
 
 <section class="over" id="over">
-  <div class="over-beeld">
-    <div class="grid-art"></div>
-    <div class="jaar-groot">2007</div>
-    <div class="over-badge">
-      <span class="over-badge-getal">18</span>
-      <span class="over-badge-tekst">Jaar<br>vakmanschap</span>
-    </div>
-  </div>
-
   <div class="over-inhoud">
     <p class="sectie-label">Ons verhaal</p>
     <h2>Gebouwd op<br>duidelijke afspraken</h2>
@@ -605,6 +641,15 @@
       <div class="kenmerk"><div class="kenmerk-streep"></div><span>Transparante offerte vooraf</span></div>
       <div class="kenmerk"><div class="kenmerk-streep"></div><span>Eigen vakteam, geen onderaannemers</span></div>
       <div class="kenmerk"><div class="kenmerk-streep"></div><span>Regionaal actief in Limburg</span></div>
+    </div>
+  </div>
+
+  <div class="over-beeld">
+    <div class="grid-art"></div>
+    <div class="jaar-groot">2007</div>
+    <div class="over-badge">
+      <span class="over-badge-getal">18</span>
+      <span class="over-badge-tekst">Jaar<br>vakmanschap</span>
     </div>
   </div>
 </section>
