@@ -558,23 +558,6 @@ footer{flex-direction:column;gap:0.5rem;text-align:center}
 .reveal,.hero-title .line span{transition:none;animation:none;opacity:1;transform:none}
 }
 </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1504819064663057');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1504819064663057&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
 <div class="cursor" id="cursor"></div>
@@ -1069,8 +1052,80 @@ src="https://www.facebook.com/tr?id=1504819064663057&ev=PageView&noscript=1"
     <script async src="https://static.trustlocal.be/widget/widget_v2.js"></script>
     <div class="trustlocal-widget" data-id="eJMfvIvPR9bbgp7MsXuwjSntNqgfQnlQfOa9_kE5RA_pjQ" data-language-code="nl" data-country-code="BE" data-badge="hidden" data-quote="default" data-size="small" data-type="landscape" data-border="shadow" data-theme="dark" data-background="transparent" data-google="hidden"></div>
   </div>
-  <small>© 2026 — Webdesign voor KMO's in Limburg.</small>
+  <small>© 2026 — Webdesign voor KMO's in Limburg. Timmers Design · BE 1040.022.716 · <a href="/wettelijke-vermeldingen" style="color:inherit">Wettelijke vermeldingen</a></small>
 </footer>
+
+<!-- COOKIEBANNER -->
+<div class="cookie-banner" id="cookieBanner">
+  <p class="cookie-text">We gebruiken cookies om onze site en advertenties te verbeteren. Lees ons <a href="/wettelijke-vermeldingen">cookiebeleid</a>.</p>
+  <div class="cookie-actions">
+    <button type="button" class="cookie-btn cookie-decline" id="cookieDecline">Weigeren</button>
+    <button type="button" class="cookie-btn cookie-accept" id="cookieAccept">Accepteren</button>
+  </div>
+</div>
+<style>
+.cookie-banner{
+  position:fixed;left:0;right:0;bottom:0;z-index:2000;
+  display:none;
+  flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;
+  padding:1.5rem 5vw;
+  background:var(--navy);
+  border-top:1px solid rgba(200,169,110,0.2);
+}
+.cookie-banner.show{display:flex}
+.cookie-text{font-size:0.8rem;color:var(--muted2);font-weight:300;max-width:60ch;margin:0}
+.cookie-text a{color:var(--gold)}
+.cookie-actions{display:flex;gap:1rem;flex-shrink:0}
+.cookie-btn{
+  font-family:'Inter',sans-serif;
+  font-size:0.7rem;font-weight:400;letter-spacing:0.15em;
+  text-transform:uppercase;cursor:pointer;
+  padding:0.8rem 1.6rem;border:1px solid rgba(255,255,255,0.2);
+  background:none;color:var(--white);
+  transition:border-color 0.3s,background 0.3s;
+}
+.cookie-decline:hover{border-color:rgba(255,255,255,0.5)}
+.cookie-accept{background:var(--orange);border-color:var(--orange)}
+.cookie-accept:hover{background:transparent;color:var(--orange)}
+@media(max-width:768px){
+  .cookie-banner{flex-direction:column;align-items:flex-start}
+  .cookie-actions{width:100%}
+  .cookie-btn{flex:1}
+}
+</style>
+<script>
+(function(){
+  var CONSENT_KEY='cookieConsent';
+  function loadMetaPixel(){
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1504819064663057');
+    fbq('track', 'PageView');
+  }
+  var banner=document.getElementById('cookieBanner');
+  var stored=localStorage.getItem(CONSENT_KEY);
+  if(stored==='accepted'){
+    loadMetaPixel();
+  } else if(stored!=='declined'){
+    banner.classList.add('show');
+  }
+  document.getElementById('cookieAccept').addEventListener('click',function(){
+    localStorage.setItem(CONSENT_KEY,'accepted');
+    banner.classList.remove('show');
+    loadMetaPixel();
+  });
+  document.getElementById('cookieDecline').addEventListener('click',function(){
+    localStorage.setItem(CONSENT_KEY,'declined');
+    banner.classList.remove('show');
+  });
+})();
+</script>
 
 <script>
 // Custom cursor
