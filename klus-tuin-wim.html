@@ -104,20 +104,33 @@
   }
   nav a:hover { color: var(--groen); }
 
-  /* HERO */
+  /* HERO — compact, geen beeldpaneel: één kolom, praktisch en to-the-point */
   .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 80px;
+    padding: calc(80px + 5rem) 4rem 5rem;
+    background: var(--zand);
+    display: flex;
+    justify-content: center;
   }
 
   .hero-tekst {
     display: flex;
     flex-direction: column;
+    max-width: 640px;
+    background: transparent;
+    padding: 0;
+  }
+
+  .hero-badge-icoon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--hout) 0%, #5c3a1e 70%);
+    display: flex;
+    align-items: center;
     justify-content: center;
-    padding: 4rem;
-    background: var(--wit);
+    font-size: 1.6rem;
+    box-shadow: 4px 8px 20px rgba(0,0,0,0.18);
+    margin-bottom: 1.5rem;
   }
 
   .hero-label {
@@ -165,30 +178,16 @@
   .mini-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--grijs); }
   .mini-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--groen); flex-shrink: 0; }
 
-  /* HERO BEELD */
-  .hero-beeld { position: relative; background: var(--groen-donker); overflow: hidden; display: flex; align-items: center; justify-content: center; }
-
-  .gereedschap-art { position: relative; width: 300px; height: 300px; }
-  .gereedschap-cirkel {
-    width: 100%; height: 100%; border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, var(--hout) 0%, #5c3a1e 70%);
-    box-shadow: 8px 16px 40px rgba(0,0,0,0.4);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 5rem;
-  }
-
-  .hero-quote {
-    position: absolute;
-    bottom: 3rem;
-    left: 3rem;
-    right: 3rem;
-    color: rgba(255,255,255,0.65);
-    font-size: 0.8rem;
+  .hero-quote-inline {
+    margin-top: 2.5rem;
+    color: var(--grijs);
+    font-size: 0.85rem;
     font-style: italic;
     line-height: 1.6;
-    border-left: 2px solid var(--zand);
+    border-left: 2px solid var(--groen);
     padding-left: 1rem;
   }
+  .hero-quote-inline strong { font-style: normal; color: var(--zwart); }
 
   /* DIENSTEN */
   .diensten { padding: 6rem 4rem; background: var(--zand); }
@@ -205,18 +204,26 @@
   .sectie-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--groen); margin-bottom: 0.5rem; }
   .sectie-titel { font-family: 'Poppins', sans-serif; font-size: 1.9rem; font-weight: 700; color: var(--zwart); }
 
-  .dienst-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--zand-donker); }
+  /* Prijslijst i.p.v. kaarten-grid — elke dienst is een rij, geen vak */
+  .dienst-grid { display: flex; flex-direction: column; border-top: 1px solid var(--zand-donker); }
 
-  .dienst-kaart { background: var(--wit); padding: 2.5rem 2rem; transition: background 0.2s; }
-  .dienst-kaart:hover { background: var(--groen-donker); color: #fff; }
-  .dienst-kaart:hover .dienst-naam, .dienst-kaart:hover .dienst-omschrijving, .dienst-kaart:hover .dienst-prijs-label { color: rgba(255,255,255,0.85); }
-  .dienst-kaart:hover .dienst-prijs { color: #fff; }
+  .dienst-kaart {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--wit);
+    padding: 1.6rem 1.5rem;
+    border-bottom: 1px solid var(--zand-donker);
+    transition: background 0.2s;
+  }
+  .dienst-kaart:hover { background: var(--zand); }
 
-  .dienst-icoon { font-size: 1.9rem; margin-bottom: 1.2rem; }
-  .dienst-naam { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--zwart); transition: color 0.2s; }
-  .dienst-omschrijving { font-size: 0.85rem; line-height: 1.65; color: var(--grijs); margin-bottom: 1.2rem; transition: color 0.2s; }
-  .dienst-prijs-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grijs); transition: color 0.2s; }
-  .dienst-prijs { font-family: 'Poppins', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--groen); transition: color 0.2s; }
+  .dienst-icoon { font-size: 1.6rem; margin-bottom: 0; text-align: center; }
+  .dienst-naam { font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--zwart); }
+  .dienst-omschrijving { font-size: 0.85rem; line-height: 1.5; color: var(--grijs); margin-bottom: 0; }
+  .dienst-prijs-label { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grijs); text-align: right; }
+  .dienst-prijs { font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--groen); text-align: right; white-space: nowrap; }
 
   /* OVER */
   .over { padding: 6rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; background: var(--wit); }
@@ -281,18 +288,19 @@
   footer span { color: rgba(255,255,255,0.15); }
 
   .demo-badge {
-    position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--zwart); color: rgba(255,255,255,0.7);
+    position: fixed; top: 5.5rem; right: 1.5rem; background: var(--zwart); color: rgba(255,255,255,0.7);
     font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.6rem 1rem; z-index: 200; font-family: 'Inter', sans-serif;
+    border-radius: 100px;
   }
 
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     nav ul { gap: 1.2rem; }
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-beeld { height: 280px; }
-    .hero-tekst { padding: 3rem 1.5rem; }
+    .hero { padding: calc(80px + 3rem) 1.5rem 3rem; }
     .diensten { padding: 4rem 1.5rem; }
-    .dienst-grid { grid-template-columns: 1fr; }
+    .dienst-kaart { grid-template-columns: 36px 1fr; }
+    .dienst-kaart > div:last-child { grid-column: 2; text-align: left; margin-top: 0.6rem; }
+    .dienst-prijs-label, .dienst-prijs { text-align: left; }
     .over { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
     .over-beeld { height: 260px; }
     .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
@@ -319,6 +327,7 @@
 
 <section class="hero">
   <div class="hero-tekst">
+    <div class="hero-badge-icoon">🛠️</div>
     <p class="hero-label">Klusdienst & tuinonderhoud · Regio Tessenderlo</p>
     <h1 class="hero-titel">
       Snel een klus<br>
@@ -333,16 +342,8 @@
       <div class="mini-item"><span class="mini-dot"></span> Reactie binnen 24u</div>
       <div class="mini-item"><span class="mini-dot"></span> Geen verplaatsingskost in de regio</div>
     </div>
-  </div>
 
-  <div class="hero-beeld">
-    <div class="gereedschap-art">
-      <div class="gereedschap-cirkel">🛠️</div>
-    </div>
-    <p class="hero-quote">
-      "Ik kom liever snel eens kijken dan dat u drie offertes moet afwachten."<br>
-      <strong style="opacity:0.8; font-style:normal; font-size:0.75rem; letter-spacing:0.1em;">— Wim</strong>
-    </p>
+    <p class="hero-quote-inline">"Ik kom liever snel eens kijken dan dat u drie offertes moet afwachten." <strong>— Wim</strong></p>
   </div>
 </section>
 
@@ -359,45 +360,69 @@
   <div class="dienst-grid">
     <div class="dienst-kaart">
       <div class="dienst-icoon">🔧</div>
-      <div class="dienst-naam">Kleine klussen</div>
-      <p class="dienst-omschrijving">Ophangen, monteren, herstellen — de klussen die blijven liggen krijgen eindelijk een oplossing.</p>
-      <div class="dienst-prijs-label">Vanaf</div>
-      <div class="dienst-prijs">€ 35 /u</div>
+      <div>
+        <div class="dienst-naam">Kleine klussen</div>
+        <p class="dienst-omschrijving">Ophangen, monteren, herstellen — de klussen die blijven liggen krijgen eindelijk een oplossing.</p>
+      </div>
+      <div>
+        <div class="dienst-prijs-label">Vanaf</div>
+        <div class="dienst-prijs">€ 35 /u</div>
+      </div>
     </div>
     <div class="dienst-kaart">
       <div class="dienst-icoon">🌳</div>
-      <div class="dienst-naam">Tuinonderhoud</div>
-      <p class="dienst-omschrijving">Gras maaien, snoeien en onkruid wieden — regelmatig of eenmalig.</p>
-      <div class="dienst-prijs-label">Vanaf</div>
-      <div class="dienst-prijs">€ 30 /u</div>
+      <div>
+        <div class="dienst-naam">Tuinonderhoud</div>
+        <p class="dienst-omschrijving">Gras maaien, snoeien en onkruid wieden — regelmatig of eenmalig.</p>
+      </div>
+      <div>
+        <div class="dienst-prijs-label">Vanaf</div>
+        <div class="dienst-prijs">€ 30 /u</div>
+      </div>
     </div>
     <div class="dienst-kaart">
       <div class="dienst-icoon">🎨</div>
-      <div class="dienst-naam">Schilderwerk</div>
-      <p class="dienst-omschrijving">Muren, deuren en tuinhekken netjes geschilderd, binnen of buiten.</p>
-      <div class="dienst-prijs-label">Op aanvraag</div>
-      <div class="dienst-prijs">Prijs op maat</div>
+      <div>
+        <div class="dienst-naam">Schilderwerk</div>
+        <p class="dienst-omschrijving">Muren, deuren en tuinhekken netjes geschilderd, binnen of buiten.</p>
+      </div>
+      <div>
+        <div class="dienst-prijs-label">Op aanvraag</div>
+        <div class="dienst-prijs">Prijs op maat</div>
+      </div>
     </div>
     <div class="dienst-kaart">
       <div class="dienst-icoon">🪚</div>
-      <div class="dienst-naam">Snoeiwerk</div>
-      <p class="dienst-omschrijving">Hagen, struiken en bomen in vorm, met afvoer van het snoeiafval.</p>
-      <div class="dienst-prijs-label">Vanaf</div>
-      <div class="dienst-prijs">€ 35 /u</div>
+      <div>
+        <div class="dienst-naam">Snoeiwerk</div>
+        <p class="dienst-omschrijving">Hagen, struiken en bomen in vorm, met afvoer van het snoeiafval.</p>
+      </div>
+      <div>
+        <div class="dienst-prijs-label">Vanaf</div>
+        <div class="dienst-prijs">€ 35 /u</div>
+      </div>
     </div>
     <div class="dienst-kaart">
       <div class="dienst-icoon">🧱</div>
-      <div class="dienst-naam">Terras & bestrating</div>
-      <p class="dienst-omschrijving">Kleine herstellingen aan terras of oprit, of een nieuw stukje bestrating.</p>
-      <div class="dienst-prijs-label">Op aanvraag</div>
-      <div class="dienst-prijs">Prijs op maat</div>
+      <div>
+        <div class="dienst-naam">Terras & bestrating</div>
+        <p class="dienst-omschrijving">Kleine herstellingen aan terras of oprit, of een nieuw stukje bestrating.</p>
+      </div>
+      <div>
+        <div class="dienst-prijs-label">Op aanvraag</div>
+        <div class="dienst-prijs">Prijs op maat</div>
+      </div>
     </div>
     <div class="dienst-kaart">
       <div class="dienst-icoon">🍂</div>
-      <div class="dienst-naam">Seizoensonderhoud</div>
-      <p class="dienst-omschrijving">Bladeren ruimen, winterklaar maken van de tuin, voorjaarsopkuis.</p>
-      <div class="dienst-prijs-label">Vanaf</div>
-      <div class="dienst-prijs">€ 30 /u</div>
+      <div>
+        <div class="dienst-naam">Seizoensonderhoud</div>
+        <p class="dienst-omschrijving">Bladeren ruimen, winterklaar maken van de tuin, voorjaarsopkuis.</p>
+      </div>
+      <div>
+        <div class="dienst-prijs-label">Vanaf</div>
+        <div class="dienst-prijs">€ 30 /u</div>
+      </div>
     </div>
   </div>
 </section>
