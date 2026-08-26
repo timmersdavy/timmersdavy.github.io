@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI-videoconcepten — Timmers Design</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#07080f;
+  --navy:#0D1B3E;
+  --navy-soft:#111928;
+  --gold:#c8a96e;
+  --gold-dim:rgba(200,169,110,0.15);
+  --off:#f5f3ef;
+  --serif:'Cormorant Garamond',serif;
+  --sans:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--black);color:var(--off);font-family:var(--sans);line-height:1.6}
+.wrap{max-width:780px;margin:0 auto;padding:80px 24px 120px}
+a.back{color:var(--gold);text-decoration:none;font-size:.9rem;letter-spacing:.03em}
+a.back:hover{text-decoration:underline}
+.s-label{font-size:.75rem;text-transform:uppercase;color:var(--gold);letter-spacing:.15em;margin:40px 0 12px}
+h1{font-family:var(--serif);font-weight:300;font-size:2.6rem;color:#fff;line-height:1.15;margin-bottom:20px}
+p.lead{font-size:1.1rem;color:#c9cdd6;max-width:620px}
+.badge{display:inline-block;margin-top:24px;padding:6px 14px;border:1px solid var(--gold-dim);
+  border-radius:20px;font-size:.8rem;color:var(--gold);letter-spacing:.03em}
+.videos{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:56px}
+@media(max-width:640px){.videos{grid-template-columns:1fr}}
+.v-card{background:var(--navy-soft);border-radius:10px;overflow:hidden;border:1px solid rgba(200,169,110,0.1)}
+.v-card video{width:100%;display:block;background:#000}
+.v-meta{padding:18px 20px}
+.v-meta h3{font-family:var(--serif);font-weight:400;font-size:1.3rem;color:#fff}
+.v-meta p{font-size:.9rem;color:#9aa0ac;margin-top:6px}
+.note{margin-top:64px;padding:24px;background:var(--navy-soft);border-left:2px solid var(--gold);
+  font-size:.9rem;color:#c9cdd6}
+.note strong{color:var(--gold)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/#portfolio">&larr; Terug naar portfolio</a>
+  <div class="s-label">Nieuw in het aanbod</div>
+  <h1>AI-gegenereerde promovideo's</h1>
+  <p class="lead">Naast websites bouw ik nu ook korte, merkgetrouwe promovideo's — automatisch gerenderd
+    vanuit code, in de huisstijl van de klant. Ideaal voor social media, zonder een videotool te openen.</p>
+  <div class="badge">Concept — nog niet bij een klant in gebruik</div>
+
+  <div class="videos">
+    <div class="v-card">
+      <video controls muted loop playsinline poster="">
+        <source src="/portfolio-shots/ai-video-ijssalon-timmers.mp4" type="video/mp4">
+      </video>
+      <div class="v-meta">
+        <h3>IJssalon Timmers (fictief)</h3>
+        <p>Merkkleuren en typografie uit de bestaande site, met productfoto's en Ken Burns-beweging.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Let op:</strong> deze video is een technisch concept, gemaakt om de mogelijkheden te tonen.
+    "IJssalon Timmers" is fictief en dient enkel om de mogelijkheden te tonen.
+  </div>
+</div>
+</body>
+</html>
