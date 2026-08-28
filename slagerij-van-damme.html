@@ -710,7 +710,61 @@
     padding: 0.6rem 1rem;
     z-index: 200;
     font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
   }
+
+  .td-fb-trigger {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.35);
+    color: inherit;
+    font: inherit;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.7rem;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .td-fb-trigger:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.6); }
+
+  .td-fb-panel {
+    position: fixed;
+    bottom: 4.5rem;
+    right: 1.5rem;
+    width: min(320px, calc(100vw - 3rem));
+    background: var(--zwart);
+    color: rgba(255,255,255,0.9);
+    border-radius: 12px;
+    padding: 1.2rem;
+    z-index: 250;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+    display: none;
+    font-family: 'Inter', sans-serif;
+  }
+  .td-fb-panel.open { display: block; }
+  .td-fb-panel h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; margin-bottom: 0.9rem; }
+  .td-fb-field { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.8rem; }
+  .td-fb-field label { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .td-fb-field input, .td-fb-field textarea {
+    background: rgba(255,255,255,0.08);
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    padding: 0.5rem 0.4rem;
+    font-family: inherit;
+    font-size: 0.85rem;
+  }
+  .td-fb-field textarea { resize: vertical; min-height: 70px; }
+  .td-fb-actions { display: flex; justify-content: flex-end; gap: 0.6rem; margin-top: 0.4rem; }
+  .td-fb-cancel { background: transparent; color: rgba(255,255,255,0.6); border: none; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; padding: 0.5rem 0.3rem; }
+  .td-fb-submit { background: #fff; color: var(--zwart); border: none; padding: 0.5rem 1rem; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 100px; cursor: pointer; }
+  .td-fb-submit:disabled { opacity: 0.5; cursor: default; }
+  .td-fb-error { font-size: 0.7rem; color: #f28b82; margin-top: 0.5rem; display: none; }
+  .td-fb-thanks { font-size: 0.85rem; line-height: 1.5; display: none; }
+  .td-fb-thanks.show { display: block; }
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
@@ -984,7 +1038,66 @@
 </footer>
 
 
-<div class="demo-badge">Demo · Timmers Design</div>
+<div class="demo-badge">
+  <span>Demo · Timmers Design</span>
+  <button type="button" class="td-fb-trigger" onclick="tdFeedbackToggle()">Feedback geven</button>
+</div>
+<div class="td-fb-panel" id="tdFeedbackPanel">
+  <form id="tdFeedbackForm" action="https://formspree.io/f/FEEDBACK_FORM_ID_HERE" method="POST">
+    <h3>Wat vind je van deze demo?</h3>
+    <div class="td-fb-field">
+      <label for="tdFbNaam">Naam (optioneel)</label>
+      <input type="text" id="tdFbNaam" name="naam">
+    </div>
+    <div class="td-fb-field">
+      <label for="tdFbEmail">E-mail (optioneel)</label>
+      <input type="email" id="tdFbEmail" name="email">
+    </div>
+    <div class="td-fb-field">
+      <label for="tdFbBericht">Jouw feedback</label>
+      <textarea id="tdFbBericht" name="bericht" required></textarea>
+    </div>
+    <input type="hidden" name="pagina" value="Slagerij Van Damme (demo)">
+    <input type="hidden" name="_subject" value="Feedback op demo: Slagerij Van Damme">
+    <div class="td-fb-error" id="tdFbError">Er ging iets mis. Probeer opnieuw of mail rechtstreeks.</div>
+    <div class="td-fb-actions">
+      <button type="button" class="td-fb-cancel" onclick="tdFeedbackToggle()">Annuleren</button>
+      <button type="submit" class="td-fb-submit">Versturen</button>
+    </div>
+  </form>
+  <div class="td-fb-thanks" id="tdFbThanks">Bedankt voor je feedback! Ik neem het mee. 🙌</div>
+</div>
+<script>
+(function(){
+  var panel = document.getElementById('tdFeedbackPanel');
+  var form = document.getElementById('tdFeedbackForm');
+  var thanks = document.getElementById('tdFbThanks');
+  var errorEl = document.getElementById('tdFbError');
+  window.tdFeedbackToggle = function(){ panel.classList.toggle('open'); };
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errorEl.style.display = 'none';
+    var btn = form.querySelector('.td-fb-submit');
+    btn.disabled = true;
+    fetch(form.action, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function(res){
+      if (res.ok) {
+        form.style.display = 'none';
+        thanks.classList.add('show');
+      } else {
+        errorEl.style.display = 'block';
+        btn.disabled = false;
+      }
+    }).catch(function(){
+      errorEl.style.display = 'block';
+      btn.disabled = false;
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
