@@ -777,6 +777,30 @@ footer{flex-direction:column;gap:0.5rem;text-align:center}
       Vraag een AI-medewerker aan
     </a>
 
+    <div style="margin-top: 24px;">
+      <button type="button" id="aiDemoToggle" class="ai-demo-toggle">
+        💬 Probeer de AI-medewerker
+      </button>
+    </div>
+
+    <div id="aiDemoPanel" class="ai-demo-panel" hidden>
+      <div class="ai-demo-header">
+        <span class="ai-demo-avatar">AI</span>
+        <div class="ai-demo-header-text">
+          <strong>AI-medewerker</strong>
+          <span class="ai-demo-status">● Online — demo</span>
+        </div>
+        <button type="button" id="aiDemoClose" class="ai-demo-close" aria-label="Demo sluiten">✕</button>
+      </div>
+      <div id="aiDemoMessages" class="ai-demo-messages"></div>
+      <div id="aiDemoQuickReplies" class="ai-demo-quick-replies"></div>
+      <form id="aiDemoForm" class="ai-demo-form">
+        <input type="text" id="aiDemoInput" class="ai-demo-input" placeholder="Typ een bericht..." autocomplete="off">
+        <button type="submit" class="ai-demo-send" aria-label="Verstuur">➤</button>
+      </form>
+      <p class="ai-demo-disclaimer">Dit is een gesimuleerde demo met vooraf geschreven antwoorden — geen live AI-verbinding.</p>
+    </div>
+
   </div>
 </section>
 
@@ -1214,6 +1238,95 @@ footer{flex-direction:column;gap:0.5rem;text-align:center}
   </div>
 </div>
 <style>
+.ai-demo-toggle{
+  background:transparent;border:1px solid #f4762a;color:#f4762a;
+  padding:12px 26px;border-radius:8px;font-family:'Inter',sans-serif;
+  font-weight:bold;font-size:0.95rem;cursor:pointer;transition:background 0.2s,color 0.2s;
+}
+.ai-demo-toggle:hover{background:#f4762a;color:#07080f}
+.ai-demo-panel{
+  margin:28px auto 0 auto;max-width:400px;text-align:left;
+  background:rgb(17,25,40);border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px;overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,0.4);
+  display:flex;flex-direction:column;
+}
+.ai-demo-header{
+  display:flex;align-items:center;gap:12px;
+  background:#0d1520;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.ai-demo-avatar{
+  width:36px;height:36px;border-radius:50%;background:#f4762a;color:#07080f;
+  display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;
+  font-weight:bold;font-size:0.8rem;flex-shrink:0;
+}
+.ai-demo-header-text{display:flex;flex-direction:column;font-family:'Inter',sans-serif;color:#fff;flex:1}
+.ai-demo-header-text strong{font-size:0.95rem}
+.ai-demo-status{font-size:0.75rem;color:#3ddc84}
+.ai-demo-close{
+  background:none;border:none;color:rgba(255,255,255,0.5);font-size:1rem;
+  cursor:pointer;padding:4px;line-height:1;
+}
+.ai-demo-close:hover{color:#fff}
+.ai-demo-messages{
+  padding:16px;display:flex;flex-direction:column;gap:10px;
+  max-height:340px;overflow-y:auto;
+}
+.ai-demo-msg{
+  font-family:'Inter',sans-serif;font-size:0.9rem;line-height:1.5;
+  padding:10px 14px;border-radius:14px;max-width:82%;word-wrap:break-word;
+}
+.ai-demo-msg.bot{
+  background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.9);
+  align-self:flex-start;border-bottom-left-radius:4px;
+}
+.ai-demo-msg.user{
+  background:#f4762a;color:#07080f;font-weight:500;
+  align-self:flex-end;border-bottom-right-radius:4px;
+}
+.ai-demo-msg a{color:inherit;text-decoration:underline}
+.ai-demo-msg.bot a{color:#f4762a}
+.ai-demo-typing{
+  align-self:flex-start;display:flex;gap:4px;padding:10px 14px;
+  background:rgba(255,255,255,0.06);border-radius:14px;border-bottom-left-radius:4px;
+}
+.ai-demo-typing span{
+  width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.5);
+  animation:aiDemoBlink 1.2s infinite ease-in-out;
+}
+.ai-demo-typing span:nth-child(2){animation-delay:0.2s}
+.ai-demo-typing span:nth-child(3){animation-delay:0.4s}
+@keyframes aiDemoBlink{0%,80%,100%{opacity:0.3}40%{opacity:1}}
+.ai-demo-quick-replies{
+  display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 12px 16px;
+}
+.ai-demo-quick-reply{
+  background:rgba(244,118,42,0.1);border:1px solid rgba(244,118,42,0.4);
+  color:#f4762a;font-family:'Inter',sans-serif;font-size:0.8rem;
+  padding:7px 12px;border-radius:16px;cursor:pointer;transition:background 0.2s;
+}
+.ai-demo-quick-reply:hover{background:rgba(244,118,42,0.2)}
+.ai-demo-form{
+  display:flex;gap:8px;padding:12px 16px;border-top:1px solid rgba(255,255,255,0.08);
+}
+.ai-demo-input{
+  flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px;padding:10px 16px;color:#fff;font-family:'Inter',sans-serif;font-size:0.85rem;
+}
+.ai-demo-input:focus{outline:none;border-color:#f4762a}
+.ai-demo-send{
+  width:38px;height:38px;border-radius:50%;background:#f4762a;color:#07080f;
+  border:none;cursor:pointer;font-size:0.9rem;flex-shrink:0;
+}
+.ai-demo-disclaimer{
+  font-family:'Inter',sans-serif;font-size:0.7rem;color:rgba(255,255,255,0.35);
+  text-align:center;padding:0 16px 14px 16px;margin:0;
+}
+@media(max-width:480px){
+  .ai-demo-panel{max-width:100%;margin-left:0;margin-right:0}
+}
+</style>
+<style>
 .cookie-banner{
   position:fixed;left:0;right:0;bottom:0;z-index:2000;
   display:none;
@@ -1353,6 +1466,111 @@ function handleSubmit(e){
     setTimeout(()=>{btn.textContent=originalText;btn.style.borderColor='';btn.style.color=''},4000);
   });
 }
+</script>
+
+<script>
+// AI-medewerker demo chat (gescripte simulatie, geen live AI)
+(function(){
+  const toggle=document.getElementById('aiDemoToggle');
+  const panel=document.getElementById('aiDemoPanel');
+  const closeBtn=document.getElementById('aiDemoClose');
+  const messages=document.getElementById('aiDemoMessages');
+  const quickReplies=document.getElementById('aiDemoQuickReplies');
+  const form=document.getElementById('aiDemoForm');
+  const input=document.getElementById('aiDemoInput');
+  if(!toggle||!panel) return;
+
+  const calendlyLink='<a href="https://calendly.com/timmersdavy/gratis-gesprek" target="_blank" rel="noopener">plan hier een gratis gesprek</a>';
+
+  const intents=[
+    {keywords:['open','uur','uren','wanneer'],reply:'We zijn bereikbaar van maandag t/m vrijdag, 9u–18u. Buiten die uren beantwoord ik, de AI-medewerker, je vraag toch al meteen!'},
+    {keywords:['prijs','kost','tarief','duur'],reply:'Onze pakketten starten vanaf €750 eenmalig + €75/maand voor de Starter AI. Bekijk de volledige pakketten hierboven, of ' + calendlyLink + ' voor advies op maat.'},
+    {keywords:['afspraak','inplannen','gesprek','bel'],reply:'Uiteraard! ' + calendlyLink + ' — kies gewoon een moment dat je uitkomt.'},
+    {keywords:['offerte','voorstel'],reply:'Ik geef je vraag door aan Davy, hij neemt snel contact op. Wil je alvast ' + calendlyLink + '?'},
+    {keywords:['whatsapp','kanaal','crm'],reply:'De Groei AI-versie koppelt WhatsApp én e-mail met je CRM, zodat leads automatisch gekwalificeerd worden. Wil je dat ik dat even toon in een gesprek? ' + calendlyLink + '.'}
+  ];
+  const fallback='Goede vraag! Die geef ik door aan een medewerker. Wil je ondertussen ' + calendlyLink + '?';
+
+  const quickReplyOptions=[
+    'Wat zijn de openingsuren?',
+    'Wat kost dit?',
+    'Ik wil een afspraak',
+    'Stuur me een offerte'
+  ];
+
+  function addMessage(text,sender){
+    const el=document.createElement('div');
+    el.className='ai-demo-msg '+sender;
+    el.innerHTML=text;
+    messages.appendChild(el);
+    messages.scrollTop=messages.scrollHeight;
+  }
+
+  function findReply(text){
+    const lower=text.toLowerCase();
+    for(const intent of intents){
+      if(intent.keywords.some(k=>lower.includes(k))) return intent.reply;
+    }
+    return fallback;
+  }
+
+  function botReply(text){
+    const typing=document.createElement('div');
+    typing.className='ai-demo-typing';
+    typing.innerHTML='<span></span><span></span><span></span>';
+    messages.appendChild(typing);
+    messages.scrollTop=messages.scrollHeight;
+    setTimeout(()=>{
+      typing.remove();
+      addMessage(findReply(text),'bot');
+    },700+Math.random()*500);
+  }
+
+  function sendUserMessage(text){
+    if(!text.trim()) return;
+    addMessage(text.replace(/</g,'&lt;'),'user');
+    botReply(text);
+  }
+
+  function renderQuickReplies(){
+    quickReplies.innerHTML='';
+    quickReplyOptions.forEach(opt=>{
+      const btn=document.createElement('button');
+      btn.type='button';
+      btn.className='ai-demo-quick-reply';
+      btn.textContent=opt;
+      btn.addEventListener('click',()=>sendUserMessage(opt));
+      quickReplies.appendChild(btn);
+    });
+  }
+
+  let started=false;
+  function openPanel(){
+    panel.hidden=false;
+    toggle.setAttribute('aria-expanded','true');
+    if(!started){
+      started=true;
+      addMessage('Hoi! 👋 Ik ben de AI-medewerker. Stel gerust een vraag, of kies hieronder een voorbeeld.','bot');
+      renderQuickReplies();
+    }
+    panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  function closePanel(){
+    panel.hidden=true;
+    toggle.setAttribute('aria-expanded','false');
+  }
+
+  toggle.addEventListener('click',()=>{
+    if(panel.hidden) openPanel(); else closePanel();
+  });
+  closeBtn.addEventListener('click',closePanel);
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const text=input.value;
+    input.value='';
+    sendUserMessage(text);
+  });
+})();
 </script>
 <a href="https://wa.me/32476548643" class="wa-float" target="_blank" rel="noopener" aria-label="Chat via WhatsApp">
   <svg viewBox="0 0 32 32" width="30" height="30" fill="#fff" aria-hidden="true">
