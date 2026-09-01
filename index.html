@@ -424,6 +424,14 @@ padding:0.4rem 1rem;
 transition:color 0.3s,border-color 0.3s;
 }
 .skill:hover{color:var(--orange);border-color:rgba(244,118,42,0.4)}
+.over-more{
+display:inline-flex;align-items:center;gap:0.5rem;
+margin-top:0.5rem;
+font-size:0.78rem;font-weight:400;letter-spacing:0.1em;
+text-transform:uppercase;color:var(--gold);text-decoration:none;
+transition:color 0.3s,gap 0.3s;
+}
+.over-more:hover{color:var(--orange);gap:0.8rem}
 /* CONTACT */
 .contact{
 background:var(--navy);
@@ -579,8 +587,8 @@ footer{flex-direction:column;gap:0.5rem;text-align:center}
     <li><a href="#diensten">Diensten</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#over">Over</a></li>
-    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
   <button class="nav-burger" id="navBurger" aria-label="Menu openen" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -653,246 +661,15 @@ footer{flex-direction:column;gap:0.5rem;text-align:center}
   <div style="margin-top:2rem">
     <a href="https://calendly.com/timmersdavy/gratis-gesprek" target="_blank" class="btn-luxury">Gratis gesprek plannen</a>
   </div>
-</section>
 
-<div class="gold-rule"></div>
-
-<section id="onderhoud-groei" style="padding: 60px 20px; background-color: #07080f;">
-  <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-
-    <h2 style="font-family: 'Cormorant Garamond', serif; color: #ffffff; font-size: 2rem; margin-bottom: 10px;">
-      Onderhoud &amp; Groei
-    </h2>
-    <p style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.55); font-size: 1.1rem; max-width: 600px; margin: 0 auto 40px auto;">
-      Je website is af — en daarna? Met Onderhoud &amp; Groei blijft jouw site
-      technisch in orde, up-to-date en zichtbaar. Zonder dat je er zelf naar
-      om moet kijken.
-    </p>
-
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
-
-      <div style="flex: 1; min-width: 260px; max-width: 320px; background: rgb(17,25,40); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 30px; text-align: left;">
-        <h3 style="font-family: 'Cormorant Garamond', serif; color: #ffffff; font-size: 1.4rem; margin-bottom: 5px;">Basis</h3>
-        <p style="font-family: 'Inter', sans-serif; color: #f4762a; font-size: 1.8rem; font-weight: bold; margin: 10px 0;">
-          €39<span style="font-size: 1rem; color: rgba(255,255,255,0.55); font-weight: normal;">/maand</span>
-        </p>
-        <p style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.55); font-size: 0.9rem; margin-bottom: 20px;">Minimaal 6 maanden</p>
-        <ul style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.85); padding-left: 20px; line-height: 1.8;">
-          <li>Hosting &amp; domeinbeheer inbegrepen</li>
-          <li>Technische controles (snelheid &amp; uptime)</li>
-          <li>1 kleine tekstaanpassing per maand</li>
-          <li>Jaarlijks check-up gesprek</li>
-        </ul>
-      </div>
-
-      <div style="flex: 1; min-width: 260px; max-width: 320px; background: rgb(17,25,40); border: 1px solid #f4762a; border-radius: 12px; padding: 30px; text-align: left; position: relative;">
-        <span style="position: absolute; top: -14px; right: 20px; background: #f4762a; color: #07080f; padding: 4px 12px; border-radius: 20px; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: bold;">
-          Meest gekozen
-        </span>
-        <h3 style="font-family: 'Cormorant Garamond', serif; color: #ffffff; font-size: 1.4rem; margin-bottom: 5px;">Plus</h3>
-        <p style="font-family: 'Inter', sans-serif; color: #f4762a; font-size: 1.8rem; font-weight: bold; margin: 10px 0;">
-          €69<span style="font-size: 1rem; color: rgba(255,255,255,0.55); font-weight: normal;">/maand</span>
-        </p>
-        <p style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.55); font-size: 0.9rem; margin-bottom: 20px;">Minimaal 6 maanden</p>
-        <ul style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.85); padding-left: 20px; line-height: 1.8;">
-          <li>Alles uit Basis</li>
-          <li>2 tekstaanpassingen per maand</li>
-          <li>1 nieuwe pagina of blogpost per kwartaal</li>
-          <li>Maandelijks kort rapport met tips</li>
-        </ul>
-      </div>
-
+  <div id="onderhoud" class="reveal" style="margin-top:4rem;background:rgb(17,25,40);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:2.5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:2rem">
+    <div style="max-width:38ch">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.5rem;color:var(--white);margin-bottom:0.6rem">Blijft je site ook na livegang goed presteren?</h3>
+      <p style="font-size:0.85rem;line-height:1.7;color:var(--muted2);font-weight:300">Onderhoudsabonnement: maandelijkse check van snelheid en beveiliging, kleine tekst- en beeldaanpassingen, uptime-monitoring, back-up en prioritaire support. Apart van je eenmalige ontwikkelingsprijs — op te zeggen wanneer je wil.</p>
     </div>
-
-    <p style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.55); margin-top: 40px; font-size: 0.95rem;">
-      Nood aan meer? Extra werk buiten deze pakketten reken ik aan €55/u
-      (zie <a href="#op-maat" style="color: #f4762a;">Op Maat</a>).
-    </p>
-
-    <a href="https://calendly.com/timmersdavy/gratis-gesprek" target="_blank" style="display: inline-block; margin-top: 20px; background: #f4762a; color: #07080f; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-family: 'Inter', sans-serif; font-weight: bold;">
-      Vraag Onderhoud &amp; Groei aan
-    </a>
-
-  </div>
-</section>
-
-<div class="gold-rule"></div>
-
-<section id="ai-medewerker" style="padding: 60px 20px; background-color: #07080f;">
-  <div style="max-width: 960px; margin: 0 auto; text-align: center;">
-
-    <h2 style="font-family: 'Cormorant Garamond', serif; color: #ffffff; font-size: 2rem; margin-bottom: 10px;">
-      AI-medewerker voor je bedrijf
-    </h2>
-    <p style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.55); font-size: 1.1rem; max-width: 640px; margin: 0 auto 40px auto;">
-      Een AI-medewerker beantwoordt klantvragen via WhatsApp en e-mail, plant
-      afspraken in en volgt leads op — 24/7, zonder dat je extra personeel
-      aanwerft.
-    </p>
-
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
-
-      <div style="flex: 1; min-width: 260px; max-width: 320px; background: rgb(17,25,40); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 30px; text-align: left;">
-        <h3 style="font-family: 'Cormorant Garamond', serif; color: #ffffff; font-size: 1.4rem; margin-bottom: 5px;">Starter AI</h3>
-        <p style="font-family: 'Inter', sans-serif; color: #f4762a; font-size: 1.3rem; font-weight: bold; margin: 10px 0;">
-          €750 eenmalig<br><span style="font-size: 1rem; color: rgba(255,255,255,0.55); font-weight: normal;">+ €75/maand</span>
-        </p>
-        <ul style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.85); padding-left: 20px; line-height: 1.8; margin-top: 16px;">
-          <li>WhatsApp-kanaal</li>
-          <li>Beantwoordt veelgestelde vragen automatisch</li>
-          <li>Stuurt nieuwe leads door naar e-mail</li>
-        </ul>
-      </div>
-
-      <div style="flex: 1; min-width: 260px; max-width: 320px; background: rgb(17,25,40); border: 1px solid #f4762a; border-radius: 12px; padding: 30px; text-align: left; position: relative;">
-        <span style="position: absolute; top: -14px; right: 20px; background: #f4762a; color: #07080f; padding: 4px 12px; border-radius: 20px; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: bold;">
-          Meest gekozen
-        </span>
-        <h3 style="font-family: 'Cormorant Garamond', serif; color: #ffffff; font-size: 1.4rem; margin-bottom: 5px;">Groei AI</h3>
-        <p style="font-family: 'Inter', sans-serif; color: #f4762a; font-size: 1.3rem; font-weight: bold; margin: 10px 0;">
-          €1.400 eenmalig<br><span style="font-size: 1rem; color: rgba(255,255,255,0.55); font-weight: normal;">+ €120/maand</span>
-        </p>
-        <ul style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.85); padding-left: 20px; line-height: 1.8; margin-top: 16px;">
-          <li>WhatsApp + e-mail</li>
-          <li>Kwalificeert leads en koppelt met je CRM</li>
-          <li>Plant afspraken rechtstreeks in je agenda</li>
-        </ul>
-      </div>
-
-      <div style="flex: 1; min-width: 260px; max-width: 320px; background: rgb(17,25,40); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 30px; text-align: left;">
-        <h3 style="font-family: 'Cormorant Garamond', serif; color: #ffffff; font-size: 1.4rem; margin-bottom: 5px;">Op Maat</h3>
-        <p style="font-family: 'Inter', sans-serif; color: #f4762a; font-size: 1.3rem; font-weight: bold; margin: 10px 0;">
-          Prijs op aanvraag
-        </p>
-        <ul style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.85); padding-left: 20px; line-height: 1.8; margin-top: 16px;">
-          <li>Volledige workflow op maat</li>
-          <li>Meerdere kanalen, eigen automatisering</li>
-          <li>Offerte-opvolging inbegrepen</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <a href="https://calendly.com/timmersdavy/gratis-gesprek" target="_blank" style="display: inline-block; margin-top: 40px; background: #f4762a; color: #07080f; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-family: 'Inter', sans-serif; font-weight: bold;">
-      Vraag een AI-medewerker aan
-    </a>
-
-    <div style="margin-top: 24px;">
-      <button type="button" id="aiDemoToggle" class="ai-demo-toggle">
-        💬 Probeer de AI-medewerker
-      </button>
-    </div>
-
-    <div id="aiDemoPanel" class="ai-demo-panel" hidden>
-      <div class="ai-demo-header">
-        <span class="ai-demo-avatar">AI</span>
-        <div class="ai-demo-header-text">
-          <strong>AI-medewerker</strong>
-          <span class="ai-demo-status">● Online — demo</span>
-        </div>
-        <button type="button" id="aiDemoClose" class="ai-demo-close" aria-label="Demo sluiten">✕</button>
-      </div>
-      <div id="aiDemoMessages" class="ai-demo-messages"></div>
-      <div id="aiDemoQuickReplies" class="ai-demo-quick-replies"></div>
-      <form id="aiDemoForm" class="ai-demo-form">
-        <input type="text" id="aiDemoInput" class="ai-demo-input" placeholder="Typ een bericht..." autocomplete="off">
-        <button type="submit" class="ai-demo-send" aria-label="Verstuur">➤</button>
-      </form>
-      <p class="ai-demo-disclaimer">Dit is een gesimuleerde demo met vooraf geschreven antwoorden — geen live AI-verbinding.</p>
-    </div>
-
-  </div>
-</section>
-
-<div class="gold-rule"></div>
-
-
-<section class="diensten section-wrap" id="werkwijze">
-  <div class="diensten-intro reveal">
-    <div>
-      <p class="s-label">Hoe het werkt</p>
-      <h2 class="s-title">In drie<br>stappen <em>live</em></h2>
-    </div>
-    <p class="diensten-sub">Geen ellenlang traject — van eerste gesprek tot livegang meestal binnen enkele weken.</p>
-  </div>
-  <div class="diensten-list reveal">
-    <div class="dienst">
-      <div class="dienst-left">
-        <span class="dienst-idx">01</span>
-        <div class="dienst-info">
-          <h3>Gratis gesprek</h3>
-          <p>We bespreken samen wat je zaak nodig heeft, welk pakket past en wat de website moet opleveren.</p>
-        </div>
-      </div>
-    </div>
-    <div class="dienst">
-      <div class="dienst-left">
-        <span class="dienst-idx">02</span>
-        <div class="dienst-info">
-          <h3>Ontwerp &amp; opbouw</h3>
-          <p>Ik bouw je website op maat, met tussentijdse feedbackmomenten zodat het resultaat klopt met jouw zaak.</p>
-        </div>
-      </div>
-    </div>
-    <div class="dienst">
-      <div class="dienst-left">
-        <span class="dienst-idx">03</span>
-        <div class="dienst-info">
-          <h3>Livegang</h3>
-          <p>Je website gaat online, klaar om nieuwe klanten binnen te halen. Onderhoud kan je erbij nemen wanneer je wil.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="gold-rule"></div>
-
-
-<section class="diensten section-wrap" id="waarom">
-  <div class="diensten-intro reveal">
-    <div>
-      <p class="s-label">Waarom Timmers Design</p>
-      <h2 class="s-title">Vier goeie<br>redenen om te <em>kiezen</em></h2>
-    </div>
-    <p class="diensten-sub">Geen groot bureau, geen omwegen — gewoon een duidelijke aanpak die werkt.</p>
-  </div>
-  <div class="diensten-list reveal">
-    <div class="dienst">
-      <div class="dienst-left">
-        <span class="dienst-idx">01</span>
-        <div class="dienst-info">
-          <h3>Rechtstreeks contact</h3>
-          <p>Geen tussenpersonen, geen anonieme mailboxen. Je hebt altijd rechtstreeks contact met mij.</p>
-        </div>
-      </div>
-    </div>
-    <div class="dienst">
-      <div class="dienst-left">
-        <span class="dienst-idx">02</span>
-        <div class="dienst-info">
-          <h3>Snel live</h3>
-          <p>Meestal binnen enkele weken een werkende website, geen maandenlang wachten.</p>
-        </div>
-      </div>
-    </div>
-    <div class="dienst">
-      <div class="dienst-left">
-        <span class="dienst-idx">03</span>
-        <div class="dienst-info">
-          <h3>Ken de regio</h3>
-          <p>Ik werk vanuit Ham en ken de lokale markt — geen anonieme freelancer van ver weg.</p>
-        </div>
-      </div>
-    </div>
-    <div class="dienst">
-      <div class="dienst-left">
-        <span class="dienst-idx">04</span>
-        <div class="dienst-info">
-          <h3>Eerlijke, vaste prijzen</h3>
-          <p>Je weet vooraf exact wat je betaalt, geen verborgen kosten of verrassingen achteraf.</p>
-        </div>
-      </div>
+    <div style="text-align:right;flex-shrink:0">
+      <span style="display:block;font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;color:var(--gold);margin-bottom:1rem">€35 / maand</span>
+      <a href="https://calendly.com/timmersdavy/gratis-gesprek" target="_blank" class="btn-luxury">Gratis gesprek plannen</a>
     </div>
   </div>
 </section>
@@ -1058,107 +835,12 @@ footer{flex-direction:column;gap:0.5rem;text-align:center}
   <div class="over-text reveal">
     <p class="s-label">Over mij</p>
     <h2 class="s-title">Davy<br><em>Timmers</em></h2>
-    <p>Enkele jaren geleden maakte ik een zware periode door die me deed stilstaan bij wat ik met mijn tijd wil doen. Sindsdien wil ik vooral mensen vooruithelpen — met TimmersDesign doe ik dat door ondernemers in Limburg een website te geven die écht werkt.</p>
-    <p>Ik bouw websites voor KMO's in Limburg — snel, betaalbaar en persoonlijk. Dankzij AI-tools werk ik efficiënter dan een traditioneel webbureau, zonder in te leveren op kwaliteit.</p>
-    <p>Geen groot bureau, geen anonieme e-mails. Gewoon rechtstreeks contact met mij, van eerste gesprek tot livegang van je website.</p>
-    <p class="over-tagline">Snel. Betaalbaar. Persoonlijk.</p>
-    <div class="skills">
-      <span class="skill">Webdesign</span>
-      <span class="skill">Claude AI</span>
-      <span class="skill">Figma</span>
-      <span class="skill">SEO</span>
-      <span class="skill">Responsive Design</span>
-      <span class="skill">Onderhoud</span>
-    </div>
+    <p>Enkele jaren geleden besefte ik wat écht telt. Sindsdien help ik KMO's in Limburg met een website die klanten oplevert.</p>
+    <a href="/over-mij" class="over-more">Meer over mij →</a>
   </div>
 </section>
 
 <div class="gold-rule"></div>
-
-
-<section class="faq section-wrap" id="faq">
-  <div class="faq-intro reveal">
-    <p class="s-label">Veelgestelde vragen</p>
-    <h2 class="s-title">Vragen &amp;<br><em>antwoorden</em></h2>
-    <p class="diensten-sub" style="margin-top:2.5rem">Staat je vraag er niet tussen? Stuur me gewoon een bericht, dan antwoord ik binnen één werkdag.</p>
-  </div>
-  <div class="faq-list reveal">
-    <details class="faq-item">
-      <summary>Wat kost een website bij TimmersDesign?</summary>
-      <div class="faq-answer">
-        <p>Ik werk met drie pakketten. Starter is €1.100 eenmalig: een professionele website met de essentie. Groei is €1.900 eenmalig: een uitgebreidere site met meerdere pagina's en basis SEO. Op Maat is een volledig op maat gebouwde website of webapplicatie, prijs op aanvraag. Geen verborgen kosten, je weet vooraf wat je betaalt.</p>
-      </div>
-    </details>
-    <details class="faq-item">
-      <summary>Hoe snel heb ik iets in handen?</summary>
-      <div class="faq-answer">
-        <p>Bij een Starter- of Groei-website lever ik meestal binnen enkele weken een werkende site af, afhankelijk van hoe snel jij feedback geeft. Bij een Op Maat-project spreken we samen een realistische timing af op basis van de scope.</p>
-      </div>
-    </details>
-    <details class="faq-item">
-      <summary>Voor wie werkt TimmersDesign?</summary>
-      <div class="faq-answer">
-        <p>Vooral voor zelfstandigen en KMO's in Limburg die een website willen die écht werkt, zonder de prijs en overhead van een groot webbureau. Je hebt rechtstreeks contact met mij, geen tussenpersonen of anonieme mailboxen.</p>
-      </div>
-    </details>
-    <details class="faq-item">
-      <summary>Zit ik vast aan een lang contract?</summary>
-      <div class="faq-answer">
-        <p>Nee. De ontwikkeling is een eenmalige betaling, geen abonnement. Wil je nadien dat ik je site onderhoud, dan kan dat via een onderhoudsabonnement dat je maandelijks kan opzeggen.</p>
-      </div>
-    </details>
-    <details class="faq-item">
-      <summary>Je werkt met AI — gaat dat niet ten koste van kwaliteit?</summary>
-      <div class="faq-answer">
-        <p>AI zorgt dat het bouwen sneller en betaalbaarder gaat, maar ik ontwerp en controleer alles zelf voor het live gaat. Zo blijft je site herkenbaar voor je zaak en werkt hij zoals het hoort. De snelheid komt van AI, het vakwerk doe ik zelf.</p>
-      </div>
-    </details>
-    <details class="faq-item">
-      <summary>Kan ik niet gewoon zelf een website bouwen met AI?</summary>
-      <div class="faq-answer">
-        <p>Kan, maar dan mis je de strategie: waarom staat welke knop waar, en waarom werkt die aanpak voor jouw type klant. Ook SEO (zonder juiste structuur en techniek vindt Google je site niet), onderhoud (wat als er een bug is, een pakket verandert, of je site trager wordt) en persoonlijk advies van iemand die meedenkt over je bedrijf in plaats van enkel code af te leveren, ontbreken dan. Bij TimmersDesign krijg je geen generieke AI-output, maar een site die specifiek gebouwd is om bezoekers om te zetten in klanten, met persoonlijk contact en nazorg inbegrepen. Kort gezegd: AI kan een site bouwen, ik bouw een site die werkt.</p>
-      </div>
-    </details>
-    <details class="faq-item">
-      <summary>Is het kennismakingsgesprek echt gratis?</summary>
-      <div class="faq-answer">
-        <p>Ja, het eerste gesprek is gratis en vrijblijvend. We bekijken samen wat je zaak nodig heeft en of ik de juiste persoon ben. Pas daarna beslis jij of je verdergaat.</p>
-      </div>
-    </details>
-    <details class="faq-item">
-      <summary>Wat is het verschil tussen webdesign en webontwikkeling?</summary>
-      <div class="faq-answer">
-        <p>Webdesign gaat over hoe je website eruitziet en aanvoelt — lay-out, kleuren, gebruiksvriendelijkheid. Webontwikkeling gaat over de technische bouw erachter. Bij TimmersDesign krijg je beide in één traject: een doordacht ontworpen én technisch degelijk gebouwde website.</p>
-      </div>
-    </details>
-  </div>
-</section>
-
-<div class="gold-rule"></div>
-
-
-<section class="diensten section-wrap" id="onderhoud">
-  <div class="diensten-intro reveal">
-    <div>
-      <p class="s-label">Onderhoud</p>
-      <h2 class="s-title">Je site<br>in <em>goede handen</em></h2>
-    </div>
-    <p class="diensten-sub">Een site staat nooit "af" — met een onderhoudsabonnement blijft ze snel, veilig en up-to-date.</p>
-  </div>
-  <div class="diensten-list reveal">
-    <div class="dienst">
-      <div class="dienst-left">
-        <span class="dienst-idx">01</span>
-        <div class="dienst-info">
-          <h3>Onderhoudsabonnement</h3>
-          <p>Maandelijkse check van je website (snelheid, beveiliging en werking). Kleine tekst- en beeldaanpassingen (tot 30 min/maand). Uptime-monitoring — ik weet het vóór jij het merkt. Back-up van je site. Prioritaire support bij vragen of problemen.</p>
-        </div>
-      </div>
-      <span class="dienst-price">€35 / maand</span>
-    </div>
-  </div>
-  <p class="diensten-sub" style="margin-top:1.5rem;font-size:0.9rem;color:rgba(255,255,255,0.45)">Apart van je eenmalige ontwikkelingsprijs — op te zeggen wanneer je wil.</p>
-</section>
 
 
 <section class="contact" id="contact">
@@ -1216,6 +898,292 @@ footer{flex-direction:column;gap:0.5rem;text-align:center}
     </div>
   </div>
 </section>
+
+<div class="gold-rule"></div>
+
+
+<section class="faq section-wrap" id="faq">
+  <div class="faq-intro reveal">
+    <p class="s-label">Veelgestelde vragen</p>
+    <h2 class="s-title">Vragen &amp;<br><em>antwoorden</em></h2>
+    <p class="diensten-sub" style="margin-top:2.5rem">Staat je vraag er niet tussen? Stuur me gewoon een bericht, dan antwoord ik binnen één werkdag.</p>
+  </div>
+  <div class="faq-list reveal">
+    <details class="faq-item">
+      <summary>Wat kost een website bij TimmersDesign?</summary>
+      <div class="faq-answer">
+        <p>Ik werk met drie pakketten. Starter is €1.100 eenmalig: een professionele website met de essentie. Groei is €1.900 eenmalig: een uitgebreidere site met meerdere pagina's en basis SEO. Op Maat is een volledig op maat gebouwde website of webapplicatie, prijs op aanvraag. Geen verborgen kosten, je weet vooraf wat je betaalt.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Hoe snel heb ik iets in handen?</summary>
+      <div class="faq-answer">
+        <p>Bij een Starter- of Groei-website lever ik meestal binnen enkele weken een werkende site af, afhankelijk van hoe snel jij feedback geeft. Bij een Op Maat-project spreken we samen een realistische timing af op basis van de scope.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Is het kennismakingsgesprek echt gratis?</summary>
+      <div class="faq-answer">
+        <p>Ja, het eerste gesprek is gratis en vrijblijvend. We bekijken samen wat je zaak nodig heeft en of ik de juiste persoon ben. Pas daarna beslis jij of je verdergaat.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Zit ik vast aan een lang contract?</summary>
+      <div class="faq-answer">
+        <p>Nee. De ontwikkeling is een eenmalige betaling, geen abonnement. Wil je nadien dat ik je site onderhoud, dan kan dat via een onderhoudsabonnement dat je maandelijks kan opzeggen.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Kan ik niet gewoon zelf een website bouwen met AI?</summary>
+      <div class="faq-answer">
+        <p>Kan, maar dan mis je de strategie: waarom staat welke knop waar, en waarom werkt die aanpak voor jouw type klant. Ook SEO (zonder juiste structuur en techniek vindt Google je site niet), onderhoud (wat als er een bug is, een pakket verandert, of je site trager wordt) en persoonlijk advies van iemand die meedenkt over je bedrijf in plaats van enkel code af te leveren, ontbreken dan. Bij TimmersDesign krijg je geen generieke AI-output, maar een site die specifiek gebouwd is om bezoekers om te zetten in klanten, met persoonlijk contact en nazorg inbegrepen. Kort gezegd: AI kan een site bouwen, ik bouw een site die werkt.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<section id="onderhoud-groei" style="padding: 60px 20px; background-color: #07080f;">
+  <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+
+    <h2 style="font-family: 'Cormorant Garamond', serif; color: #ffffff; font-size: 2rem; margin-bottom: 10px;">
+      Onderhoud &amp; Groei
+    </h2>
+    <p style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.55); font-size: 1.1rem; max-width: 600px; margin: 0 auto 40px auto;">
+      Je website is af — en daarna? Met Onderhoud &amp; Groei blijft jouw site
+      technisch in orde, up-to-date en zichtbaar. Zonder dat je er zelf naar
+      om moet kijken.
+    </p>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+
+      <div style="flex: 1; min-width: 260px; max-width: 320px; background: rgb(17,25,40); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 30px; text-align: left;">
+        <h3 style="font-family: 'Cormorant Garamond', serif; color: #ffffff; font-size: 1.4rem; margin-bottom: 5px;">Basis</h3>
+        <p style="font-family: 'Inter', sans-serif; color: #f4762a; font-size: 1.8rem; font-weight: bold; margin: 10px 0;">
+          €39<span style="font-size: 1rem; color: rgba(255,255,255,0.55); font-weight: normal;">/maand</span>
+        </p>
+        <p style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.55); font-size: 0.9rem; margin-bottom: 20px;">Minimaal 6 maanden</p>
+        <ul style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.85); padding-left: 20px; line-height: 1.8;">
+          <li>Hosting &amp; domeinbeheer inbegrepen</li>
+          <li>Technische controles (snelheid &amp; uptime)</li>
+          <li>1 kleine tekstaanpassing per maand</li>
+          <li>Jaarlijks check-up gesprek</li>
+        </ul>
+      </div>
+
+      <div style="flex: 1; min-width: 260px; max-width: 320px; background: rgb(17,25,40); border: 1px solid #f4762a; border-radius: 12px; padding: 30px; text-align: left; position: relative;">
+        <span style="position: absolute; top: -14px; right: 20px; background: #f4762a; color: #07080f; padding: 4px 12px; border-radius: 20px; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: bold;">
+          Meest gekozen
+        </span>
+        <h3 style="font-family: 'Cormorant Garamond', serif; color: #ffffff; font-size: 1.4rem; margin-bottom: 5px;">Plus</h3>
+        <p style="font-family: 'Inter', sans-serif; color: #f4762a; font-size: 1.8rem; font-weight: bold; margin: 10px 0;">
+          €69<span style="font-size: 1rem; color: rgba(255,255,255,0.55); font-weight: normal;">/maand</span>
+        </p>
+        <p style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.55); font-size: 0.9rem; margin-bottom: 20px;">Minimaal 6 maanden</p>
+        <ul style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.85); padding-left: 20px; line-height: 1.8;">
+          <li>Alles uit Basis</li>
+          <li>2 tekstaanpassingen per maand</li>
+          <li>1 nieuwe pagina of blogpost per kwartaal</li>
+          <li>Maandelijks kort rapport met tips</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.55); margin-top: 40px; font-size: 0.95rem;">
+      Nood aan meer? Extra werk buiten deze pakketten reken ik aan €55/u
+      (zie <a href="#op-maat" style="color: #f4762a;">Op Maat</a>).
+    </p>
+
+    <a href="https://calendly.com/timmersdavy/gratis-gesprek" target="_blank" style="display: inline-block; margin-top: 20px; background: #f4762a; color: #07080f; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-family: 'Inter', sans-serif; font-weight: bold;">
+      Gratis gesprek plannen
+    </a>
+
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<section id="ai-medewerker" style="padding: 60px 20px; background-color: #07080f;">
+  <div style="max-width: 960px; margin: 0 auto; text-align: center;">
+
+    <h2 style="font-family: 'Cormorant Garamond', serif; color: #ffffff; font-size: 2rem; margin-bottom: 10px;">
+      AI-medewerker voor je bedrijf
+    </h2>
+    <p style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.55); font-size: 1.1rem; max-width: 640px; margin: 0 auto 40px auto;">
+      Een AI-medewerker beantwoordt klantvragen via WhatsApp en e-mail, plant
+      afspraken in en volgt leads op — 24/7, zonder dat je extra personeel
+      aanwerft.
+    </p>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+
+      <div style="flex: 1; min-width: 260px; max-width: 320px; background: rgb(17,25,40); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 30px; text-align: left;">
+        <h3 style="font-family: 'Cormorant Garamond', serif; color: #ffffff; font-size: 1.4rem; margin-bottom: 5px;">Starter AI</h3>
+        <p style="font-family: 'Inter', sans-serif; color: #f4762a; font-size: 1.3rem; font-weight: bold; margin: 10px 0;">
+          €750 eenmalig<br><span style="font-size: 1rem; color: rgba(255,255,255,0.55); font-weight: normal;">+ €75/maand</span>
+        </p>
+        <ul style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.85); padding-left: 20px; line-height: 1.8; margin-top: 16px;">
+          <li>WhatsApp-kanaal</li>
+          <li>Beantwoordt veelgestelde vragen automatisch</li>
+          <li>Stuurt nieuwe leads door naar e-mail</li>
+        </ul>
+      </div>
+
+      <div style="flex: 1; min-width: 260px; max-width: 320px; background: rgb(17,25,40); border: 1px solid #f4762a; border-radius: 12px; padding: 30px; text-align: left; position: relative;">
+        <span style="position: absolute; top: -14px; right: 20px; background: #f4762a; color: #07080f; padding: 4px 12px; border-radius: 20px; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: bold;">
+          Meest gekozen
+        </span>
+        <h3 style="font-family: 'Cormorant Garamond', serif; color: #ffffff; font-size: 1.4rem; margin-bottom: 5px;">Groei AI</h3>
+        <p style="font-family: 'Inter', sans-serif; color: #f4762a; font-size: 1.3rem; font-weight: bold; margin: 10px 0;">
+          €1.400 eenmalig<br><span style="font-size: 1rem; color: rgba(255,255,255,0.55); font-weight: normal;">+ €120/maand</span>
+        </p>
+        <ul style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.85); padding-left: 20px; line-height: 1.8; margin-top: 16px;">
+          <li>WhatsApp + e-mail</li>
+          <li>Kwalificeert leads en koppelt met je CRM</li>
+          <li>Plant afspraken rechtstreeks in je agenda</li>
+        </ul>
+      </div>
+
+      <div style="flex: 1; min-width: 260px; max-width: 320px; background: rgb(17,25,40); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 30px; text-align: left;">
+        <h3 style="font-family: 'Cormorant Garamond', serif; color: #ffffff; font-size: 1.4rem; margin-bottom: 5px;">Op Maat</h3>
+        <p style="font-family: 'Inter', sans-serif; color: #f4762a; font-size: 1.3rem; font-weight: bold; margin: 10px 0;">
+          Prijs op aanvraag
+        </p>
+        <ul style="font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.85); padding-left: 20px; line-height: 1.8; margin-top: 16px;">
+          <li>Volledige workflow op maat</li>
+          <li>Meerdere kanalen, eigen automatisering</li>
+          <li>Offerte-opvolging inbegrepen</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <a href="https://calendly.com/timmersdavy/gratis-gesprek" target="_blank" style="display: inline-block; margin-top: 40px; background: #f4762a; color: #07080f; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-family: 'Inter', sans-serif; font-weight: bold;">
+      Gratis gesprek plannen
+    </a>
+
+    <div style="margin-top: 24px;">
+      <button type="button" id="aiDemoToggle" class="ai-demo-toggle">
+        💬 Probeer de AI-medewerker
+      </button>
+    </div>
+
+    <div id="aiDemoPanel" class="ai-demo-panel" hidden>
+      <div class="ai-demo-header">
+        <span class="ai-demo-avatar">AI</span>
+        <div class="ai-demo-header-text">
+          <strong>AI-medewerker</strong>
+          <span class="ai-demo-status">● Online — demo</span>
+        </div>
+        <button type="button" id="aiDemoClose" class="ai-demo-close" aria-label="Demo sluiten">✕</button>
+      </div>
+      <div id="aiDemoMessages" class="ai-demo-messages"></div>
+      <div id="aiDemoQuickReplies" class="ai-demo-quick-replies"></div>
+      <form id="aiDemoForm" class="ai-demo-form">
+        <input type="text" id="aiDemoInput" class="ai-demo-input" placeholder="Typ een bericht..." autocomplete="off">
+        <button type="submit" class="ai-demo-send" aria-label="Verstuur">➤</button>
+      </form>
+      <p class="ai-demo-disclaimer">Dit is een gesimuleerde demo met vooraf geschreven antwoorden — geen live AI-verbinding.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+
+<section class="diensten section-wrap" id="werkwijze">
+  <div class="diensten-intro reveal">
+    <div>
+      <p class="s-label">Hoe het werkt</p>
+      <h2 class="s-title">In drie<br>stappen <em>live</em></h2>
+    </div>
+    <p class="diensten-sub">Geen ellenlang traject — van eerste gesprek tot livegang meestal binnen enkele weken.</p>
+  </div>
+  <div class="diensten-list reveal">
+    <div class="dienst">
+      <div class="dienst-left">
+        <span class="dienst-idx">01</span>
+        <div class="dienst-info">
+          <h3>Gratis gesprek</h3>
+          <p>We bespreken samen wat je zaak nodig heeft, welk pakket past en wat de website moet opleveren.</p>
+        </div>
+      </div>
+    </div>
+    <div class="dienst">
+      <div class="dienst-left">
+        <span class="dienst-idx">02</span>
+        <div class="dienst-info">
+          <h3>Ontwerp &amp; opbouw</h3>
+          <p>Ik bouw je website op maat, met tussentijdse feedbackmomenten zodat het resultaat klopt met jouw zaak.</p>
+        </div>
+      </div>
+    </div>
+    <div class="dienst">
+      <div class="dienst-left">
+        <span class="dienst-idx">03</span>
+        <div class="dienst-info">
+          <h3>Livegang</h3>
+          <p>Je website gaat online, klaar om nieuwe klanten binnen te halen. Onderhoud kan je erbij nemen wanneer je wil.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<section class="diensten section-wrap" id="waarom">
+  <div class="diensten-intro reveal">
+    <div>
+      <p class="s-label">Waarom Timmers Design</p>
+      <h2 class="s-title">Vier goeie<br>redenen om te <em>kiezen</em></h2>
+    </div>
+    <p class="diensten-sub">Geen groot bureau, geen omwegen — gewoon een duidelijke aanpak die werkt.</p>
+  </div>
+  <div class="diensten-list reveal">
+    <div class="dienst">
+      <div class="dienst-left">
+        <span class="dienst-idx">01</span>
+        <div class="dienst-info">
+          <h3>Rechtstreeks contact</h3>
+          <p>Geen tussenpersonen, geen anonieme mailboxen. Je hebt altijd rechtstreeks contact met mij.</p>
+        </div>
+      </div>
+    </div>
+    <div class="dienst">
+      <div class="dienst-left">
+        <span class="dienst-idx">02</span>
+        <div class="dienst-info">
+          <h3>Snel live</h3>
+          <p>Meestal binnen enkele weken een werkende website, geen maandenlang wachten.</p>
+        </div>
+      </div>
+    </div>
+    <div class="dienst">
+      <div class="dienst-left">
+        <span class="dienst-idx">03</span>
+        <div class="dienst-info">
+          <h3>Ken de regio</h3>
+          <p>Ik werk vanuit Ham en ken de lokale markt — geen anonieme freelancer van ver weg.</p>
+        </div>
+      </div>
+    </div>
+    <div class="dienst">
+      <div class="dienst-left">
+        <span class="dienst-idx">04</span>
+        <div class="dienst-info">
+          <h3>Eerlijke, vaste prijzen</h3>
+          <p>Je weet vooraf exact wat je betaalt, geen verborgen kosten of verrassingen achteraf.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
 
 
 <footer>
