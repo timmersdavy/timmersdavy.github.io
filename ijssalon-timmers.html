@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-55NL6HRM5S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-55NL6HRM5S');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IJssalon Timmers — Ambachtelijk ijs in Ham (fictief voorbeeldproject)</title>
+<meta name="description" content="IJssalon Timmers — fictief voorbeeldproject: ambachtelijk ijs, elke dag vers gedraaid, in Ham (Limburg).">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://timmersdesign.be/ijssalon-timmers.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="IJssalon Timmers — Ambachtelijk ijs in Ham">
+<meta property="og:description" content="Fictief voorbeeldproject: ambachtelijk ijs, elke dag vers gedraaid.">
+<meta property="og:url" content="https://timmersdesign.be/ijssalon-timmers.html">
+<meta property="og:locale" content="nl_BE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IJssalon Timmers — Ambachtelijk ijs in Ham">
+<meta name="twitter:description" content="Fictief voorbeeldproject: ambachtelijk ijs, elke dag vers gedraaid.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "IceCreamShop",
+  "name": "IJssalon Timmers",
+  "url": "https://timmersdesign.be/ijssalon-timmers.html",
+  "description": "Ambachtelijke ijssalon in Ham, elke dag vers gedraaid ijs met wisselende smaken.",
+  "areaServed": {
+    "@type": "Place",
+    "name": "Ham en omstreken"
+  }
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --framboos: #E1526E;
+    --framboos-donker: #B93752;
+    --mint: #7CC6A8;
+    --room: #FFF7EA;
+    --room-donker: #F3E4CC;
+    --wit: #FFFDF8;
+    --zwart: #2E2119;
+    --grijs: #7C6F62;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--room);
+    color: var(--zwart);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(255,253,248,0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--room-donker);
+  }
+
+  .logo {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    color: var(--framboos-donker);
+  }
+
+  .logo span {
+    display: block;
+    font-size: 0.55rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: var(--grijs);
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+
+  nav ul { list-style: none; display: flex; gap: 2.5rem; }
+  nav a {
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--zwart);
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--framboos); }
+
+  /* HERO */
+  .hero {
+    padding: calc(80px + 4rem) 4rem 4rem;
+    background: linear-gradient(180deg, var(--room) 0%, var(--room-donker) 100%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-tekst {
+    display: flex;
+    flex-direction: column;
+    max-width: 520px;
+  }
+
+  .hero-beeld {
+    position: relative;
+    height: 480px;
+    border-radius: 24px;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 30%, var(--mint) 0%, #3f8a6c 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cone-wrap {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cone-bollen { display: flex; flex-direction: column-reverse; align-items: center; margin-bottom: -8px; }
+  .cone-bol {
+    width: 130px; height: 130px; border-radius: 50%;
+    box-shadow: inset -10px -14px 30px rgba(0,0,0,0.18), 0 10px 24px rgba(0,0,0,0.2);
+    margin-top: -58px;
+  }
+  .cone-bol:nth-child(1) { background: radial-gradient(circle at 35% 30%, #F7C9D6 0%, var(--framboos) 100%); z-index: 3; }
+  .cone-bol:nth-child(2) { background: radial-gradient(circle at 35% 30%, #E9D9B9 0%, #C9A05C 100%); z-index: 2; }
+  .cone-bol:nth-child(3) { background: radial-gradient(circle at 35% 30%, #FFF3D6 0%, #F0C879 100%); z-index: 1; }
+  .cone-driehoek {
+    width: 0; height: 0;
+    border-left: 55px solid transparent;
+    border-right: 55px solid transparent;
+    border-top: 150px solid #D9A15C;
+    position: relative;
+    filter: drop-shadow(0 12px 16px rgba(0,0,0,0.2));
+  }
+  .cone-driehoek::before, .cone-driehoek::after {
+    content: ''; position: absolute; top: -150px; left: -34px;
+    width: 68px; height: 150px;
+    background: repeating-linear-gradient(115deg, transparent 0 8px, rgba(0,0,0,0.08) 8px 10px);
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+  }
+  .beeld-badge {
+    position: absolute; bottom: 1.5rem; left: 1.5rem;
+    background: rgba(46,33,25,0.55); backdrop-filter: blur(4px);
+    color: #fff; padding: 0.6rem 1.1rem; border-radius: 100px;
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+
+  .hero-badge-icoon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--framboos) 0%, var(--framboos-donker) 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    box-shadow: 4px 8px 20px rgba(185,55,82,0.25);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--framboos-donker);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-titel {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: clamp(2.4rem, 4.4vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--zwart);
+    margin-bottom: 1.8rem;
+  }
+
+  .hero-titel em { font-style: normal; color: var(--framboos); }
+
+  .hero-tekst p { font-size: 1rem; line-height: 1.75; color: var(--grijs); max-width: 40ch; margin-bottom: 2.5rem; }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--framboos);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 1.1rem 2.2rem;
+    transition: background 0.2s;
+    width: fit-content;
+    border-radius: 100px;
+  }
+  .hero-cta:hover { background: var(--framboos-donker); }
+  .hero-cta::after { content: '→'; font-size: 1rem; }
+
+  .hero-mini { display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
+  .mini-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--grijs); }
+  .mini-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); flex-shrink: 0; }
+
+  .hero-quote-inline {
+    margin-top: 2.5rem;
+    color: var(--grijs);
+    font-size: 0.85rem;
+    font-style: italic;
+    line-height: 1.6;
+    border-left: 2px solid var(--framboos);
+    padding-left: 1rem;
+  }
+  .hero-quote-inline strong { font-style: normal; color: var(--zwart); }
+
+  /* SMAKEN */
+  .smaken { padding: 6rem 4rem; background: var(--wit); }
+
+  .sectie-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid var(--room-donker);
+    padding-bottom: 1.5rem;
+    gap: 2rem;
+  }
+
+  .sectie-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--framboos-donker); margin-bottom: 0.5rem; }
+  .sectie-titel { font-family: 'Baloo 2', sans-serif; font-size: 1.9rem; font-weight: 700; color: var(--zwart); }
+
+  .smaken-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  .smaak-kaart {
+    background: var(--room);
+    border: 1px solid var(--room-donker);
+    border-radius: 18px;
+    padding: 1.8rem 1.6rem;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .smaak-kaart:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(46,33,25,0.08); }
+
+  .smaak-icoon {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--room-donker);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 1.2rem;
+  }
+  .smaak-naam { font-family: 'Baloo 2', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--zwart); }
+  .smaak-omschrijving { font-size: 0.85rem; line-height: 1.5; color: var(--grijs); margin-bottom: 1.2rem; min-height: 3.2em; }
+  .smaak-prijs-rij { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px dashed var(--room-donker); padding-top: 0.8rem; }
+  .smaak-prijs-label { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grijs); }
+  .smaak-prijs { font-family: 'Baloo 2', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--framboos-donker); white-space: nowrap; }
+
+  /* OVER */
+  .over { padding: 6rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; background: var(--room); }
+
+  .over-beeld { position: relative; height: 440px; background: radial-gradient(circle at 30% 25%, var(--mint) 0%, #4f9b7c 100%); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .grid-art { position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.08) 20px, rgba(255,255,255,0.08) 21px); }
+  .over-badge { position: relative; z-index: 1; text-align: center; color: #fff; }
+  .over-badge-getal { font-family: 'Baloo 2', sans-serif; font-size: 4.6rem; font-weight: 800; line-height: 1; display: block; }
+  .over-badge-tekst { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.85; }
+
+  .over-inhoud .sectie-label { margin-bottom: 0.8rem; }
+  .over-inhoud h2 { font-family: 'Baloo 2', sans-serif; font-size: 2.1rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem; }
+  .over-inhoud p { font-size: 0.95rem; line-height: 1.8; color: var(--grijs); margin-bottom: 1.2rem; }
+
+  .kenmerken { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem; }
+  .kenmerk { display: flex; align-items: center; gap: 1rem; font-size: 0.85rem; }
+  .kenmerk-streep { width: 24px; height: 1px; background: var(--framboos); flex-shrink: 0; }
+
+  /* PROJECT CASE */
+  .project-case { padding: 6rem 4rem; background: var(--wit); border-top: 1px solid var(--room-donker); }
+  .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 2rem; }
+  .project-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--framboos-donker); margin-bottom: 0.8rem; }
+  .project-titel { font-family: 'Baloo 2', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--zwart); margin-bottom: 0.8rem; }
+  .project-tekst { font-size: 0.9rem; line-height: 1.75; color: var(--grijs); }
+  @media (max-width: 900px) {
+    .project-case { padding: 4rem 1.5rem; }
+    .project-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  /* CONTACT */
+  .contact { background: var(--zwart); padding: 6rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+  .contact-info h2 { font-family: 'Baloo 2', sans-serif; font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 1.5rem; }
+  .contact-info p { color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.75; margin-bottom: 2.5rem; }
+
+  .contact-gegevens { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-rij { display: flex; gap: 1rem; align-items: flex-start; }
+  .contact-rij-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); width: 90px; flex-shrink: 0; padding-top: 2px; }
+  .contact-rij-waarde { color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.5; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-groep { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-groep label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .form-groep input, .form-groep textarea {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff;
+    padding: 0.85rem 1rem; font-family: 'Inter', sans-serif; font-size: 16px; outline: none; transition: border-color 0.2s; width: 100%;
+  }
+  .form-groep input::placeholder, .form-groep textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .form-groep input:focus, .form-groep textarea:focus { border-color: rgba(255,255,255,0.5); }
+  .form-groep textarea { resize: vertical; min-height: 100px; }
+
+  .verstuur-btn {
+    background: var(--framboos); color: #fff; border: none; padding: 1rem 2rem;
+    font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; cursor: pointer; transition: background 0.2s; align-self: flex-start; border-radius: 100px;
+  }
+  .verstuur-btn:hover { background: var(--framboos-donker); }
+
+  .snel-note { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: -0.4rem; }
+
+  /* FOOTER */
+  footer { background: var(--zwart); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.3); font-size: 0.75rem; letter-spacing: 0.05em; border-top: 1px solid rgba(255,255,255,0.06); }
+  footer span { color: rgba(255,255,255,0.15); }
+
+  .demo-badge {
+    position: fixed; top: 5.5rem; right: 1.5rem; background: var(--zwart); color: rgba(255,255,255,0.7);
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.6rem 1rem; z-index: 200; font-family: 'Inter', sans-serif;
+    border-radius: 100px;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { gap: 1.2rem; }
+    .hero { padding: calc(80px + 3rem) 1.5rem 3rem; }
+    .demo-badge { top: auto; bottom: 1.5rem; }
+    .smaken { padding: 4rem 1.5rem; }
+    .smaken-grid { grid-template-columns: 1fr; }
+    .hero { grid-template-columns: 1fr; padding: calc(80px + 3rem) 1.5rem 3rem; }
+    .hero-beeld { height: 300px; order: -1; }
+    .cone-bol { width: 90px; height: 90px; margin-top: -40px; }
+    .cone-driehoek { border-left-width: 38px; border-right-width: 38px; border-top-width: 104px; }
+    .cone-driehoek::before, .cone-driehoek::after { top: -104px; left: -23px; width: 46px; height: 104px; }
+    .over { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .over-beeld { height: 260px; }
+    .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .sectie-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+
+<nav>
+  <div class="logo">
+    IJssalon Timmers
+    <span>Ambachtelijk ijs</span>
+  </div>
+  <ul>
+    <li><a href="#smaken">Smaken</a></li>
+    <li><a href="#over">Over ons</a></li>
+    <li><a href="#contact">Route & uren</a></li>
+  </ul>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-tekst">
+    <div class="hero-badge-icoon">🍦</div>
+    <p class="hero-label">Ambachtelijk ijs · Ham</p>
+    <h1 class="hero-titel">
+      Verse smaken,<br>
+      elke dag<br>
+      <em>net gedraaid</em>
+    </h1>
+    <p>Geen voorraad uit de diepvries, maar ijs dat 's ochtends gedraaid wordt en 's middags in de toonbank staat. Elke week een paar nieuwe smaken erbij.</p>
+
+    <a href="#smaken" class="hero-cta">Bekijk onze smaken</a>
+
+    <div class="hero-mini">
+      <div class="mini-item"><span class="mini-dot"></span> 20+ smaken, het hele jaar door</div>
+      <div class="mini-item"><span class="mini-dot"></span> Ook vegan en lactosevrije opties</div>
+    </div>
+
+    <p class="hero-quote-inline">"Op een zonnige dag staat hier soms een rij tot aan de kerk — en dat is precies de bedoeling." <strong>— Familie Timmers</strong></p>
+  </div>
+
+  <div class="hero-beeld">
+    <div class="cone-wrap">
+      <div class="cone-bollen">
+        <div class="cone-bol"></div>
+        <div class="cone-bol"></div>
+        <div class="cone-bol"></div>
+      </div>
+      <div class="cone-driehoek"></div>
+    </div>
+    <span class="beeld-badge">Vandaag vers gedraaid</span>
+  </div>
+</section>
+
+
+<section class="smaken" id="smaken">
+  <div class="sectie-header">
+    <div>
+      <p class="sectie-label">Onze bollen</p>
+      <h2 class="sectie-titel">Klassiekers en verrassingen door elkaar</h2>
+    </div>
+    <p style="font-size:0.8rem; color:var(--grijs); max-width:28ch; text-align:right;">Elke week wisselen er een paar smaken, de favorieten blijven staan.</p>
+  </div>
+
+  <div class="smaken-grid">
+    <div class="smaak-kaart">
+      <div class="smaak-icoon">🌿</div>
+      <div class="smaak-naam">Pistache</div>
+      <p class="smaak-omschrijving">Romig en licht zout, met echte pistachestukjes doorheen.</p>
+      <div class="smaak-prijs-rij">
+        <span class="smaak-prijs-label">Per bol</span>
+        <span class="smaak-prijs">€ 1,80</span>
+      </div>
+    </div>
+    <div class="smaak-kaart">
+      <div class="smaak-icoon">🍫</div>
+      <div class="smaak-naam">Pure chocolade</div>
+      <p class="smaak-omschrijving">Diepe, volle smaak op basis van pure Belgische chocolade.</p>
+      <div class="smaak-prijs-rij">
+        <span class="smaak-prijs-label">Per bol</span>
+        <span class="smaak-prijs">€ 1,70</span>
+      </div>
+    </div>
+    <div class="smaak-kaart">
+      <div class="smaak-icoon">🍓</div>
+      <div class="smaak-naam">Verse aardbei</div>
+      <p class="smaak-omschrijving">In het seizoen met aardbeien van de boer hier vlakbij.</p>
+      <div class="smaak-prijs-rij">
+        <span class="smaak-prijs-label">Per bol</span>
+        <span class="smaak-prijs">€ 1,70</span>
+      </div>
+    </div>
+    <div class="smaak-kaart">
+      <div class="smaak-icoon">🍪</div>
+      <div class="smaak-naam">Speculoos</div>
+      <p class="smaak-omschrijving">Met stukjes echte speculaas erdoor geroerd, een vaste favoriet.</p>
+      <div class="smaak-prijs-rij">
+        <span class="smaak-prijs-label">Per bol</span>
+        <span class="smaak-prijs">€ 1,80</span>
+      </div>
+    </div>
+    <div class="smaak-kaart">
+      <div class="smaak-icoon">🌱</div>
+      <div class="smaak-naam">Mango-passievrucht (vegan)</div>
+      <p class="smaak-omschrijving">Fruitig sorbetijs zonder melk, verrassend vol van smaak.</p>
+      <div class="smaak-prijs-rij">
+        <span class="smaak-prijs-label">Per bol</span>
+        <span class="smaak-prijs">€ 1,90</span>
+      </div>
+    </div>
+    <div class="smaak-kaart">
+      <div class="smaak-icoon">🍨</div>
+      <div class="smaak-naam">Wisselsmaak van de week</div>
+      <p class="smaak-omschrijving">Elke week iets nieuws — volg onze socials om te weten wat er nu draait.</p>
+      <div class="smaak-prijs-rij">
+        <span class="smaak-prijs-label">Op aanvraag</span>
+        <span class="smaak-prijs">Wisselend</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="over" id="over">
+  <div class="over-beeld">
+    <div class="grid-art"></div>
+    <div class="over-badge">
+      <span class="over-badge-getal">3</span>
+      <span class="over-badge-tekst">Generaties<br>familie Timmers</span>
+    </div>
+  </div>
+
+  <div class="over-inhoud">
+    <p class="sectie-label">Over ons</p>
+    <h2>Een familiezaak,<br>al van bij opa en oma</h2>
+    <p>IJssalon Timmers begon als een klein kraampje aan de rand van Ham en groeide uit tot een vaste stopplaats in het dorp. Nog altijd wordt elke smaak zelf gedraaid, met dezelfde zorg als toen.</p>
+    <p>Geen fabrieksijs, geen kant-en-klare mixen — gewoon room, fruit en geduld.</p>
+    <div class="kenmerken">
+      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Zelf gedraaid, elke ochtend vers</span></div>
+      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Seizoensfruit van lokale telers</span></div>
+      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Ook vegan en lactosevrije bollen</span></div>
+      <div class="kenmerk"><div class="kenmerk-streep"></div><span>Terrasje op zonnige dagen</span></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="project-case">
+  <p class="sectie-label">Achter deze site</p>
+  <h2 class="sectie-titel">Hoe dit project tot stand kwam</h2>
+  <div class="project-grid">
+    <div>
+      <p class="project-label">Opdracht</p>
+      <p class="project-titel">De sfeer van de zaak online laten proeven</p>
+      <p class="project-tekst">Een ijssalon verkoopt sfeer minstens zoveel als ijs. De site moest die warmte overbrengen — vers, huiselijk en uitnodigend — nog voor iemand de deur binnenstapt.</p>
+    </div>
+    <div>
+      <p class="project-label">Aanpak</p>
+      <p class="project-titel">Framboos, room en mint als leidraad</p>
+      <p class="project-tekst">Een romige achtergrondtint met frisse framboos- en muntaccenten verwijst rechtstreeks naar het ijs zelf, met een speelse titel-lettertype dat past bij de doelgroep.</p>
+    </div>
+    <div>
+      <p class="project-label">Resultaat</p>
+      <p class="project-titel">Een smakenkaart die watertandt</p>
+      <p class="project-tekst">Een overzichtelijke lijst met smaken en prijzen, het familieverhaal en de openingsuren op één pagina — precies genoeg om iemand naar het salon te lokken.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <h2>Route &<br>openingsuren</h2>
+    <p>Loop gerust binnen, of stuur een bericht als je iets wil vragen — over allergenen, een bestelling voor een feestje, of gewoon om te horen wat er nu draait.</p>
+    <div class="contact-gegevens">
+      <div class="contact-rij">
+        <span class="contact-rij-label">Adres</span>
+        <span class="contact-rij-waarde">Dorpsstraat 12, 3945 Ham</span>
+      </div>
+      <div class="contact-rij">
+        <span class="contact-rij-label">Openingsuren</span>
+        <span class="contact-rij-waarde">April–September: Di–Zo, 13u–20u<br>Oktober–Maart: Za–Zo, 13u–18u</span>
+      </div>
+      <div class="contact-rij">
+        <span class="contact-rij-label">Tel</span>
+        <span class="contact-rij-waarde">04XX XX XX XX</span>
+      </div>
+    </div>
+  </div>
+
+  <form class="contact-form" action="https://formspree.io/f/xlgyekey" method="POST">
+    <div class="form-groep">
+      <label>Naam</label>
+      <input type="text" name="naam" placeholder="Jan Janssen" required>
+    </div>
+
+    <div class="form-groep">
+      <label>E-mail</label>
+      <input type="email" name="email" placeholder="jan@voorbeeld.be" required>
+    </div>
+
+    <div class="form-groep">
+      <label>Bericht</label>
+      <textarea name="bericht" placeholder="Bv: hebben jullie een vegan smaak in het weekend?" required></textarea>
+    </div>
+
+    <button type="submit" class="verstuur-btn">Versturen →</button>
+    <p class="snel-note">We antwoorden meestal dezelfde dag nog.</p>
+  </form>
+</section>
+
+
+<footer>
+  <span>© 2026 IJssalon Timmers · Ham · Fictief voorbeeldproject</span>
+  <span>Demo door Timmers Design</span>
+</footer>
+
+<div class="demo-badge">Demo · Timmers Design</div>
+
+</body>
+</html>
