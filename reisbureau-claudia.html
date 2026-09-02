@@ -318,33 +318,96 @@
   }
   .waarom-lijst li::before { content: '— '; color: var(--goud); }
 
-  /* PROJECT CASE */
-  .project-case { padding: 6rem 4rem; background: var(--nacht-zacht); border-top: 1px solid var(--goud-dim); }
-  .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 2rem; }
-  .project-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--goud); margin-bottom: 0.8rem; }
-  .project-titel { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--wit); margin-bottom: 0.8rem; }
-  .project-tekst { font-size: 0.9rem; line-height: 1.75; color: var(--gedempt); }
+  /* PROJECT CASE — postkaarten op het bureau */
+  .project-case { padding: 6rem 4rem 7.5rem; background: var(--nacht-zacht); border-top: 1px solid var(--goud-dim); overflow: hidden; }
+  .postkaart-rek { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem 2.5rem; margin-top: 3rem; }
+  .postkaart {
+    --kantel: 0deg;
+    position: relative;
+    background: var(--zand);
+    padding: 2.4rem 1.9rem 1.8rem;
+    border: 1px solid rgba(11,16,38,0.12);
+    outline: 1.5px dashed rgba(11,16,38,0.22);
+    outline-offset: -9px;
+    box-shadow: 0 16px 34px rgba(0,0,0,0.35);
+    transform: rotate(var(--kantel));
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s;
+  }
+  .postkaart:nth-child(1) { --kantel: -3deg; margin-top: 0.6rem; }
+  .postkaart:nth-child(2) { --kantel: 2deg; margin-top: -0.9rem; }
+  .postkaart:nth-child(3) { --kantel: -2deg; margin-top: 1rem; }
+  .postkaart:hover { transform: rotate(0deg) translateY(-6px); box-shadow: 0 26px 46px rgba(0,0,0,0.45); z-index: 5; }
+  .postkaart-zegel {
+    position: absolute; top: -12px; right: -10px;
+    width: 3.4rem; height: 3.4rem;
+    background: var(--wit);
+    border: 2px dashed var(--goud);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem;
+    transform: rotate(7deg);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.28);
+  }
+  .postkaart-stempel {
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    width: 5.4rem; height: 3.4rem;
+    margin-bottom: 1.3rem;
+    border: 1.5px dashed var(--zon);
+    border-radius: 50%;
+    color: var(--zon);
+    font-size: 0.58rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    line-height: 1.2;
+    transform: rotate(-7deg);
+  }
+  .postkaart-titel { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 600; font-size: 1.35rem; color: var(--nacht); margin-bottom: 0.7rem; }
+  .postkaart-tekst { font-size: 0.88rem; line-height: 1.7; color: rgba(11,16,38,0.62); }
   @media (max-width: 900px) {
-    .project-case { padding: 4rem 1.5rem; }
-    .project-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .project-case { padding: 4rem 1.5rem 4.5rem; }
+    .postkaart-rek { grid-template-columns: 1fr; gap: 2.6rem; margin-top: 2.5rem; }
+    .postkaart { --kantel: 0deg !important; margin-top: 0 !important; }
+    .postkaart:hover { transform: none; }
   }
 
-  /* CONTACT */
+  /* CONTACT — stuur ons een postkaart */
   .contact { background: var(--nacht-zacht); }
-  .contact-grid {
+  .postkaart-contact {
+    position: relative;
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 4rem;
+    grid-template-columns: 1.3fr 1fr;
+    background: var(--zand);
+    border: 1px solid rgba(11,16,38,0.12);
+    outline: 1.5px dashed rgba(108,166,214,0.4);
+    outline-offset: -12px;
+    box-shadow: 0 22px 50px rgba(0,0,0,0.4);
+    transform: rotate(-0.5deg);
   }
-  .contact-info .rij { margin-bottom: 1.6rem; }
-  .contact-info .rij-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--goud);
-    margin-bottom: 0.3rem;
+
+  .postkaart-schrijf {
+    padding: 3.2rem 2.8rem;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0, transparent 2.4rem,
+      rgba(11,16,38,0.07) 2.4rem, rgba(11,16,38,0.07) calc(2.4rem + 1px)
+    );
   }
-  .contact-info .rij-waarde { color: rgba(246,241,233,0.85); font-size: 0.95rem; }
+  .postkaart-groet { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem; color: var(--nacht); margin-bottom: 1.6rem; }
+
+  .postkaart-adres {
+    position: relative;
+    border-left: 2px dashed rgba(11,16,38,0.22);
+    padding: 3.2rem 2.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .postkaart-aan { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(11,16,38,0.45); }
+  .postkaart-naam { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; color: var(--nacht); margin-top: -1rem; }
+  .postkaart-naam em { color: var(--zon); font-style: italic; }
+  .stempel-rij { display: flex; flex-direction: column; gap: 1.4rem; margin-top: 0.4rem; }
+  .stempel { border: 1.5px dashed var(--zon); padding: 0.85rem 1.1rem; transform: rotate(var(--kantel, -1.4deg)); }
+  .stempel:nth-child(2) { --kantel: 1.1deg; }
+  .stempel:nth-child(3) { --kantel: -0.9deg; }
+  .stempel-label { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--zon); margin-bottom: 0.3rem; }
+  .stempel-waarde { font-size: 0.88rem; color: var(--nacht); line-height: 1.5; }
 
   .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
   .form-rij { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -353,12 +416,12 @@
     font-size: 0.62rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--gedempt);
+    color: rgba(11,16,38,0.5);
   }
   .form-groep input, .form-groep textarea, .form-groep select {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(108,166,214,0.25);
-    color: var(--wit);
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(11,16,38,0.22);
+    color: var(--nacht);
     padding: 0.85rem 1rem;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
@@ -366,10 +429,10 @@
     transition: border-color 0.3s;
     width: 100%;
   }
-  .form-groep input::placeholder, .form-groep textarea::placeholder { color: rgba(246,241,233,0.3); }
-  .form-groep input:focus, .form-groep textarea:focus, .form-groep select:focus { border-color: var(--goud); }
+  .form-groep input::placeholder, .form-groep textarea::placeholder { color: rgba(11,16,38,0.35); }
+  .form-groep input:focus, .form-groep textarea:focus, .form-groep select:focus { border-color: var(--zon); }
   .form-groep textarea { resize: vertical; min-height: 120px; }
-  .form-groep select option { background: var(--nacht); }
+  .form-groep select option { background: var(--zand); color: var(--nacht); }
 
   /* FOOTER */
   footer {
@@ -403,7 +466,9 @@
     .bestemming-grid { grid-template-columns: 1fr; }
     .waarom-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .waarom-beeld { height: 240px; }
-    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .postkaart-contact { grid-template-columns: 1fr; transform: none; }
+    .postkaart-schrijf { padding: 2.3rem 1.5rem; }
+    .postkaart-adres { border-left: none; border-top: 2px dashed rgba(11,16,38,0.22); padding: 2.3rem 1.5rem 2.6rem; }
     .form-rij { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
   }
@@ -515,22 +580,25 @@
 <section class="project-case">
   <div class="sectie-label">Achter deze site</div>
   <h2 style="font-family:'Cormorant Garamond',serif; color:var(--wit); font-size:1.9rem; margin-bottom:0.5rem;">Hoe dit project tot stand kwam</h2>
-  <div class="project-grid">
-    <div>
-      <p class="project-label">Opdracht</p>
-      <p class="project-titel">Dromen wekken vóór het eerste gesprek</p>
-      <p class="project-tekst">Reisbureau Claud(ia) wilde een site die de sfeer van een reis al laat voelen nog voor er iets geboekt is — persoonlijk en warm, niet de kille zoekbalk van een grote boekingssite.</p>
-    </div>
-    <div>
-      <p class="project-label">Aanpak</p>
-      <p class="project-titel">Nachtblauw, goudaccenten en een knipoog</p>
-      <p class="project-tekst">Een donker, sterrenhemel-achtig kleurenpalet met goudaccenten geeft de site een reislustige, dromerige toon. De naam "Claud(ia)" met een knipoog draagt bij aan het persoonlijke, kleinschalige karakter van het bureau.</p>
-    </div>
-    <div>
-      <p class="project-label">Resultaat</p>
-      <p class="project-titel">Eén pagina, direct persoonlijk contact</p>
-      <p class="project-tekst">Een site waar bestemmingen, sfeer en contactmogelijkheid samenkomen — bezoekers voelen meteen dat ze met een mens plannen maken, niet met een algoritme.</p>
-    </div>
+  <div class="postkaart-rek">
+    <article class="postkaart">
+      <span class="postkaart-zegel" aria-hidden="true">✈️</span>
+      <div class="postkaart-stempel">Opdracht</div>
+      <p class="postkaart-titel">Dromen wekken vóór het eerste gesprek</p>
+      <p class="postkaart-tekst">Reisbureau Claud(ia) wilde een site die de sfeer van een reis al laat voelen nog voor er iets geboekt is — persoonlijk en warm, niet de kille zoekbalk van een grote boekingssite.</p>
+    </article>
+    <article class="postkaart">
+      <span class="postkaart-zegel" aria-hidden="true">🧭</span>
+      <div class="postkaart-stempel">Aanpak</div>
+      <p class="postkaart-titel">Nachtblauw, goudaccenten en een knipoog</p>
+      <p class="postkaart-tekst">Een donker, sterrenhemel-achtig kleurenpalet met goudaccenten geeft de site een reislustige, dromerige toon. De naam "Claud(ia)" met een knipoog draagt bij aan het persoonlijke, kleinschalige karakter van het bureau.</p>
+    </article>
+    <article class="postkaart">
+      <span class="postkaart-zegel" aria-hidden="true">🌍</span>
+      <div class="postkaart-stempel">Resultaat</div>
+      <p class="postkaart-titel">Eén pagina, direct persoonlijk contact</p>
+      <p class="postkaart-tekst">Een site waar bestemmingen, sfeer en contactmogelijkheid samenkomen — bezoekers voelen meteen dat ze met een mens plannen maken, niet met een algoritme.</p>
+    </article>
   </div>
 </section>
 
@@ -540,60 +608,69 @@
     <h2>Vertel ons waar je <em>van droomt</em></h2>
     <p>We nemen binnen één werkdag contact op voor een vrijblijvend reisvoorstel.</p>
   </div>
-  <div class="contact-grid">
-    <div class="contact-info">
-      <div class="rij">
-        <div class="rij-label">Kantoor</div>
-        <div class="rij-waarde">Koningin Astridplein 6<br>3970 Leopoldsburg</div>
-      </div>
-      <div class="rij">
-        <div class="rij-label">Openingsuren</div>
-        <div class="rij-waarde">Ma–Vr: 9u30–17u30<br>Za: 10u–13u</div>
-      </div>
-      <div class="rij">
-        <div class="rij-label">Tel</div>
-        <div class="rij-waarde">013 XX XX XX</div>
+  <div class="postkaart-contact">
+    <div class="postkaart-schrijf">
+      <p class="postkaart-groet">Beste Claud(ia),</p>
+      <form class="contact-form" action="https://formspree.io/f/xlgyekey" method="POST">
+        <div class="form-rij">
+          <div class="form-groep">
+            <label for="voornaam">Voornaam</label>
+            <input type="text" id="voornaam" name="voornaam" required>
+          </div>
+          <div class="form-groep">
+            <label for="familienaam">Familienaam</label>
+            <input type="text" id="familienaam" name="familienaam" required>
+          </div>
+        </div>
+        <div class="form-rij">
+          <div class="form-groep">
+            <label for="email">E-mailadres</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-groep">
+            <label for="telefoon">Telefoon</label>
+            <input type="tel" id="telefoon" name="telefoon">
+          </div>
+        </div>
+        <div class="form-groep">
+          <label for="type">Type reis</label>
+          <select id="type" name="type_reis">
+            <option value="">Kies een type...</option>
+            <option>Citytrip</option>
+            <option>Zonvakantie</option>
+            <option>Rondreis</option>
+            <option>Huwelijksreis</option>
+            <option>Familievakantie</option>
+            <option>Verrassingsreis</option>
+          </select>
+        </div>
+        <div class="form-groep">
+          <label for="droom">Jouw droomreis</label>
+          <textarea id="droom" name="bericht" placeholder="Waarheen, met wie, wanneer — en wat mag zeker niet ontbreken?"></textarea>
+        </div>
+        <button type="submit" class="knop">Verstuur je postkaart →</button>
+      </form>
+    </div>
+
+    <div class="postkaart-adres">
+      <span class="postkaart-zegel" aria-hidden="true">📮</span>
+      <div class="postkaart-aan">Aan</div>
+      <div class="postkaart-naam">Reisbureau Claud<em>(ia)</em></div>
+      <div class="stempel-rij">
+        <div class="stempel">
+          <div class="stempel-label">Kantoor</div>
+          <div class="stempel-waarde">Koningin Astridplein 6<br>3970 Leopoldsburg</div>
+        </div>
+        <div class="stempel">
+          <div class="stempel-label">Openingsuren</div>
+          <div class="stempel-waarde">Ma–Vr: 9u30–17u30<br>Za: 10u–13u</div>
+        </div>
+        <div class="stempel">
+          <div class="stempel-label">Tel</div>
+          <div class="stempel-waarde">013 XX XX XX</div>
+        </div>
       </div>
     </div>
-    <form class="contact-form" action="https://formspree.io/f/xlgyekey" method="POST">
-      <div class="form-rij">
-        <div class="form-groep">
-          <label for="voornaam">Voornaam</label>
-          <input type="text" id="voornaam" name="voornaam" required>
-        </div>
-        <div class="form-groep">
-          <label for="familienaam">Familienaam</label>
-          <input type="text" id="familienaam" name="familienaam" required>
-        </div>
-      </div>
-      <div class="form-rij">
-        <div class="form-groep">
-          <label for="email">E-mailadres</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-groep">
-          <label for="telefoon">Telefoon</label>
-          <input type="tel" id="telefoon" name="telefoon">
-        </div>
-      </div>
-      <div class="form-groep">
-        <label for="type">Type reis</label>
-        <select id="type" name="type_reis">
-          <option value="">Kies een type...</option>
-          <option>Citytrip</option>
-          <option>Zonvakantie</option>
-          <option>Rondreis</option>
-          <option>Huwelijksreis</option>
-          <option>Familievakantie</option>
-          <option>Verrassingsreis</option>
-        </select>
-      </div>
-      <div class="form-groep">
-        <label for="droom">Jouw droomreis</label>
-        <textarea id="droom" name="bericht" placeholder="Waarheen, met wie, wanneer — en wat mag zeker niet ontbreken?"></textarea>
-      </div>
-      <button type="submit" class="knop">Vraag je reisvoorstel →</button>
-    </form>
   </div>
 </section>
 

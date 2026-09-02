@@ -350,6 +350,47 @@
       *, *::before, *::after { transition: none !important; animation: none !important; }
     }
 
+    /* CASE STUDY TABS */
+    .case-tabs {
+      display: flex; justify-content: center; gap: 0.75rem;
+      margin: 2.2rem 0 2.5rem; flex-wrap: wrap;
+    }
+    .case-tab {
+      font-family: inherit; font-size: 0.76rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0.75rem 1.7rem; border-radius: 3px;
+      border: 1px solid rgba(200,151,42,0.4); background: transparent;
+      color: var(--muted); cursor: pointer; transition: all 0.25s ease;
+    }
+    .case-tab:hover { border-color: var(--gold); color: var(--cream); }
+    .case-tab.active { background: var(--gold); border-color: var(--gold); color: #0D0A06; }
+    .case-panels {
+      position: relative; max-width: 640px; margin: 0 auto;
+      border: 1px solid rgba(200,151,42,0.25); border-radius: 6px;
+      padding: 3rem 2.5rem; background: rgba(200,151,42,0.04);
+      text-align: center; overflow: hidden;
+    }
+    .case-panels::before {
+      content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 70px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .case-panel { display: none; animation: caseFade 0.35s ease; }
+    .case-panel.active { display: block; }
+    .case-panel-title {
+      font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 1rem;
+    }
+    .case-panel-text { font-size: 0.95rem; line-height: 1.8; color: var(--muted); }
+    @keyframes caseFade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+      .case-panels { padding: 2.2rem 1.5rem; }
+      .case-tab { padding: 0.65rem 1.2rem; font-size: 0.7rem; }
+    }
+
     .demo-badge {
       position: fixed; bottom: 1.5rem; right: 1.5rem; background: #0D0A06; color: rgba(245,230,200,0.7);
       font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.6rem 1rem; z-index: 200;
@@ -595,21 +636,25 @@
     <div class="section-inner" style="max-width:1100px; margin:0 auto;">
       <p class="section-label">Achter deze site</p>
       <h2 class="section-title">Hoe dit project tot stand kwam</h2>
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:3rem; margin-top:2rem;">
-        <div>
-          <p style="font-size:0.7rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem;">Opdracht</p>
-          <p style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; color:var(--cream); margin-bottom:0.8rem;">De sfeer van Cairo tot in Tessenderlo</p>
-          <p style="font-size:0.9rem; line-height:1.75; color:var(--muted);">San George wilde een site die de warmte en kruiden van de Egyptische keuken laat voelen nog voor gasten binnenstappen — geen generiek restaurantsjabloon, maar een echte sfeerbeleving.</p>
+
+      <div class="case-tabs" role="tablist" aria-label="Fases van het project">
+        <button type="button" class="case-tab active" id="case-tab-opdracht" data-panel="opdracht" role="tab" aria-selected="true" aria-controls="case-panel-opdracht">Opdracht</button>
+        <button type="button" class="case-tab" id="case-tab-aanpak" data-panel="aanpak" role="tab" aria-selected="false" aria-controls="case-panel-aanpak">Aanpak</button>
+        <button type="button" class="case-tab" id="case-tab-resultaat" data-panel="resultaat" role="tab" aria-selected="false" aria-controls="case-panel-resultaat">Resultaat</button>
+      </div>
+
+      <div class="case-panels">
+        <div class="case-panel active" id="case-panel-opdracht" data-panel="opdracht" role="tabpanel" aria-labelledby="case-tab-opdracht">
+          <p class="case-panel-title">De sfeer van Cairo tot in Tessenderlo</p>
+          <p class="case-panel-text">San George wilde een site die de warmte en kruiden van de Egyptische keuken laat voelen nog voor gasten binnenstappen — geen generiek restaurantsjabloon, maar een echte sfeerbeleving.</p>
         </div>
-        <div>
-          <p style="font-size:0.7rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem;">Aanpak</p>
-          <p style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; color:var(--cream); margin-bottom:0.8rem;">Goud, donkere tinten en het menu centraal</p>
-          <p style="font-size:0.9rem; line-height:1.75; color:var(--muted);">Diepe achtergrondkleuren met gouden accenten roepen een warme, ambachtelijke uitstraling op. Het menu en de mezze-specialiteiten kregen een prominente plek, met directe belknop voor reservaties.</p>
+        <div class="case-panel" id="case-panel-aanpak" data-panel="aanpak" role="tabpanel" aria-labelledby="case-tab-aanpak" hidden>
+          <p class="case-panel-title">Goud, donkere tinten en het menu centraal</p>
+          <p class="case-panel-text">Diepe achtergrondkleuren met gouden accenten roepen een warme, ambachtelijke uitstraling op. Het menu en de mezze-specialiteiten kregen een prominente plek, met directe belknop voor reservaties.</p>
         </div>
-        <div>
-          <p style="font-size:0.7rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem;">Resultaat</p>
-          <p style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; color:var(--cream); margin-bottom:0.8rem;">Eén pagina, direct reserveren</p>
-          <p style="font-size:0.9rem; line-height:1.75; color:var(--muted);">Een site waar gasten in enkele seconden de sfeer, het menu en een manier om te reserveren vinden — precies wat een lokale onderneming nodig heeft om nieuwe klanten aan te trekken.</p>
+        <div class="case-panel" id="case-panel-resultaat" data-panel="resultaat" role="tabpanel" aria-labelledby="case-tab-resultaat" hidden>
+          <p class="case-panel-title">Eén pagina, direct reserveren</p>
+          <p class="case-panel-text">Een site waar gasten in enkele seconden de sfeer, het menu en een manier om te reserveren vinden — precies wat een lokale onderneming nodig heeft om nieuwe klanten aan te trekken.</p>
         </div>
       </div>
     </div>
@@ -666,6 +711,28 @@
   </footer>
 
   <div class="demo-badge">Demo · Timmers Design</div>
+
+  <script>
+    (function () {
+      var tabs = document.querySelectorAll('.case-tab');
+      var panels = document.querySelectorAll('.case-panel');
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var target = tab.getAttribute('data-panel');
+          tabs.forEach(function (t) {
+            var isActive = t === tab;
+            t.classList.toggle('active', isActive);
+            t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          });
+          panels.forEach(function (p) {
+            var isActive = p.getAttribute('data-panel') === target;
+            p.classList.toggle('active', isActive);
+            p.hidden = !isActive;
+          });
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
