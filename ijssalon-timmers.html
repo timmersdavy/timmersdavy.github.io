@@ -132,37 +132,14 @@
     justify-content: center;
   }
 
-  .cone-wrap {
+  .icecream-svg {
     position: relative;
     z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 66%;
+    max-width: 300px;
+    height: auto;
   }
 
-  .cone-bollen { display: flex; flex-direction: column-reverse; align-items: center; margin-bottom: -8px; }
-  .cone-bol {
-    width: 130px; height: 130px; border-radius: 50%;
-    box-shadow: inset -10px -14px 30px rgba(0,0,0,0.18), 0 10px 24px rgba(0,0,0,0.2);
-    margin-top: -58px;
-  }
-  .cone-bol:nth-child(1) { background: radial-gradient(circle at 35% 30%, #F7C9D6 0%, var(--framboos) 100%); z-index: 3; }
-  .cone-bol:nth-child(2) { background: radial-gradient(circle at 35% 30%, #E9D9B9 0%, #C9A05C 100%); z-index: 2; }
-  .cone-bol:nth-child(3) { background: radial-gradient(circle at 35% 30%, #FFF3D6 0%, #F0C879 100%); z-index: 1; }
-  .cone-driehoek {
-    width: 0; height: 0;
-    border-left: 55px solid transparent;
-    border-right: 55px solid transparent;
-    border-top: 150px solid #D9A15C;
-    position: relative;
-    filter: drop-shadow(0 12px 16px rgba(0,0,0,0.2));
-  }
-  .cone-driehoek::before, .cone-driehoek::after {
-    content: ''; position: absolute; top: -150px; left: -34px;
-    width: 68px; height: 150px;
-    background: repeating-linear-gradient(115deg, transparent 0 8px, rgba(0,0,0,0.08) 8px 10px);
-    clip-path: polygon(50% 100%, 0 0, 100% 0);
-  }
   .beeld-badge {
     position: absolute; bottom: 1.5rem; left: 1.5rem;
     background: rgba(46,33,25,0.55); backdrop-filter: blur(4px);
@@ -355,9 +332,7 @@
     .smaken-grid { grid-template-columns: 1fr; }
     .hero { grid-template-columns: 1fr; padding: calc(80px + 3rem) 1.5rem 3rem; }
     .hero-beeld { height: 300px; order: -1; }
-    .cone-bol { width: 90px; height: 90px; margin-top: -40px; }
-    .cone-driehoek { border-left-width: 38px; border-right-width: 38px; border-top-width: 104px; }
-    .cone-driehoek::before, .cone-driehoek::after { top: -104px; left: -23px; width: 46px; height: 104px; }
+    .icecream-svg { width: 60%; max-width: 200px; }
     .over { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
     .over-beeld { height: 260px; }
     .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
@@ -404,14 +379,52 @@
   </div>
 
   <div class="hero-beeld">
-    <div class="cone-wrap">
-      <div class="cone-bollen">
-        <div class="cone-bol"></div>
-        <div class="cone-bol"></div>
-        <div class="cone-bol"></div>
-      </div>
-      <div class="cone-driehoek"></div>
-    </div>
+    <svg class="icecream-svg" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustratie van een ijshoorn met drie bollen ijs en een kers">
+      <defs>
+        <radialGradient id="bolFrambooz" cx="35%" cy="30%" r="75%">
+          <stop offset="0%" stop-color="#FBD9E2"/>
+          <stop offset="100%" stop-color="#E1526E"/>
+        </radialGradient>
+        <radialGradient id="bolKaramel" cx="35%" cy="30%" r="75%">
+          <stop offset="0%" stop-color="#EFDFC2"/>
+          <stop offset="100%" stop-color="#C9A05C"/>
+        </radialGradient>
+        <radialGradient id="bolVanille" cx="35%" cy="30%" r="75%">
+          <stop offset="0%" stop-color="#FFF6E0"/>
+          <stop offset="100%" stop-color="#F0C879"/>
+        </radialGradient>
+        <linearGradient id="coneGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#E7B471"/>
+          <stop offset="100%" stop-color="#C1833F"/>
+        </linearGradient>
+        <pattern id="waffle" width="16" height="16" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="16" stroke="rgba(0,0,0,0.18)" stroke-width="1.5"/>
+          <line x1="0" y1="0" x2="16" y2="0" stroke="rgba(0,0,0,0.18)" stroke-width="1.5"/>
+        </pattern>
+        <filter id="iceShadow" x="-40%" y="-30%" width="180%" height="170%">
+          <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity="0.22"/>
+        </filter>
+      </defs>
+
+      <g filter="url(#iceShadow)">
+        <path d="M108 214 L192 214 L163 378 Q150 398 137 378 Z" fill="url(#coneGrad)"/>
+        <path d="M108 214 L192 214 L163 378 Q150 398 137 378 Z" fill="url(#waffle)"/>
+        <path d="M108 214 L192 214 L163 378 Q150 398 137 378 Z" fill="none" stroke="#A9702F" stroke-width="2"/>
+
+        <circle cx="150" cy="192" r="64" fill="url(#bolVanille)"/>
+        <ellipse cx="126" cy="166" rx="17" ry="9" fill="#fff" opacity="0.55"/>
+
+        <circle cx="150" cy="128" r="59" fill="url(#bolKaramel)"/>
+        <ellipse cx="127" cy="104" rx="15" ry="8" fill="#fff" opacity="0.55"/>
+
+        <circle cx="150" cy="68" r="54" fill="url(#bolFrambooz)"/>
+        <ellipse cx="128" cy="46" rx="14" ry="7" fill="#fff" opacity="0.6"/>
+      </g>
+
+      <path d="M150 12 Q159 3 169 1" stroke="#4a7c3f" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <circle cx="150" cy="22" r="10" fill="#B0203B"/>
+      <ellipse cx="147" cy="18" rx="3" ry="2" fill="#fff" opacity="0.6"/>
+    </svg>
     <span class="beeld-badge">Vandaag vers gedraaid</span>
   </div>
 </section>
