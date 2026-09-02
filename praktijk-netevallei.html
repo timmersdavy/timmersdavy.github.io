@@ -261,47 +261,104 @@
   .kenmerk { display: flex; align-items: center; gap: 1rem; font-size: 0.85rem; }
   .kenmerk-streep { width: 24px; height: 1px; background: var(--blauw); flex-shrink: 0; }
 
-  /* PROJECT CASE */
+  /* PROJECT CASE — asymmetrisch: rustig sfeerpaneel naast vloeiende puntenlijst (i.p.v. 3-koloms grid) */
   .project-case { padding: 6rem 4rem; background: var(--wolk); border-top: 1px solid var(--wolk-donker); }
-  .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 2rem; }
-  .project-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blauw); margin-bottom: 0.8rem; }
-  .project-titel { font-family: 'Source Serif 4', serif; font-size: 1.2rem; font-weight: 700; color: var(--zwart); margin-bottom: 0.8rem; }
+  .project-layout { display: grid; grid-template-columns: 320px 1fr; gap: 4rem; margin-top: 2.8rem; align-items: stretch; }
+
+  .project-paneel {
+    position: relative;
+    border-radius: 22px;
+    background: linear-gradient(160deg, var(--blauw) 0%, var(--blauw-donker) 100%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2.4rem;
+    min-height: 380px;
+  }
+  .project-paneel-wolk {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.10) 0%, transparent 70%);
+  }
+  .project-paneel-wolk.pw1 { width: 300px; height: 300px; top: -90px; right: -70px; }
+  .project-paneel-wolk.pw2 { width: 220px; height: 220px; bottom: -80px; left: -60px; background: radial-gradient(circle, rgba(124,154,130,0.22) 0%, transparent 70%); }
+
+  .project-paneel-inner { position: relative; z-index: 1; text-align: center; }
+  .project-paneel-icoon {
+    width: 50px; height: 50px; border-radius: 50%; margin: 0 auto 1.4rem;
+    background: rgba(255,255,255,0.14); display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; color: #fff;
+  }
+  .project-paneel-tekst {
+    font-family: 'Source Serif 4', serif; font-style: italic; font-size: 1.2rem; line-height: 1.6;
+    color: #fff; max-width: 22ch; margin: 0 auto;
+  }
+  .project-paneel-sub { margin-top: 1.4rem; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+
+  .project-punten { display: flex; flex-direction: column; justify-content: center; }
+  .project-punt { display: flex; gap: 1.6rem; padding: 1.7rem 0; border-bottom: 1px solid var(--wolk-donker); }
+  .project-punt:first-child { padding-top: 0; }
+  .project-punt:last-child { border-bottom: none; padding-bottom: 0; }
+  .project-punt-nr {
+    font-family: 'Source Serif 4', serif; font-size: 1.6rem; font-weight: 700; color: var(--groen);
+    flex-shrink: 0; width: 2.2rem; line-height: 1;
+  }
+  .project-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blauw); margin-bottom: 0.6rem; }
+  .project-titel { font-family: 'Source Serif 4', serif; font-size: 1.2rem; font-weight: 700; color: var(--zwart); margin-bottom: 0.6rem; }
   .project-tekst { font-size: 0.9rem; line-height: 1.75; color: var(--grijs); }
   @media (max-width: 900px) {
     .project-case { padding: 4rem 1.5rem; }
-    .project-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .project-layout { grid-template-columns: 1fr; gap: 2.2rem; }
+    .project-paneel { min-height: 220px; padding: 2.4rem 1.8rem; }
+    .project-punt { gap: 1.1rem; }
   }
 
-  /* CONTACT */
-  .contact { background: var(--blauw-donker); padding: 6rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
-  .contact-info h2 { font-family: 'Source Serif 4', serif; font-size: 2.3rem; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 1.5rem; }
-  .contact-info p { color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.8; margin-bottom: 2.5rem; }
+  /* CONTACT — één zachte, gecentreerde kaart i.p.v. donker 2-koloms blok */
+  .contact { background: var(--wolk); padding: 6rem 4rem; }
+  .contact-kaart {
+    max-width: 860px; margin: 0 auto; background: var(--wit); border-radius: 26px;
+    padding: 4rem 4.5rem; box-shadow: 0 40px 80px -32px rgba(34,48,44,0.18); border: 1px solid var(--wolk-donker);
+  }
+  .contact-intro { text-align: center; max-width: 44ch; margin: 0 auto 2.6rem; }
+  .contact-intro .sectie-label { justify-content: center; }
+  .contact-intro h2 { font-family: 'Source Serif 4', serif; font-size: 2.1rem; font-weight: 700; color: var(--zwart); line-height: 1.2; margin: 0.6rem 0 1rem; }
+  .contact-intro p { color: var(--grijs); font-size: 0.95rem; line-height: 1.8; }
 
-  .contact-gegevens { display: flex; flex-direction: column; gap: 1rem; }
-  .contact-rij { display: flex; gap: 1rem; align-items: flex-start; }
-  .contact-rij-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); width: 70px; flex-shrink: 0; padding-top: 2px; }
-  .contact-rij-waarde { color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.5; }
+  .contact-gegevens {
+    display: flex; justify-content: center; flex-wrap: wrap;
+    border-top: 1px solid var(--wolk-donker); border-bottom: 1px solid var(--wolk-donker);
+    padding: 1.6rem 0; margin-bottom: 2.8rem;
+  }
+  .contact-rij { display: flex; align-items: center; gap: 0.8rem; padding: 0.4rem 2rem; position: relative; }
+  .contact-rij + .contact-rij::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 30px; background: var(--wolk-donker); }
+  .contact-rij-icoon {
+    width: 36px; height: 36px; border-radius: 50%; background: var(--wolk); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 1rem;
+  }
+  .contact-rij-tekst { font-size: 0.85rem; color: var(--grijs); line-height: 1.5; }
+  .contact-rij-tekst strong { display: block; color: var(--zwart); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; margin-bottom: 0.15rem; }
 
-  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; max-width: 560px; margin: 0 auto; }
   .form-rij { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .form-groep { display: flex; flex-direction: column; gap: 0.4rem; }
-  .form-groep label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+  .form-groep label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grijs); }
   .form-groep input, .form-groep textarea, .form-groep select {
-    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #fff;
+    background: var(--wolk); border: 1px solid var(--wolk-donker); color: var(--zwart);
     padding: 0.85rem 1rem; font-family: 'Inter', sans-serif; font-size: 16px; outline: none; transition: border-color 0.2s; width: 100%;
-    border-radius: 6px;
+    border-radius: 10px;
   }
-  .form-groep input::placeholder, .form-groep textarea::placeholder { color: rgba(255,255,255,0.3); }
-  .form-groep input:focus, .form-groep textarea:focus, .form-groep select:focus { border-color: rgba(255,255,255,0.55); }
+  .form-groep input::placeholder, .form-groep textarea::placeholder { color: var(--grijs); opacity: 0.6; }
+  .form-groep input:focus, .form-groep textarea:focus, .form-groep select:focus { border-color: var(--blauw); }
   .form-groep textarea { resize: vertical; min-height: 110px; }
-  .form-groep select option { background: var(--blauw-donker); }
+  .form-groep select option { background: var(--wit); }
 
   .verstuur-btn {
-    background: #fff; color: var(--blauw-donker); border: none; padding: 1rem 2.1rem;
+    background: var(--blauw); color: #fff; border: none; padding: 1rem 2.1rem;
     font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em;
-    text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; align-self: flex-start; border-radius: 100px;
+    text-transform: uppercase; cursor: pointer; transition: background 0.2s; align-self: center; border-radius: 100px;
   }
-  .verstuur-btn:hover { opacity: 0.85; }
+  .verstuur-btn:hover { background: var(--blauw-donker); }
 
   /* FOOTER */
   footer { background: var(--zwart); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.3); font-size: 0.75rem; letter-spacing: 0.05em; }
@@ -323,7 +380,11 @@
     .dienst-grid { grid-template-columns: 1fr; }
     .over { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
     .over-beeld { height: 260px; }
-    .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .contact { padding: 4rem 1.2rem; }
+    .contact-kaart { padding: 2.6rem 1.5rem; border-radius: 18px; }
+    .contact-gegevens { flex-direction: column; align-items: stretch; gap: 1.1rem; padding: 1.4rem 0; }
+    .contact-rij { padding: 0; }
+    .contact-rij + .contact-rij::before { display: none; }
     .form-rij { grid-template-columns: 1fr; }
     .sectie-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
@@ -444,87 +505,111 @@
 <section class="project-case">
   <p class="sectie-label">Achter deze site</p>
   <h2 class="sectie-titel">Hoe dit project tot stand kwam</h2>
-  <div class="project-grid">
-    <div>
-      <p class="project-label">Opdracht</p>
-      <p class="project-titel">Nieuwe patiënten op hun gemak stellen</p>
-      <p class="project-tekst">Praktijk Netevallei wilde een site die rust uitstraalt nog voor iemand een afspraak maakt — voor wie een nieuwe huisarts zoekt, is dat vertrouwen minstens zo belangrijk als de praktische info zelf.</p>
+  <div class="project-layout">
+    <div class="project-paneel">
+      <div class="project-paneel-wolk pw1"></div>
+      <div class="project-paneel-wolk pw2"></div>
+      <div class="project-paneel-inner">
+        <div class="project-paneel-icoon">✦</div>
+        <p class="project-paneel-tekst">"Rust uitstralen nog voor iemand een afspraak maakt."</p>
+        <p class="project-paneel-sub">Praktijk Netevallei</p>
+      </div>
     </div>
-    <div>
-      <p class="project-label">Aanpak</p>
-      <p class="project-titel">Zachte blauwtinten en heldere structuur</p>
-      <p class="project-tekst">Een rustig kleurenpalet en overzichtelijke opbouw vervangen de klinische, onpersoonlijke uitstraling die veel praktijksites hebben. Openingsuren, diensten en contactgegevens staan duidelijk gescheiden, zonder overbodige drempels.</p>
-    </div>
-    <div>
-      <p class="project-label">Resultaat</p>
-      <p class="project-titel">Eén pagina, direct geruststellend</p>
-      <p class="project-tekst">Een site waar nieuwe patiënten in enkele seconden weten of ze welkom zijn, wat de praktijk aanbiedt, en hoe ze een afspraak kunnen maken.</p>
+    <div class="project-punten">
+      <div class="project-punt">
+        <span class="project-punt-nr">01</span>
+        <div>
+          <p class="project-label">Opdracht</p>
+          <p class="project-titel">Nieuwe patiënten op hun gemak stellen</p>
+          <p class="project-tekst">Praktijk Netevallei wilde een site die rust uitstraalt nog voor iemand een afspraak maakt — voor wie een nieuwe huisarts zoekt, is dat vertrouwen minstens zo belangrijk als de praktische info zelf.</p>
+        </div>
+      </div>
+      <div class="project-punt">
+        <span class="project-punt-nr">02</span>
+        <div>
+          <p class="project-label">Aanpak</p>
+          <p class="project-titel">Zachte blauwtinten en heldere structuur</p>
+          <p class="project-tekst">Een rustig kleurenpalet en overzichtelijke opbouw vervangen de klinische, onpersoonlijke uitstraling die veel praktijksites hebben. Openingsuren, diensten en contactgegevens staan duidelijk gescheiden, zonder overbodige drempels.</p>
+        </div>
+      </div>
+      <div class="project-punt">
+        <span class="project-punt-nr">03</span>
+        <div>
+          <p class="project-label">Resultaat</p>
+          <p class="project-titel">Eén pagina, direct geruststellend</p>
+          <p class="project-tekst">Een site waar nieuwe patiënten in enkele seconden weten of ze welkom zijn, wat de praktijk aanbiedt, en hoe ze een afspraak kunnen maken.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 
 <section class="contact" id="contact">
-  <div class="contact-info">
-    <h2>Maak een<br>afspraak</h2>
-    <p>Vul het formulier in of bel de praktijk. We nemen binnen één werkdag contact op om een moment af te spreken.</p>
+  <div class="contact-kaart">
+    <div class="contact-intro">
+      <p class="sectie-label">Afspraak maken</p>
+      <h2>Maak een afspraak</h2>
+      <p>Vul het formulier in of bel de praktijk. We nemen binnen één werkdag contact op om een moment af te spreken.</p>
+    </div>
+
     <div class="contact-gegevens">
       <div class="contact-rij">
-        <span class="contact-rij-label">Adres</span>
-        <span class="contact-rij-waarde">Netestraat 8<br>2260 Westerlo</span>
+        <span class="contact-rij-icoon">📍</span>
+        <span class="contact-rij-tekst"><strong>Adres</strong>Netestraat 8, 2260 Westerlo</span>
       </div>
       <div class="contact-rij">
-        <span class="contact-rij-label">Open</span>
-        <span class="contact-rij-waarde">Ma–Vr: 8u–18u<br>Zaterdag: 9u–12u</span>
+        <span class="contact-rij-icoon">🕐</span>
+        <span class="contact-rij-tekst"><strong>Open</strong>Ma–Vr 8u–18u · Za 9u–12u</span>
       </div>
       <div class="contact-rij">
-        <span class="contact-rij-label">Tel</span>
-        <span class="contact-rij-waarde">014 XX XX XX</span>
+        <span class="contact-rij-icoon">☎</span>
+        <span class="contact-rij-tekst"><strong>Tel</strong>014 XX XX XX</span>
       </div>
     </div>
+
+    <form class="contact-form" action="https://formspree.io/f/xlgyekey" method="POST">
+      <div class="form-rij">
+        <div class="form-groep">
+          <label>Voornaam</label>
+          <input type="text" name="voornaam" placeholder="Jan" required>
+        </div>
+        <div class="form-groep">
+          <label>Familienaam</label>
+          <input type="text" name="familienaam" placeholder="Janssen" required>
+        </div>
+      </div>
+
+      <div class="form-groep">
+        <label>E-mailadres</label>
+        <input type="email" name="email" placeholder="jan.janssen@mail.be" required>
+      </div>
+
+      <div class="form-groep">
+        <label>Telefoon</label>
+        <input type="tel" name="telefoon" placeholder="04XX XX XX XX">
+      </div>
+
+      <div class="form-groep">
+        <label>Voor wie is de afspraak?</label>
+        <select name="categorie">
+          <option value="">Kies een zorgverlener...</option>
+          <option value="huisarts">Huisarts</option>
+          <option value="kine">Kinesitherapeut</option>
+          <option value="psycholoog">Psycholoog</option>
+          <option value="dietist">Diëtist</option>
+          <option value="anders">Andere vraag</option>
+        </select>
+      </div>
+
+      <div class="form-groep">
+        <label>Toelichting</label>
+        <textarea name="bericht" placeholder="Bv: graag een eerste afspraak bij de huisarts, liefst volgende week..." required></textarea>
+      </div>
+
+      <button type="submit" class="verstuur-btn">Afspraak aanvragen →</button>
+    </form>
   </div>
-
-  <form class="contact-form" action="https://formspree.io/f/xlgyekey" method="POST">
-    <div class="form-rij">
-      <div class="form-groep">
-        <label>Voornaam</label>
-        <input type="text" name="voornaam" placeholder="Jan" required>
-      </div>
-      <div class="form-groep">
-        <label>Familienaam</label>
-        <input type="text" name="familienaam" placeholder="Janssen" required>
-      </div>
-    </div>
-
-    <div class="form-groep">
-      <label>E-mailadres</label>
-      <input type="email" name="email" placeholder="jan.janssen@mail.be" required>
-    </div>
-
-    <div class="form-groep">
-      <label>Telefoon</label>
-      <input type="tel" name="telefoon" placeholder="04XX XX XX XX">
-    </div>
-
-    <div class="form-groep">
-      <label>Voor wie is de afspraak?</label>
-      <select name="categorie">
-        <option value="">Kies een zorgverlener...</option>
-        <option value="huisarts">Huisarts</option>
-        <option value="kine">Kinesitherapeut</option>
-        <option value="psycholoog">Psycholoog</option>
-        <option value="dietist">Diëtist</option>
-        <option value="anders">Andere vraag</option>
-      </select>
-    </div>
-
-    <div class="form-groep">
-      <label>Toelichting</label>
-      <textarea name="bericht" placeholder="Bv: graag een eerste afspraak bij de huisarts, liefst volgende week..." required></textarea>
-    </div>
-
-    <button type="submit" class="verstuur-btn">Afspraak aanvragen →</button>
-  </form>
 </section>
 
 

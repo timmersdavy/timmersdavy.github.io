@@ -522,77 +522,125 @@
     border-top: 1px solid var(--creme-donker);
   }
 
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-    margin-top: 2rem;
+  .verhaal {
+    max-width: 740px;
   }
 
-  .project-label {
+  .verhaal-intro,
+  .verhaal-slot {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--grijs);
+  }
+
+  .verhaal-intro { margin-bottom: 3rem; }
+  .verhaal-slot { margin-top: 3rem; }
+
+  .verhaal-citaat {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1.45;
+    color: var(--zwart);
+    border-left: 3px solid var(--rood);
+    padding: 0.2rem 0 0.2rem 2rem;
+    margin: 0;
+  }
+
+  .verhaal-citaat cite {
+    display: block;
+    margin-top: 1.2rem;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
     font-size: 0.7rem;
     font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--rood);
-    margin-bottom: 0.8rem;
-  }
-
-  .project-titel {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--zwart);
-    margin-bottom: 0.8rem;
-  }
-
-  .project-tekst {
-    font-size: 0.9rem;
-    line-height: 1.75;
-    color: var(--grijs);
   }
 
   @media (max-width: 900px) {
     .project-case { padding: 4rem 1.5rem; }
-    .project-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .verhaal-citaat { font-size: 1.5rem; padding-left: 1.25rem; }
   }
 
   /* CONTACT */
   .contact {
     background: var(--rood-donker);
     padding: 6rem 4rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: start;
+    text-align: center;
   }
 
-  .contact-info h2 {
+  .contact-intro {
+    max-width: 540px;
+    margin: 0 auto 3.5rem;
+  }
+
+  .contact .sectie-label { color: rgba(255,255,255,0.55); }
+
+  .contact-titel {
     font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     font-weight: 900;
     color: #fff;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
   }
 
-  .contact-info p {
+  .contact-tekst {
     color: rgba(255,255,255,0.65);
     font-size: 0.95rem;
     line-height: 1.75;
-    margin-bottom: 2.5rem;
   }
 
-  .contact-gegevens {
+  .contact-bel {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 2rem 4.5rem;
+    margin-bottom: 3.5rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .contact-bel:hover {
+    border-color: #fff;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .contact-bel-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .contact-bel-nummer {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .contact-strip {
+    display: flex;
+    justify-content: center;
+    gap: 3.5rem;
+    flex-wrap: wrap;
+    margin: 0 auto 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .contact-strip-item {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-  }
-
-  .contact-rij {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
+    gap: 0.4rem;
   }
 
   .contact-rij-label {
@@ -600,9 +648,6 @@
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.4);
-    width: 60px;
-    flex-shrink: 0;
-    padding-top: 2px;
   }
 
   .contact-rij-waarde {
@@ -616,6 +661,9 @@
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: left;
   }
 
   .form-rij {
@@ -678,7 +726,7 @@
     text-transform: uppercase;
     cursor: pointer;
     transition: opacity 0.2s;
-    align-self: flex-start;
+    align-self: center;
   }
 
   .verstuur-btn:hover { opacity: 0.85; }
@@ -736,7 +784,10 @@
     .over { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
     .over-beeld { height: 280px; }
 
-    .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .contact { padding: 4rem 1.5rem; }
+    .contact-bel { padding: 1.5rem 2rem; margin-bottom: 2.5rem; width: 100%; }
+    .contact-bel-nummer { font-size: 2rem; }
+    .contact-strip { gap: 2rem; margin-bottom: 3rem; padding-bottom: 2rem; }
     .form-rij { grid-template-columns: 1fr; }
 
     .sectie-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
@@ -895,43 +946,37 @@
 <section class="project-case">
   <p class="sectie-label">Achter deze site</p>
   <h2 class="sectie-titel">Hoe dit project tot stand kwam</h2>
-  <div class="project-grid">
-    <div>
-      <p class="project-label">Opdracht</p>
-      <p class="project-titel">Vertrouwen tonen zonder afstand te creëren</p>
-      <p class="project-tekst">Slagerij Van Damme wilde een site die de warmte van 45 jaar vakmanschap uitstraalt, zonder in te boeten aan duidelijkheid: bezoekers moeten in enkele seconden weten wat er vers is, wat het kost, en hoe ze kunnen bestellen.</p>
-    </div>
-    <div>
-      <p class="project-label">Aanpak</p>
-      <p class="project-titel">Hout, crème en een eerlijke productlijst</p>
-      <p class="project-tekst">Een warme kleurpalet met hout- en roodtinten verwijst naar de slagerswinkel zelf. Elk product kreeg een eigen kaart met prijs en korte omschrijving, zodat klanten meteen kunnen kiezen zonder te moeten bellen voor basisinfo.</p>
-    </div>
-    <div>
-      <p class="project-label">Resultaat</p>
-      <p class="project-titel">Eén pagina, alle bestelinfo</p>
-      <p class="project-tekst">Een bedrijfssite met bestelformulier, openingsuren en verhaal van drie generaties slagers — direct bruikbaar voor telefonische en online bestellingen, zonder extra stappen voor de klant.</p>
-    </div>
+  <div class="verhaal">
+    <p class="verhaal-intro">Slagerij Van Damme wilde een site die de warmte van 45 jaar vakmanschap uitstraalt, zonder in te boeten aan duidelijkheid: bezoekers moeten in enkele seconden weten wat er vers is, wat het kost, en hoe ze kunnen bestellen. Geen overbodige franjes — gewoon een eerlijke winkel, digitaal vertaald.</p>
+    <blockquote class="verhaal-citaat">
+      “Ik wilde geen webshop. Ik wilde een site die ruikt naar het hakblok — hout, crème en vlees dat je kan zien voor je het proeft.”
+      <cite>Zoals de slager het zelf zou zeggen</cite>
+    </blockquote>
+    <p class="verhaal-slot">Daaruit ontstond een pagina met hout- en roodtinten, een productlijst met prijs per stuk, en een bestelformulier dat evenveel gewicht krijgt als het verhaal van drie generaties slagers — direct bruikbaar voor telefonische en online bestellingen, zonder extra stappen voor de klant.</p>
   </div>
 </section>
 
 
 <section class="contact" id="contact">
-  <div class="contact-info">
-    <h2>Bestelling<br>plaatsen</h2>
-    <p>Vul het formulier in of bel ons op. Bestellingen voor 10u zijn dezelfde dag klaar. Grote feestschotels vragen 24u op voorhand.</p>
-    <div class="contact-gegevens">
-      <div class="contact-rij">
-        <span class="contact-rij-label">Adres</span>
-        <span class="contact-rij-waarde">Dorpstraat 14<br>3980 Tessenderlo</span>
-      </div>
-      <div class="contact-rij">
-        <span class="contact-rij-label">Open</span>
-        <span class="contact-rij-waarde">Ma–Vr: 8u–18u<br>Zaterdag: 7u–16u</span>
-      </div>
-      <div class="contact-rij">
-        <span class="contact-rij-label">Tel</span>
-        <span class="contact-rij-waarde">013 67 XX XX</span>
-      </div>
+  <div class="contact-intro">
+    <p class="sectie-label">Bestelling plaatsen</p>
+    <h2 class="contact-titel">Bel de winkel, of bestel hieronder</h2>
+    <p class="contact-tekst">Bestellingen voor 10u zijn dezelfde dag klaar. Grote feestschotels vragen 24u op voorhand.</p>
+  </div>
+
+  <a href="tel:+3213670000" class="contact-bel">
+    <span class="contact-bel-label">Bel de winkel</span>
+    <span class="contact-bel-nummer">013 67 XX XX</span>
+  </a>
+
+  <div class="contact-strip">
+    <div class="contact-strip-item">
+      <span class="contact-rij-label">Adres</span>
+      <span class="contact-rij-waarde">Dorpstraat 14, 3980 Tessenderlo</span>
+    </div>
+    <div class="contact-strip-item">
+      <span class="contact-rij-label">Open</span>
+      <span class="contact-rij-waarde">Ma–Vr 8u–18u · Zaterdag 7u–16u</span>
     </div>
   </div>
 
@@ -947,14 +992,15 @@
       </div>
     </div>
 
-    <div class="form-groep">
-      <label>E-mailadres</label>
-      <input type="email" name="email" placeholder="jan.janssen@mail.be" required>
-    </div>
-
-    <div class="form-groep">
-      <label>Telefoon</label>
-      <input type="tel" name="telefoon" placeholder="04XX XX XX XX">
+    <div class="form-rij">
+      <div class="form-groep">
+        <label>E-mailadres</label>
+        <input type="email" name="email" placeholder="jan.janssen@mail.be" required>
+      </div>
+      <div class="form-groep">
+        <label>Telefoon</label>
+        <input type="tel" name="telefoon" placeholder="04XX XX XX XX">
+      </div>
     </div>
 
     <div class="form-groep">
