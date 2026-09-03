@@ -1115,7 +1115,7 @@ footer{flex-direction:column;gap:0.5rem;text-align:center}
         <input type="text" id="aiDemoInput" class="ai-demo-input" placeholder="Typ een bericht..." autocomplete="off">
         <button type="submit" class="ai-demo-send" aria-label="Verstuur">➤</button>
       </form>
-      <p class="ai-demo-disclaimer">Dit is een gesimuleerde demo met vooraf geschreven antwoorden — geen live AI-verbinding.</p>
+      <p class="ai-demo-disclaimer">Live AI-medewerker — probeer gerust een echte vraag.</p>
     </div>
 
   </div>
@@ -1468,7 +1468,7 @@ function handleSubmit(e){
 </script>
 
 <script>
-// AI-medewerker demo chat (gescripte simulatie, geen live AI)
+// AI-medewerker chat — verbonden met echte Claude API via n8n
 (function(){
   const toggle=document.getElementById('aiDemoToggle');
   const panel=document.getElementById('aiDemoPanel');
@@ -1479,16 +1479,8 @@ function handleSubmit(e){
   const input=document.getElementById('aiDemoInput');
   if(!toggle||!panel) return;
 
-  const calendlyLink='<a href="https://calendly.com/timmersdavy/gratis-gesprek" target="_blank" rel="noopener">plan hier een gratis gesprek</a>';
-
-  const intents=[
-    {keywords:['open','uur','uren','wanneer'],reply:'We zijn bereikbaar van maandag t/m vrijdag, 9u–18u. Buiten die uren beantwoord ik, de AI-medewerker, je vraag toch al meteen!'},
-    {keywords:['prijs','kost','tarief','duur'],reply:'Onze pakketten starten vanaf €750 eenmalig + €75/maand voor de Starter AI. Bekijk de volledige pakketten hierboven, of ' + calendlyLink + ' voor advies op maat.'},
-    {keywords:['afspraak','inplannen','gesprek','bel'],reply:'Uiteraard! ' + calendlyLink + ' — kies gewoon een moment dat je uitkomt.'},
-    {keywords:['offerte','voorstel'],reply:'Ik geef je vraag door aan Davy, hij neemt snel contact op. Wil je alvast ' + calendlyLink + '?'},
-    {keywords:['whatsapp','kanaal','crm'],reply:'De Groei AI-versie koppelt WhatsApp én e-mail met je CRM, zodat leads automatisch gekwalificeerd worden. Wil je dat ik dat even toon in een gesprek? ' + calendlyLink + '.'}
-  ];
-  const fallback='Goede vraag! Die geef ik door aan een medewerker. Wil je ondertussen ' + calendlyLink + '?';
+  const WEBHOOK_URL='https://timmersdavy.app.n8n.cloud/webhook/ai-medewerker-chat';
+  let history=[];
 
   const quickReplyOptions=[
     'Wat zijn de openingsuren?',
@@ -1500,35 +1492,40 @@ function handleSubmit(e){
   function addMessage(text,sender){
     const el=document.createElement('div');
     el.className='ai-demo-msg '+sender;
-    el.innerHTML=text;
+    el.textContent=text;
     messages.appendChild(el);
     messages.scrollTop=messages.scrollHeight;
   }
 
-  function findReply(text){
-    const lower=text.toLowerCase();
-    for(const intent of intents){
-      if(intent.keywords.some(k=>lower.includes(k))) return intent.reply;
-    }
-    return fallback;
-  }
-
-  function botReply(text){
+  function showTyping(){
     const typing=document.createElement('div');
     typing.className='ai-demo-typing';
     typing.innerHTML='<span></span><span></span><span></span>';
     messages.appendChild(typing);
     messages.scrollTop=messages.scrollHeight;
-    setTimeout(()=>{
-      typing.remove();
-      addMessage(findReply(text),'bot');
-    },700+Math.random()*500);
+    return typing;
   }
 
-  function sendUserMessage(text){
+  async function sendUserMessage(text){
     if(!text.trim()) return;
-    addMessage(text.replace(/</g,'&lt;'),'user');
-    botReply(text);
+    addMessage(text,'user');
+    const typing=showTyping();
+    try{
+      const res=await fetch(WEBHOOK_URL,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({message:text,history:history})
+      });
+      const data=await res.json();
+      typing.remove();
+      const reply=(data&&data.reply)?data.reply:'Sorry, er ging iets mis. Probeer het straks nog eens, of contacteer Davy rechtstreeks via WhatsApp.';
+      addMessage(reply,'bot');
+      history.push({role:'user',content:text});
+      history.push({role:'assistant',content:reply});
+    }catch(err){
+      typing.remove();
+      addMessage('Sorry, ik kan momenteel niet antwoorden. Probeer het straks nog eens, of contacteer Davy rechtstreeks via WhatsApp.','bot');
+    }
   }
 
   function renderQuickReplies(){
@@ -1538,7 +1535,10 @@ function handleSubmit(e){
       btn.type='button';
       btn.className='ai-demo-quick-reply';
       btn.textContent=opt;
-      btn.addEventListener('click',()=>sendUserMessage(opt));
+      btn.addEventListener('click',()=>{
+        quickReplies.innerHTML='';
+        sendUserMessage(opt);
+      });
       quickReplies.appendChild(btn);
     });
   }
