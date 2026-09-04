@@ -258,7 +258,7 @@ footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
         <label class="pkg" data-key="bedrijfssite">
           <input type="radio" name="package" value="bedrijfssite">
           <div>
-            <div class="name">Bedrijfssite</div>
+            <div class="name">Bedrijfssite (1 pagina)</div>
             <div class="dim">Uitgebreide 1-pagina site met galerij, testimonials en contact. Extra's op maat, 2 revisierondes.</div>
           </div>
           <div class="price">€ 1.900</div>
@@ -266,7 +266,7 @@ footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
         <label class="pkg" data-key="plus">
           <input type="radio" name="package" value="plus">
           <div>
-            <div class="name">Bedrijfssite Plus</div>
+            <div class="name">Bedrijfssite Plus (meerdere pagina's)</div>
             <div class="dim">Meerdere pagina's, foto-optimalisatie, 3 revisierondes en 1 maand gratis kleine aanpassingen na livegang.</div>
           </div>
           <div class="price">€ 2.700</div>
@@ -381,8 +381,8 @@ footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
 (function(){
   var PACKAGES = {
     visitekaartje: { name:'Landingspagina',    dim:'1 pagina',              price:1100 },
-    bedrijfssite:  { name:'Bedrijfssite',       dim:'uitgebreide 1-pagina',  price:1900 },
-    plus:          { name:'Bedrijfssite Plus',  dim:'meerdere pagina’s', price:2700 }
+    bedrijfssite:  { name:'Bedrijfssite (1 pagina)',              dim:'uitgebreide 1-pagina',  price:1900 },
+    plus:          { name:'Bedrijfssite Plus (meerdere pagina’s)', dim:'meerdere pagina’s',     price:2700 }
   };
   var pkgWraps  = Array.prototype.slice.call(document.querySelectorAll('.pkg'));
   var modWraps  = Array.prototype.slice.call(document.querySelectorAll('.mod'));
@@ -425,7 +425,7 @@ footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
 
     if(pkgKey){
       var pkg = PACKAGES[pkgKey];
-      lines.push({ l: pkg.name + ' (' + pkg.dim + ')', v: pkg.price });
+      lines.push({ l: pkg.name, v: pkg.price });
       total += pkg.price;
     }
 
