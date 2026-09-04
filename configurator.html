@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-55NL6HRM5S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-55NL6HRM5S');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Stel je eigen websitepakket samen bij Timmers Design en zie meteen de prijs — Ham, Belgisch Limburg.">
+<title>Stel je pakket samen — Timmers Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--black:#07080f;
+--navy:#0D1B3E;
+--navy-soft:#111928;
+--orange:#F4762A;
+--gold:#c8a96e;
+--gold-dim:rgba(200,169,110,0.15);
+--white:#ffffff;
+--off:#f5f3ef;
+--muted:rgba(255,255,255,0.38);
+--muted2:rgba(255,255,255,0.55);
+}
+html{scroll-behavior:smooth}
+body{
+font-family:'Inter',sans-serif;
+background:var(--black);
+color:var(--white);
+overflow-x:hidden;
+}
+/* NAV */
+nav{
+position:fixed;top:0;left:0;right:0;z-index:500;
+display:flex;align-items:center;justify-content:space-between;
+padding:2rem 5vw;
+background:linear-gradient(to bottom, rgba(7,8,15,0.9), transparent);
+}
+.nav-logo{
+font-family:'Cormorant Garamond',serif;
+font-size:1.15rem;font-weight:400;letter-spacing:0.22em;
+text-transform:uppercase;color:var(--white);text-decoration:none;
+}
+.nav-cta{
+font-size:0.68rem;font-weight:400;letter-spacing:0.18em;
+text-transform:uppercase;color:var(--white);text-decoration:none;
+border:1px solid rgba(255,255,255,0.2);
+padding:0.7rem 1.6rem;
+transition:border-color 0.3s,color 0.3s;
+}
+.nav-cta:hover{border-color:var(--orange);color:var(--orange)}
+/* HERO */
+.hero{
+padding:9rem 5vw 3rem;
+text-align:center;
+}
+.hero-eyebrow{
+font-size:0.7rem;font-weight:400;letter-spacing:0.22em;
+text-transform:uppercase;color:var(--orange);
+margin-bottom:1.6rem;
+}
+.hero-title{
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(2.2rem,5.5vw,4rem);
+font-weight:300;line-height:1.1;
+letter-spacing:-0.02em;
+margin:0 auto 1.4rem;
+max-width:24ch;
+}
+.hero-title em{font-style:italic;color:var(--orange)}
+.hero-desc{
+font-size:0.98rem;line-height:1.8;
+color:var(--muted2);max-width:52ch;font-weight:300;
+margin:0 auto;
+}
+.gold-rule{
+width:100%;height:1px;
+background:linear-gradient(to right, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%);
+opacity:0.25;
+}
+/* LAYOUT */
+main{
+max-width:1100px;
+margin:0 auto;
+padding:4rem 5vw 6rem;
+display:grid;
+grid-template-columns:minmax(0,1fr) 320px;
+gap:3rem;
+align-items:start;
+}
+@media(max-width:900px){ main{grid-template-columns:1fr} }
+
+.plan{display:flex;flex-direction:column;gap:3.5rem}
+
+.sectionhead{margin-bottom:1.8rem}
+.sectionhead .idx{
+font-family:'Cormorant Garamond',serif;
+font-style:italic;font-weight:300;
+color:var(--orange);font-size:0.95rem;
+}
+.sectionhead h2{
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(1.5rem,3vw,2.1rem);
+font-weight:300;margin-top:0.3rem;
+}
+.sectionhead .hint{
+font-size:0.72rem;color:var(--muted);
+text-transform:uppercase;letter-spacing:0.1em;
+margin-top:0.4rem;display:block;
+}
+
+/* packages */
+.packages{display:flex;flex-direction:column;gap:1px;background:rgba(200,169,110,0.1)}
+.pkg{
+background:var(--navy-soft);
+padding:1.6rem 1.8rem;
+cursor:pointer;
+display:grid;grid-template-columns:1fr auto;align-items:center;gap:1.5rem;
+position:relative;
+transition:background 0.25s;
+}
+.pkg:hover{background:#141d33}
+.pkg input{position:absolute;opacity:0}
+.pkg.selected{background:#141d33;box-shadow:inset 3px 0 0 var(--orange)}
+.pkg .name{
+font-family:'Cormorant Garamond',serif;
+font-size:1.4rem;font-weight:400;margin-bottom:0.3rem;
+}
+.pkg .dim{font-size:0.85rem;color:var(--muted2);font-weight:300;line-height:1.6;max-width:42ch}
+.pkg .price{
+font-family:'Cormorant Garamond',serif;font-weight:300;
+font-size:1.5rem;color:var(--gold);white-space:nowrap;
+}
+
+/* modules */
+.modules{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(200,169,110,0.1)}
+@media(max-width:640px){.modules{grid-template-columns:1fr}}
+.mod{
+background:var(--navy-soft);
+padding:1.3rem 1.5rem;
+display:flex;gap:0.9rem;align-items:flex-start;cursor:pointer;
+transition:background 0.25s;
+}
+.mod:hover{background:#141d33}
+.mod input{margin-top:0.3rem;accent-color:var(--orange);width:15px;height:15px;flex:none}
+.mod .body{display:flex;flex-direction:column;gap:0.3rem;flex:1}
+.mod .top{display:flex;justify-content:space-between;gap:0.6rem}
+.mod .name{font-weight:500;font-size:0.92rem}
+.mod .desc{font-size:0.78rem;color:var(--muted);font-weight:300;line-height:1.5}
+.mod .price{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:1rem;white-space:nowrap}
+
+.rush{
+background:var(--navy-soft);
+padding:1.4rem 1.6rem;
+display:flex;align-items:center;gap:1rem;cursor:pointer;
+}
+.rush input{accent-color:var(--orange);width:16px;height:16px}
+.rush .name{font-weight:500;font-size:0.92rem}
+.rush .desc{font-size:0.78rem;color:var(--muted);font-weight:300}
+
+/* ticket */
+aside.ticket{
+position:sticky;top:6rem;
+background:var(--navy-soft);
+border:1px solid rgba(200,169,110,0.15);
+}
+.ticket .head{
+background:var(--navy);color:var(--gold);
+padding:1rem 1.5rem;
+font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;
+display:flex;justify-content:space-between;
+}
+.ticket .lines{padding:1.2rem 1.5rem;display:flex;flex-direction:column;gap:0.7rem;min-height:50px}
+.ticket .line{
+display:flex;justify-content:space-between;gap:0.8rem;font-size:0.82rem;
+border-bottom:1px dotted rgba(255,255,255,0.1);padding-bottom:0.7rem;
+color:var(--muted2);font-weight:300;
+}
+.ticket .line .v{color:var(--white)}
+.ticket .empty{font-size:0.82rem;color:var(--muted);font-style:italic;font-weight:300}
+
+.ticket .totals{padding:1.2rem 1.5rem;border-top:1px solid var(--gold);}
+.ticket .totals .row{display:flex;justify-content:space-between;align-items:baseline}
+.ticket .totals .row .l{font-size:0.85rem;font-weight:400}
+.ticket .totals .row .v{
+font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2rem;color:var(--orange);
+}
+.ticket .vatnote{font-size:0.68rem;color:var(--muted);margin-top:0.6rem;font-weight:300;line-height:1.5}
+
+.ticket .actions{padding:1.4rem 1.5rem 1.6rem;display:flex;flex-direction:column;gap:0.7rem}
+.btn{
+font-size:0.7rem;font-weight:400;letter-spacing:0.15em;
+text-transform:uppercase;text-align:center;text-decoration:none;
+padding:0.9rem 1rem;cursor:pointer;
+border:1px solid rgba(255,255,255,0.2);color:var(--white);
+transition:border-color 0.3s,color 0.3s,background 0.3s;
+}
+.btn.primary{background:var(--orange);border-color:var(--orange);color:var(--black);font-weight:500}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+.copied{font-size:0.72rem;color:var(--gold);text-align:center;min-height:14px;font-weight:300}
+
+footer{
+padding:2.5rem 5vw;
+display:flex;align-items:center;justify-content:center;gap:1rem;
+border-top:1px solid rgba(200,169,110,0.08);
+background:var(--black);
+text-align:center;
+}
+footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
+
+@media(prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">TimmersDesign</a>
+  <a href="website-aanvragen.html#contact" class="nav-cta">Liever direct contact?</a>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Websites op maat · Ham, Belgisch Limburg</p>
+  <h1 class="hero-title">Stel je <em>eigen pakket</em> samen</h1>
+  <p class="hero-desc">Kies een basispakket, voeg toe wat je nodig hebt, en zie meteen de prijs. Met de hand gebouwd, geen kant-en-klare sjablonen. Vrijblijvend — je stuurt pas een aanvraag als je klaar bent.</p>
+</section>
+
+<div class="gold-rule"></div>
+
+<main>
+  <section class="plan">
+
+    <div>
+      <div class="sectionhead">
+        <span class="idx">01 — Basispakket</span>
+        <h2>Kies je uitgangspunt</h2>
+        <span class="hint">kies er één</span>
+      </div>
+      <div class="packages" id="packages">
+        <label class="pkg" data-key="visitekaartje">
+          <input type="radio" name="package" value="visitekaartje">
+          <div>
+            <div class="name">Visitekaartje</div>
+            <div class="dim">1 pagina met de essentie: hero, diensten, over ons, contact. Contactformulier inbegrepen, mobiel-geoptimaliseerd.</div>
+          </div>
+          <div class="price">€ 1.100</div>
+        </label>
+        <label class="pkg" data-key="bedrijfssite">
+          <input type="radio" name="package" value="bedrijfssite">
+          <div>
+            <div class="name">Bedrijfssite</div>
+            <div class="dim">Uitgebreide 1-pagina site met galerij, testimonials en contact. Extra's op maat, 2 revisierondes.</div>
+          </div>
+          <div class="price">€ 1.900</div>
+        </label>
+        <label class="pkg" data-key="plus">
+          <input type="radio" name="package" value="plus">
+          <div>
+            <div class="name">Bedrijfssite Plus</div>
+            <div class="dim">Meerdere pagina's, foto-optimalisatie, 3 revisierondes en 1 maand gratis kleine aanpassingen na livegang.</div>
+          </div>
+          <div class="price">€ 2.700</div>
+        </label>
+      </div>
+    </div>
+
+    <div>
+      <div class="sectionhead">
+        <span class="idx">02 — Modules</span>
+        <h2>Voeg toe wat je nodig hebt</h2>
+        <span class="hint">meerdere mogelijk</span>
+      </div>
+      <div class="modules" id="modules">
+        <label class="mod" data-key="afspraak" data-price="0">
+          <input type="checkbox">
+          <div class="body">
+            <div class="top"><span class="name">Online afspraaksysteem</span><span class="price">op aanvraag</span></div>
+            <div class="desc">Klanten boeken zelf een moment, synct met je agenda</div>
+          </div>
+        </label>
+        <label class="mod" data-key="meertalig" data-price="0">
+          <input type="checkbox">
+          <div class="body">
+            <div class="top"><span class="name">Meertalige site (NL/FR)</span><span class="price">op aanvraag</span></div>
+            <div class="desc">Volledige vertaling en taalwissel</div>
+          </div>
+        </label>
+        <label class="mod" data-key="cms" data-price="0">
+          <input type="checkbox">
+          <div class="body">
+            <div class="top"><span class="name">Blog / zelf beheerbaar (CMS)</span><span class="price">op aanvraag</span></div>
+            <div class="desc">Nieuws of blog zelf publiceren, zonder code</div>
+          </div>
+        </label>
+        <label class="mod" data-key="seo" data-price="0">
+          <input type="checkbox">
+          <div class="body">
+            <div class="top"><span class="name">SEO-basisoptimalisatie</span><span class="price">op aanvraag</span></div>
+            <div class="desc">Meta-data, sitemap, lokale vindbaarheid</div>
+          </div>
+        </label>
+        <label class="mod" data-key="huisstijl" data-price="0">
+          <input type="checkbox">
+          <div class="body">
+            <div class="top"><span class="name">Logo &amp; huisstijl</span><span class="price">op aanvraag</span></div>
+            <div class="desc">Logo-ontwerp met kleuren- en lettertypeset</div>
+          </div>
+        </label>
+        <label class="mod" data-key="automatisatie" data-price="0">
+          <input type="checkbox">
+          <div class="body">
+            <div class="top"><span class="name">Contactformulier + automatisatie</span><span class="price">op aanvraag</span></div>
+            <div class="desc">Aanvragen automatisch naar mail of CRM</div>
+          </div>
+        </label>
+        <label class="mod" data-key="gmb" data-price="0">
+          <input type="checkbox">
+          <div class="body">
+            <div class="top"><span class="name">Google Mijn Bedrijf setup</span><span class="price">op aanvraag</span></div>
+            <div class="desc">Bedrijfsprofiel aanmaken en optimaliseren</div>
+          </div>
+        </label>
+        <label class="mod" data-key="onderhoud" data-price="0">
+          <input type="checkbox">
+          <div class="body">
+            <div class="top"><span class="name">Onderhoud &amp; hosting (1 jaar)</span><span class="price">op aanvraag</span></div>
+            <div class="desc">Updates, back-ups en hosting inbegrepen</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div>
+      <div class="sectionhead">
+        <span class="idx">03 — Levertermijn</span>
+        <h2>Hoe snel moet het klaar zijn?</h2>
+      </div>
+      <label class="rush" data-key="spoed">
+        <input type="checkbox" id="rushCheck">
+        <div>
+          <div class="name">Spoedlevering (binnen 2 weken) — toeslag op aanvraag</div>
+          <div class="desc">Standaard levertermijn is 4–6 weken</div>
+        </div>
+      </label>
+    </div>
+
+  </section>
+
+  <aside class="ticket">
+    <div class="head"><span>Overzicht</span><span id="itemCount">0 items</span></div>
+    <div class="lines" id="lines">
+      <div class="empty">Nog niets geselecteerd.</div>
+    </div>
+    <div class="totals">
+      <div class="row"><span class="l">Basispakket</span><span class="v" id="total">€ 0</span></div>
+      <div class="vatnote">Vrijgesteld van BTW (kleine onderneming) — geen BTW verschuldigd. Modules en spoedlevering op aanvraag. Prijzen indicatief, excl. domeinregistratie &amp; betaalde plugins/licenties.</div>
+    </div>
+    <div class="actions">
+      <a class="btn primary" id="mailBtn" href="#">Aanvraag versturen per e-mail</a>
+      <button class="btn ghost" id="copyBtn" type="button">Kopieer overzicht</button>
+      <div class="copied" id="copiedMsg"></div>
+    </div>
+  </aside>
+</main>
+
+<footer>
+  <small>© 2026 TimmersDesign · Ham, Limburg</small>
+</footer>
+
+<script>
+(function(){
+  var PACKAGES = {
+    visitekaartje: { name:'Visitekaartje',     dim:'1 pagina',              price:1100 },
+    bedrijfssite:  { name:'Bedrijfssite',       dim:'uitgebreide 1-pagina',  price:1900 },
+    plus:          { name:'Bedrijfssite Plus',  dim:'meerdere pagina’s', price:2700 }
+  };
+  var pkgWraps  = Array.prototype.slice.call(document.querySelectorAll('.pkg'));
+  var modWraps  = Array.prototype.slice.call(document.querySelectorAll('.mod'));
+  var rushCheck = document.getElementById('rushCheck');
+
+  function fmt(n){
+    return '€ ' + Math.round(n).toLocaleString('nl-BE');
+  }
+
+  function selectedPackageKey(){
+    var el = document.querySelector('input[name="package"]:checked');
+    return el ? el.closest('.pkg').dataset.key : null;
+  }
+
+  pkgWraps.forEach(function(w){
+    w.addEventListener('click', function(){
+      pkgWraps.forEach(function(o){ o.classList.remove('selected'); });
+      w.classList.add('selected');
+      w.querySelector('input').checked = true;
+      recalc();
+    });
+  });
+
+  modWraps.forEach(function(w){
+    w.addEventListener('click', function(e){
+      if(e.target.tagName.toLowerCase() !== 'input'){
+        var cb = w.querySelector('input');
+        cb.checked = !cb.checked;
+      }
+      recalc();
+    });
+  });
+
+  rushCheck.addEventListener('change', recalc);
+
+  function recalc(){
+    var lines = [];
+    var pkgKey = selectedPackageKey();
+    var total = 0;
+
+    if(pkgKey){
+      var pkg = PACKAGES[pkgKey];
+      lines.push({ l: pkg.name + ' (' + pkg.dim + ')', v: pkg.price });
+      total += pkg.price;
+    }
+
+    modWraps.forEach(function(w){
+      var cb = w.querySelector('input');
+      if(cb.checked){
+        var name = w.querySelector('.name').textContent;
+        lines.push({ l: name, v: null });
+      }
+    });
+
+    if(rushCheck.checked){
+      lines.push({ l: 'Spoedtoeslag (2 weken)', v: null });
+    }
+
+    var linesEl = document.getElementById('lines');
+    var itemCount = document.getElementById('itemCount');
+    if(lines.length === 0){
+      linesEl.innerHTML = '<div class="empty">Nog niets geselecteerd.</div>';
+    } else {
+      linesEl.innerHTML = lines.map(function(item){
+        var val = item.v === null ? 'op aanvraag' : fmt(item.v);
+        return '<div class="line"><span class="l">' + item.l + '</span><span class="v">' + val + '</span></div>';
+      }).join('');
+    }
+    itemCount.textContent = lines.length + (lines.length === 1 ? ' item' : ' items');
+    document.getElementById('total').textContent = fmt(total);
+
+    updateMailLink(lines, total, pkgKey);
+  }
+
+  function updateMailLink(lines, total, pkgKey){
+    var body = 'Aanvraag via de pakketconfigurator op timmersdesign\n\n';
+    if(pkgKey){ body += 'Gekozen samenstelling:\n'; }
+    lines.forEach(function(item){
+      body += '- ' + item.l + ': ' + (item.v === null ? 'op aanvraag' : fmt(item.v)) + '\n';
+    });
+    body += '\nTotaal basispakket: ' + fmt(total) + ' (vrijgesteld van BTW, modules/spoed op aanvraag)';
+    body += '\n\nGraag contact opnemen om dit te bespreken.';
+
+    var mailBtn = document.getElementById('mailBtn');
+    mailBtn.href = 'mailto:timmersdavy@gmail.com?subject=' +
+      encodeURIComponent('Aanvraag — TimmersDesign pakketconfigurator') +
+      '&body=' + encodeURIComponent(body);
+    mailBtn.dataset.body = body;
+  }
+
+  document.getElementById('copyBtn').addEventListener('click', function(){
+    var body = document.getElementById('mailBtn').dataset.body || '';
+    var msg = document.getElementById('copiedMsg');
+    try{
+      navigator.clipboard.writeText(body).then(function(){
+        msg.textContent = 'Gekopieerd naar klembord.';
+        setTimeout(function(){ msg.textContent = ''; }, 2500);
+      }).catch(function(){
+        msg.textContent = 'Kopiëren niet gelukt in deze browser.';
+      });
+    } catch(e){
+      msg.textContent = 'Kopiëren niet gelukt in deze browser.';
+    }
+  });
+
+  recalc();
+})();
+</script>
+
+</body>
+</html>
