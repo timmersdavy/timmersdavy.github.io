@@ -467,9 +467,12 @@ footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
     body += '\n\nGraag contact opnemen om dit te bespreken.';
 
     var mailBtn = document.getElementById('mailBtn');
-    mailBtn.href = 'mailto:timmersdavy@gmail.com?subject=' +
-      encodeURIComponent('Aanvraag — TimmersDesign pakketconfigurator') +
+    mailBtn.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' +
+      encodeURIComponent('info@timmersdesign.be') +
+      '&su=' + encodeURIComponent('Aanvraag — TimmersDesign pakketconfigurator') +
       '&body=' + encodeURIComponent(body);
+    mailBtn.target = '_blank';
+    mailBtn.rel = 'noopener';
     mailBtn.dataset.body = body;
   }
 
