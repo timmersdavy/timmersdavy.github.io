@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /portfolio-audits/
+Disallow: /geuns-bouwprojecten.html
+Disallow: /slagerij-van-damme.html
 
 Sitemap: https://timmersdesign.be/sitemap.xml
