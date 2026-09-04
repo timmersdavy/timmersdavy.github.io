@@ -407,11 +407,7 @@ footer small{font-size:0.7rem;color:var(--muted);font-weight:300}
   });
 
   modWraps.forEach(function(w){
-    w.addEventListener('click', function(e){
-      if(e.target.tagName.toLowerCase() !== 'input'){
-        var cb = w.querySelector('input');
-        cb.checked = !cb.checked;
-      }
+    w.addEventListener('click', function(){
       recalc();
     });
   });
