@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mieke Peeters · Osteopathie &amp; Acupunctuur · Ham</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --stone:#EDE7DD;
+    --stone-deep:#E2DBCC;
+    --ink:#22201B;
+    --indigo:#2B3A4A;
+    --indigo-deep:#1B2833;
+    --clay:#A65A3A;
+    --line:#D6CDB9;
+    --white:#FAF7F1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--stone);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Spectral',serif;
+    font-weight:500;
+    letter-spacing:-0.005em;
+    color:var(--indigo-deep);
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 32px;}
+
+  header{padding:26px 0;border-bottom:1px solid var(--line);}
+  header .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .brand{font-family:'Spectral',serif;font-size:19px;font-weight:600;color:var(--indigo-deep);}
+  .brand .dot{color:var(--clay);}
+  nav{display:flex;gap:30px;font-size:14.5px;}
+  nav a{opacity:.7;}
+  .header-phone{font-size:14px;padding:9px 18px;border:1px solid var(--indigo-deep);border-radius:2px;}
+  @media (max-width:720px){nav{display:none;}}
+
+  /* Hero */
+  .hero{padding:100px 0 88px;}
+  .hero-inner{max-width:640px;}
+  .hero-mark{
+    width:34px;height:34px;
+    border:1.5px solid var(--clay);
+    border-radius:50%;
+    margin-bottom:28px;
+    position:relative;
+  }
+  .hero-mark::after{
+    content:"";position:absolute;
+    width:6px;height:6px;
+    background:var(--clay);
+    border-radius:50%;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+  }
+  .hero-eyebrow{font-size:15px;color:var(--indigo);margin-bottom:16px;}
+  .hero h1{font-size:clamp(34px,4.6vw,50px);line-height:1.14;margin-bottom:22px;}
+  .hero p{font-size:17.5px;color:#43413A;max-width:52ch;margin-bottom:32px;}
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{display:inline-block;padding:14px 28px;font-size:15px;border-radius:2px;}
+  .btn-primary{background:var(--indigo-deep);color:var(--white);}
+  .btn-ghost{border:1px solid var(--indigo-deep);color:var(--indigo-deep);}
+
+  /* Approach band */
+  .approach{
+    background:var(--indigo-deep);
+    color:var(--white);
+    padding:64px 0;
+  }
+  .approach-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:start;
+  }
+  .approach h2{color:var(--white);font-size:27px;margin-bottom:16px;}
+  .approach p{color:#C9D2D9;max-width:46ch;}
+  .approach-list{list-style:none;}
+  .approach-list li{
+    padding:16px 0;
+    border-bottom:1px solid rgba(255,255,255,.14);
+    font-size:15.5px;
+    color:#DCE3E8;
+  }
+  .approach-list li:first-child{padding-top:0;}
+  .approach-list b{
+    display:block;
+    color:var(--white);
+    font-family:'Spectral',serif;
+    font-size:17px;
+    margin-bottom:4px;
+    font-weight:500;
+  }
+  @media (max-width:800px){ .approach-grid{grid-template-columns:1fr;gap:32px;} }
+
+  /* About */
+  .about{padding:76px 0;}
+  .about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:56px;}
+  .about-label{font-size:15px;color:var(--indigo);}
+  .about h2{font-size:29px;margin-top:8px;}
+  .about-role{color:#6B665A;font-size:15px;margin-top:6px;}
+  .about-body p{color:#43413A;margin-bottom:16px;max-width:58ch;}
+  @media (max-width:800px){.about-grid{grid-template-columns:1fr;gap:24px;}}
+
+  /* Practical */
+  .practical{padding:76px 0;background:var(--stone-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .practical-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;}
+  .practical-item h3{font-size:14.5px;font-weight:500;color:var(--indigo);margin-bottom:10px;font-family:'Work Sans',sans-serif;}
+  .practical-item .big{font-family:'Spectral',serif;font-size:21px;color:var(--indigo-deep);}
+  @media (max-width:720px){.practical-grid{grid-template-columns:1fr;gap:30px;}}
+
+  /* Booking */
+  .booking{padding:68px 0;text-align:center;}
+  .booking h2{font-size:29px;margin-bottom:14px;}
+  .booking p{color:#43413A;margin-bottom:28px;}
+
+  footer{padding:34px 0;font-size:13px;color:#6B665A;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Mieke Peeters <span class="dot">·</span> Osteopathie &amp; Acupunctuur</div>
+    <nav>
+      <a href="#aanpak">Aanpak</a>
+      <a href="#over">Over Mieke</a>
+      <a href="#praktisch">Praktisch</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="header-phone" href="tel:+3249611919">0496 11 91 19</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-mark"></div>
+      <div class="hero-eyebrow">Praktijk in Ham</div>
+      <h1>Osteopathie en acupunctuur, vanuit één rustpunt voor lichaam en geest</h1>
+      <p>Mieke Peeters combineert osteopathie en traditionele Chinese acupunctuur tot een behandeling die kijkt naar de oorzaak, niet enkel het symptoom.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#contact">Maak een afspraak</a>
+        <a class="btn btn-ghost" href="#aanpak">Ontdek de aanpak</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="approach" id="aanpak">
+  <div class="wrap approach-grid">
+    <div>
+      <h2>Twee disciplines, één aanpak</h2>
+      <p>Osteopathie en acupunctuur vullen elkaar aan: het lichamelijke en het energetische, samen bekeken.</p>
+    </div>
+    <ul class="approach-list">
+      <li><b>Osteopathie</b>Manuele behandeling van het bewegingsapparaat, gericht op de onderliggende oorzaak van klachten.</li>
+      <li><b>Acupunctuur</b>Traditionele Chinese geneeskunde, erkend lid van de Belgian Acupunctors Federation (BAF).</li>
+      <li><b>Op maat</b>Elke behandeling vertrekt van een grondige intake — geen vaste protocollen.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="about" id="over">
+  <div class="wrap about-grid">
+    <div>
+      <div class="about-label">Over de praktijk</div>
+      <h2>Mieke Peeters</h2>
+      <p class="about-role">Osteopaat &amp; erkend acupuncturist (BAF)</p>
+    </div>
+    <div class="about-body">
+      <p>Mieke behandelt in Ham vanuit een holistische visie: klachten staan zelden op zich, en verdienen een aanpak die het hele lichaam in rekening brengt. Naast osteopathie past ze traditionele Chinese acupunctuur toe, een praktijk met wortels van duizenden jaren die ze combineert met een moderne, luisterende aanpak.</p>
+      <p>Elke eerste afspraak begint met een uitgebreide intake, zodat de behandeling meteen aansluit bij wat jouw lichaam nodig heeft.</p>
+    </div>
+  </div>
+</section>
+
+<section class="practical" id="praktisch">
+  <div class="wrap practical-grid">
+    <div class="practical-item">
+      <h3>Adres</h3>
+      <p class="big">Olmensesteenweg 192</p>
+      <p>3945 Ham</p>
+    </div>
+    <div class="practical-item">
+      <h3>Consultatiedagen</h3>
+      <p class="big">Di · Wo · Vr · Za</p>
+      <p style="margin-top:6px;color:#6B665A;">Op afspraak</p>
+    </div>
+    <div class="practical-item">
+      <h3>Contact</h3>
+      <p class="big">0496 11 91 19</p>
+      <p>praktijkmieke@outlook.be</p>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="contact">
+  <div class="wrap">
+    <h2>Nieuwsgierig wat osteopathie of acupunctuur voor jou kan betekenen?</h2>
+    <p>Neem contact op voor een intakegesprek of maak telefonisch een afspraak.</p>
+    <a class="btn btn-primary" href="tel:+3249611919">Bel 0496 11 91 19</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:12px;">
+    <span>© Mieke Peeters · Osteopathie &amp; Acupunctuur</span>
+    <span>Demo-ontwerp door TimmersDesign — ter illustratie, geen actieve klant</span>
+  </div>
+</footer>
+
+</body>
+</html>
