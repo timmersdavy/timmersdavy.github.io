@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kinesitherapie TM · Mieke Theys · Ham</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3EFE7;
+    --paper-deep:#EAE3D6;
+    --ink:#20241F;
+    --pine:#2E4A3D;
+    --pine-deep:#1F3529;
+    --gold:#B98B4E;
+    --line:#D9D0BE;
+    --white:#FBFAF6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    font-weight:400;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    color:var(--pine-deep);
+  }
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+  /* Header */
+  header{
+    padding:28px 0;
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .brand{
+    font-family:'Fraunces',serif;
+    font-size:20px;
+    font-weight:600;
+    color:var(--pine-deep);
+  }
+  .brand span{color:var(--gold);}
+  nav{display:flex;gap:32px;font-size:15px;}
+  nav a{opacity:.75;transition:opacity .2s;}
+  nav a:hover{opacity:1;}
+  .header-phone{
+    font-size:14px;
+    padding:9px 18px;
+    border:1px solid var(--pine-deep);
+    border-radius:2px;
+  }
+  @media (max-width:720px){ nav{display:none;} }
+
+  /* Hero */
+  .hero{
+    padding:96px 0 84px;
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:64px;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    font-size:15px;
+    color:var(--pine);
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(38px,5vw,58px);
+    line-height:1.06;
+    margin-bottom:24px;
+  }
+  .hero p{
+    font-size:18px;
+    max-width:44ch;
+    color:#3A3E35;
+    margin-bottom:34px;
+  }
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:14px 28px;
+    font-size:15px;
+    border-radius:2px;
+  }
+  .btn-primary{
+    background:var(--pine-deep);
+    color:var(--white);
+  }
+  .btn-ghost{
+    border:1px solid var(--pine-deep);
+    color:var(--pine-deep);
+  }
+  .hero-photo{
+    aspect-ratio:4/5;
+    background:linear-gradient(160deg,var(--pine) 0%,var(--pine-deep) 100%);
+    border-radius:4px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-photo::after{
+    content:"";
+    position:absolute;inset:0;
+    background:radial-gradient(circle at 30% 20%, rgba(255,255,255,.08), transparent 55%);
+  }
+  .hero-photo-caption{
+    position:absolute;bottom:24px;left:24px;right:24px;
+    color:var(--white);
+    font-size:13px;
+    opacity:.8;
+  }
+  @media (max-width:800px){
+    .hero{grid-template-columns:1fr;padding-top:56px;}
+    .hero-photo{order:-1;aspect-ratio:16/10;}
+  }
+
+  /* Intro / about strip */
+  .about{
+    padding:72px 0;
+    border-top:1px solid var(--line);
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:56px;
+  }
+  .about-label{
+    font-size:15px;
+    color:var(--pine);
+  }
+  .about h2{
+    font-size:30px;
+    margin-top:10px;
+  }
+  .about-body p{
+    color:#3A3E35;
+    margin-bottom:16px;
+    max-width:60ch;
+  }
+  .quote{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:20px;
+    color:var(--pine-deep);
+    border-left:2px solid var(--gold);
+    padding-left:20px;
+    margin:24px 0;
+  }
+  @media (max-width:800px){ .about-grid{grid-template-columns:1fr;gap:24px;} }
+
+  /* Treatments */
+  .treatments{
+    padding:72px 0;
+    background:var(--paper-deep);
+  }
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:48px;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{font-size:30px;}
+  .section-head p{max-width:38ch;color:#3A3E35;font-size:15px;}
+  .treatment-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    border-top:1px solid var(--line);
+  }
+  .treatment{
+    padding:28px 0;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+  }
+  .treatment:nth-child(odd){padding-right:28px;border-right:1px solid var(--line);}
+  .treatment:nth-child(even){padding-left:28px;}
+  .treatment h3{font-size:19px;font-weight:500;margin-bottom:6px;}
+  .treatment p{font-size:14px;color:#565A4E;}
+  @media (max-width:720px){
+    .treatment-list{grid-template-columns:1fr;}
+    .treatment:nth-child(odd){padding-right:0;border-right:none;}
+    .treatment:nth-child(even){padding-left:0;}
+  }
+
+  /* Practical info */
+  .practical{padding:72px 0;}
+  .practical-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
+  }
+  .practical-item h3{
+    font-size:15px;
+    font-weight:500;
+    color:var(--pine);
+    margin-bottom:10px;
+    font-family:'Work Sans',sans-serif;
+  }
+  .practical-item p{font-size:16px;}
+  .practical-item .big{
+    font-family:'Fraunces',serif;
+    font-size:22px;
+    color:var(--pine-deep);
+  }
+  @media (max-width:720px){ .practical-grid{grid-template-columns:1fr;gap:32px;} }
+
+  /* Booking band */
+  .booking{
+    padding:64px 0;
+    background:var(--pine-deep);
+    color:var(--white);
+    text-align:center;
+  }
+  .booking h2{color:var(--white);font-size:30px;margin-bottom:14px;}
+  .booking p{color:#D8DED8;margin-bottom:30px;}
+  .booking .btn-primary{background:var(--gold);color:var(--pine-deep);font-weight:500;}
+
+  footer{
+    padding:36px 0;
+    font-size:13px;
+    color:#6B7062;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Kinesitherapie <span>TM</span></div>
+    <nav>
+      <a href="#over">Over ons</a>
+      <a href="#behandelingen">Behandelingen</a>
+      <a href="#praktisch">Praktisch</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="header-phone" href="tel:+32498604829">0498 60 48 29</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap" style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:64px;align-items:center;">
+    <div>
+      <div class="hero-eyebrow">Kinesitherapie in Ham, nabij Kwaadmechelen &amp; Gestel</div>
+      <h1>Zorg op maat, van iemand die de tijd neemt om te luisteren</h1>
+      <p>Mieke Theys behandelt elke patiënt als een uniek verhaal — geen vaste protocollen, maar aandacht voor wat jij nodig hebt om te herstellen.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#contact">Afspraak maken</a>
+        <a class="btn btn-ghost" href="#behandelingen">Behandelingen bekijken</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="hero-photo-caption">Praktijk aan de Broekstraat, Ham</div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="over">
+  <div class="wrap about-grid">
+    <div>
+      <div class="about-label">Over de praktijk</div>
+      <h2>Mieke Theys</h2>
+      <p style="margin-top:8px;color:#565A4E;font-size:15px;">Kinesiste &amp; paardenosteopaat</p>
+    </div>
+    <div class="about-body">
+      <p>TM kinesitherapie biedt verschillende soorten behandelingen aan binnen de kinesitherapie. Elke patiënt is voor ons uniek — daarom nemen we de tijd om écht te luisteren naar wat er speelt, in plaats van iedereen langs hetzelfde stramien te behandelen.</p>
+      <div class="quote">"Pleasure in the job, puts perfection in the work."</div>
+      <p>Naast de praktijk in Ham werkt Mieke ook als paardenosteopaat — die achtergrond in beweging en houding, bij mens én dier, vertaalt zich in een fijn oog voor detail bij elke behandeling.</p>
+    </div>
+  </div>
+</section>
+
+<section class="treatments" id="behandelingen">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Behandelingen</h2>
+      <p>Een greep uit de begeleiding die je bij TM kinesitherapie kan verwachten.</p>
+    </div>
+    <div class="treatment-list">
+      <div class="treatment">
+        <h3>Algemene kinesitherapie</h3>
+        <p>Voor spier-, gewrichts- en houdingsklachten, op maat van jouw dagelijkse leven.</p>
+      </div>
+      <div class="treatment">
+        <h3>Manuele therapie</h3>
+        <p>Gerichte handmatige technieken om spanning en bewegingsbeperkingen te verhelpen.</p>
+      </div>
+      <div class="treatment">
+        <h3>Sportrevalidatie</h3>
+        <p>Begeleiding bij blessureherstel en veilige opbouw naar volledige belastbaarheid.</p>
+      </div>
+      <div class="treatment">
+        <h3>Post-operatieve revalidatie</h3>
+        <p>Stap voor stap herstel na een ingreep, met aandacht voor jouw tempo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="practical" id="praktisch">
+  <div class="wrap practical-grid">
+    <div class="practical-item">
+      <h3>Adres</h3>
+      <p class="big">Broekstraat 19</p>
+      <p>3945 Ham (Kwaadmechelen)</p>
+    </div>
+    <div class="practical-item">
+      <h3>Openingsuren</h3>
+      <p class="big">Ma – Vr</p>
+      <p>8:00 – 21:00</p>
+      <p style="margin-top:8px;color:#6B7062;">Zaterdag &amp; zondag gesloten</p>
+    </div>
+    <div class="practical-item">
+      <h3>Contact</h3>
+      <p class="big">0498 60 48 29</p>
+      <p>info@kineham.be</p>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="contact">
+  <div class="wrap">
+    <h2>Klaar voor je eerste afspraak?</h2>
+    <p>Boek rechtstreeks online — geen wachtrij, geen telefoontjes nodig.</p>
+    <a class="btn btn-primary" href="https://www.q-top.be/online-planner-v2/NL/?root=kq54174" target="_blank" rel="noopener">Boek een afspraak</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:12px;">
+    <span>© Kinesitherapie TM · Mieke Theys</span>
+    <span>Demo-ontwerp door TimmersDesign — ter illustratie, geen actieve klant</span>
+  </div>
+</footer>
+
+</body>
+</html>
