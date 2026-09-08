@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-55NL6HRM5S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-55NL6HRM5S');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Webdesign voor KMO's in Limburg — snel, betaalbaar en persoonlijk. Uit Ham, Limburg.">
+<title>TimmersDesign — Webdesign voor KMO's in Limburg</title>
+<link rel="canonical" href="https://timmersdesign.be/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TimmersDesign — Webdesign voor KMO's in Limburg">
+<meta property="og:description" content="Webdesign voor KMO's in Limburg — snel, betaalbaar en persoonlijk. Uit Ham, Limburg.">
+<meta property="og:url" content="https://timmersdesign.be/">
+<meta property="og:locale" content="nl_BE">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --paper:#EDEFF5;
+  --ink:#0D1B3E;
+  --stamp:#F4762A;
+  --graphite:#4A5568;
+  --graphite-soft:#8891a3;
+  --line:rgba(13,27,62,0.14);
+  --line-soft:rgba(13,27,62,0.08);
+  --white:#ffffff;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Newsreader',serif;
+  background:var(--paper);
+  color:var(--ink);
+  overflow-x:hidden;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size:48px 48px;
+}
+
+a{color:inherit}
+
+/* registration marks */
+.reg{position:fixed;width:14px;height:14px;z-index:400;pointer-events:none}
+.reg::before,.reg::after{content:'';position:absolute;background:var(--ink);opacity:0.5}
+.reg::before{width:100%;height:1px;top:50%;left:0}
+.reg::after{width:1px;height:100%;top:0;left:50%}
+.reg-tl{top:1.4rem;left:1.4rem}
+.reg-tr{top:1.4rem;right:1.4rem}
+.reg-bl{bottom:1.4rem;left:1.4rem}
+.reg-br{bottom:1.4rem;right:1.4rem}
+@media(max-width:768px){.reg{display:none}}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.6rem 3.4rem;
+  background:rgba(237,239,245,0.9);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+.nav-logo{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:1rem;font-weight:600;letter-spacing:-0.01em;
+  text-decoration:none;color:var(--ink);
+}
+.nav-links{display:flex;gap:2.4rem;list-style:none}
+.nav-links a{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:0.82rem;font-weight:500;
+  text-decoration:none;color:var(--graphite);
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:0.5rem;cursor:pointer;z-index:600}
+.nav-burger span{display:block;width:22px;height:1.5px;background:var(--ink);transition:transform 0.3s,opacity 0.3s}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* HERO */
+.hero{
+  min-height:100vh;min-height:100dvh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:7rem 3.4rem 4rem;position:relative;
+}
+.hero-eyebrow{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:0.78rem;font-weight:600;color:var(--stamp);
+  margin-bottom:1.6rem;letter-spacing:0.01em;
+  opacity:0;animation:riseIn 0.7s 0.15s forwards;
+}
+.hero-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(2.6rem,6.4vw,5.4rem);
+  font-weight:600;line-height:1.03;letter-spacing:-0.02em;
+  max-width:16ch;margin-bottom:2rem;
+  opacity:0;animation:riseIn 0.8s 0.3s forwards;
+}
+.hero-desc{
+  font-size:1.15rem;line-height:1.7;color:var(--graphite);
+  max-width:46ch;margin-bottom:2.6rem;
+  opacity:0;animation:riseIn 0.8s 0.45s forwards;
+}
+.hero-cta{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  opacity:0;animation:riseIn 0.8s 0.6s forwards;
+}
+.btn{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:0.85rem;font-weight:600;
+  padding:0.9rem 1.8rem;text-decoration:none;
+  display:inline-block;transition:background 0.25s,color 0.25s,border-color 0.25s;
+}
+.btn-solid{background:var(--ink);color:var(--paper);border:1px solid var(--ink)}
+.btn-solid:hover{background:var(--stamp);border-color:var(--stamp)}
+.btn-outline{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn-outline:hover{border-color:var(--ink)}
+@keyframes riseIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+.hero-stamp{
+  position:absolute;right:5rem;top:8rem;
+  width:96px;height:96px;border:1.5px solid var(--stamp);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transform:rotate(-8deg);
+  font-family:'Space Grotesk',sans-serif;font-size:0.62rem;font-weight:600;
+  color:var(--stamp);text-align:center;line-height:1.3;letter-spacing:0.02em;
+  opacity:0;animation:riseIn 0.8s 0.8s forwards;
+}
+@media(max-width:900px){.hero-stamp{display:none}}
+
+/* SECTION shared */
+.section-wrap{padding:6rem 3.4rem;max-width:1180px;margin:0 auto}
+.s-label{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:0.78rem;font-weight:600;color:var(--stamp);margin-bottom:0.8rem;
+}
+.s-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(1.9rem,3.6vw,2.8rem);font-weight:600;
+  letter-spacing:-0.01em;line-height:1.1;
+}
+.s-title em{font-style:italic;font-family:'Newsreader',serif;font-weight:500;color:var(--stamp)}
+.section-intro{
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;
+  margin-bottom:3.5rem;
+}
+.section-sub{font-size:1rem;line-height:1.7;color:var(--graphite);max-width:44ch}
+@media(max-width:768px){.section-intro{grid-template-columns:1fr}}
+
+/* DIENSTEN — spec table */
+.spec-table{border-top:1px solid var(--line)}
+.spec-row{
+  display:grid;grid-template-columns:150px 1fr 160px;gap:2rem;align-items:start;
+  padding:2rem 0;border-bottom:1px solid var(--line);
+}
+.spec-key{
+  font-family:'Space Grotesk',sans-serif;font-size:0.75rem;font-weight:600;
+  color:var(--graphite-soft);letter-spacing:0.03em;padding-top:0.25rem;
+}
+.spec-body h3{
+  font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:600;
+  margin-bottom:0.5rem;
+}
+.spec-body p{font-size:0.97rem;line-height:1.65;color:var(--graphite);max-width:52ch}
+.spec-price{
+  font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:600;
+  text-align:right;white-space:nowrap;
+}
+.spec-price small{display:block;font-size:0.68rem;font-weight:500;color:var(--graphite-soft);margin-top:0.25rem}
+@media(max-width:768px){
+  .spec-row{grid-template-columns:1fr;gap:0.6rem}
+  .spec-price{text-align:left}
+}
+
+/* AI medewerker strip */
+.ai-strip{
+  margin-top:3.5rem;border:1px solid var(--line);background:var(--white);
+  padding:2.4rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;
+}
+.ai-strip h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:600;margin-bottom:0.5rem}
+.ai-strip p{font-size:0.92rem;color:var(--graphite);max-width:44ch;line-height:1.6}
+
+/* PORTFOLIO */
+.portfolio{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.p-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
+.p-item{background:var(--paper);display:block;text-decoration:none;color:inherit;position:relative;overflow:hidden}
+.p-thumb{aspect-ratio:4/3;background-size:cover;background-position:center;position:relative}
+.p-thumb::after{content:'';position:absolute;inset:0;background:rgba(13,27,62,0);transition:background 0.25s}
+.p-item:hover .p-thumb::after{background:rgba(13,27,62,0.06)}
+.p-meta{padding:1.1rem 1.3rem;border-top:1px solid var(--line)}
+.p-meta h4{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:600;margin-bottom:0.2rem}
+.p-meta span{font-family:'Space Grotesk',sans-serif;font-size:0.72rem;color:var(--graphite-soft)}
+@media(max-width:900px){.p-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.p-grid{grid-template-columns:1fr}}
+
+/* CONTACT */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.contact-info h3{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:600;margin-bottom:1rem}
+.contact-info p{font-size:0.97rem;line-height:1.7;color:var(--graphite);margin-bottom:1.6rem;max-width:38ch}
+.contact-line{
+  display:flex;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--line);
+  font-family:'Space Grotesk',sans-serif;font-size:0.85rem;
+}
+.contact-line span:first-child{color:var(--graphite-soft)}
+.contact-line a{text-decoration:none;font-weight:600}
+
+.f-field{margin-bottom:1.2rem}
+.f-field label{
+  display:block;font-family:'Space Grotesk',sans-serif;font-size:0.75rem;font-weight:600;
+  color:var(--graphite-soft);margin-bottom:0.4rem;
+}
+.f-field input,.f-field textarea{
+  width:100%;font-family:'Newsreader',serif;font-size:1rem;padding:0.7rem 0;
+  background:transparent;border:none;border-bottom:1px solid var(--line);color:var(--ink);
+  outline:none;transition:border-color 0.2s;resize:vertical;
+}
+.f-field input:focus,.f-field textarea:focus{border-color:var(--ink)}
+.f-submit{
+  font-family:'Space Grotesk',sans-serif;font-size:0.85rem;font-weight:600;
+  padding:0.9rem 1.8rem;background:var(--ink);color:var(--paper);border:1px solid var(--ink);
+  cursor:pointer;transition:background 0.25s;
+}
+.f-submit:hover{background:var(--stamp);border-color:var(--stamp)}
+.f-submit:disabled{opacity:0.6;cursor:default}
+@media(max-width:768px){.contact-wrap{grid-template-columns:1fr}}
+
+footer{
+  padding:2.4rem 3.4rem;display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid var(--line);font-family:'Space Grotesk',sans-serif;font-size:0.78rem;color:var(--graphite-soft);
+  flex-wrap:wrap;gap:1rem;
+}
+
+.wa-float{
+  position:fixed;right:1.5rem;bottom:1.5rem;z-index:1000;width:56px;height:56px;border-radius:50%;
+  background:#25D366;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(0,0,0,0.22);transition:transform 0.25s;
+}
+.wa-float:hover{transform:scale(1.08)}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:1.3rem 1.6rem}
+  .hero{padding:6.5rem 1.6rem 3rem}
+  .section-wrap{padding:4rem 1.6rem}
+  .nav-burger{display:flex}
+  .nav-links{
+    display:flex;flex-direction:column;gap:1.4rem;position:fixed;top:0;right:0;
+    height:100vh;height:100dvh;width:70vw;max-width:280px;background:var(--paper);
+    padding:6rem 2rem 2rem;transform:translateX(100%);transition:transform 0.35s ease;
+    border-left:1px solid var(--line);
+  }
+  .nav-links.open{transform:translateX(0)}
+  .ai-strip{padding:1.6rem}
+  footer{padding:1.6rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-eyebrow,.hero-title,.hero-desc,.hero-cta,.hero-stamp{animation:none;opacity:1}
+}
+</style>
+</head>
+<body>
+
+<div class="reg reg-tl"></div>
+<div class="reg reg-tr"></div>
+<div class="reg reg-bl"></div>
+<div class="reg reg-br"></div>
+
+<nav>
+  <a href="#" class="nav-logo">TimmersDesign</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#diensten">Pakketten</a></li>
+    <li><a href="#portfolio">Werk</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section class="hero">
+  <div class="hero-stamp">Op maat<br>gebouwd</div>
+  <p class="hero-eyebrow">Webdesign · Ham, Limburg</p>
+  <h1 class="hero-title">Websites voor KMO's die klanten opleveren.</h1>
+  <p class="hero-desc">Snel, betaalbaar en persoonlijk — ik werk sneller dan een traditioneel webbureau, zonder in te leveren op kwaliteit. Voor ondernemers in Ham en omstreken die een website willen die écht werkt.</p>
+  <div class="hero-cta">
+    <a href="https://calendly.com/timmersdavy/gratis-gesprek" target="_blank" class="btn btn-solid">Gratis gesprek plannen</a>
+    <a href="#diensten" class="btn btn-outline">Bekijk pakketten</a>
+  </div>
+</section>
+
+<section class="section-wrap" id="diensten">
+  <div class="section-intro">
+    <div>
+      <p class="s-label">Wat ik doe</p>
+      <h2 class="s-title">Pakketten<br><em>op maat</em></h2>
+    </div>
+    <p class="section-sub">Van een eenvoudige visitekaartje-website tot een volledig op maat gemaakte oplossing — elk pakket is ontworpen om je zaak online goed neer te zetten, zonder bureau-overhead.</p>
+  </div>
+
+  <div class="spec-table">
+    <div class="spec-row">
+      <span class="spec-key">01 — Starter</span>
+      <div class="spec-body">
+        <h3>Starter</h3>
+        <p>Een professionele website met de essentie: homepage, contactgegevens, diensten- of productoverzicht. Perfect voor een sterke eerste indruk online.</p>
+      </div>
+      <span class="spec-price">€1.100<small>eenmalig</small></span>
+    </div>
+    <div class="spec-row">
+      <span class="spec-key">02 — Groei</span>
+      <div class="spec-body">
+        <h3>Groei</h3>
+        <p>Uitgebreidere website met meerdere pagina's, portfolio of blog, en basis SEO-optimalisatie zodat je beter gevonden wordt in Google.</p>
+      </div>
+      <span class="spec-price">€1.900<small>eenmalig</small></span>
+    </div>
+    <div class="spec-row">
+      <span class="spec-key">03 — Op maat</span>
+      <div class="spec-body">
+        <h3>Op maat</h3>
+        <p>Volledig op maat gebouwde website of webapplicatie, afgestemd op specifieke wensen zoals een boekingssysteem, klantenportaal of e-commerce.</p>
+      </div>
+      <span class="spec-price">Prijs op<small>aanvraag</small></span>
+    </div>
+    <div class="spec-row">
+      <span class="spec-key">04 — Onderhoud</span>
+      <div class="spec-body">
+        <h3>Onderhoud &amp; groei</h3>
+        <p>Maandelijkse check van snelheid en beveiliging, kleine tekst- en beeldaanpassingen, uptime-monitoring, back-up en prioritaire support. Minimum 6 maanden.</p>
+      </div>
+      <span class="spec-price">Vanaf €39<small>/ maand</small></span>
+    </div>
+  </div>
+
+  <div class="ai-strip">
+    <div>
+      <h3>AI-medewerker</h3>
+      <p>Een AI-chatbot op je site die 24/7 vragen beantwoordt en leads opvangt, gekoppeld aan je eigen kennis. Starter AI vanaf €750 eenmalig + €75/maand.</p>
+    </div>
+    <a href="https://calendly.com/timmersdavy/gratis-gesprek" target="_blank" class="btn btn-outline">Meer info</a>
+  </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+  <div class="section-wrap" style="padding-bottom:0">
+    <div class="section-intro">
+      <div>
+        <p class="s-label">Mijn werk</p>
+        <h2 class="s-title">Recente<br><em>projecten</em></h2>
+      </div>
+      <p class="section-sub">Een selectie van websites gebouwd voor lokale bedrijven in de regio.</p>
+    </div>
+  </div>
+  <div class="p-grid">
+    <a class="p-item" href="/ijssalon-timmers.html">
+      <div class="p-thumb" style="background-image:url('/portfolio-shots/ijssalon-timmers.jpg')"></div>
+      <div class="p-meta"><h4>IJssalon Timmers</h4><span>Horeca — Voorbeeldproject</span></div>
+    </a>
+    <a class="p-item" href="https://hopveld-demo-timmersdavys-projects.vercel.app" target="_blank" rel="noopener">
+      <div class="p-thumb" style="background-image:url('/portfolio-shots/hopveld.jpg')"></div>
+      <div class="p-meta"><h4>Hopveld</h4><span>Brouwerij — Live demo</span></div>
+    </a>
+    <a class="p-item" href="/slagerij-van-damme.html">
+      <div class="p-thumb" style="background-image:url('/portfolio-shots/slagerij-van-damme.jpg')"></div>
+      <div class="p-meta"><h4>Slagerij Van Damme</h4><span>Bedrijfswebsite — Voorbeeldproject</span></div>
+    </a>
+    <a class="p-item" href="/geuns-bouwprojecten.html">
+      <div class="p-thumb" style="background-image:url('/portfolio-shots/geuns-bouwprojecten.jpg')"></div>
+      <div class="p-meta"><h4>Geuns Bouwprojecten</h4><span>Bouw — Voorbeeldproject</span></div>
+    </a>
+    <a class="p-item" href="/al-fanar-tessenderlo.html">
+      <div class="p-thumb" style="background:linear-gradient(135deg,#1A1208,#0D0A06)"></div>
+      <div class="p-meta"><h4>Al Fanar Tessenderlo</h4><span>Lokale onderneming — Voorbeeldproject</span></div>
+    </a>
+    <a class="p-item" href="/klus-tuin-wim.html">
+      <div class="p-thumb" style="background-image:url('/portfolio-shots/klus-tuin-wim.jpg')"></div>
+      <div class="p-meta"><h4>Klus-Tuin-Wim</h4><span>Tuin &amp; klussen — Voorbeeldproject</span></div>
+    </a>
+    <a class="p-item" href="/reisbureau-claudia.html">
+      <div class="p-thumb" style="background-image:url('/portfolio-shots/reisbureau-claudia.jpg')"></div>
+      <div class="p-meta"><h4>Reisbureau Claud(ia)</h4><span>Reizen — Voorbeeldproject</span></div>
+    </a>
+    <a class="p-item" href="https://bladzijde-27.vercel.app" target="_blank" rel="noopener">
+      <div class="p-thumb" style="background-image:url('/portfolio-shots/bladzijde-27.jpg')"></div>
+      <div class="p-meta"><h4>Bladzijde 27</h4><span>Boekhandel — Voorbeeldproject</span></div>
+    </a>
+  </div>
+</section>
+
+<section class="section-wrap" id="contact">
+  <div class="section-intro" style="margin-bottom:3rem">
+    <div>
+      <p class="s-label">Aan de slag</p>
+      <h2 class="s-title">Laten we<br><em>praten</em></h2>
+    </div>
+    <p class="section-sub">Vertel kort waar je zaak nood aan heeft — ik antwoord meestal binnen de dag.</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>Rechtstreeks contact</h3>
+      <p>Liever meteen bellen of een gesprek inplannen? Kan ook.</p>
+      <div class="contact-line"><span>Telefoon</span><a href="tel:+32476548643">0476 54 86 43</a></div>
+      <div class="contact-line"><span>E-mail</span><a href="mailto:info@timmersdesign.be">info@timmersdesign.be</a></div>
+      <div class="contact-line"><span>Regio</span><span>Ham &amp; omstreken, Limburg</span></div>
+      <div class="contact-line"><span>Afspraak</span><a href="https://calendly.com/timmersdavy/gratis-gesprek" target="_blank">Gratis gesprek plannen</a></div>
+    </div>
+    <form id="contactForm" onsubmit="handleSubmit(event)">
+      <div class="f-field"><label for="naam">Naam</label><input id="naam" name="naam" type="text" required></div>
+      <div class="f-field"><label for="email">E-mail</label><input id="email" name="email" type="email" required></div>
+      <div class="f-field"><label for="dienst">Interesse</label>
+        <select id="dienst" name="dienst" style="width:100%;font-family:'Newsreader',serif;font-size:1rem;padding:0.7rem 0;background:transparent;border:none;border-bottom:1px solid var(--line);color:var(--ink)">
+          <option>Starter · €1.100 eenmalig</option>
+          <option>Groei · €1.900 eenmalig</option>
+          <option>Op maat · prijs op aanvraag</option>
+          <option>AI-medewerker</option>
+        </select>
+      </div>
+      <div class="f-field"><label for="bericht">Bericht</label><textarea id="bericht" name="bericht" rows="4" required></textarea></div>
+      <button type="submit" class="f-submit" id="submitBtn">Versturen</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 TimmersDesign — Davy Timmers, Ham, Limburg</span>
+  <span>KBO/BTW BE1040022716</span>
+</footer>
+
+<a href="https://wa.me/32476548643" class="wa-float" target="_blank" rel="noopener" aria-label="Chat via WhatsApp">
+  <svg viewBox="0 0 32 32" width="30" height="30" fill="#fff" aria-hidden="true">
+    <path d="M16.004 2.667c-7.363 0-13.334 5.97-13.334 13.333 0 2.353.615 4.646 1.784 6.665L2.667 29.333l6.815-1.787a13.27 13.27 0 0 0 6.522 1.72h.006c7.362 0 13.333-5.97 13.333-13.333S23.367 2.667 16.004 2.667zm0 24.4h-.005a11.05 11.05 0 0 1-5.634-1.542l-.404-.24-4.045 1.061 1.08-3.944-.264-.406a11.06 11.06 0 0 1-1.699-5.913c0-6.117 4.98-11.096 11.098-11.096 2.964 0 5.75 1.155 7.845 3.252a11.02 11.02 0 0 1 3.248 7.848c-.001 6.118-4.98 11.096-11.096 11.096l-.124-.116zm6.089-8.312c-.334-.167-1.97-.972-2.275-1.083-.305-.111-.527-.167-.749.167-.222.333-.86 1.083-1.055 1.305-.194.222-.389.25-.722.083-.334-.167-1.409-.519-2.684-1.655-.992-.884-1.663-1.978-1.858-2.311-.194-.334-.02-.514.147-.681.15-.15.334-.389.5-.583.167-.194.222-.333.334-.556.111-.222.055-.417-.028-.583-.083-.167-.749-1.804-1.026-2.472-.271-.65-.546-.562-.749-.573l-.638-.011c-.222 0-.583.083-.888.417-.305.333-1.164 1.138-1.164 2.776s1.192 3.222 1.358 3.444c.167.222 2.345 3.583 5.68 5.024.794.343 1.413.548 1.896.702.796.253 1.522.217 2.096.132.639-.096 1.97-.806 2.248-1.583.278-.778.278-1.444.194-1.583-.083-.14-.305-.222-.639-.389z"/>
+  </svg>
+</a>
+
+<script>
+const navBurger=document.getElementById('navBurger');
+const navLinks=document.getElementById('navLinks');
+navBurger.addEventListener('click',()=>{
+  const isOpen=navLinks.classList.toggle('open');
+  navBurger.classList.toggle('open',isOpen);
+  navBurger.setAttribute('aria-expanded',isOpen);
+});
+navLinks.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    navLinks.classList.remove('open');
+    navBurger.classList.remove('open');
+    navBurger.setAttribute('aria-expanded','false');
+  });
+});
+
+function handleSubmit(e){
+  e.preventDefault();
+  const form=e.target;
+  const btn=document.getElementById('submitBtn');
+  const originalText=btn.textContent;
+  btn.disabled=true;
+  btn.textContent='Bezig...';
+  fetch('https://formspree.io/f/mgojdyza',{
+    method:'POST',
+    body:new FormData(form),
+    headers:{'Accept':'application/json'}
+  }).then(res=>{
+    if(res.ok){
+      btn.textContent='Verstuurd';
+      form.reset();
+    } else {
+      btn.textContent='Mislukt, probeer opnieuw';
+    }
+  }).catch(()=>{
+    btn.textContent='Mislukt, probeer opnieuw';
+  }).finally(()=>{
+    btn.disabled=false;
+    setTimeout(()=>{btn.textContent=originalText},4000);
+  });
+}
+</script>
+</body>
+</html>
