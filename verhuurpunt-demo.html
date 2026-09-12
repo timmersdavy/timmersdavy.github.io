@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>VerhuurPunt — Feest- en werkmateriaal huren in Limburg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3F4F1;
+  --ink:#14201A;
+  --green:#1F4D3A;
+  --green-deep:#14382A;
+  --lime:#F2C94C;
+  --muted:#6B7570;
+  --line:rgba(20,32,26,.12);
+  --radius:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.display{font-family:"Bricolage Grotesque",Inter,sans-serif;letter-spacing:-.02em;line-height:1.05}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+/* demo banner */
+.demo{background:var(--ink);color:#fff;font-size:12px;text-align:center;padding:7px 12px}
+.demo b{color:var(--lime);font-weight:600}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(243,244,241,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:"Bricolage Grotesque";font-weight:800;font-size:22px}
+.brand i{width:34px;height:34px;border-radius:10px;background:var(--green);display:grid;place-items:center;color:var(--lime);font-style:normal;font-size:18px}
+.links{display:flex;gap:28px;list-style:none;font-size:15px;font-weight:500}
+.links a{text-decoration:none;opacity:.8}
+.links a:hover{opacity:1}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:999px;padding:13px 22px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-green{background:var(--green);color:#fff}
+.btn-green:hover{background:var(--green-deep)}
+.btn-lime{background:var(--lime);color:var(--ink)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.phone{font-weight:600;font-size:15px;text-decoration:none}
+
+/* hero */
+.hero{padding:64px 0 80px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(44px,6.2vw,76px);font-weight:800;margin:18px 0 20px}
+.hero p.lead{font-size:19px;color:var(--muted);max-width:520px;margin-bottom:34px}
+.open{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--green)}
+.open::before{content:"";width:9px;height:9px;border-radius:50%;background:#2fb96a;box-shadow:0 0 0 4px rgba(47,185,106,.2)}
+.hero-photo{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/4.6;background:linear-gradient(160deg,#2b6a50,#14382A)}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-photo .tag{position:absolute;left:18px;bottom:18px;background:#fff;border-radius:14px;padding:12px 16px;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.18);display:flex;gap:12px;align-items:center}
+.hero-photo .tag strong{font-family:"Bricolage Grotesque";font-size:22px;display:block;line-height:1}
+
+/* availability ticket */
+.ticket{background:#fff;border-radius:var(--radius);padding:8px;display:grid;grid-template-columns:1.3fr 1fr 1fr auto;gap:6px;box-shadow:0 20px 50px rgba(20,32,26,.10);border:1px solid var(--line)}
+.ticket .f{padding:12px 16px;border-radius:14px;transition:background .2s}
+.ticket .f:hover{background:var(--paper)}
+.ticket label{display:block;font-size:12px;color:var(--muted);font-weight:500;margin-bottom:4px}
+.ticket select,.ticket input{width:100%;border:none;background:transparent;font:600 15px Inter,sans-serif;color:var(--ink);outline:none}
+.ticket .go{border:none;border-radius:14px;background:var(--green);color:#fff;font-weight:600;padding:0 26px;font-size:15px;transition:background .2s}
+.ticket .go:hover{background:var(--green-deep)}
+.hint{font-size:13px;color:var(--muted);margin-top:14px}
+
+/* stats strip */
+.strip{background:var(--green);color:#fff}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.strip div{padding:26px 0;border-right:1px solid rgba(255,255,255,.15)}
+.strip div:last-child{border:none}
+.strip strong{font-family:"Bricolage Grotesque";font-size:34px;font-weight:800;display:block;color:var(--lime);line-height:1}
+.strip span{font-size:14px;opacity:.85}
+
+/* sections */
+section{padding:96px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:40px}
+.head h2{font-size:clamp(32px,4.4vw,52px);font-weight:800;max-width:600px}
+.head p{color:var(--muted);max-width:360px;font-size:16px}
+
+/* bento categories */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px}
+.cell{position:relative;border-radius:var(--radius);overflow:hidden;color:#fff;text-decoration:none;background:#2b6a50}
+.cell img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.cell:hover img{transform:scale(1.04)}
+.cell::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65),rgba(0,0,0,0) 60%)}
+.cell .t{position:absolute;left:20px;right:20px;bottom:18px;z-index:2}
+.cell h3{font-size:24px;font-weight:800}
+.cell small{font-size:13px;opacity:.85;display:block;margin-top:2px}
+.cell.big{grid-column:span 2;grid-row:span 2}
+.cell.wide{grid-column:span 2}
+
+/* popular */
+.pop{background:#fff}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--paper);display:flex;flex-direction:column}
+.card .ph{aspect-ratio:4/3;background:#DDE3DE;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover}
+.card .b{padding:18px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:19px;font-weight:600}
+.card p{font-size:14px;color:var(--muted)}
+.card .pr{margin-top:auto;padding-top:12px;display:flex;justify-content:space-between;align-items:center}
+.card .pr strong{font-family:"Bricolage Grotesque";font-size:22px}
+.card .pr strong small{font-size:13px;color:var(--muted);font-weight:500;font-family:Inter}
+.avail{font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;background:#E3F5EA;color:#1f7a45}
+.avail.low{background:#FFF1D6;color:#9a6a00}
+
+/* pricing table — dag / weekend / week */
+.tarief table{width:100%;border-collapse:collapse;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 1px 0 var(--line)}
+.tarief th,.tarief td{padding:18px 22px;text-align:left;border-bottom:1px solid var(--line);font-size:15px}
+.tarief th{font-family:"Bricolage Grotesque";font-size:16px;font-weight:800;background:var(--paper)}
+.tarief th:not(:first-child),.tarief td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums}
+.tarief tr:last-child td{border:none}
+.tarief td:first-child{font-weight:600}
+.tarief .note{margin-top:16px;font-size:14px;color:var(--muted)}
+.tarief .wk{color:var(--green);font-weight:600}
+
+/* process — horizontal rail */
+.rail{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;position:relative}
+.rail::before{content:"";position:absolute;left:8%;right:8%;top:28px;height:2px;background:var(--line)}
+.stp{position:relative;padding-top:70px}
+.stp .n{position:absolute;top:8px;left:0;width:42px;height:42px;border-radius:50%;background:var(--lime);display:grid;place-items:center;font-family:"Bricolage Grotesque";font-weight:800;font-size:18px}
+.stp h3{font-size:22px;font-weight:600;margin-bottom:8px}
+.stp p{color:var(--muted);font-size:15px}
+
+/* faq */
+.faq{background:var(--green);color:#fff}
+.faq .head h2{color:#fff}
+.faq .head p{color:rgba(255,255,255,.7)}
+details{border-top:1px solid rgba(255,255,255,.15)}
+details:last-of-type{border-bottom:1px solid rgba(255,255,255,.15)}
+summary{list-style:none;cursor:pointer;padding:22px 0;font-family:"Bricolage Grotesque";font-size:20px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:26px;color:var(--lime);transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 22px;color:rgba(255,255,255,.8);max-width:720px;font-size:16px}
+
+/* contact */
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact h2{font-size:clamp(34px,4.6vw,56px);font-weight:800;margin-bottom:18px}
+.contact .lead{font-size:18px;color:var(--muted);margin-bottom:28px;max-width:440px}
+.info{display:grid;gap:14px;margin-top:28px}
+.info div{display:flex;gap:14px;font-size:15px}
+.info b{min-width:90px;font-weight:600}
+.map{border-radius:var(--radius);aspect-ratio:1/1;background:#DDE3DE url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><path d="M0 20h40M20 0v40" stroke="rgba(20,32,26,.08)"/></svg>');position:relative;overflow:hidden}
+.map .pin{position:absolute;left:50%;top:50%;transform:translate(-50%,-100%);width:30px;height:30px;border-radius:50% 50% 50% 0;background:var(--green);rotate:-45deg;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.map .lbl{position:absolute;left:18px;bottom:18px;background:#fff;padding:10px 14px;border-radius:12px;font-size:13px;font-weight:600}
+
+footer{padding:34px 0;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media(max-width:960px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hero-photo{aspect-ratio:16/10}
+  .ticket{grid-template-columns:1fr 1fr}
+  .ticket .go{grid-column:span 2;padding:16px}
+  .strip .wrap{grid-template-columns:repeat(2,1fr)}
+  .strip div:nth-child(2){border:none}
+  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:190px}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .rail{grid-template-columns:1fr}
+  .rail::before{display:none}
+  .contact .wrap{grid-template-columns:1fr}
+  .links{display:none}
+}
+@media(max-width:560px){
+  .wrap{padding:0 18px}
+  section{padding:64px 0}
+  .ticket{grid-template-columns:1fr}
+  .ticket .go{grid-column:auto}
+  .bento{grid-template-columns:1fr;grid-auto-rows:180px}
+  .cell.big,.cell.wide{grid-column:auto;grid-row:auto}
+  .cards{grid-template-columns:1fr}
+  .head{flex-direction:column;align-items:start}
+  .tarief th,.tarief td{padding:14px 12px;font-size:14px}
+  .strip strong{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<div class="demo">Demo-website gebouwd door <b>TimmersDesign</b> — fictieve zaak, alle gegevens zijn voorbeeld</div>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#"><i>▲</i>VerhuurPunt</a>
+    <ul class="links">
+      <li><a href="#aanbod">Aanbod</a></li>
+      <li><a href="#tarieven">Tarieven</a></li>
+      <li><a href="#hoe">Hoe het werkt</a></li>
+      <li><a href="#faq">Vragen</a></li>
+    </ul>
+    <a class="phone" href="tel:+3211000000">011 00 00 00</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="open">Vandaag open tot 18u · zaterdag tot 13u</span>
+      <h1>Huur het vandaag, gebruik het morgen.</h1>
+      <p class="lead">Feesttenten, werkmateriaal, tuinmachines en aanhangwagens. Check live of het vrij is, reserveer online en haal af in Limburg.</p>
+
+      <form class="ticket" onsubmit="event.preventDefault();alert('Demo — in de echte site zie je hier de beschikbaarheid.');">
+        <div class="f"><label for="wat">Wat wil je huren?</label>
+          <select id="wat"><option>Feesttent 6×12 m</option><option>Hoogtewerker 12 m</option><option>Zitmaaier</option><option>Gesloten aanhanger</option><option>Statafels (per 10)</option></select></div>
+        <div class="f"><label for="van">Ophalen</label><input id="van" type="date"></div>
+        <div class="f"><label for="tot">Terugbrengen</label><input id="tot" type="date"></div>
+        <button class="go" type="submit">Check beschikbaarheid</button>
+      </form>
+      <p class="hint">Geen account nodig. Je betaalt pas bij afhaling of levering.</p>
+    </div>
+
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=1200&q=80" alt="Opgezette feesttent met verlichting" onerror="this.remove()">
+      <div class="tag"><strong>412</strong><span>items op voorraad<br>klaar om op te halen</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <div><strong>12 jaar</strong><span>verhuur in de regio</span></div>
+    <div><strong>4.9 ★</strong><span>gemiddelde beoordeling</span></div>
+    <div><strong>20 km</strong><span>leveringszone rond Beringen</span></div>
+    <div><strong>za</strong><span>ook op zaterdag afhalen</span></div>
+  </div>
+</div>
+
+<section id="aanbod">
+  <div class="wrap">
+    <div class="head">
+      <h2>Vier categorieën, alles onder één dak.</h2>
+      <p>Van een tuinfeest voor 30 tot een werf van drie weken. Klik een categorie om de voorraad te zien.</p>
+    </div>
+    <div class="bento">
+      <a class="cell big" href="#"><img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1200&q=80" alt="" onerror="this.remove()"><div class="t"><h3>Feestmateriaal</h3><small>Tenten, tafels, stoelen, bar, geluid & licht</small></div></a>
+      <a class="cell" href="#"><img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=80" alt="" onerror="this.remove()"><div class="t"><h3>Werkmateriaal</h3><small>Boren, slijpen, storten, tillen</small></div></a>
+      <a class="cell" href="#"><img src="https://images.unsplash.com/photo-1592150621744-aca64f48394a?auto=format&fit=crop&w=800&q=80" alt="" onerror="this.remove()"><div class="t"><h3>Tuinmachines</h3><small>Maaien, snoeien, versnipperen</small></div></a>
+      <a class="cell wide" href="#"><img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=80" alt="" onerror="this.remove()"><div class="t"><h3>Aanhangwagens</h3><small>Open, gesloten en autotransporter · rijbewijs B</small></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="pop">
+  <div class="wrap">
+    <div class="head">
+      <h2>Vaak gehuurd deze maand</h2>
+      <p>Beschikbaarheid wordt live bijgewerkt — reserveer op tijd voor het weekend.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=800&q=80" alt="" onerror="this.parentNode.style.background='#cfe0d5'"></div>
+        <div class="b"><h3>Feesttent 6×12 m</h3><p>Incl. zijwanden en verlichting, tot 80 personen</p>
+        <div class="pr"><strong>€145<small>/dag</small></strong><span class="avail low">nog 2 vrij</span></div></div></div>
+      <div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80" alt="" onerror="this.parentNode.style.background='#cfe0d5'"></div>
+        <div class="b"><h3>Hoogtewerker 12 m</h3><p>Zelfrijdend, geen attest nodig</p>
+        <div class="pr"><strong>€89<small>/dag</small></strong><span class="avail">beschikbaar</span></div></div></div>
+      <div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1592419044706-39796d40f98c?auto=format&fit=crop&w=800&q=80" alt="" onerror="this.parentNode.style.background='#cfe0d5'"></div>
+        <div class="b"><h3>Zitmaaier</h3><p>Voor tuinen vanaf 1000 m², vol getankt</p>
+        <div class="pr"><strong>€65<small>/dag</small></strong><span class="avail">beschikbaar</span></div></div></div>
+      <div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=800&q=80" alt="" onerror="this.parentNode.style.background='#cfe0d5'"></div>
+        <div class="b"><h3>Statafels, set van 10</h3><p>Met witte rokken, 110 cm hoog</p>
+        <div class="pr"><strong>€60<small>/dag</small></strong><span class="avail">beschikbaar</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="tarief" id="tarieven">
+  <div class="wrap">
+    <div class="head">
+      <h2>Eerlijke tarieven, ook voor het weekend.</h2>
+      <p>Een weekend telt als één dag. Een week kost drie dagen. Geen kleine lettertjes.</p>
+    </div>
+    <table>
+      <thead><tr><th>Item</th><th>Dag</th><th>Weekend <span class="wk">= 1 dag</span></th><th>Week</th><th>Waarborg</th></tr></thead>
+      <tbody>
+        <tr><td>Feesttent 6×12 m</td><td>€145</td><td>€145</td><td>€435</td><td>€300</td></tr>
+        <tr><td>Hoogtewerker 12 m</td><td>€89</td><td>€89</td><td>€267</td><td>€500</td></tr>
+        <tr><td>Zitmaaier</td><td>€65</td><td>€65</td><td>€195</td><td>€250</td></tr>
+        <tr><td>Gesloten aanhanger 2×1,3 m</td><td>€35</td><td>€35</td><td>€105</td><td>€150</td></tr>
+        <tr><td>Statafels, set van 10</td><td>€60</td><td>€60</td><td>€180</td><td>€100</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Prijzen incl. btw. Weekend = ophalen vrijdag na 16u, terug maandag voor 10u. Levering binnen 20 km: €25 per rit.</p>
+  </div>
+</section>
+
+<section id="hoe">
+  <div class="wrap">
+    <div class="head">
+      <h2>Drie stappen, geen wachtrij aan de balie.</h2>
+    </div>
+    <div class="rail">
+      <div class="stp"><span class="n">1</span><h3>Kies je datums</h3><p>Check online of het vrij is en reserveer in 30 seconden. Je krijgt meteen een bevestiging.</p></div>
+      <div class="stp"><span class="n">2</span><h3>Haal af of laat leveren</h3><p>Alles staat klaar op het afgesproken uur. We laden mee in en tonen kort hoe het werkt.</p></div>
+      <div class="stp"><span class="n">3</span><h3>Breng terug, klaar</h3><p>Gebruikt en terug? We checken samen, je waarborg komt binnen 2 dagen terug.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="head">
+      <h2>Veelgestelde vragen</h2>
+      <p>Iets anders? Bel ons, we nemen op.</p>
+    </div>
+    <details open><summary>Moet ik het materiaal zelf proper terugbrengen?</summary><p>Bezemschoon volstaat. Tenten en tafels kuisen wij zelf, dat zit in de prijs. Machines graag leeg van gras of puin.</p></details>
+    <details><summary>Wat als ik een dag langer nodig heb?</summary><p>Bel voor 10u 's ochtends en we verlengen als het item vrij is. Je betaalt gewoon de extra dag.</p></details>
+    <details><summary>Heb ik een speciaal rijbewijs nodig voor de aanhangwagens?</summary><p>Nee. Al onze aanhangers blijven onder 750 kg, dus rijbewijs B volstaat.</p></details>
+    <details><summary>Wat gebeurt er als iets kapot gaat?</summary><p>Normale slijtage is voor ons. Schade door verkeerd gebruik verrekenen we met de waarborg, altijd eerst in overleg.</p></details>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Kom langs of laat het brengen.</h2>
+      <p class="lead">Vlak aan de afrit, ruime parking, laden en lossen aan het magazijn.</p>
+      <a class="btn btn-green" href="#">Reserveer online</a>
+      <a class="btn btn-ghost" href="tel:+3211000000" style="margin-left:10px">Bel 011 00 00 00</a>
+      <div class="info">
+        <div><b>Adres</b><span>Industrieweg 12, 3580 Beringen (fictief)</span></div>
+        <div><b>Open</b><span>ma–vr 8u–18u · za 8u–13u</span></div>
+        <div><b>E-mail</b><span>info@verhuurpunt.be</span></div>
+      </div>
+    </div>
+    <div class="map" role="img" aria-label="Kaart van de locatie"><span class="pin"></span><div class="lbl">VerhuurPunt · Industrieweg 12</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© VerhuurPunt — fictieve demo-onderneming</span>
+    <span>Website door <strong>TimmersDesign</strong> · timmersdesign.be</span>
+  </div>
+</footer>
+
+</body>
+</html>
