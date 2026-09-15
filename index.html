@@ -463,7 +463,26 @@ footer{
 <footer>
   <span>© 2026 TimmersDesign — Davy Timmers, Ham, Limburg</span>
   <span>KBO/BTW BE1040022716</span>
+  <span><a href="/privacy.html" style="color:inherit;text-decoration:underline;">Privacybeleid</a></span>
 </footer>
+
+<div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:#0f172a;color:#fff;padding:16px 20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;z-index:9999;font-family:inherit;">
+  <span style="font-size:0.9rem;max-width:600px;">
+    Deze site gebruikt functionele cookies om de chatwidget te laten werken.
+    <a href="/privacy.html" style="color:#c8a96e;text-decoration:underline;">Meer info</a>
+  </span>
+  <button onclick="acceptCookies()" style="background:#c8a96e;color:#0f172a;border:none;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer;">Akkoord</button>
+</div>
+<script>
+  if (localStorage.getItem('cookiesAccepted') === 'true') {
+    var cb = document.getElementById('cookie-banner');
+    if (cb) cb.style.display = 'none';
+  }
+  function acceptCookies() {
+    localStorage.setItem('cookiesAccepted', 'true');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+</script>
 
 <a href="https://wa.me/32476548643" class="wa-float" target="_blank" rel="noopener" aria-label="Chat via WhatsApp">
   <svg viewBox="0 0 32 32" width="30" height="30" fill="#fff" aria-hidden="true">
