@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Bakkerij De Gouden Aar — fictieve demo | TimmersDesign</title>
+<style>
+  :root {
+    --wood: #8a6d4b;
+    --cream: #faf5ec;
+    --dark: #2e2419;
+    --accent: #c8874a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--cream);
+    color: var(--dark);
+    line-height: 1.6;
+  }
+  .demo-banner {
+    background: var(--dark);
+    color: #fff;
+    text-align: center;
+    padding: 10px 16px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    letter-spacing: .02em;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 6%;
+    background: var(--cream);
+  }
+  header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: .03em;
+  }
+  header nav a {
+    color: var(--dark);
+    text-decoration: none;
+    margin-left: 28px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+  }
+  .hero {
+    position: relative;
+    height: 60vh;
+    min-height: 420px;
+    background: url('https://d8j0ntlcm91z4.cloudfront.net/user_3EjVuYOuexoJv4vEYDV1N48Sfi7/hf_20260920_190826_47aee784-f183-4adb-aa1d-a29dc7681778.png') center/cover no-repeat;
+    display: flex;
+    align-items: flex-end;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(46,36,25,0) 40%, rgba(46,36,25,.75) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 48px 6%;
+    color: #fff;
+  }
+  .hero-content h1 {
+    font-size: clamp(32px, 5vw, 56px);
+    margin-bottom: 8px;
+  }
+  .hero-content p {
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    opacity: .9;
+  }
+  .intro {
+    max-width: 720px;
+    margin: 56px auto;
+    padding: 0 6%;
+    text-align: center;
+  }
+  .intro p {
+    font-size: 18px;
+    color: #55483a;
+  }
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-bottom: 56px;
+  }
+  .gallery-strip img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+  }
+  section.menu {
+    padding: 0 6% 64px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  section.menu h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+  section.menu > p.sub {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #7a6a55;
+    margin-bottom: 40px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+  }
+  .category {
+    margin-bottom: 40px;
+  }
+  .category h3 {
+    font-size: 22px;
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 4px;
+    margin-bottom: 16px;
+  }
+  .item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px dashed #d8c9b3;
+    font-family: Arial, sans-serif;
+  }
+  .item-row .name {
+    font-size: 16px;
+  }
+  .item-row .price {
+    font-weight: bold;
+    color: var(--wood);
+    white-space: nowrap;
+    margin-left: 16px;
+  }
+  .hours-contact {
+    background: var(--dark);
+    color: var(--cream);
+    padding: 56px 6%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    font-family: Arial, sans-serif;
+  }
+  .hours-contact h3 {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--accent);
+  }
+  .hours-contact p { font-size: 15px; opacity: .9; margin-bottom: 4px; }
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #9a8a72;
+    background: var(--dark);
+  }
+  footer a { color: var(--accent); }
+  @media (max-width: 640px) {
+    .gallery-strip { grid-template-columns: 1fr; }
+    .hours-contact { grid-template-columns: 1fr; }
+    header nav a { margin-left: 14px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">Dit is een fictieve portfoliodemo van TimmersDesign — geen bestaande zaak</div>
+
+<header>
+  <div class="logo">De Gouden Aar</div>
+  <nav>
+    <a href="#menu">Menu</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-content">
+    <h1>Vers gebakken, elke ochtend opnieuw</h1>
+    <p>Ambachtelijke bakkerij in het hart van Ham</p>
+  </div>
+</div>
+
+<div class="intro">
+  <p>Bij De Gouden Aar bakken we elke dag vers brood en gebak op ambachtelijke wijze. Kom binnen voor een koffie, een belegd broodje, of neem iets lekkers mee naar huis.</p>
+</div>
+
+<div class="gallery-strip">
+  <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EjVuYOuexoJv4vEYDV1N48Sfi7/hf_20260920_190826_ef95c7e1-5790-426a-95a1-79bc8b36c283.png" alt="Verse broodkraam">
+  <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EjVuYOuexoJv4vEYDV1N48Sfi7/hf_20260920_190826_009e0881-4340-4913-b4bd-ad0c65dda202.png" alt="Koffiehoek">
+</div>
+
+<section class="menu" id="menu">
+  <h2>Ons menu</h2>
+  <p class="sub">Elke dag vers bereid</p>
+
+  <div class="category">
+    <h3>Brood</h3>
+    <div class="item-row"><span class="name">Wit stokbrood</span><span class="price">€2,20</span></div>
+    <div class="item-row"><span class="name">Volkoren stokbrood</span><span class="price">€2,50</span></div>
+    <div class="item-row"><span class="name">Boerenbrood (bruin)</span><span class="price">€3,80</span></div>
+    <div class="item-row"><span class="name">Spelt- of meergranenbrood</span><span class="price">€4,20</span></div>
+    <div class="item-row"><span class="name">Rozijnenbrood</span><span class="price">€4,50</span></div>
+  </div>
+
+  <div class="category">
+    <h3>Gebak & taart</h3>
+    <div class="item-row"><span class="name">Koffiekoek</span><span class="price">€1,60</span></div>
+    <div class="item-row"><span class="name">Croissant (boter)</span><span class="price">€1,50</span></div>
+    <div class="item-row"><span class="name">Chocoladebroodje</span><span class="price">€1,70</span></div>
+    <div class="item-row"><span class="name">Appelflap</span><span class="price">€2,00</span></div>
+    <div class="item-row"><span class="name">Rijsttaart (stuk)</span><span class="price">€2,80</span></div>
+    <div class="item-row"><span class="name">Verjaardagstaart op bestelling</span><span class="price">vanaf €25</span></div>
+  </div>
+
+  <div class="category">
+    <h3>Ontbijt & lunch</h3>
+    <div class="item-row"><span class="name">Belegd broodje (kaas / hesp / skinny)</span><span class="price">€3,50</span></div>
+    <div class="item-row"><span class="name">Croque monsieur</span><span class="price">€4,00</span></div>
+    <div class="item-row"><span class="name">Yoghurt met granola & fruit</span><span class="price">€3,80</span></div>
+  </div>
+
+  <div class="category">
+    <h3>Dranken</h3>
+    <div class="item-row"><span class="name">Koffie</span><span class="price">€2,30</span></div>
+    <div class="item-row"><span class="name">Cappuccino</span><span class="price">€2,80</span></div>
+    <div class="item-row"><span class="name">Verse jus d'orange</span><span class="price">€3,50</span></div>
+    <div class="item-row"><span class="name">Warme chocomelk</span><span class="price">€3,00</span></div>
+  </div>
+</section>
+
+<div class="hours-contact" id="contact">
+  <div>
+    <h3>Openingsuren</h3>
+    <p>Dinsdag – Zaterdag: 7:00 – 18:00</p>
+    <p>Zondag: 7:00 – 13:00</p>
+    <p>Maandag gesloten</p>
+  </div>
+  <div>
+    <h3>Contact</h3>
+    <p>Dorpsstraat 22, 3945 Ham</p>
+    <p>info@degoudenaar-demo.be</p>
+  </div>
+</div>
+
+<footer>
+  Fictieve demo — website door <a href="https://timmersdesign.be">TimmersDesign</a>
+</footer>
+
+</body>
+</html>
