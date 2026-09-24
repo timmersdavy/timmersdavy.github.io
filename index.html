@@ -282,6 +282,15 @@ footer{
 @media(prefers-reduced-motion:reduce){
   .hero-eyebrow,.hero-title,.hero-desc,.hero-cta,.hero-stamp{animation:none;opacity:1}
 }
+
+.own-block{background:#fff;border:1px solid var(--line);border-radius:4px;padding:2.2rem 2rem;margin:2.5rem auto;max-width:900px;display:grid;grid-template-columns:1fr 1.2fr;gap:2rem;align-items:center}
+.own-block h3{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:600;margin-bottom:0.6rem}
+.own-block h3 em{color:var(--stamp);font-style:italic}
+.own-block p{font-size:0.95rem;color:var(--graphite);line-height:1.6}
+.own-list{list-style:none;margin:0.8rem 0 0.6rem}
+.own-list li{padding:0.45rem 0;border-bottom:1px solid var(--line-soft);color:var(--ink);display:flex;gap:0.7rem;line-height:1.5}
+.own-list li::before{content:"✔";color:var(--stamp);font-weight:700;flex-shrink:0}
+@media (max-width:760px){.own-block{grid-template-columns:1fr;padding:1.6rem 1.3rem;gap:1rem}}
 </style>
 </head>
 <body>
@@ -359,6 +368,22 @@ footer{
         <p>Maandelijkse check van snelheid en beveiliging, kleine tekst- en beeldaanpassingen, uptime-monitoring, back-up en prioritaire support. Minimum 6 maanden.</p>
       </div>
       <span class="spec-price">Vanaf €39<small>/ maand</small></span>
+    </div>
+  </div>
+
+  <div class="own-block" id="eigendom">
+    <div>
+      <p class="s-label">Geen gedoe achteraf</p>
+      <h3>Jouw website is <em>van jou</em></h3>
+      <p>Geen abonnement bij Wix of een ander platform waar je aan vastzit. Ik bouw je site in gewone code die overal draait.</p>
+    </div>
+    <div>
+      <ul class="own-list">
+        <li>Je domeinnaam staat op jouw naam</li>
+        <li>Je krijgt altijd alle bestanden mee</li>
+        <li>Wil je later naar een andere webbouwer? Geen probleem, je neemt alles mee</li>
+      </ul>
+      <p>Stop je met onderhoud bij mij, dan zet ik alles netjes over. Zonder extra kosten.</p>
     </div>
   </div>
 
