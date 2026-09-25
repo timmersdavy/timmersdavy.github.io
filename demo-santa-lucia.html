@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brasserie Santa Lucia — Tessenderlo</title>
+<style>
+  :root{
+    --cream:#faf6ef;
+    --dark:#231f1a;
+    --accent:#a4342a;
+    --accent-soft:#c9a15a;
+    --line:#e8e0d2;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Georgia', 'Times New Roman', serif;
+    background:var(--cream);
+    color:var(--dark);
+    line-height:1.6;
+  }
+  header{
+    position:sticky; top:0; z-index:10;
+    background:rgba(250,246,239,0.95);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 6%;
+  }
+  .logo{font-size:1.5rem; letter-spacing:2px; font-weight:bold; color:var(--accent);}
+  .logo span{color:var(--accent-soft); font-style:italic;}
+  nav a{
+    color:var(--dark); text-decoration:none; margin-left:28px;
+    font-size:0.95rem; letter-spacing:0.5px;
+  }
+  nav a:hover{color:var(--accent);}
+  .hero{
+    min-height:82vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:60px 6%;
+    background:
+      linear-gradient(rgba(35,31,26,0.55),rgba(35,31,26,0.55)),
+      repeating-linear-gradient(135deg, #3a2a22 0 40px, #33241d 40px 80px);
+    color:#faf6ef;
+  }
+  .hero h1{
+    font-size:clamp(2.2rem,6vw,4rem);
+    font-weight:normal;
+    letter-spacing:2px;
+    margin-bottom:18px;
+  }
+  .hero h1 em{color:var(--accent-soft); font-style:italic;}
+  .hero p{font-size:1.15rem; max-width:520px; margin:0 auto 32px; opacity:0.92;}
+  .btn{
+    display:inline-block; padding:14px 34px;
+    background:var(--accent); color:#fff; text-decoration:none;
+    border-radius:2px; letter-spacing:1px; font-size:0.95rem;
+    transition:background .2s;
+  }
+  .btn:hover{background:#8a2a21;}
+  section{padding:80px 6%; max-width:1000px; margin:0 auto;}
+  .section-title{
+    text-align:center; font-size:2rem; font-weight:normal; margin-bottom:12px; letter-spacing:1px;
+  }
+  .section-sub{text-align:center; color:#7a6f5e; margin-bottom:50px; font-style:italic;}
+  .about{display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;}
+  .about-img{
+    aspect-ratio:4/3; background:linear-gradient(135deg,#d8c9a3,#b89b6a);
+    border-radius:4px; display:flex; align-items:center; justify-content:center;
+    color:#fff8ec; font-size:0.85rem; letter-spacing:1px; text-align:center; padding:20px;
+  }
+  @media (max-width:760px){ .about{grid-template-columns:1fr;} }
+  .menu-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:36px;}
+  .menu-item{border-bottom:1px solid var(--line); padding-bottom:18px;}
+  .menu-item .row{display:flex; justify-content:space-between; align-items:baseline; gap:12px;}
+  .menu-item h4{font-size:1.15rem; font-weight:normal;}
+  .menu-item .price{color:var(--accent); white-space:nowrap;}
+  .menu-item p{font-size:0.9rem; color:#7a6f5e; margin-top:4px;}
+  .menu-note{text-align:center; margin-top:40px; font-size:0.9rem; color:#a08f6f; font-style:italic;}
+  .info-band{
+    background:var(--dark); color:var(--cream);
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:40px;
+    padding:70px 6%; text-align:center;
+  }
+  .info-band h4{color:var(--accent-soft); font-weight:normal; letter-spacing:1px; margin-bottom:10px; font-size:0.85rem; text-transform:uppercase;}
+  .info-band p{font-size:1rem; opacity:0.9;}
+  .reserve{text-align:center;}
+  .reserve p{max-width:480px; margin:0 auto 30px; color:#5c5344;}
+  footer{
+    text-align:center; padding:36px 6%; font-size:0.85rem; color:#a08f6f;
+    border-top:1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">SANTA <span>LUCIA</span></div>
+  <nav>
+    <a href="#over">Over ons</a>
+    <a href="#menu">Menu</a>
+    <a href="#reserveren">Reserveren</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Genieten bij <em>Santa Lucia</em></h1>
+  <p>Brasserie in Tessenderlo-Ham — eerlijke gerechten, warme sfeer, en een team dat u graag ontvangt.</p>
+  <a class="btn" href="#reserveren">Reserveer uw tafel</a>
+</div>
+
+<section id="over">
+  <div class="about">
+    <div class="about-img">Santa Lucia — Tessenderlo-Ham</div>
+    <div>
+      <h2 class="section-title" style="text-align:left">Over Santa Lucia</h2>
+      <p>Sinds de opening in Tessenderlo-Ham staat Santa Lucia bekend om zijn gastvrije sfeer en verzorgde keuken. Of u nu langskomt voor een rustige lunch, een diner met vrienden, of een speciale gelegenheid — bij ons voelt u zich meteen thuis.</p>
+      <p style="margin-top:14px;">Elk gerecht wordt met zorg bereid en vers op tafel gebracht, in een gezellig kader waar u zich meteen welkom voelt.</p>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <h2 class="section-title">Onze Kaart</h2>
+  <p class="section-sub">Een greep uit wat wij u voorschotelen</p>
+  <div class="menu-grid">
+    <div class="menu-item">
+      <div class="row"><h4>Tomatensoep met verse basilicum</h4><span class="price">€ 8</span></div>
+      <p>Huisbereid, met een scheutje room.</p>
+    </div>
+    <div class="menu-item">
+      <div class="row"><h4>Carpaccio van rund</h4><span class="price">€ 15</span></div>
+      <p>Met Parmezaan, pijnboompitten en truffelmayonaise.</p>
+    </div>
+    <div class="menu-item">
+      <div class="row"><h4>Scampi's in look</h4><span class="price">€ 16</span></div>
+      <p>Gebakken in roomboter, verse peterselie.</p>
+    </div>
+    <div class="menu-item">
+      <div class="row"><h4>Vol-au-vent huisbereid</h4><span class="price">€ 22</span></div>
+      <p>Met krokante frietjes.</p>
+    </div>
+    <div class="menu-item">
+      <div class="row"><h4>Steak met pepersaus</h4><span class="price">€ 24</span></div>
+      <p>Belgisch rundvlees, geserveerd met frietjes en salade.</p>
+    </div>
+    <div class="menu-item">
+      <div class="row"><h4>Zeotong meunière</h4><span class="price">€ 28</span></div>
+      <p>Naargelang aanvoer van de dag.</p>
+    </div>
+    <div class="menu-item">
+      <div class="row"><h4>Risotto met wilde paddenstoelen</h4><span class="price">€ 20</span></div>
+      <p>Romig bereid, afgewerkt met Parmezaan.</p>
+    </div>
+    <div class="menu-item">
+      <div class="row"><h4>Dagsalade met geitenkaas</h4><span class="price">€ 18</span></div>
+      <p>Met honing-walnootdressing.</p>
+    </div>
+    <div class="menu-item">
+      <div class="row"><h4>Crème brúlée</h4><span class="price">€ 9</span></div>
+      <p>Klassieker met een krokant korstje.</p>
+    </div>
+    <div class="menu-item">
+      <div class="row"><h4>Dame blanche</h4><span class="price">€ 10</span></div>
+      <p>Vanille-ijs, warme chocoladesaus, slagroom.</p>
+    </div>
+  </div>
+  <p class="menu-note">Vraag aan onze bediening naar de suggesties van de dag.</p>
+</section>
+
+<div class="info-band">
+  <div>
+    <h4>Adres</h4>
+    <p>Engsbergseweg 144<br>3980 Tessenderlo</p>
+  </div>
+  <div>
+    <h4>Openingsuren</h4>
+    <p>Di – Zo: 11u30 – 22u<br>Maandag gesloten</p>
+  </div>
+  <div>
+    <h4>Contact</h4>
+    <p>+32 486 14 12 49</p>
+  </div>
+</div>
+
+<div style="max-width:1000px; margin:0 auto; padding:0 6% 60px;">
+  <iframe
+    src="https://www.google.com/maps?q=Engsbergseweg+144,+3980+Tessenderlo&output=embed"
+    width="100%" height="320" style="border:0; border-radius:4px;"
+    allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
+<section id="reserveren" class="reserve">
+  <h2 class="section-title">Reserveer uw tafel</h2>
+  <p>Bel ons rechtstreeks of stuur een bericht via WhatsApp — wij bevestigen uw reservatie graag persoonlijk.</p>
+  <a class="btn" href="https://wa.me/32486141249">Reserveer via WhatsApp</a>
+</section>
+
+<footer>
+  © 2026 Brasserie Santa Lucia — Tessenderlo · Website door <strong>TimmersDesign</strong>
+</footer>
+
+</body>
+</html>
