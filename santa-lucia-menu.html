@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Santa Lucia — Menukaart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#6f2c2a;
+    --wine-deep:#4a1d1c;
+    --cream:#f4ecdd;
+    --olive:#5c6b45;
+    --gold:#b98a35;
+    --ink:#2a2018;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  header{
+    background:var(--wine);
+    color:var(--cream);
+    padding:3.5rem 1.5rem 2.5rem;
+    text-align:center;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.06), transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(0,0,0,0.15), transparent 45%);
+  }
+  header h1{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(2.2rem,6vw,3.2rem);
+    margin:0 0 0.4rem;
+    letter-spacing:0.01em;
+  }
+  header p{
+    margin:0;
+    font-size:0.95rem;
+    opacity:0.85;
+    letter-spacing:0.02em;
+  }
+  main{
+    max-width:640px;
+    margin:0 auto;
+    padding:2.5rem 1.5rem 4rem;
+  }
+  .categorie{
+    margin-bottom:2.6rem;
+  }
+  .categorie h2{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-style:italic;
+    font-size:1.4rem;
+    color:var(--wine-deep);
+    border-bottom:1.5px solid var(--olive);
+    padding-bottom:0.4rem;
+    margin:0 0 1.1rem;
+  }
+  .item{
+    display:flex;
+    align-items:baseline;
+    gap:0.5rem;
+    margin-bottom:1.1rem;
+  }
+  .item-naam{
+    font-weight:600;
+    font-size:1.02rem;
+    white-space:nowrap;
+  }
+  .leader{
+    flex:1;
+    border-bottom:1.5px dotted #b3a68f;
+    margin-bottom:0.28rem;
+  }
+  .item-prijs{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    color:var(--gold);
+    font-size:1.05rem;
+    white-space:nowrap;
+  }
+  .item-beschrijving{
+    flex-basis:100%;
+    font-size:0.88rem;
+    color:#5a4f42;
+    margin-top:-0.6rem;
+    margin-bottom:0.4rem;
+  }
+  .status{
+    text-align:center;
+    padding:3rem 1rem;
+    color:#7a6d5b;
+    font-size:0.95rem;
+  }
+  footer{
+    text-align:center;
+    padding:1.5rem;
+    font-size:0.78rem;
+    color:#8a7d6a;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Santa Lucia</h1>
+  <p>Brasserie · Engsbergseweg 144, Tessenderlo</p>
+</header>
+
+<main id="menu">
+  <div class="status" id="status">Menu wordt geladen…</div>
+</main>
+
+<footer>Menu wordt automatisch bijgewerkt vanuit de kaart van Santa Lucia.</footer>
+
+<script>
+const SHEET_ID = "1Mi-yDOgj87VijS2NBZgSMqzhhzT-j9Xs1pTizm9Av1Q";
+const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=0`;
+
+function parseCSV(text){
+  const rows = [];
+  let row = [], field = "", inQuotes = false;
+  for(let i=0;i<text.length;i++){
+    const c = text[i], next = text[i+1];
+    if(inQuotes){
+      if(c === '"' && next === '"'){ field += '"'; i++; }
+      else if(c === '"'){ inQuotes = false; }
+      else { field += c; }
+    } else {
+      if(c === '"'){ inQuotes = true; }
+      else if(c === ','){ row.push(field); field = ""; }
+      else if(c === '\n' || c === '\r'){
+        if(c === '\r' && next === '\n') i++;
+        row.push(field); rows.push(row); row = []; field = "";
+      } else { field += c; }
+    }
+  }
+  if(field.length || row.length){ row.push(field); rows.push(row); }
+  return rows.filter(r => r.some(f => f.trim() !== ""));
+}
+
+function euro(v){
+  const n = parseFloat(String(v).replace(",", "."));
+  if(isNaN(n)) return v;
+  return n.toFixed(2).replace(".", ",");
+}
+
+async function laadMenu(){
+  const statusEl = document.getElementById("status");
+  try{
+    const res = await fetch(CSV_URL, { cache: "no-store" });
+    if(!res.ok) throw new Error("HTTP " + res.status);
+    const text = await res.text();
+    const rows = parseCSV(text);
+    const [header, ...data] = rows;
+    const idx = {
+      categorie: header.findIndex(h => h.toLowerCase().includes("categ")),
+      naam: header.findIndex(h => h.toLowerCase().includes("naam")),
+      beschrijving: header.findIndex(h => h.toLowerCase().includes("beschrijv")),
+      prijs: header.findIndex(h => h.toLowerCase().includes("prijs")),
+      tonen: header.findIndex(h => h.toLowerCase().includes("tonen")),
+    };
+
+    const groepen = {};
+    for(const r of data){
+      if(idx.tonen !== -1 && r[idx.tonen] && r[idx.tonen].trim().toLowerCase() !== "ja") continue;
+      const cat = (r[idx.categorie] || "Overig").trim();
+      if(!groepen[cat]) groepen[cat] = [];
+      groepen[cat].push({
+        naam: (r[idx.naam] || "").trim(),
+        beschrijving: (r[idx.beschrijving] || "").trim(),
+        prijs: (r[idx.prijs] || "").trim(),
+      });
+    }
+
+    const main = document.getElementById("menu");
+    main.innerHTML = "";
+
+    const categorieen = Object.keys(groepen);
+    if(categorieen.length === 0){
+      main.innerHTML = '<div class="status">Nog geen menu-items zichtbaar.</div>';
+      return;
+    }
+
+    for(const cat of categorieen){
+      const sectie = document.createElement("div");
+      sectie.className = "categorie";
+      const h2 = document.createElement("h2");
+      h2.textContent = cat;
+      sectie.appendChild(h2);
+
+      for(const item of groepen[cat]){
+        if(!item.naam) continue;
+        const row = document.createElement("div");
+        row.className = "item";
+        row.innerHTML = `
+          <span class="item-naam">${item.naam}</span>
+          <span class="leader"></span>
+          <span class="item-prijs">€ ${euro(item.prijs)}</span>
+        `;
+        sectie.appendChild(row);
+        if(item.beschrijving){
+          const desc = document.createElement("div");
+          desc.className = "item-beschrijving";
+          desc.textContent = item.beschrijving;
+          sectie.appendChild(desc);
+        }
+      }
+      main.appendChild(sectie);
+    }
+  } catch(err){
+    statusEl.textContent = "Menu kon niet geladen worden. Probeer later opnieuw.";
+    console.error(err);
+  }
+}
+
+laadMenu();
+</script>
+
+</body>
+</html>
