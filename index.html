@@ -205,6 +205,22 @@ nav{
 .ai-strip h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:600;margin-bottom:0.5rem}
 .ai-strip p{font-size:0.92rem;color:var(--graphite);max-width:44ch;line-height:1.6}
 
+
+/* KERST 2026 */
+.kerst{margin:0 0 3.5rem;border:1.5px solid var(--stamp);background:var(--white);padding:2.4rem;position:relative}
+.kerst-tag{position:absolute;top:-0.8rem;left:2rem;background:var(--stamp);color:#fff;font-family:'Space Grotesk',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;padding:0.3rem 0.7rem;text-transform:uppercase}
+.kerst h3{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:600;margin-bottom:0.5rem}
+.kerst h3 em{color:var(--stamp);font-style:italic}
+.kerst>p{font-size:0.97rem;color:var(--graphite);max-width:60ch;line-height:1.6}
+.kerst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem 2rem;margin:1.6rem 0;padding:1.2rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.kerst-grid div{font-size:0.92rem;color:var(--graphite)}
+.kerst-grid b{display:block;font-family:'Space Grotesk',sans-serif;color:var(--ink);font-size:0.98rem;font-weight:600}
+.kerst-prices{display:flex;flex-wrap:wrap;gap:2.2rem;align-items:flex-end;justify-content:space-between}
+.kerst-prices span{font-family:'Space Grotesk',sans-serif;font-size:0.82rem;color:var(--graphite-soft);display:block}
+.kerst-prices strong{font-family:'Space Grotesk',sans-serif;font-size:1.35rem;font-weight:600}
+.kerst-deadline{font-family:'Space Grotesk',sans-serif;font-size:0.85rem;color:var(--stamp);font-weight:600;margin-top:1.2rem}
+@media(max-width:768px){.kerst-grid{grid-template-columns:1fr 1fr}.kerst{padding:2rem 1.4rem}}
+
 /* PORTFOLIO */
 .portfolio{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .p-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
@@ -304,6 +320,7 @@ footer{
   <a href="#" class="nav-logo">TimmersDesign</a>
   <a href="tel:+32476548643" class="nav-phone">0476 54 86 43</a>
   <ul class="nav-links" id="navLinks">
+    <li><a href="#kerst">Kerst</a></li>
     <li><a href="#diensten">Pakketten</a></li>
     <li><a href="#portfolio">Werk</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -331,6 +348,28 @@ footer{
       <h2 class="s-title">Pakketten<br><em>op maat</em></h2>
     </div>
     <p class="section-sub">Van een eenvoudige visitekaartje-website tot een volledig op maat gemaakte oplossing — elk pakket is ontworpen om je zaak online goed neer te zetten, zonder bureau-overhead.</p>
+  </div>
+
+  <div class="kerst" id="kerst">
+    <span class="kerst-tag">Kerst 2026</span>
+    <h3>Klaar voor de <em>feestdagen?</em></h3>
+    <p>Kerstmenu, cadeaubonnen of een oudejaarsfeest? Ik ontwerp alles wat je zaak nodig heeft deze winter, zodat je klanten het zien. Op straat, aan je raam en online.</p>
+    <div class="kerst-grid">
+      <div><b>Kerstaffiche</b>Voor je kerstmenu of actie</div>
+      <div><b>Raamsticker</b>Zodat voorbijgangers het zien</div>
+      <div><b>Social posts</b>Instagram en Facebook</div>
+      <div><b>Kerstkaarten</b>Met je logo, voor klanten of personeel</div>
+      <div><b>Cadeaubonnen</b>Het last-minute cadeau</div>
+      <div><b>Oudjaar &amp; nieuwjaar</b>Affiche voor je feest of drink</div>
+    </div>
+    <div class="kerst-prices">
+      <div><span>Kerstpakket (affiche + raamsticker + 3 posts)</span><strong>€140</strong></div>
+      <div><span>Los ontwerp</span><strong>€75</strong></div>
+      <div><span>Kerst- of nieuwjaarskaart</span><strong>€75</strong></div>
+      <div><span>Drukwerk erbij</span><strong>+€25</strong></div>
+      <a href="#contact" class="btn btn-outline">Kerstpakket aanvragen</a>
+    </div>
+    <p class="kerst-deadline">Alles inbegrepen · Bestel vóór 25 november</p>
   </div>
 
   <div class="spec-table">
@@ -368,6 +407,14 @@ footer{
         <p>Maandelijkse check van snelheid en beveiliging, kleine tekst- en beeldaanpassingen, uptime-monitoring, back-up en prioritaire support. Minimum 6 maanden.</p>
       </div>
       <span class="spec-price">Vanaf €39<small>/ maand</small></span>
+    </div>
+    <div class="spec-row">
+      <span class="spec-key">05 — Sociale media</span>
+      <div class="spec-body">
+        <h3>Posts voor Facebook &amp; Instagram</h3>
+        <p>Ik maak de teksten en ontwerpen en plaats ze op je pagina's. Jij stuurt enkel foto's van je zaak of producten. Basis: 4 posts per maand (€120). Plus: 8 posts en 4 stories per maand (€220). Een losse post kan ook, voor €35. We starten met 3 maanden, daarna maandelijks opzegbaar.</p>
+      </div>
+      <span class="spec-price">Vanaf €120<small>/ maand</small></span>
     </div>
   </div>
 
@@ -480,6 +527,8 @@ footer{
           <option>Op maat · prijs op aanvraag</option>
           <option>AI-medewerker</option>
           <option>Huisstijl &amp; Drukwerk</option>
+          <option>Sociale media posts · vanaf €120/maand</option>
+          <option>Kerstpakket · €140</option>
         </select>
       </div>
       <div class="f-field"><label for="bericht">Bericht</label><textarea id="bericht" name="bericht" rows="4" required></textarea></div>
