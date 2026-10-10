@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Kruimel &amp; Koffie: Ontbijt, broodjes en homemade gebak in Peer</title>
+<meta name="description" content="Kruimel &amp; Koffie, Markt 51-1 in Peer. Ontbijt, broodjes, bagels en homemade gebak. Bekijk het menu en de openingsuren.">
+<style>
+  :root{
+    --cream:#faf5ee;
+    --paper:#fffdf9;
+    --olive:#555a3d;
+    --olive-dark:#3f432d;
+    --rose:#a8706b;
+    --rose-soft:#c99a94;
+    --ink:#2b2a26;
+    --muted:#7a766c;
+    --line:rgba(85,90,61,0.28);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:70px;}
+  body{
+    font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif;
+    background:var(--cream);color:var(--ink);line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
+
+  .disclaimer{background:var(--olive-dark);color:#f3efe4;text-align:center;font:13px/1.4 -apple-system,Segoe UI,sans-serif;padding:8px 16px;}
+
+  /* kop */
+  header.masthead{text-align:center;padding:44px 0 18px;}
+  .masthead .logo{width:150px;height:150px;border-radius:50%;margin:0 auto 14px;
+    display:flex;align-items:center;justify-content:center;
+    border:2px solid var(--rose-soft);background:var(--paper);
+    font-variant:small-caps;color:var(--rose);font-size:25px;line-height:1.1;letter-spacing:.02em;}
+  .masthead h1{font-weight:400;font-variant:small-caps;color:var(--rose);
+    font-size:clamp(40px,8vw,84px);letter-spacing:.03em;line-height:1;}
+  .meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);
+    border-bottom:1px solid var(--line);padding:10px 0;margin-top:22px;
+    font-family:-apple-system,Segoe UI,sans-serif;letter-spacing:.04em;text-transform:uppercase;}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(250,245,238,.92);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 20px;
+    font:14px -apple-system,Segoe UI,sans-serif;scrollbar-width:none;}
+  nav .wrap::-webkit-scrollbar{display:none;}
+  nav a{white-space:nowrap;padding:7px 14px;border-radius:99px;color:var(--olive);}
+  nav a:hover{background:rgba(85,90,61,.1);}
+  nav a.cta{background:var(--olive);color:#fff;margin-left:auto;}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;padding:56px 0 40px;align-items:start;}
+  .hero h2{font-family:Impact,"Arial Narrow Bold","Haettenschweiler",sans-serif;font-weight:400;
+    text-transform:uppercase;color:var(--olive);font-size:clamp(34px,5.4vw,60px);line-height:1.02;letter-spacing:.01em;margin-bottom:18px;}
+  .hero p{font-size:18px;max-width:560px;margin-bottom:12px;}
+  .hero .sub{color:var(--rose);font-size:20px;font-style:italic;margin-top:16px;}
+  .box{background:var(--paper);border:1px solid var(--line);padding:22px;}
+  .box h3{font-variant:small-caps;color:var(--rose);font-weight:400;font-size:24px;margin-bottom:6px;}
+  .box small{display:block;font:11px -apple-system,Segoe UI,sans-serif;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;}
+  .box p{font-size:15px;}
+  .box + .box{margin-top:16px;}
+
+  /* menu */
+  section.menu{padding:48px 0 8px;border-top:3px double var(--olive);}
+  section.menu > .wrap > h2{font-family:Impact,"Arial Narrow Bold",sans-serif;font-weight:400;text-transform:uppercase;
+    color:var(--olive);font-size:clamp(40px,7vw,76px);line-height:1;letter-spacing:.01em;}
+  .tagline{color:var(--muted);font-style:italic;margin:8px 0 28px;max-width:560px;}
+  .cols{columns:2;column-gap:44px;}
+  .cat{break-inside:avoid;margin-bottom:30px;}
+  .cat h3{font-weight:400;font-size:22px;color:var(--olive-dark);border-bottom:1px solid var(--line);padding-bottom:4px;margin-bottom:10px;}
+  .cat .note{font-size:13px;color:var(--muted);font-style:italic;margin:-4px 0 8px;}
+  .item{display:flex;align-items:baseline;gap:8px;margin:6px 0;font-size:16px;}
+  .item .n{flex:0 1 auto;}
+  .item .dots{flex:1;border-bottom:1px dotted rgba(43,42,38,.35);transform:translateY(-4px);min-width:14px;}
+  .item .p{font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .item .p + .p{margin-left:6px;color:var(--muted);}
+  .desc{font-size:13px;color:var(--muted);margin:-3px 0 6px;}
+  .colhead{display:flex;justify-content:flex-end;gap:14px;font:11px -apple-system,Segoe UI,sans-serif;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+
+  /* info */
+  .info{margin-top:40px;border-top:3px double var(--olive);padding:48px 0 60px;}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;}
+  .info h2{font-variant:small-caps;font-weight:400;color:var(--rose);font-size:28px;margin-bottom:10px;}
+  .hours{width:100%;border-collapse:collapse;font-size:16px;}
+  .hours td{padding:4px 0;border-bottom:1px solid var(--line);}
+  .hours td:last-child{text-align:right;}
+  .btn{display:inline-block;margin-top:14px;background:var(--olive);color:#fff;padding:12px 24px;border-radius:99px;
+    font:15px -apple-system,Segoe UI,sans-serif;}
+  .btn:hover{background:var(--olive-dark);}
+  .map{margin-top:32px;border:1px solid var(--line);}
+  .map iframe{display:block;width:100%;height:320px;border:0;filter:sepia(.25) saturate(.8);}
+
+  footer{background:var(--olive-dark);color:#d9d6c6;text-align:center;padding:26px 20px;font:13px/1.6 -apple-system,Segoe UI,sans-serif;}
+  footer strong{color:#fff;}
+
+  @media(max-width:760px){
+    .hero{grid-template-columns:1fr;padding-top:36px;}
+    .cols{columns:1;}
+    .info-grid{grid-template-columns:1fr;}
+    .meta span:nth-child(2){display:none;}
+    .masthead .logo{width:120px;height:120px;font-size:20px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="disclaimer">Voorbeeldwebsite, gemaakt door TimmersDesign. Nog niet live.</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="logo">Kruimel<br>&amp;<br>Koffie</div>
+    <h1>Kruimel &amp; Koffie</h1>
+    <div class="meta"><span>Oktober 2026</span><span>Ontbijt · Broodjes · Homemade gebak</span><span>Markt 51-1, Peer</span></div>
+  </div>
+</header>
+
+<nav>
+  <div class="wrap" id="tabs">
+    <a href="#ontbijt">Ontbijt</a>
+    <a href="#broodjes">Broodjes</a>
+    <a href="#lunch">Lunch</a>
+    <a href="#bagels">Bagels &amp; boterhammen</a>
+    <a href="#pannenkoeken">Pannenkoeken</a>
+    <a href="#dranken">Dranken</a>
+    <a href="#info" class="cta">Openingsuren &amp; route</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <h2>Even pauze…<br>de plek waar goed nieuws altijd gepaard gaat met een lekkere tas koffie.</h2>
+      <p>Van de eerste hap van je ontbijt tot de laatste kruimel van ons huisgemaakte gebak: we hopen dat je ervan geniet. Neem je tijd, blader rustig door onze rubrieken en laat je verrassen.</p>
+      <p class="sub">Graag je bestelling doorgeven aan de toog.</p>
+    </div>
+    <div>
+      <div class="box">
+        <small>Handig</small>
+        <h3>Belangrijk bericht</h3>
+        <p>Allergieën of dieetwensen? Spreek ons personeel gerust aan! Wij helpen u met veel plezier verder en geven u graag meer informatie over de ingrediënten in onze gerechten.</p>
+      </div>
+      <div class="box">
+        <small>Zoet</small>
+        <h3>Zoet nieuws!</h3>
+        <p>Wisselend assortiment vers gebak. Neem snel een kijkje in onze vitrine aan de toog voor de creaties van vandaag.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="menu-root"></div>
+
+<section class="info" id="info">
+  <div class="wrap">
+    <div class="info-grid">
+      <div>
+        <h2>Openingsuren</h2>
+        <table class="hours">
+          <tr><td>Maandag</td><td>08:30 – 17:00</td></tr>
+          <tr><td>Dinsdag</td><td>08:30 – 17:00</td></tr>
+          <tr><td>Woensdag</td><td>08:30 – 17:00</td></tr>
+          <tr><td>Donderdag</td><td>08:30 – 17:00</td></tr>
+          <tr><td>Vrijdag</td><td>08:30 – 17:00</td></tr>
+          <tr><td>Zaterdag</td><td>08:30 – 14:00</td></tr>
+          <tr><td>Zondag</td><td>Gesloten</td></tr>
+        </table>
+      </div>
+      <div>
+        <h2>Adres</h2>
+        <p>Kruimel &amp; Koffie<br>Markt 51-1<br>3990 Peer</p>
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Kruimel+%26+Koffie+Markt+51-1+3990+Peer" target="_blank" rel="noopener">Route plannen</a>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <p>Bel ons op<br><a href="tel:+3211753611"><strong>011 / 75 36 11</strong></a></p>
+        <p style="margin-top:10px;color:var(--muted);font-size:14px;">Volg ons op Facebook voor de acties van de week.</p>
+      </div>
+    </div>
+    <div class="map">
+      <iframe title="Kaart Kruimel &amp; Koffie" loading="lazy"
+        src="https://www.google.com/maps?q=Markt+51-1,+3990+Peer&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>Kruimel &amp; Koffie</strong> · Markt 51-1, 3990 Peer · 011 / 75 36 11<br>
+  Voorbeeldwebsite door TimmersDesign
+</footer>
+
+<script>
+/* Menu-data: [naam, prijs, omschrijving, prijs2]. Prijzen in euro. */
+var MENU = [
+ {id:"ontbijt", title:"Ontbijt", tag:"Voor de vroege, en iets minder vroege, vogels.", cats:[
+  {t:"Kruimelfeest kids", items:[["Mini sandwich, mini koffiekoek, choco-confituur, kipfilet, mini donut, choco of fristi, verrassing","12.50"]]},
+  {t:"De kleine kruimel", items:[["2 broodjes, 1 koffiekoek naar keuze, zoet beleg, kaas en kip, koffie, thee of fruitsap","15.00"]]},
+  {t:"De grote kruimel", items:[["2 broodjes, boerenboterham, 1 koffiekoek naar keuze, zoet beleg, kaas en kip, 2 slaatjes naar keuze, yoghurt met granola, eitje naar keuze en spek, koffie, thee of fruitsap","25.00"]]},
+  {t:"Speciale kruimels", items:[
+    ["Boerenomelet met spek","9.50"],["Omelet met spek","9.50"],["Spiegelei met spek","9.50"],["Spek","4.00"],
+    ["Yoghurt met granola","7.50"],["Toast avocado met een spiegelei","8.00"],
+    ["Ontbijtbagel bacon ei","10.50","ei, cheddar, spek en boter"],
+    ["Ontbijtbagel avocado ei","10.50","ei, avocado, peper, chilliflakes"],
+    ["Pancakes (3) met topping naar keuze","7.50"]]}
+ ]},
+ {id:"broodjes", title:"Heet van de naald", tag:"Onze warme en koude broodjes.", cols:true, cats:[
+  {t:"Warme broodjes", items:[
+    ["Boulette","9.50","boulet, bicky sauzen, bicky ui, augurk"],["Kip Hawaï","9.50","kipreepjes, ananas, kaas, cocktail"],
+    ["Kip","12.50","kip, pesto, mozzarella"],["Kebab","10.50","kebab, mozzarella, cocktail"],
+    ["Spek en ei","7.50"],["Boerenomelet","6.50","omelet met groentenmix"]]},
+  {t:"Koude broodjes", head:["met groenten","zonder"], items:[
+    ["Ham","6.50","","5.50"],["Kaas","6.50","","5.50"],["Kaas/ham","7.50","","6.50"],["Gezond","5.50"],
+    ["Eiersalade","7.00","","6.00"],["Kip curry","7.00","","6.00"],["Zalmsalade","7.50","","6.50"],
+    ["Tonijnsalade","7.50","","6.50"],["Krabsalade","7.50","","6.50"],["Preparé","7.50","","6.50"],
+    ["Martino","8.50","","7.50"],["Boulette","8.50","","7.50"]]},
+  {t:"Speciale broodjes", items:[
+    ["Carpaccio","10.50","carpaccio, rucola, pijnboompitten, parmezaan"],["Brie","8.50","brie, rucola, walnoten, honing"],
+    ["Brie speciale","10.50","brie, zongedroogde tomaten, walnoten, honing, spek"],["Kip ananas","8.50","gepluisde kip, ananas, tuinkers"],
+    ["Winter","10.50","honingmosterdsaus, spek, salami, kaas, walnoten, appel"],["Philadelphia bacon","9.00","philadelphia, spek, siroop, rucola"],
+    ["Philadelphia kip","9.00","philadelphia, kip, augurk, tuinkers"],["Tonijn perzik","8.50","tonijncocktail, perzik, tuinkers"],
+    ["Gerookte zalm","11.50","gerookte zalm, rucola, philadelphia met fijne kruiden"],["New Jersey","10.50","preparé, krab, tuinkers, augurk"],
+    ["Italia","10.50","pesto, mozzarella, basilicum, zongedroogde tomaten"],["Melkweg","8.50","aardappelsalade, eiersalade, tuinkers, kaas, augurk"]]}
+ ]},
+ {id:"lunch", title:"De lunch update", tag:"Soep, spaghetti en croques om u tegen te zeggen.", cats:[
+  {t:"Soep", items:[["Soep","7.50"],["Kindersoep","5.50"]]},
+  {t:"Spaghetti", items:[["Spaghetti groot","15.50"],["Spaghetti klein","12.50"]]},
+  {t:"Croque", head:["enkel","dubbel"], items:[
+    ["Croque uit het vuistje","5.00"],["Croque Monsieur","8.00","","11.00"],["Croque Madame","9.00","","12.00"],
+    ["Croque Hawaï","10.00","","14.00"],["Croque Bolognaise","10.00","","14.00"],["Croque veggie","10.00","pesto, mozzarella en tomaat","14.00"],
+    ["Croque kip mozzarella","10.00","","14.00"],["Croque veggie avocado","10.00","avocado, cheddar en tomaat","14.00"]]},
+  {t:"Salades", items:[["Gerookte zalm","17.50"],["Perzik tonijn","16.50"],["Kip spek","16.50"],["Brie","14.50"]]},
+  {t:"Warme specials", note:"Te verkrijgen met latte van chocomelk", items:[["Speculoos","6.20"],["Bueno","6.20"],["Oreo","6.20"],["Maltesers","6.20"],["Bresilienne","6.20"]]}
+ ]},
+ {id:"bagels", title:"Specials", tag:"Bagels en boterhammen.", cats:[
+  {t:"Bagels", items:[
+    ["Bagel zalm","14.50","guacamole, gerookte zalm, saus"],["Club bagel","12.50","kipfilet, spek, tomaat, sla, honingmosterd"],
+    ["Veggie bagel","12.50","avocado, philadelphia, sesam, komkommer, rucola"],["Caprese bagel","12.50","mozzarella, tomaat, pesto, rucola"]]},
+  {t:"Boterhammen", items:[
+    ["Boterham carpaccio","14.50","carpaccio, rucola, balsamico, zongedroogde tomaten, parmezaanse kaas, pesto mayonaise"],
+    ["Boterham rode biet","11.50","hummus rode biet, soepparels, komkommer, feta"],
+    ["Boterham avocado","11.50","avocadospread, spiegelei, sesam"],
+    ["Boterham avocado deluxe","12.50","avocadospread, tomaat, rode ui, feta, spek"],
+    ["Boterham avocado zalm","14.50","avocadospread, gerookte zalm, rode ui, rucola, sesam, granaatappel"],
+    ["Boterham pesto","14.50","pesto, mozzarella, zongedroogde tomaten, pijnboompitten, rucola, balsamico, parmezaanse kaas"],
+    ["Boterham hummus","10.50","hummus, gegrilde groenten, saus"]]}
+ ]},
+ {id:"pannenkoeken", title:"Pannenkoeken", tag:"Per 2 stuks.", cats:[
+  {t:"Pannenkoeken", items:[
+    ["Pannenkoeken kids (1 stuk)","4.50"],["Pannenkoeken met suiker naar keuze, confituur, siroop of choco","6.50"],["Pannenkoeken met ijs (2 bollen)","8.50"]]}
+ ]},
+ {id:"dranken", title:"Dorstlessers & opkikkertjes", tag:"Van frisdrank tot koffie met een extraatje.", cols:true, cats:[
+  {t:"Frisdrank", items:[["Spa","2.70"],["Spa Bruis","2.70"],["Cola","3.00"],["Cola Zero","3.00"],["Fanta","3.00"],["Sprite","3.00"],
+    ["Ice-tea","3.20"],["Ice-tea Green","3.20"],["Ice-tea Peach","3.20"],["Gini","3.20"],["Orangina","3.20"],["Canada Dry","3.20"],
+    ["Schweppes Ginger","3.20"],["Schweppes Agrumes","3.20"],["Schweppes Tonic","3.20"],
+    ["Tönissteiner Citroen","3.50"],["Tönissteiner Orange","3.50"],["Tönissteiner Vruchtenkorf","3.50"],["Chocomel","3.20"],["Fristi","3.20"]]},
+  {t:"Fruitsappen van Schulp", items:[["Sinaasappelsap","4.20"],["Appelsap","4.20"],["Appel-kers","4.20"],["Appel-peer-gember","4.50"]]},
+  {t:"Smoothies", items:[["Sunshine","6.20","ananas, mango"],["Paradise","6.20","aardbei, mango"],["Green tornado","6.20","ananas, banaan, mango, spinazie"],["Acai","7.00","acai, banaan"]]},
+  {t:"Koffie & thee", items:[["Koffie","3.40"],["Cappuccino","3.80"],["Cappuccino met slagroom","4.00"],["Latte macchiato","3.80"],["Warme choco","3.40"],
+    ["Thee (keuze aan de toog)","3.60"],["Cool cappuccino","4.70"],["Irish koffie whisky","9.40"],["Italiaanse koffie amaretto","9.40"],
+    ["Hasseltse koffie jenever","9.40"],["Kruimel koffie baileys","9.40"]]},
+  {t:"Chai latte", items:[["Vanille chai latte","4.20"],["Golden chai latte","4.20"],["Pink chai latte","4.20"],["Spiced chai latte","4.20"],["Matcha chai latte","4.20"],["Vanille matcha chai latte","4.50"]]},
+  {t:"Bieren", items:[["Cristal","3.00"],["Cristal 0,0%","3.20"],["Liefmans","4.00"],["Liefmans 0,0%","4.00"],["Wilderen Goud","4.50"],["Duvel","4.50"],["Achel Bruin","4.70"],["Achel Tripel","4.70"],["Kannunik","5.50"]]},
+  {t:"Wijnen", items:[["Witte wijn","4.50"],["Rosé wijn","4.50"],["Rode wijn","4.50"],["Cava","5.50"]]}
+ ]}
+];
+
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function eur(p){return "€" + p;}
+
+var html = "";
+MENU.forEach(function(sec){
+  html += '<section class="menu" id="'+sec.id+'"><div class="wrap"><h2>'+esc(sec.title)+'</h2><p class="tagline">'+esc(sec.tag)+'</p>';
+  var multi = sec.cats.length > 1;
+  html += multi ? '<div class="cols">' : '<div style="max-width:620px">';
+  sec.cats.forEach(function(c){
+    html += '<div class="cat"><h3>'+esc(c.t)+'</h3>';
+    if(c.note) html += '<p class="note">'+esc(c.note)+'</p>';
+    if(c.head) html += '<div class="colhead"><span>'+esc(c.head[0])+'</span><span>'+esc(c.head[1])+'</span></div>';
+    c.items.forEach(function(i){
+      html += '<div class="item"><span class="n">'+esc(i[0])+'</span><span class="dots"></span><span class="p">'+eur(i[1])+'</span>'+(i[3]?'<span class="p">'+eur(i[3])+'</span>':'')+'</div>';
+      if(i[2]) html += '<div class="desc">'+esc(i[2])+'</div>';
+    });
+    html += '</div>';
+  });
+  html += '</div></div></section>';
+});
+document.getElementById("menu-root").innerHTML = html;
+</script>
+</body>
+</html>
