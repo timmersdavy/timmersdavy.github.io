@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0D1B3E">
 <meta name="description" content="Websites voor zelfstandigen en kmo's in Limburg en de Kempen. Snel, betaalbaar en persoonlijk. Uit Tessenderlo-Ham.">
 <title>TimmersDesign: Webdesign voor KMO's in Limburg en de Kempen</title>
 <link rel="canonical" href="https://timmersdesign.be/">
@@ -11,6 +12,21 @@
 <meta property="og:description" content="Websites voor zelfstandigen en kmo's in Limburg en de Kempen. Snel, betaalbaar en persoonlijk. Uit Tessenderlo-Ham.">
 <meta property="og:url" content="https://timmersdesign.be/">
 <meta property="og:locale" content="nl_BE">
+<meta property="og:image" content="https://timmersdesign.be/images/og-timmersdesign.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="TimmersDesign: websites op maat uit de Kempen, met de oranje pijl van het logo">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebSite",
+ "name": "TimmersDesign",
+ "url": "https://timmersdesign.be/",
+ "inLanguage": "nl-BE",
+ "publisher": {"@id": "https://timmersdesign.be/#bedrijf"}
+}
+</script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -24,7 +40,11 @@
  "email": "info@timmersdesign.be",
  "founder": {
   "@type": "Person",
-  "name": "Davy Timmers"
+  "name": "Davy Timmers",
+  "jobTitle": "Webdesigner",
+  "description": "Webdesigner uit Tessenderlo-Ham en eigenaar van TimmersDesign. Bouwt websites voor zelfstandigen, kmo's en horeca in Limburg en de Kempen.",
+  "url": "https://timmersdesign.be/over-mij",
+  "worksFor": {"@id": "https://timmersdesign.be/#bedrijf"}
  },
  "vatID": "BE1040022716",
  "priceRange": "€35 - €1650",
@@ -248,7 +268,7 @@ nav{
   display:inline-block;transition:background 0.25s,color 0.25s,border-color 0.25s;
 }
 .btn-solid{background:var(--ink);color:var(--paper);border:1px solid var(--ink)}
-.btn-solid:hover{background:var(--stamp);border-color:var(--stamp)}
+.btn-solid:hover{background:var(--stamp);border-color:var(--stamp);color:var(--ink)}
 .btn-outline{background:transparent;color:var(--ink);border:1px solid var(--line)}
 .btn-outline:hover{border-color:var(--ink)}
 @keyframes riseIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
@@ -263,6 +283,14 @@ nav{
   opacity:0;animation:riseIn 0.8s 0.8s forwards;
 }
 @media(max-width:900px){.hero-stamp{display:none}}
+.hero-3d{display:none}
+@media(min-width:901px){
+  .hero{padding-right:calc(min(30vw,420px) + 5rem)}
+  .hero-3d{display:block;position:absolute;right:3rem;top:calc(50% - min(15vw,210px));width:min(30vw,420px);aspect-ratio:1/1;pointer-events:none;opacity:0;animation:riseIn 0.9s 0.5s forwards}
+  .hero-3d img,.hero-3d canvas{position:absolute;inset:0;width:100%!important;height:100%!important;display:block}
+  .hero-3d canvas{transition:opacity .4s}
+  .hero-3d.is-live img{opacity:0;transition:opacity .4s}
+}
 
 /* SECTION shared */
 .section-wrap{padding:6rem 3.4rem;max-width:1180px;margin:0 auto}
@@ -346,7 +374,7 @@ nav{
 .p-thumb::after{content:'';position:absolute;inset:0;background:rgba(13,27,62,0);transition:background 0.25s}
 .p-item:hover .p-thumb::after{background:rgba(13,27,62,0.06)}
 .p-meta{padding:1.1rem 1.3rem;border-top:1px solid var(--line)}
-.p-meta h4{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:600;margin-bottom:0.2rem}
+.p-meta h3{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:600;margin-bottom:0.2rem}
 .p-meta span{font-family:'Space Grotesk',sans-serif;font-size:0.72rem;color:var(--graphite-soft)}
 @media(max-width:900px){.p-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:500px){.p-grid{grid-template-columns:1fr}}
@@ -373,12 +401,13 @@ nav{
   outline:none;transition:border-color 0.2s;resize:vertical;
 }
 .f-field input:focus,.f-field textarea:focus{border-color:var(--ink)}
+.f-field input:focus-visible,.f-field textarea:focus-visible,.f-field select:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .f-submit{
   font-family:'Space Grotesk',sans-serif;font-size:0.85rem;font-weight:600;
   padding:0.9rem 1.8rem;background:var(--ink);color:var(--paper);border:1px solid var(--ink);
   cursor:pointer;transition:background 0.25s;
 }
-.f-submit:hover{background:var(--stamp);border-color:var(--stamp)}
+.f-submit:hover{background:var(--stamp);border-color:var(--stamp);color:var(--ink)}
 .f-submit:disabled{opacity:0.6;cursor:default}
 @media(max-width:768px){.contact-wrap{grid-template-columns:1fr}}
 
@@ -413,7 +442,7 @@ footer{
   footer{padding:1.6rem}
 }
 @media(prefers-reduced-motion:reduce){
-  .hero-eyebrow,.hero-title,.hero-desc,.hero-cta,.hero-stamp{animation:none;opacity:1}
+  .hero-eyebrow,.hero-title,.hero-desc,.hero-cta,.hero-stamp,.hero-3d{animation:none;opacity:1}
 }
 
 .own-block{background:#fff;border:1px solid var(--line);border-radius:4px;padding:2.2rem 2rem;margin:2.5rem auto;max-width:900px;display:grid;grid-template-columns:1fr 1.2fr;gap:2rem;align-items:center}
@@ -424,9 +453,14 @@ footer{
 .own-list li{padding:0.45rem 0;border-bottom:1px solid var(--line-soft);color:var(--ink);display:flex;gap:0.7rem;line-height:1.5}
 .own-list li::before{content:"✔";color:var(--stamp);font-weight:700;flex-shrink:0}
 @media (max-width:760px){.own-block{grid-template-columns:1fr;padding:1.6rem 1.3rem;gap:1rem}}
+h1,h2,h3{text-wrap:balance}
+.skip-link{position:absolute;left:1rem;top:-4rem;z-index:2000;background:var(--ink);color:var(--paper);padding:0.7rem 1rem;font-family:'Space Grotesk',sans-serif;font-weight:600;text-decoration:none}
+.skip-link:focus{top:1rem}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
 </head>
 <body>
+<a href="#inhoud" class="skip-link">Ga naar de inhoud</a>
 
 <div class="reg reg-tl"></div>
 <div class="reg reg-tr"></div>
@@ -447,7 +481,9 @@ footer{
   </button>
 </nav>
 
+<main id="inhoud">
 <section class="hero">
+  <div class="hero-3d" id="hero3d" aria-hidden="true"><img src="/images/pijl-3d.webp" width="960" height="960" alt="" decoding="async"></div>
   <div class="hero-stamp">Op maat<br>gebouwd</div>
   <p class="hero-eyebrow">Webdesign · Tessenderlo-Ham, Limburg en de Kempen</p>
   <h1 class="hero-title">Webdesign in Tessenderlo-Ham: een website die je nieuwe klanten oplevert.</h1>
@@ -582,38 +618,38 @@ footer{
   <div class="p-grid">
     <a class="p-item" href="/ijssalon-timmers.html">
       <div class="p-thumb" style="background-image:url('/portfolio-shots/ijssalon-timmers.jpg')"></div>
-      <div class="p-meta"><h4>IJssalon Timmers</h4><span>Horeca: Voorbeeldproject</span></div>
+      <div class="p-meta"><h3>IJssalon Timmers</h3><span>Horeca: Voorbeeldproject</span></div>
     </a>
     <a class="p-item" href="https://hopveld-demo-timmersdavys-projects.vercel.app" target="_blank" rel="noopener">
       <div class="p-thumb" style="background-image:url('/portfolio-shots/hopveld.jpg')"></div>
-      <div class="p-meta"><h4>Hopveld</h4><span>Brouwerij: Live demo</span></div>
+      <div class="p-meta"><h3>Hopveld</h3><span>Brouwerij: Live demo</span></div>
     </a>
     <a class="p-item" href="/slagerij-van-damme.html">
       <div class="p-thumb" style="background-image:url('/portfolio-shots/slagerij-van-damme.jpg')"></div>
-      <div class="p-meta"><h4>Slagerij Van Damme</h4><span>Bedrijfswebsite: Voorbeeldproject</span></div>
+      <div class="p-meta"><h3>Slagerij Van Damme</h3><span>Bedrijfswebsite: Voorbeeldproject</span></div>
     </a>
     <a class="p-item" href="/geuns-bouwprojecten.html">
       <div class="p-thumb" style="background-image:url('/portfolio-shots/geuns-bouwprojecten.jpg')"></div>
-      <div class="p-meta"><h4>Bouwbedrijf Van Loon</h4><span>Bouw: Voorbeeldproject</span></div>
+      <div class="p-meta"><h3>Bouwbedrijf Van Loon</h3><span>Bouw: Voorbeeldproject</span></div>
     </a>
     <a class="p-item" href="https://bladzijde-27.vercel.app" target="_blank" rel="noopener">
       <div class="p-thumb" style="background-image:url('/portfolio-shots/bladzijde-27.jpg')"></div>
-      <div class="p-meta"><h4>Bladzijde 27</h4><span>Boekhandel: Voorbeeldproject</span></div>
+      <div class="p-meta"><h3>Bladzijde 27</h3><span>Boekhandel: Voorbeeldproject</span></div>
     </a>
     <a class="p-item" href="/klus-tuin-wim.html">
       <div class="p-thumb" style="background-image:url('/portfolio-shots/klus-tuin-wim.jpg')"></div>
-      <div class="p-meta"><h4>Klus-Tuin-Wim</h4><span>Tuin &amp; klussen: Voorbeeldproject</span></div>
+      <div class="p-meta"><h3>Klus-Tuin-Wim</h3><span>Tuin &amp; klussen: Voorbeeldproject</span></div>
     </a>
     <a class="p-item" href="/reisbureau-claudia.html">
       <div class="p-thumb" style="background-image:url('/portfolio-shots/reisbureau-claudia.jpg')"></div>
-      <div class="p-meta"><h4>Reisbureau Claud(ia)</h4><span>Reizen: Voorbeeldproject</span></div>
+      <div class="p-meta"><h3>Reisbureau Claud(ia)</h3><span>Reizen: Voorbeeldproject</span></div>
     </a>
     <a class="p-item" href="/al-fanar-tessenderlo.html">
       <div class="p-thumb" style="background-image:url('/portfolio-shots/al-fanar-tessenderlo.jpg')"></div>
-      <div class="p-meta"><h4>Al Fanar Tessenderlo</h4><span>Lokale onderneming: Voorbeeldproject</span></div>
+      <div class="p-meta"><h3>Al Fanar Tessenderlo</h3><span>Lokale onderneming: Voorbeeldproject</span></div>
     </a><a class="p-item" href="/gouden-aar-demo.html">
           <div class="p-thumb" style="background-image:url('/images/gouden-aar-hero.webp')"></div>
-          <div class="p-meta"><h4>De Gouden Aar</h4><span>Bakkerij & horeca: Voorbeeldproject</span></div>
+          <div class="p-meta"><h3>De Gouden Aar</h3><span>Bakkerij & horeca: Voorbeeldproject</span></div>
         </a>
   </div>
 </section>
@@ -657,8 +693,8 @@ footer{
       <div class="contact-line"><span>Afspraak</span><a href="https://calendly.com/timmersdavy/vrijblijvend-gesprek" target="_blank">Vrijblijvend gesprek plannen</a></div>
     </div>
     <form id="contactForm" onsubmit="handleSubmit(event)">
-      <div class="f-field"><label for="naam">Naam</label><input id="naam" name="naam" type="text" required></div>
-      <div class="f-field"><label for="email">E-mail</label><input id="email" name="email" type="email" required></div>
+      <div class="f-field"><label for="naam">Naam</label><input id="naam" name="naam" type="text" autocomplete="name" required></div>
+      <div class="f-field"><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" spellcheck="false" required></div>
       <div class="f-field"><label for="dienst">Interesse</label>
         <select id="dienst" name="dienst" style="width:100%;font-family:'Newsreader',serif;font-size:1rem;padding:0.7rem 0;background:transparent;border:none;border-bottom:1px solid var(--line);color:var(--ink)">
           <option>Starter · €1.100 eenmalig</option>
@@ -676,15 +712,17 @@ footer{
         <label for="privacyConsent" style="font-size:0.85rem;font-weight:400;line-height:1.4;">Ik ga akkoord met het <a href="/privacy.html" target="_blank" style="color:inherit;text-decoration:underline;">privacybeleid</a> en geef toestemming om mijn gegevens te gebruiken voor het beantwoorden van deze aanvraag.</label>
       </div>
       <button type="submit" class="f-submit" id="submitBtn">Versturen</button>
+      <p id="formStatus" class="sr-only" role="status" aria-live="polite"></p>
     </form>
   </div>
 </section>
+</main>
 
 <footer>
   <span>© 2026 TimmersDesign, Davy Timmers, Tessenderlo-Ham</span>
   <span>Webdesign in <a href="/website-laten-maken-ham.html" style="color:inherit">Tessenderlo-Ham</a> · <a href="/website-laten-maken-tessenderlo.html" style="color:inherit">Tessenderlo</a> · <a href="/website-laten-maken-beringen.html" style="color:inherit">Beringen</a> · <a href="/website-laten-maken-lummen.html" style="color:inherit">Lummen</a></span>
   <span>KBO/BTW BE1040022716</span>
-  <span><a href="/blog/" style="color:inherit;text-decoration:underline;">Blog</a> · <a href="/privacy.html" style="color:inherit;text-decoration:underline;">Privacybeleid</a></span>
+  <span><a href="/over-mij" style="color:inherit;text-decoration:underline;">Over mij</a> · <a href="/blog/" style="color:inherit;text-decoration:underline;">Blog</a> · <a href="/privacy.html" style="color:inherit;text-decoration:underline;">Privacybeleid</a></span>
 </footer>
 
 <a href="https://wa.me/32476548643" class="wa-float" target="_blank" rel="noopener" aria-label="Chat via WhatsApp">
@@ -715,7 +753,9 @@ function handleSubmit(e){
   const btn=document.getElementById('submitBtn');
   const originalText=btn.textContent;
   btn.disabled=true;
-  btn.textContent='Bezig...';
+  const status=document.getElementById('formStatus');
+  btn.textContent='Bezig…';
+  status.textContent='';
   fetch('https://formspree.io/f/mjyykqrq',{
     method:'POST',
     body:new FormData(form),
@@ -723,47 +763,61 @@ function handleSubmit(e){
   }).then(res=>{
     if(res.ok){
       btn.textContent='Verstuurd';
+      status.textContent='Bedankt, je bericht is verstuurd.';
       form.reset();
     } else {
       btn.textContent='Mislukt, probeer opnieuw';
+      status.textContent='Versturen is mislukt. Probeer opnieuw of mail naar info@timmersdesign.be.';
     }
   }).catch(()=>{
     btn.textContent='Mislukt, probeer opnieuw';
+    status.textContent='Versturen is mislukt. Probeer opnieuw of mail naar info@timmersdesign.be.';
   }).finally(()=>{
     btn.disabled=false;
     setTimeout(()=>{btn.textContent=originalText},4000);
   });
 }
 </script>
+<script>
+/* 3D-pijl: enkel op grote schermen met muis, en niet bij "minder beweging"; laadt pas als de pagina klaar is */
+(function(){
+  var groot=matchMedia('(min-width: 901px) and (pointer: fine)'),rustig=matchMedia('(prefers-reduced-motion: reduce)');
+  if(!groot.matches||rustig.matches)return;
+  function laad(){var s=document.createElement('script');s.type='module';s.src='/js/pijl-3d.js';document.body.appendChild(s);}
+  if('requestIdleCallback' in window)requestIdleCallback(laad,{timeout:2500});else setTimeout(laad,1500);
+})();
+</script>
 <!-- ===== AI-medewerker chatwidget — TimmersDesign ===== -->
 <style>
 .aim-bubble{
   position:fixed;right:1.5rem;bottom:6rem;z-index:1000;width:56px;height:56px;border-radius:50%;
-  background:#0b1e3d;border:2px solid #ff7a1a;display:flex;align-items:center;justify-content:center;
+  background:#0d1b3e;border:2px solid #f4762a;display:flex;align-items:center;justify-content:center;padding:0;
   box-shadow:0 4px 16px rgba(0,0,0,0.22);transition:transform 0.25s;cursor:pointer;
 }
 .aim-bubble:hover{transform:scale(1.08)}
+.aim-bubble:focus-visible,.aim-header button:focus-visible,.aim-inputrow button:focus-visible{outline:2px solid #f4762a;outline-offset:3px}
 .aim-bubble svg{width:26px;height:26px}
 
 .aim-window{
   position:fixed;right:1.5rem;bottom:11rem;z-index:1000;width:340px;max-width:90vw;height:460px;max-height:70vh;
   background:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.25);
-  display:none;flex-direction:column;overflow:hidden;font-family:Arial,Helvetica,sans-serif;
+  display:none;flex-direction:column;overflow:hidden;font-family:'Space Grotesk',sans-serif;
 }
 .aim-window.open{display:flex}
 .aim-header{
-  background:#0b1e3d;color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;
+  background:#0d1b3e;color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;
 }
 .aim-header span{font-weight:700;font-size:15px}
 .aim-header button{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;line-height:1}
 .aim-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:#f4f6fa}
 .aim-msg{max-width:80%;padding:9px 12px;border-radius:12px;font-size:14px;line-height:1.4}
-.aim-msg.bot{background:#fff;border:1px solid #e2e6ee;align-self:flex-start;color:#0b1e3d}
-.aim-msg.user{background:#ff7a1a;color:#fff;align-self:flex-end}
-.aim-typing{align-self:flex-start;color:#9fb0cc;font-size:13px;padding:0 4px}
+.aim-msg.bot{background:#fff;border:1px solid #e2e6ee;align-self:flex-start;color:#0d1b3e}
+.aim-msg.user{background:#f4762a;color:#0d1b3e;align-self:flex-end}
+.aim-typing{align-self:flex-start;color:#4a5568;font-size:13px;padding:0 4px}
 .aim-inputrow{display:flex;border-top:1px solid #e2e6ee;padding:8px}
-.aim-inputrow input{flex:1;border:none;outline:none;padding:8px 10px;font-size:14px}
-.aim-inputrow button{background:#ff7a1a;border:none;color:#fff;border-radius:8px;padding:0 14px;font-weight:700;cursor:pointer}
+.aim-inputrow input{flex:1;border:none;outline:none;padding:8px 10px;font-size:16px;font-family:inherit}
+.aim-inputrow input:focus-visible{outline:2px solid #0d1b3e;outline-offset:-2px;border-radius:6px}
+.aim-inputrow button{background:#f4762a;border:none;color:#0d1b3e;border-radius:8px;padding:0 14px;font-weight:700;cursor:pointer;font-family:inherit}
 
 @media(max-width:480px){
   .aim-window{right:0.75rem;left:0.75rem;width:auto;bottom:10rem}
@@ -771,23 +825,23 @@ function handleSubmit(e){
 }
 </style>
 
-<div class="aim-bubble" id="aimBubble" aria-label="Chat met de AI-medewerker">
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4 4h16v12H7l-3 3V4z" stroke="#ff7a1a" stroke-width="2" stroke-linejoin="round"/>
+<button type="button" class="aim-bubble" id="aimBubble" aria-label="Chat met de AI-medewerker" aria-expanded="false" aria-controls="aimWindow">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M4 4h16v12H7l-3 3V4z" stroke="#f4762a" stroke-width="2" stroke-linejoin="round"/>
   </svg>
-</div>
+</button>
 
-<div class="aim-window" id="aimWindow">
+<div class="aim-window" id="aimWindow" role="dialog" aria-label="Chat met Timo, de AI-medewerker">
   <div class="aim-header">
     <span>Timo | AI-medewerker</span>
     <button id="aimClose" aria-label="Sluiten">×</button>
   </div>
-  <div class="aim-messages" id="aimMessages">
+  <div class="aim-messages" id="aimMessages" aria-live="polite">
     <div class="aim-msg bot">Hoi! Ik ben Timo, de AI-medewerker van TimmersDesign. Vraag me gerust iets over onze pakketten, prijzen of hoe we te werk gaan 👋</div>
   </div>
   <div class="aim-inputrow">
-    <input id="aimInput" type="text" placeholder="Typ je vraag..." maxlength="500">
-    <button id="aimSend">Stuur</button>
+    <input id="aimInput" type="text" placeholder="Typ je vraag…" maxlength="500" aria-label="Je vraag aan Timo" autocomplete="off">
+    <button type="button" id="aimSend">Stuur</button>
   </div>
 </div>
 
@@ -802,8 +856,16 @@ function handleSubmit(e){
   const sendBtn = document.getElementById('aimSend');
   let history = [];
 
-  bubble.addEventListener('click', () => win.classList.toggle('open'));
-  closeBtn.addEventListener('click', () => win.classList.remove('open'));
+  bubble.addEventListener('click', () => {
+    const isOpen = win.classList.toggle('open');
+    bubble.setAttribute('aria-expanded', isOpen);
+    if(isOpen && window.matchMedia('(pointer: fine)').matches) input.focus();
+  });
+  closeBtn.addEventListener('click', () => {
+    win.classList.remove('open');
+    bubble.setAttribute('aria-expanded', 'false');
+    bubble.focus();
+  });
 
   function addMsg(text, who){
     const div = document.createElement('div');
@@ -823,7 +885,7 @@ function handleSubmit(e){
 
     const typing = document.createElement('div');
     typing.className = 'aim-typing';
-    typing.textContent = 'Timo typt...';
+    typing.textContent = 'Timo typt…';
     messages.appendChild(typing);
     messages.scrollTop = messages.scrollHeight;
 
