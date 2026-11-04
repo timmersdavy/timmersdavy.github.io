@@ -348,6 +348,13 @@ nav{
 .ai-strip h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:600;margin-bottom:0.5rem}
 .ai-strip p{font-size:0.92rem;color:var(--graphite);max-width:44ch;line-height:1.6}
 
+/* Reel: verhuizen naar een nieuwe website */
+.reel-strip{margin-top:3.5rem;border:1px solid var(--line);background:var(--white);padding:2.4rem;display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:2.4rem;align-items:center}
+.reel-strip video{display:block;width:100%;height:auto;aspect-ratio:9/16;background:var(--ink);border:1px solid var(--line)}
+.reel-strip h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:600;margin-bottom:0.5rem}
+.reel-strip p{font-size:0.92rem;color:var(--graphite);max-width:44ch;line-height:1.6;margin-bottom:1.4rem}
+@media(max-width:768px){.reel-strip{grid-template-columns:1fr;padding:1.6rem}.reel-strip video{max-width:280px;margin:0 auto}}
+
 
 /* KERST 2026 */
 .kerst{margin:0 0 3.5rem;border:1.5px solid var(--stamp);background:var(--white);padding:2.4rem;position:relative}
@@ -602,6 +609,15 @@ h1,h2,h3{text-wrap:balance}
       <p>Banners, vlaggen, gevelbanners en bedrukte kleding in jouw huisstijl. Ik regel alles: het ontwerp, de controle van het bestand met een proefdruk, en de levering. Alles komt eerst bij mij toe, zodat ik het nakijk voor het naar jou gaat. Losse items vanaf €75, bundel (vlag + banner) vanaf €140.</p>
     </div>
     <a href="https://calendly.com/timmersdavy/vrijblijvend-gesprek" target="_blank" class="btn btn-outline">Meer info</a>
+  </div>
+
+  <div class="reel-strip">
+    <video src="/videos/reel-verhuizen.mp4" poster="/videos/reel-verhuizen.webp" width="540" height="960" controls muted playsinline preload="none" aria-label="Kort filmpje: een mannetje klimt van een verouderde website naar een frisse nieuwe website"></video>
+    <div>
+      <h3>Al jaren dezelfde website?</h3>
+      <p>Dan is het misschien tijd om te verhuizen. Ik zet je zaak over naar een frisse site die ook op gsm goed werkt.</p>
+      <a href="#contact" class="btn btn-outline">Stuur me een bericht</a>
+    </div>
   </div>
 </section>
 
